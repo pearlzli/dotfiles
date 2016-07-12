@@ -19,3 +19,5 @@
     pager = true
 [url "https://"]
     insteadof = git://
+[branch]
+    autosetuprebase = always
