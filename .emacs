@@ -47,6 +47,9 @@
 ;; row and column numbers
 (setq column-number-mode t)
 
+;; set default max line width
+(setq-default fill-column 80)
+
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (load "~/.emacs.d/cl-lib-0.4.el")
