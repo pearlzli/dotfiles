@@ -2,12 +2,6 @@
 (setq user-full-name "Pearl Li") 
 (setq user-mail-address "pearlzli16@gmail.com")
 
-;; scrolling speed
-(setq-default scroll-step 1)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-(setq mouse-wheel-follow-mouse 't)
-(setq mouse-wheel-progressive-speed nil)
-
 ;; enable visual feedback on selections 
 (setq transient-mark-mode t) 
 
