@@ -16,8 +16,8 @@ export PS1="\[\e[1;35m\]\u@\h \[\e[0;35m\]\w\[\e[0;36m\]\$(parse_git_branch)\[\e
 bind '"\e[A": history-search-backward' 2>/dev/null
 bind '"\e[B": history-search-forward'  2>/dev/null
 
-# hide extra files from Latex
-hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*.vo'"
+# hide extra files from Latex, emacs temp files
+hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*.vo' --hide='*~'"
 
 # command aliases
 alias cp="cp -i"
