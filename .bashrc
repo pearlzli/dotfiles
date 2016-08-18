@@ -12,9 +12,11 @@ parse_git_branch() {
 }
 export PS1="\[\e[1;35m\]\u@\h \[\e[0;35m\]\w\[\e[0;36m\]\$(parse_git_branch)\[\e[0;35m\] $ \[\e[m\]"
 
-# arrows search from current command
+# arrows and C-p/C-n search from current command
 bind '"\e[A": history-search-backward' 2>/dev/null
 bind '"\e[B": history-search-forward'  2>/dev/null
+bind '"\C-p": history-search-backward' 2>/dev/null
+bind '"\C-n": history-search-forward'  2>/dev/null
 
 # hide extra files from Latex, emacs temp files
 hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*.vo' --hide='*~'"
