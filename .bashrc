@@ -26,7 +26,7 @@ alias cp="cp -i"
 alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
 alias la="ls -a"
 alias ld="ls -d */"
-alias ll="ls -l"
+alias ll="ls -l -h"
 alias mv="mv -i"
 
 # program aliases
