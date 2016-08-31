@@ -45,4 +45,4 @@ alias gpo="git push origin"
 alias gs="git status"
 
 # source system-specific aliases
-source ~/.aliases 2>/dev/null
+source ~/.aliases
