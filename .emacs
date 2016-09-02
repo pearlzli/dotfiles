@@ -72,6 +72,9 @@
 (global-set-key (kbd "C-c =") 'my-increment-number-decimal)
 (global-set-key (kbd "C-c -") 'my-decrement-number-decimal)
 
+;; unbind C-o (insertline, but I use C-o as my tmux prefix)
+(global-unset-key (kbd "C-o"))
+
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (load "~/.emacs.d/cl-lib-0.4.el")
