@@ -44,5 +44,17 @@ alias gl="git log --graph --all --full-history --color --format=oneline --branch
 alias gpo="git push origin"
 alias gs="git status"
 
+# cache DISPLAY environment variable from outside tmux
+if ! [ -n "$TMUX" ]; then
+  echo "$DISPLAY" > ~/.DISPLAY
+  echo "DISPLAY cached as $DISPLAY"
+fi
+
+parse_display() {
+  DISPLAY_OLD="$DISPLAY"
+  export DISPLAY="$(cat ~/.DISPLAY)"
+  echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
+}
+
 # source system-specific aliases
 source ~/.aliases
