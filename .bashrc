@@ -47,7 +47,6 @@ alias gs="git status"
 # cache DISPLAY environment variable from outside tmux
 if { [[ -z "$TMUX" ]] && [[ "$DISPLAY" != "localhost"* ]]; } then
   echo "$DISPLAY" > ~/.DISPLAY
-  echo "DISPLAY cached as $DISPLAY"
 fi
 
 parse_display() {
