@@ -56,4 +56,4 @@ parse_display() {
 }
 
 # source system-specific aliases
-source ~/.aliases
+source ~/.bashrc-local
