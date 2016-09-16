@@ -75,12 +75,21 @@
 ;; unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
+;; Git
+(add-to-list 'load-path "~/.emacs.d/git-modes")
+(autoload 'gitconfig-mode "gitconfig-mode"
+  "Major mode for editing .gitconfig files" t)
+(add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . gitconfig-mode))
+(autoload 'gitignore-mode "gitignore-mode"
+  "Major mode for editing .gitignore files" t)
+(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
+
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (load "~/.emacs.d/cl-lib-0.4.el")
 (load "markdown-mode.el")
 (autoload 'markdown-mode "markdown-mode"
-   "Major mode for editing Markdown files" t)
+  "Major mode for editing Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
