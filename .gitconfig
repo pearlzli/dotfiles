@@ -6,10 +6,12 @@
 [core]
     editor = emacs -nw
 [alias]
-    lc = log ORIG_HEAD.. --stat --no_merges
     changes = diff --name-status -r
     diffstat = diff --stat -r
-    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short
+    rm = rm --cached
+    tracked = ls-files
+    unstage = reset HEAD
 [color]
     diff = auto
     status = auto

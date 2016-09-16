@@ -40,7 +40,6 @@ alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gd="git diff"
 alias gg="git grep"
-alias gl="git log --graph --all --full-history --color --format=oneline --branches --abbrev-commit"
 alias gpo="git push origin"
 alias gs="git status"
 
