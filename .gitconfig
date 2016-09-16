@@ -3,8 +3,6 @@
     email = pearlzli16@gmail.com
 [github]
     user = pearlzli
-[core]
-    editor = emacs -nw
 [alias]
     changes = diff --name-status -r
     diffstat = diff --stat -r
@@ -12,6 +10,8 @@
     rm = rm --cached
     tracked = ls-files
     unstage = reset HEAD
+[branch]
+    autosetuprebase = always
 [color]
     diff = auto
     status = auto
@@ -19,7 +19,15 @@
     interactive = auto
     ui = true
     pager = true
+[core]
+    editor = emacs -nw
+[diff]
+    tool = ediff
+    guitool = meld
+[merge]
+    tool = meld
 [url "https://"]
     insteadof = git://
-[branch]
-    autosetuprebase = always
+    pushInsteadOf = git://
+[include]
+    path = ~/.gitconfig-local
