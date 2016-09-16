@@ -43,6 +43,7 @@
       `((".*" . , "~/.emacs.d/backup/")))
 (setq auto-save-file-name-transforms
       `((".*" , "~/.emacs.d/backup/" t)))
+(setq auto-save-list-file-prefix nil)
 
 ;; row and column numbers
 (setq column-number-mode t)
