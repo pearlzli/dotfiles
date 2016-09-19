@@ -44,9 +44,10 @@ alias gpo="git push origin"
 alias gs="git status"
 
 # cache DISPLAY environment variable from outside tmux
-if { [[ -z "$TMUX" ]] && [[ "$DISPLAY" != "localhost"* ]]; } then
+cache_display() {
   echo "$DISPLAY" > ~/.DISPLAY
-fi
+    echo "DISPLAY cached as $DISPLAY"
+}
 
 parse_display() {
   DISPLAY_OLD="$DISPLAY"
