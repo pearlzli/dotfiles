@@ -18,16 +18,24 @@ bind '"\e[B": history-search-forward'  2>/dev/null
 bind '"\C-p": history-search-backward' 2>/dev/null
 bind '"\C-n": history-search-forward'  2>/dev/null
 
-# hide extra files from Latex, emacs temp files
-hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*.vo' --hide='*~'"
-
 # command aliases
 alias cp="cp -i"
-alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
 alias la="ls -a"
 alias ld="ls -d */"
 alias ll="ls -l -h"
 alias mv="mv -i"
+
+# OS-specific command aliases
+case $OSTYPE in
+  darwin*) # OS X
+    alias ls="ls -G"
+    ;;
+  linux*)
+    hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
+    alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+    ;;
+  *) ;;
+esac
 
 # program aliases
 alias e="emacs -nw"
