@@ -25,13 +25,18 @@ alias ld="ls -d */"
 alias ll="ls -l -h"
 alias mv="mv -i"
 
+# hide files from ls
+hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
+
 # OS-specific command aliases
 case $OSTYPE in
+  cygwin*)
+    alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+    ;;
   darwin*) # OS X
     alias ls="ls -G"
     ;;
   linux*)
-    hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
     alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
     ;;
   *) ;;
@@ -40,8 +45,7 @@ esac
 # program aliases
 alias e="emacs -nw"
 
-# git-specific
-# better log viewing (gl): Micah and Henry
+# git-specific aliases
 alias ga="git add"
 alias gb="git branch"
 alias gca="git commit --amend"
