@@ -77,9 +77,10 @@
 ;; unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
-;; show trailing whitespace
+;; trailing whitespace
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; highlight matching parentheses
 (show-paren-mode t)
