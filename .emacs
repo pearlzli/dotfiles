@@ -1,9 +1,9 @@
 ;; user details
-(setq user-full-name "Pearl Li") 
+(setq user-full-name "Pearl Li")
 (setq user-mail-address "pearlzli16@gmail.com")
 
-;; enable visual feedback on selections 
-(setq transient-mark-mode t) 
+;; enable visual feedback on selections
+(setq transient-mark-mode t)
 
 ;; tabs
 (setq-default tab-width 4)
@@ -81,6 +81,7 @@
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
 
 ;; highlight matching parentheses
 (show-paren-mode t)
