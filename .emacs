@@ -87,6 +87,7 @@
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (set-face-background 'show-paren-match "brightblack")
+(set-face-background 'show-paren-mismatch "color-167") ; red
 
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
