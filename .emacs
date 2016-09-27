@@ -13,6 +13,7 @@
 ;; line numbers
 (global-linum-mode t)
 (setq linum-format "%4d ")
+(global-set-key (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
 
 ;; symlinks
 (setq vc-follow-symlinks nil)
