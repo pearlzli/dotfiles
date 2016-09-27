@@ -81,6 +81,11 @@
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
 
+;; highlight matching parentheses
+(show-paren-mode t)
+(setq show-paren-delay 0)
+(set-face-background 'show-paren-match "brightblack")
+
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 (autoload 'gitconfig-mode "gitconfig-mode"
