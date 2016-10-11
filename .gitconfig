@@ -24,8 +24,12 @@
 [diff]
     tool = ediff
     guitool = meld
+[difftool]
+    prompt = false
 [merge]
     tool = meld
+[mergetool]
+    prompt = false
 [url "https://"]
     insteadof = git://
     pushInsteadOf = git://
