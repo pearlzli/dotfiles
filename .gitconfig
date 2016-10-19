@@ -22,8 +22,7 @@
 [core]
     editor = emacs -nw
 [diff]
-    tool = ediff
-    guitool = meld
+    tool = meld
 [difftool]
     prompt = false
 [merge]
