@@ -74,5 +74,12 @@ parse_display() {
   echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
 }
 
+# Set default grep options:
+# -i: ignore case
+# -n: show line number
+# -r: search recursively
+# --color=auto
+export GREP_OPTIONS='-inr --color=auto'
+
 # Source system-specific aliases
 source ~/.bashrc-local
