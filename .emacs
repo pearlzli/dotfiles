@@ -81,7 +81,6 @@
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
-(global-set-key (kbd "C-x w") 'delete-trailing-whitespace)
 
 ;; highlight matching parentheses
 (show-paren-mode t)
