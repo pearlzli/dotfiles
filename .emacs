@@ -101,13 +101,10 @@
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (load "~/.emacs.d/cl-lib-0.5.el")
 (load "markdown-mode.el")
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 (autoload 'gfm-mode "gfm-mode"
    "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
 ;; Julia
 (add-to-list 'load-path "~/.emacs.d/julia-emacs")
