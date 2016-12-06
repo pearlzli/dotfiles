@@ -99,7 +99,7 @@
 
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(load "~/.emacs.d/cl-lib-0.4.el")
+(load "~/.emacs.d/cl-lib-0.5.el")
 (load "markdown-mode.el")
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
