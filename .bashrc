@@ -48,10 +48,12 @@ esac
 
 # Git-specific aliases
 alias ga="git add"
+alias gap="git add --patch"
 alias gb="git branch"
 alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gd="git diff"
+alias gdt="git difftool"
 alias gg="git grep"
 alias gpo="git push origin"
 alias gs="git status"
