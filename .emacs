@@ -97,10 +97,13 @@
     (when filename
       (if (vc-backend filename)
           (vc-delete-file filename)
-        (progn
-          (delete-file filename)
-          (message "Deleted file %s" filename)
-          (kill-buffer))))))
+        (if (yes-or-no-p "Really delete file and kill buffer? ")
+            (progn
+              (delete-file filename)
+              (message "Deleted file %s" filename)
+              (kill-buffer))
+          (progn
+            message "Did not delete file %s" filename))))))
 (global-set-key (kbd "C-c D")  'delete-file-and-buffer)
 
 ;; Git
