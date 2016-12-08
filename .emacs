@@ -88,6 +88,21 @@
 (set-face-background 'show-paren-match "brightblack")
 (set-face-background 'show-paren-mismatch "color-167") ; red
 
+;; delete file and buffer
+;; http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/
+(defun delete-file-and-buffer ()
+  "Kill the current buffer and deletes the file it is visiting."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (when filename
+      (if (vc-backend filename)
+          (vc-delete-file filename)
+        (progn
+          (delete-file filename)
+          (message "Deleted file %s" filename)
+          (kill-buffer))))))
+(global-set-key (kbd "C-c D")  'delete-file-and-buffer)
+
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 (autoload 'gitconfig-mode "gitconfig-mode"
