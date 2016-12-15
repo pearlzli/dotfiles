@@ -11,6 +11,7 @@
 \usepackage{amssymb}
 \usepackage{bm}                             % Bold math
 \usepackage[bottom]{footmisc}               % Footnote at page bottom
+\usepackage{color}
 \usepackage{graphicx}                       % Graphics support
 \usepackage{hyperref}                       % URL support
 \usepackage{mathrsfs}                       % Script math
@@ -57,3 +58,14 @@
 \def\Cov{\mathrm{Cov}}                      % Covariance
 \def\eqd{\,{\buildrel \mathcal{D} \over =}\,}         % Equal in distribution
 \def\io{\ \mathrm{i.o.}}                    % Infinitely often
+
+% Code with syntax highlighting
+\usepackage{listings}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\newcommand{\mylstset}[1]{\lstset{language=#1,%
+  numberstyle=\\tiny\\color\{gray\},%
+  keywordstyle=\color{blue},%
+  commentstyle=\color{dkgreen},%
+  stringstyle=\color{mauve}}}
