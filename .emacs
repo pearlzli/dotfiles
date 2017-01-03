@@ -82,6 +82,18 @@
 (set-face-background 'trailing-whitespace "color-167") ; red
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; just one space
+(defun just-one-space-in-region (beg end)
+  "replace all whitespace in the region with single spaces"
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
+(global-set-key (kbd "C-x SPC") 'just-one-space-in-region)
+
 ;; highlight matching parentheses
 (show-paren-mode t)
 (setq show-paren-delay 0)
