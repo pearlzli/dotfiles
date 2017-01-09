@@ -80,7 +80,15 @@
 ;; trailing whitespace
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(defvar my-inhibit-dtw nil)
+(defun my-delete-trailing-whitespace ()
+  (unless my-inhibit-dtw (delete-trailing-whitespace)))
+(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
+(defun my-inhibit-dtw ()
+  (interactive)
+  (set (make-local-variable 'my-inhibit-dtw) (not my-inhibit-dtw))
+  (message "Toggled deleting trailing whitespace in this buffer"))
+(global-set-key (kbd "C-c w") 'my-inhibit-dtw)
 
 ;; just one space
 (defun just-one-space-in-region (beg end)
