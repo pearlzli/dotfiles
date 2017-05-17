@@ -59,6 +59,7 @@
 \def\ind{\bm{1}}                                      % Indicator function
 \def\m{\mathbf{m}}                                    % Lebesgue measure
 \def\P{\mathbb{P}}                                    % Probability measure
+\def\F{\mathcal{F}}                                   % Filtration
 \def\E{\mathbb{E}}                                    % Expectation
 \def\Var{\mathrm{Var}}                                % Variance
 \def\Cov{\mathrm{Cov}}                                % Covariance
