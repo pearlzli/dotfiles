@@ -32,6 +32,9 @@ alias mytop="top -u $USER"
 # Hide files from ls
 hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
 
+# Show directory names in light blue
+export LS_COLORS=$LS_COLORS'di=1;34:'
+
 # OS-specific command aliases
 case $OSTYPE in
   cygwin*)
