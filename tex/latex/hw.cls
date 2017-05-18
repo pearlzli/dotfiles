@@ -45,20 +45,22 @@
 \newcommand{\norm}[1]{\lVert #1 \rVert}               % Norm
 \newcommand{\eval}[1]{\left. #1 \right|}              % Evaluated at
 
-% General math commands
+% General math
 \newcommand{\comp}[1]{#1^{\mathsf{c}}}                % Complement
 \newcommand{\inv}[1]{#1^{-1}}                         % Inverse
+\def\d{\ \mathrm{d}}                                  % Differential
 \def\N{\mathbb{N}}                                    % Natural numbers
 \def\Z{\mathbb{Z}}                                    % Integers
 \def\Q{\mathbb{Q}}                                    % Rational numbers
 \def\R{\mathbb{R}}                                    % Real numbers
 \def\C{\mathbb{C}}                                    % Complex numbers
 
-% Probability commands
+% Probability
 \newcommand\given{\ \vert\ }                          % Conditional expectation
 \def\ind{\bm{1}}                                      % Indicator function
 \def\m{\mathbf{m}}                                    % Lebesgue measure
 \def\P{\mathbb{P}}                                    % Probability measure
+\def\F{\mathcal{F}}                                   % Filtration
 \def\E{\mathbb{E}}                                    % Expectation
 \def\Var{\mathrm{Var}}                                % Variance
 \def\Cov{\mathrm{Cov}}                                % Covariance
