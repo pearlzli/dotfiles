@@ -39,7 +39,7 @@
   (setq mouse-sel-mode t)
 )
 
-;; backup files
+;; move backup files to central location
 (setq backup-directory-alist
       `((".*" . , "~/.emacs.d/backup/")))
 (setq auto-save-file-name-transforms
@@ -49,7 +49,7 @@
 ;; row and column numbers
 (setq column-number-mode t)
 
-;; set default max line width
+;; set default max line width to 80 characters
 (setq-default fill-column 80)
 
 ;; increment and decrement numbers
@@ -77,9 +77,12 @@
 ;; unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
-;; trailing whitespace
+;; highlight trailing whitespace in red, delete on save
 (setq-default show-trailing-whitespace t)
 (set-face-background 'trailing-whitespace "color-167") ; red
+
+;; toggle deleting trailing whitespace with C-c w
+;; useful for editing hunks in git add --patch
 (defvar my-inhibit-dtw nil)
 (defun my-delete-trailing-whitespace ()
   (unless my-inhibit-dtw (delete-trailing-whitespace)))
@@ -102,7 +105,7 @@
         (replace-match " ")))))
 (global-set-key (kbd "C-x SPC") 'just-one-space-in-region)
 
-;; highlight matching parentheses
+;; highlight matching and mismatched parentheses
 (show-paren-mode t)
 (setq show-paren-delay 0)
 (set-face-background 'show-paren-match "brightblack")
