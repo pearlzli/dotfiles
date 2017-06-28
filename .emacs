@@ -129,28 +129,6 @@
             message "Did not delete file %s" filename))))))
 (global-set-key (kbd "C-c D")  'delete-file-and-buffer)
 
-;; Git
-(add-to-list 'load-path "~/.emacs.d/git-modes")
-(autoload 'gitconfig-mode "gitconfig-mode"
-  "Major mode for editing .gitconfig files" t)
-(add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . gitconfig-mode))
-(autoload 'gitignore-mode "gitignore-mode"
-  "Major mode for editing .gitignore files" t)
-(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
-
-;; Markdown
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(load "~/.emacs.d/cl-lib-0.5.el")
-(load "markdown-mode.el")
-(autoload 'gfm-mode "gfm-mode"
-   "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
-
-;; Julia
-(add-to-list 'load-path "~/.emacs.d/julia-emacs")
-(require 'julia-mode)
-
 ;; colors
 (set-face-attribute 'region nil :inverse-video t)
 (set-face-foreground font-lock-builtin-face "brightmagenta")
@@ -163,6 +141,23 @@
 (set-face-foreground 'linum "brightblack")
 (set-face-foreground 'minibuffer-prompt "brightblue")
 
-;; load system-specific settings
-(setq custom-file "~/.emacs-local.el")
-(load custom-file)
+;; Custom variables
+(custom-set-variables
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(markdown-asymmetric-header t)
+ '(markdown-enable-math t))
+(custom-set-faces
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
+ '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
+ '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
+ '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
+
+;; load custom modes
+(load "~/.emacs-modes.el")
