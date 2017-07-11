@@ -61,6 +61,13 @@ alias gg="git grep"
 alias gpo="git push origin"
 alias gs="git status"
 
+# Stop graphical display popup for password when git pushing
+unset SSH_ASKPASS
+
+# Set default file-creation mode to u=rwx, g=rwx, o=rx
+# Check your (human-readable) permissions using "umask -S"
+umask 0002
+
 # When evince and other graphical displays don't work, it's often because the
 # DISPLAY environment variable inside tmux isn't the same as the one outside
 # tmux.
