@@ -3,8 +3,10 @@
 ### 1. Link dotfiles
 
 cd ~
+
+# Create symlinks
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
-    ln -s "dotfiles/$file" "$file"
+    ln -s "dotfiles/$file" $file
     echo "Linked $file"
 done
 
@@ -19,6 +21,7 @@ done
 
 ### 2. Clone necessary packages into .emacs.d
 
+# Create .emacs.d if it doesn't already exist
 if [ ! -d "~/.emacs.d" ]; then
     mkdir "~/.emacs.d"
     echo "Created .emacs.d"
