@@ -8,6 +8,14 @@ for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
     echo "Linked $file"
 done
 
+# Create local dotfiles if they don't already exist
+for file in ".bashrc-local" ".gitconfig-local"; do
+    if [ ! -f $file ]; then
+        touch $file
+        echo "Created $file"
+    fi
+done
+
 
 ### 2. Clone necessary packages into .emacs.d
 
