@@ -5,8 +5,9 @@
 cd ~
 
 # Create symlinks
+thisdir=$(dirname $0)
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
-    ln -s "dotfiles/$file" $file
+    ln -s "$thisdir/$file" $file
     echo "Linked $file"
 done
 
