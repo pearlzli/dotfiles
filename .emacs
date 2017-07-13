@@ -77,12 +77,11 @@
 ;; unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
-;; highlight trailing whitespace in red, delete on save
+;; highlight trailing whitespace
 (setq-default show-trailing-whitespace t)
-(set-face-background 'trailing-whitespace "color-167") ; red
 
-;; toggle deleting trailing whitespace with C-c w
-;; useful for editing hunks in git add --patch
+;; delete trailing whitespace
+;; toggle auto-deleting with C-c w (useful for editing hunks in git add --patch)
 (defvar my-inhibit-dtw nil)
 (defun my-delete-trailing-whitespace ()
   (unless my-inhibit-dtw (delete-trailing-whitespace)))
@@ -108,8 +107,6 @@
 ;; highlight matching and mismatched parentheses
 (show-paren-mode t)
 (setq show-paren-delay 0)
-(set-face-background 'show-paren-match "brightblack")
-(set-face-background 'show-paren-mismatch "color-167") ; red
 
 ;; delete file and buffer
 ;; http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/
@@ -131,15 +128,19 @@
 
 ;; colors
 (set-face-attribute 'region nil :inverse-video t)
+(set-face-foreground 'linum "brightblack")
+(set-face-foreground 'minibuffer-prompt "brightblue")
 (set-face-foreground font-lock-builtin-face "brightmagenta")
-(set-face-foreground font-lock-comment-face "color-35") ; forest green
+(set-face-foreground font-lock-comment-face "green")
 (set-face-foreground font-lock-constant-face "brightcyan")
 (set-face-foreground font-lock-function-name-face "blue")
 (set-face-foreground font-lock-keyword-face "brightblue")
-(set-face-foreground font-lock-string-face "color-167") ; red
+(set-face-foreground font-lock-string-face "brightred")
 (set-face-foreground font-lock-type-face "brightcyan")
-(set-face-foreground 'linum "brightblack")
-(set-face-foreground 'minibuffer-prompt "brightblue")
+(set-face-foreground font-lock-variable-name-face "yellow")
+(set-face-background 'trailing-whitespace "brightred")
+(set-face-background 'show-paren-match "brightblack")
+(set-face-background 'show-paren-mismatch "red")
 
 ;; Custom variables
 (custom-set-variables
