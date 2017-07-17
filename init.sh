@@ -16,8 +16,14 @@ cd $HOME
 # Create symlinks
 thisdir=$(dirname $0)
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
-    ln -s "$thisdir/$file" $file
-    echo "Linked $file"
+    if [ -L $file ]; then
+        echo "${red}Did not link $file: symlink already exists${normal}"
+    elif [ ! -f $file ]; then
+        ln -s "$thisdir/$file" $file
+        echo "${green}Linked $file${normal}"
+    else
+        echo "${red}Did not link $file: non-symlink file already exists. Merge $file into $thisdir/$file first and then delete $file before retrying${normal}"
+    fi
 done
 
 # Create local dotfiles if they don't already exist
