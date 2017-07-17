@@ -1,5 +1,14 @@
 #!/bin/bash
 
+
+### 0. init.sh Setup
+
+# Colors: see https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
+normal=$(tput sgr0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+
+
 ### 1. Link dotfiles
 
 cd $HOME
@@ -15,7 +24,7 @@ done
 for file in ".bashrc-local" ".gitconfig-local"; do
     if [ ! -f $file ]; then
         touch $file
-        echo "Created $file"
+        echo "${green}Created $file${normal}"
     fi
 done
 
@@ -25,7 +34,7 @@ done
 # Create .emacs.d if it doesn't already exist
 if [ ! -d "$HOME/.emacs.d" ]; then
     mkdir "$HOME/.emacs.d"
-    echo "Created .emacs.d"
+    echo "${green}Created .emacs.d${normal}"
 fi
 
 cd "$HOME/.emacs.d"
