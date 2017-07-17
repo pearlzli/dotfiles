@@ -2,7 +2,7 @@
 
 ### 1. Link dotfiles
 
-cd ~
+cd $HOME
 
 # Create symlinks
 thisdir=$(dirname $0)
@@ -23,12 +23,12 @@ done
 ### 2. Clone necessary packages into .emacs.d
 
 # Create .emacs.d if it doesn't already exist
-if [ ! -d "~/.emacs.d" ]; then
-    mkdir "~/.emacs.d"
+if [ ! -d "$HOME/.emacs.d" ]; then
+    mkdir "$HOME/.emacs.d"
     echo "Created .emacs.d"
 fi
 
-cd "~/.emacs.d"
+cd "$HOME/.emacs.d"
 
 # cl-lib
 wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
