@@ -8,6 +8,19 @@ normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 
+# Length of time before timing out
+timeout_length="2s"
+
+# Function that prints the result of timeout downloading
+# Usage: timeout_result <retcode> <filename>
+function timeout_result {
+    if [ $1 -eq 124 ]; then
+        echo "${red}Killed downloading $2: timed out${normal}"
+    else
+        echo "${green}Successfully downloaded $2${normal}"
+    fi
+}
+
 
 ### 1. Link dotfiles
 
@@ -35,7 +48,7 @@ for file in ".bashrc-local" ".gitconfig-local"; do
 done
 
 
-### 2. Clone necessary packages into .emacs.d
+### 2. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
 
 # Create .emacs.d if it doesn't already exist
 if [ ! -d "$HOME/.emacs.d" ]; then
@@ -46,18 +59,25 @@ fi
 cd "$HOME/.emacs.d"
 
 # cl-lib
-wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
+timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
+timeout_result $? "cl-lib"
 
 # Git
-git clone "https://github.com/magit/git-modes.git"
+timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
+timeout_result $? "git-modes"
 
 # Julia
-git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
+timeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
+timeout_result $? "julia-emacs"
 
 # Markdown
-git clone "https://github.com/defunkt/markdown-mode.git"
+timeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
+timeout_result $? "markdown-mode"
 
 # MATLAB
-wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
-tar -zxvf "matlab-emacs?view\=tar"
-rm "matlab-emacs?view=tar"
+timeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
+timeout_result $? "matlab-emacs"
+if [ -f $file ]; then
+    tar -zxvf "index.html?view=tar"
+    rm "index.html?view=tar"
+fi
