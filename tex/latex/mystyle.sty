@@ -1,0 +1,150 @@
+%%% 1. Packages
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}                                       % Bold math
+\usepackage{cancel}                                   % Cancel out math terms
+\usepackage{color}                                    % Color
+\usepackage{courier}                                  % Courier font
+\usepackage[bottom]{footmisc}                         % Footnote at page bottom
+\usepackage{graphicx}                                 % Graphics support
+\usepackage{hyperref}                                 % URL support
+\usepackage{listings}                                 % Syntax-highlighted code
+\usepackage{mathrsfs}                                 % Script math
+
+
+%%% 2. Math Typesetting
+
+% Label individual equations in align*
+\newcommand*\tageq{\refstepcounter{equation}\tag{\theequation}}
+
+% Switch \epsilon and \varepsilon
+\let\oldepsilon\epsilon
+\let\oldvarepsilon\varepsilon
+\renewcommand{\epsilon}{\oldvarepsilon}
+\renewcommand{\varepsilon}{\oldepsilon}
+
+% Left and right brackets
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
+\newcommand{\curly}[1]{\left\{ #1 \right\}}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle} % Inner product
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} % Floor
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}    % Ceiling
+\newcommand{\abs}[1]{\left| #1 \right|}               % Absolute value
+\newcommand{\norm}[1]{\lVert #1 \rVert}               % Norm
+\newcommand{\eval}[1]{\left. #1 \right|}              % Evaluated at
+
+% General math
+\newcommand{\comp}[1]{#1^{\mathsf{c}}}                % Complement
+\newcommand{\inv}[1]{#1^{-1}}                         % Inverse
+\def\d{\ \mathrm{d}}                                  % Differential
+\def\N{\mathbb{N}}                                    % Natural numbers
+\def\Z{\mathbb{Z}}                                    % Integers
+\def\Q{\mathbb{Q}}                                    % Rational numbers
+\def\R{\mathbb{R}}                                    % Real numbers
+\def\C{\mathbb{C}}                                    % Complex numbers
+
+% Probability
+\newcommand\given{\ \vert\ }                          % Conditional expectation
+\def\ind{\bm{1}}                                      % Indicator function
+\def\m{\mathbf{m}}                                    % Lebesgue measure
+\def\P{\mathbb{P}}                                    % Probability measure
+\def\F{\mathcal{F}}                                   % Filtration
+\def\E{\mathbb{E}}                                    % Expectation
+\def\Var{\mathrm{Var}}                                % Variance
+\def\Cov{\mathrm{Cov}}                                % Covariance
+\def\eqd{\,{\buildrel \mathcal{D} \over =}\,}         % Equal in distribution
+\def\io{\ \mathrm{i.o.}}                              % Infinitely often
+
+
+%%% 3. Syntax Highlighting
+
+% Colors
+\hypersetup{colorlinks=true,
+  linkcolor=blue,
+  urlcolor=blue,
+  anchorcolor=blue,
+}
+\definecolor{codegreen}{RGB}{28,172,0}
+\definecolor{codepurple}{RGB}{170,55,241}
+\definecolor{lightgray}{gray}{.95}
+
+% Bash syntax highlighting
+\lstdefinestyle{bash}{%
+  language=bash,%
+  basicstyle=\footnotesize\ttfamily,%
+  showstringspaces=false,%
+  commentstyle=\color{gray},%
+  keywordstyle=\color{blue},%
+  xleftmargin=0.0in,%
+  xrightmargin=0.0in,%
+  backgroundcolor=\color{lightgray},
+  escapeinside={\%*}{*)}% if you want to add LaTeX within your code
+}
+
+% MATLAB syntax highlighting
+\lstdefinestyle{matlab}{%
+  language=Matlab,%
+  basicstyle=\footnotesize\ttfamily,%
+  breaklines=true,%
+  morekeywords={matlab2tikz},%
+  keywordstyle=\color{blue},%
+  morekeywords=[2]{1},%
+  keywordstyle=[2]{\color{black}},%
+  identifierstyle=\color{black},%
+  stringstyle=\color{codepurple},%
+  commentstyle=\color{codegreen},%
+  showstringspaces=false,%
+  emph=[1]{for,end,break,switch,case},%
+  emphstyle=[1]\color{blue},%
+  upquote=true,%
+  backgroundcolor=\color{lightgray}
+}
+
+% Highlight the 'julia>' prompt.
+% See http://tex.stackexchange.com/a/172076/50294 for the additional highlighting
+% See http://tex.stackexchange.com/a/180619/50294 for the '>' issue
+\makeatletter
+\lst@InstallKeywords k{attributes}{attributestyle}\slshape{attributestyle}{}ld
+\makeatother
+
+% Julia definition (c) 2014 Jubobs
+\lstdefinelanguage{Julia}%
+  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
+      end,export,false,for,function,immutable,import,importall,if,in,%
+      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
+      using,while},%
+   sensitive=true,%
+   alsoother={\$},%
+   morecomment=[l]\#,%
+   morecomment=[n]{\#=}{=\#},%
+   morestring=[s]{"}{"},%
+   morestring=[m]{'}{'},%
+}[keywords,comments,strings]%
+
+% Julia syntax highlighting
+\lstdefinestyle{julia}{%
+  language=Julia,%
+  basicstyle=\footnotesize\ttfamily,%
+  breaklines=true,%
+  keywordstyle=\bfseries\color{blue},%
+  identifierstyle=\color{black},%
+  stringstyle=\color{codegreen},%
+  commentstyle=\color{codepurple},%
+  showstringspaces=false,%
+  upquote=true,%
+  backgroundcolor=\color{lightgray},%
+  alsoletter={>},%
+  moreattributes={julia>},%
+  attributestyle = \bfseries\color{green},%
+  escapeinside={\%*}{*)},% if you want to add LaTeX within your code
+}
+
+% Inline code snippets
+% http://tex.stackexchange.com/a/42964
+% http://tex.stackexchange.com/a/83883/50294
+\newcommand\hltext[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
+\newcommand\bashinline[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
+\newcommand\matlabinline[1]{\colorbox{lightgray}{{\lstset{style=matlab}\lstinline!#1!}}}
+\newcommand\juliainline[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
