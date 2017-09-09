@@ -33,6 +33,29 @@ normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
 
+# Make directory if it doesn't already exist
+# Usage: maybe_mkdir <path>
+maybe_mkdir() {
+    if [ ! -d "$1" ]; then
+        mkdir -p $texdir
+        echo "${green}Created $1${normal}"
+    fi
+}
+
+# Create symlinks verbosely
+# Usage: try_symlink <file>
+try_symlink() {
+    if [ -L $1 ]; then
+        echo "${red}Did not link $1: symlink already exists${normal}"
+    elif [ ! -f $1 ]; then
+        ln -s "$dotfile_dir/$1" $1
+        echo "${green}Linked $1${normal}"
+    else
+        echo "${red}Did not link $1: non-symlink file already exists. Merge $1 into $dotfile_dir/$1 first and then delete $1 before retrying${normal}"
+    fi
+
+}
+
 # Length of time before timing out
 timeout_length="2s"
 
@@ -71,19 +94,11 @@ esac
 
 ### 2. Link dotfiles
 
-thisdir=$(dirname $0)
 cd $HOME
 
 # Create symlinks
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
-    if [ -L $file ]; then
-        echo "${red}Did not link $file: symlink already exists${normal}"
-    elif [ ! -f $file ]; then
-        ln -s "$thisdir/$file" $file
-        echo "${green}Linked $file${normal}"
-    else
-        echo "${red}Did not link $file: non-symlink file already exists. Merge $file into $thisdir/$file first and then delete $file before retrying${normal}"
-    fi
+    try_symlink $file
 done
 
 # Create local dotfiles if they don't already exist
@@ -97,17 +112,11 @@ done
 
 ### 3. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
 
-# Create .emacs.d if it doesn't already exist
-if [ ! -d "$HOME/.emacs.d" ]; then
-    mkdir "$HOME/.emacs.d"
-    echo "${green}Created .emacs.d${normal}"
-fi
+cd $HOME
 
-# Create .emacs.d/backup if it doesn't already exist
-if [ ! -d "$HOME/.emacs.d/backup" ]; then
-    mkdir "$HOME/.emacs.d/backup"
-    echo "${green}Created .emacs.d/backup${normal}"
-fi
+# Create .emacs.d if it doesn't already exist
+maybe_mkdir "$HOME/.emacs.d"
+maybe_mkdir "$HOME/.emacs.d/backup"
 
 cd "$HOME/.emacs.d"
 
