@@ -17,9 +17,9 @@
 
 ### 0. init.sh Setup
 
-# Function that checks if something is installed
-# Usage: notinstalled <program>
-notinstalled() {
+# Check if something is installed
+# Usage: not_installed <program>
+not_installed() {
   if [[ -n "$(which $1)" ]]; then
     return 1
   else
@@ -50,7 +50,7 @@ function timeout_result {
 
 case $OSTYPE in
     darwin*) # OS X
-        if notinstalled brew; then
+        if not_installed brew; then
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         fi
 
@@ -59,11 +59,11 @@ case $OSTYPE in
         brew install tmux
         brew install wget
 
-        mytimeout=gtimeout
+        my_timeout=gtimeout
         ;;
 
     *)
-        mytimeout=timeout
+        my_timeout=timeout
         ;;
 esac
 
@@ -111,23 +111,23 @@ fi
 cd "$HOME/.emacs.d"
 
 # cl-lib
-$mytimeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
+$my_timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
 timeout_result $? "cl-lib"
 
 # Git
-$mytimeout $timeout_length git clone "https://github.com/magit/git-modes.git"
+$my_timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
 timeout_result $? "git-modes"
 
 # Julia
-$mytimeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
+$my_timeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
 timeout_result $? "julia-emacs"
 
 # Markdown
-$mytimeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
+$my_timeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
 timeout_result $? "markdown-mode"
 
 # MATLAB
-$mytimeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
+$my_timeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
 timeout_result $? "matlab-emacs"
 if [ -f $file ]; then
     tar -zxvf "index.html?view=tar"
