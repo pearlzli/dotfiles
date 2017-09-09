@@ -1,5 +1,20 @@
 #!/bin/bash
 
+# init.sh
+#   Initialize (nearly) everything for a new machine. Install Homebrew (and
+#   use it to install other things) if on OS X, link dotfiles, and install
+#   Emacs packages.
+#
+#   Usage:
+#     ./init.sh
+#
+#   Other manual setup:
+#   1. Add SSH key to Github account
+#   2. Clone dotfiles repo to ~/dotfiles
+#   3. After running init.sh, add new Emacs version to PATH if necessary (in
+#      .bashrc-local)
+
+
 ### 0. init.sh Setup
 
 # Function that checks if something is installed
