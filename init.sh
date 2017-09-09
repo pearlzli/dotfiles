@@ -6,7 +6,7 @@
 #   Emacs packages.
 #
 #   Usage:
-#     ./init.sh
+#     ./init.sh path/to/dotfile/repo
 #
 #   Other manual setup:
 #   1. Add SSH key to Github account
@@ -16,6 +16,9 @@
 
 
 ### 0. init.sh Setup
+
+# Location of dotfiles repo
+dotfile_dir=$1
 
 # Check if something is installed
 # Usage: not_installed <program>
@@ -107,6 +110,19 @@ for file in ".bashrc-local" ".gitconfig-local"; do
         touch $file
         echo "${green}Created $file${normal}"
     fi
+done
+
+# Create symlinks for TeX files
+cd $dotfile_dir
+texfiles=$(find tex/latex -mindepth 1)
+
+texdir=$(kpsewhich -var-value=TEXMFHOME)
+maybe_mkdir "$texdir"
+maybe_mkdir "$texdir/tex/latex"
+
+cd $texdir
+for file in $texfiles; do
+    try_symlink $file
 done
 
 
