@@ -1,7 +1,16 @@
 #!/bin/bash
 
-
 ### 0. init.sh Setup
+
+# Function that checks if something is installed
+# Usage: notinstalled <program>
+notinstalled() {
+  if [[ -n "$(which $1)" ]]; then
+    return 1
+  else
+    return 0
+  fi
+}
 
 # Colors: see https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
 normal=$(tput sgr0)
@@ -22,12 +31,34 @@ function timeout_result {
 }
 
 
-### 1. Link dotfiles
+### 1. Install Mac-specific things
 
+case $OSTYPE in
+    darwin*) # OS X
+        if notinstalled brew; then
+            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+        fi
+
+        brew install coreutils
+        brew install emacs
+        brew install tmux
+        brew install wget
+
+        mytimeout=gtimeout
+        ;;
+
+    *)
+        mytimeout=timeout
+        ;;
+esac
+
+
+### 2. Link dotfiles
+
+thisdir=$(dirname $0)
 cd $HOME
 
 # Create symlinks
-thisdir=$(dirname $0)
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
     if [ -L $file ]; then
         echo "${red}Did not link $file: symlink already exists${normal}"
@@ -48,7 +79,7 @@ for file in ".bashrc-local" ".gitconfig-local"; do
 done
 
 
-### 2. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
+### 3. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
 
 # Create .emacs.d if it doesn't already exist
 if [ ! -d "$HOME/.emacs.d" ]; then
@@ -56,26 +87,32 @@ if [ ! -d "$HOME/.emacs.d" ]; then
     echo "${green}Created .emacs.d${normal}"
 fi
 
+# Create .emacs.d/backup if it doesn't already exist
+if [ ! -d "$HOME/.emacs.d/backup" ]; then
+    mkdir "$HOME/.emacs.d/backup"
+    echo "${green}Created .emacs.d/backup${normal}"
+fi
+
 cd "$HOME/.emacs.d"
 
 # cl-lib
-timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
+$mytimeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
 timeout_result $? "cl-lib"
 
 # Git
-timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
+$mytimeout $timeout_length git clone "https://github.com/magit/git-modes.git"
 timeout_result $? "git-modes"
 
 # Julia
-timeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
+$mytimeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
 timeout_result $? "julia-emacs"
 
 # Markdown
-timeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
+$mytimeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
 timeout_result $? "markdown-mode"
 
 # MATLAB
-timeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
+$mytimeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
 timeout_result $? "matlab-emacs"
 if [ -f $file ]; then
     tar -zxvf "index.html?view=tar"
