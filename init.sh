@@ -27,7 +27,8 @@ not_installed() {
   fi
 }
 
-# Colors: see https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
+# Colors
+# https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
 normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
@@ -35,7 +36,7 @@ green=$(tput setaf 2)
 # Length of time before timing out
 timeout_length="2s"
 
-# Function that prints the result of timeout downloading
+# Print result of timeout downloading
 # Usage: timeout_result <retcode> <filename>
 function timeout_result {
     if [ $1 -eq 124 ]; then
