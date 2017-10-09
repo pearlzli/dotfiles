@@ -37,16 +37,16 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 
 # OS-specific command aliases
 case $OSTYPE in
-  cygwin*)
-    alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
-    ;;
-  darwin*) # OS X
-    alias ls="ls -G"
-    ;;
-  linux*)
-    alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
-    ;;
-  *) ;;
+    cygwin*)
+        alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+        ;;
+    darwin*) # OS X
+        alias ls="ls -G"
+        ;;
+    linux*)
+        alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+        ;;
+    *) ;;
 esac
 
 # Git-specific aliases
@@ -76,14 +76,14 @@ umask 0002
 # 2. Reattach to tmux session and use parse_display. (You'll have to do this in
 #    each pane in which you want to open a graphical display.)
 cache_display() {
-  echo "$DISPLAY" > ~/.DISPLAY
-  echo "DISPLAY cached as $DISPLAY"
+    echo "$DISPLAY" > ~/.DISPLAY
+    echo "DISPLAY cached as $DISPLAY"
 }
 
 parse_display() {
-  DISPLAY_OLD="$DISPLAY"
-  export DISPLAY="$(cat ~/.DISPLAY)"
-  echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
+    DISPLAY_OLD="$DISPLAY"
+    export DISPLAY="$(cat ~/.DISPLAY)"
+    echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
 }
 
 # Set default grep options:
