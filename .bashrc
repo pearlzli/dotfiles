@@ -38,12 +38,15 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 # OS-specific command aliases
 case $OSTYPE in
     cygwin*)
+        alias browser="chrome"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     darwin*) # OS X
+        alias browser="open -a \"Google Chrome\""
         alias ls="ls -G"
         ;;
     linux*)
+        alias browser="firefox"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     *) ;;
@@ -84,6 +87,24 @@ parse_display() {
     DISPLAY_OLD="$DISPLAY"
     export DISPLAY="$(cat ~/.DISPLAY)"
     echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
+}
+
+# Open using extension-specific application
+ev() {
+    filename=$(basename $1)
+    extension="${filename##*.}"
+
+    case $extension in
+        gdoc|gsheet) browser $(cat $1 | cut -f4 -d "\"") ;;
+        html) browser $1 ;;
+        pdf)
+            case $OSTYPE in
+                linux*) evince $1 ;;
+                *) browser $1 ;;
+            esac
+            ;;
+        *) echo "No ev behavior for file extension .$extension defined" ;;
+    esac
 }
 
 # Set default grep options:
