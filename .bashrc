@@ -96,11 +96,11 @@ ev() {
 
     case $extension in
         gdoc|gsheet) browser $(cat $1 | cut -f4 -d "\"") ;;
-        html) browser $1 ;;
+        html) browser $@ ;;
         pdf)
             case $OSTYPE in
-                linux*) evince $1 2>/dev/null & ;;
-                *) browser $1 ;;
+                linux*) evince $@ 2>/dev/null & ;;
+                *) browser $@ ;;
             esac
             ;;
         *) echo "No ev behavior for file extension .$extension defined" ;;
