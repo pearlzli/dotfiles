@@ -99,7 +99,7 @@ ev() {
         html) browser $1 ;;
         pdf)
             case $OSTYPE in
-                linux*) evince $1 ;;
+                linux*) evince $1 2>/dev/null & ;;
                 *) browser $1 ;;
             esac
             ;;
