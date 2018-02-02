@@ -103,6 +103,12 @@ ev() {
                 *) browser $@ ;;
             esac
             ;;
+        png)
+            case $OSTYPE in
+                linux*) eog $@ & ;;
+                *) browser $@ ;;
+            esac
+            ;;
         *) echo "No ev behavior for file extension .$extension defined" ;;
     esac
 }
