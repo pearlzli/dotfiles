@@ -134,6 +134,9 @@
           (set-buffer-modified-p nil))))))
 (global-set-key (kbd "C-c R")  'rename-file-and-buffer)
 
+;; Replace string
+(global-set-key (kbd "C-c %") 'replace-string)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DISPLAY
