@@ -144,8 +144,10 @@ maybe_mkdir "$HOME/.emacs.d/backup"
 cd "$HOME/.emacs.d"
 
 # cl-lib
-$my_timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
-timeout_result $? "cl-lib"
+if [ ! -f "cl-lib-0.5.el" ]; then
+   $my_timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
+   timeout_result $? "cl-lib"
+fi
 
 # Git
 $my_timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
