@@ -35,7 +35,11 @@ green=$(tput setaf 2)
 maybe_mkdir() {
     if [ ! -d "$1" ]; then
         mkdir -p $1
-        echo "${green}Created $1${normal}"
+        if [ $? -eq 0 ]; then
+            echo "${green}Created $1${normal}"
+        else
+            echo "${red}Could not create $1${normal}"
+        fi
     fi
 }
 
@@ -46,7 +50,11 @@ try_symlink() {
         echo "${red}Did not link $1: symlink already exists${normal}"
     elif [ ! -f $1 ]; then
         ln -s "$dotfile_dir/$1" $1
-        echo "${green}Linked $1${normal}"
+        if [ $? -eq 0 ]; then
+            echo "${green}Linked $1${normal}"
+        else
+            echo "${red}Could not link $1${normal}"
+        fi
     else
         echo "${red}Did not link $1: non-symlink file already exists. Merge $1 into $dotfile_dir/$1 first and then delete $1 before retrying${normal}"
     fi
@@ -61,6 +69,8 @@ timeout_length="2s"
 function timeout_result {
     if [ $1 -eq 124 ]; then
         echo "${red}Killed downloading $2: timed out${normal}"
+    elif [ $1 -ne 0 ]; then
+        echo "${red}Could not download $2${normal}"
     else
         echo "${green}Successfully downloaded $2${normal}"
     fi
