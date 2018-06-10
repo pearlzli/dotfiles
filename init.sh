@@ -34,7 +34,7 @@ green=$(tput setaf 2)
 # Usage: maybe_mkdir <path>
 maybe_mkdir() {
     if [ ! -d "$1" ]; then
-        mkdir -p $texdir
+        mkdir -p $1
         echo "${green}Created $1${normal}"
     fi
 }
