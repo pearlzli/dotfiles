@@ -79,6 +79,7 @@ case $OSTYPE in
         brew install emacs
         brew install tmux
         brew install wget
+        brew cask install mactex
 
         my_timeout=gtimeout
         ;;
