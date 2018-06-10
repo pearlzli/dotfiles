@@ -91,6 +91,7 @@ case $OSTYPE in
         brew install tmux
         brew install wget
         brew cask install mactex
+        echo "${yellow}Don't forget to add the TeX Live binaries (some subdirectory of /usr/local/texlive/yyyy) to your PATH, or kpsewhich below won't work${normal}"
 
         my_timeout=gtimeout
         ;;
