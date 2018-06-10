@@ -89,8 +89,19 @@ case $OSTYPE in
         brew install emacs
         brew install tmux
         brew install wget
-        brew cask install mactex
         brew cask install julia
+
+        brew cask install mactex
+        if [ -z "$(grep texbin ~/.bashrc-local)" ]; then
+            echo "export PATH=\$PATH:/Library/TeX/texbin" >> ~/.bashrc-local
+            if [ $? -eq 0 ]; then
+                echo "${green}Added TeX Live binaries to PATH in ~/.bashrc-local${normal}"
+            else
+                echo "${red}Could not add TeX Live binaries to PATH in ~/.bashrc-local${normal}"
+            fi
+        else
+            echo "${red}Did not add TeX Live binaries to PATH in ~/.bashrc-local: already there${normal}"
+        fi
 
         my_timeout=gtimeout
         ;;
@@ -123,7 +134,7 @@ cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
 
 if not_installed kpsewhich; then
-    echo "${red}Didn't link TeX files: add TeX Live binary directory (some subdirectory of /usr/local/texlive/yyyy) to PATH and re-run init.sh${normal}"
+    echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
 else
     texdir=$(kpsewhich -var-value=TEXMFHOME)
     maybe_mkdir "$texdir"
