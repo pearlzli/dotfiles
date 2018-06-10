@@ -29,6 +29,7 @@ not_installed() {
 normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
+yellow=$(tput setaf 3)
 
 # Make directory if it doesn't already exist
 # Usage: maybe_mkdir <path>
