@@ -90,6 +90,7 @@ case $OSTYPE in
         brew install tmux
         brew install wget
         brew cask install mactex
+        brew cask install julia
 
         my_timeout=gtimeout
         ;;
