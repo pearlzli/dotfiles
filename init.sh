@@ -29,7 +29,6 @@ not_installed() {
 normal=$(tput sgr0)
 red=$(tput setaf 1)
 green=$(tput setaf 2)
-yellow=$(tput setaf 3)
 
 # Make directory if it doesn't already exist
 # Usage: maybe_mkdir <path>
@@ -91,7 +90,6 @@ case $OSTYPE in
         brew install tmux
         brew install wget
         brew cask install mactex
-        echo "${yellow}Don't forget to add the TeX Live binaries (some subdirectory of /usr/local/texlive/yyyy) to your PATH, or kpsewhich below won't work${normal}"
 
         my_timeout=gtimeout
         ;;
@@ -123,15 +121,18 @@ done
 cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
 
-texdir=$(kpsewhich -var-value=TEXMFHOME)
-maybe_mkdir "$texdir"
-maybe_mkdir "$texdir/tex/latex"
+if not_installed kpsewhich; then
+    echo "${red}Didn't link TeX files: add TeX Live binary directory (some subdirectory of /usr/local/texlive/yyyy) to PATH and re-run init.sh${normal}"
+else
+    texdir=$(kpsewhich -var-value=TEXMFHOME)
+    maybe_mkdir "$texdir"
+    maybe_mkdir "$texdir/tex/latex"
 
-cd $texdir
-for file in $texfiles; do
-    try_symlink $file
-done
-
+    cd $texdir
+    for file in $texfiles; do
+        try_symlink $file
+    done
+end
 
 ### 3. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
 
