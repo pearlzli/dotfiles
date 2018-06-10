@@ -162,9 +162,5 @@ $my_timeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.
 timeout_result $? "markdown-mode"
 
 # MATLAB
-$my_timeout $timeout_length wget "matlab-emacs.cvs.sourceforge.net/viewvc/matlab-emacs/matlab-emacs/?view=tar"
+$my_timeout $timeout_length git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
 timeout_result $? "matlab-emacs"
-if [ -f $file ]; then
-    tar -zxvf "index.html?view=tar"
-    rm "index.html?view=tar"
-fi
