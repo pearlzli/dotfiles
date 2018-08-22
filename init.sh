@@ -62,7 +62,7 @@ try_symlink() {
 }
 
 # Length of time before timing out
-timeout_length="2s"
+timeout_length="30s"
 
 # Print result of timeout downloading
 # Usage: timeout_result <retcode> <filename>
