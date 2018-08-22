@@ -144,7 +144,8 @@ else
     for file in $texfiles; do
         try_symlink $file
     done
-end
+fi
+
 
 ### 3. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
 
