@@ -11,7 +11,17 @@
 
 ### 0. init.sh Setup
 
+# Colors
+# https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
+normal=$(tput sgr0)
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+
 # Location of dotfiles repo
+if [ -z "$1" ]; then
+    echo "${red}Run script using ./init.sh path/to/dotfiles/repo${normal}"
+    exit 1
+fi
 dotfile_dir=$1
 
 # Check if something is installed
@@ -23,12 +33,6 @@ not_installed() {
     return 0
   fi
 }
-
-# Colors
-# https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
-normal=$(tput sgr0)
-red=$(tput setaf 1)
-green=$(tput setaf 2)
 
 # Make directory if it doesn't already exist
 # Usage: maybe_mkdir <path>
