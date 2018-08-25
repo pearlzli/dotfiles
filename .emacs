@@ -47,6 +47,11 @@
 ;; Unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
+;; Use C-u for undo
+;; C-/ doesn't work on OS X (see https://github.com/bbatsov/prelude/issues/327)
+(global-unset-key (kbd "C-u"))
+(global-set-key (kbd "C-u") 'undo)
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
