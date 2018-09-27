@@ -93,6 +93,7 @@ case $OSTYPE in
         brew install emacs
         brew install tmux
         brew install wget
+        brew cask install meld
         brew cask install julia
 
         brew cask install mactex
