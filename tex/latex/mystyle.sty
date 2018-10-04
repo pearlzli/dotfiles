@@ -16,6 +16,13 @@
 %%% 2. Math Typesetting
 
 % Label individual equations in align*
+% Example (only first equation is labeled):
+%   \begin{align*}
+%     f(x) &= ax^2 + bx + c \tageq \label{eq:f} \\
+%     g(x) &= \log x \\
+%     h(x) &= f(x) + g(x)
+%   \end{align*}
+%   As we see in equation~\eqref{eq:f}...
 \newcommand*\tageq{\refstepcounter{equation}\tag{\theequation}}
 
 % Switch \epsilon and \varepsilon
