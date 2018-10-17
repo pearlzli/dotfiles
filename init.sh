@@ -93,10 +93,14 @@ case $OSTYPE in
         brew install emacs
         brew install tmux
         brew install wget
+        brew cask install mactex
         brew cask install meld
         brew cask install julia
 
-        brew cask install mactex
+        # The following are easier to build using Brew than in Julia
+        brew install gcc   # HDF5.jl
+        brew install cmake # Polynomials.jl
+
         if [ -z "$(grep texbin ~/.bashrc-local)" ]; then
             echo "export PATH=\$PATH:/Library/TeX/texbin" >> ~/.bashrc-local
             if [ $? -eq 0 ]; then
