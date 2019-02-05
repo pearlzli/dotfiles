@@ -166,11 +166,8 @@ maybe_mkdir "$HOME/.emacs.d/backup"
 
 cd "$HOME/.emacs.d"
 
-# cl-lib
-if [ ! -f "cl-lib-0.5.el" ]; then
-   $my_timeout $timeout_length wget "https://elpa.gnu.org/packages/cl-lib-0.5.el"
-   timeout_result $? "cl-lib"
-fi
+# Install cl-lib, AUCTeX (LaTeX) using ELPA
+emacs --script "$dotfile_dir/elpa-install.el"
 
 # Git
 $my_timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
