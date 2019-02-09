@@ -28,6 +28,7 @@
 % Theorems
 \usepackage{amsthm}
 \newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
 
 % Load mystyle.sty
 \usepackage{mystyle}
