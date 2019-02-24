@@ -13,17 +13,24 @@
 \usepackage{titlesec}
 \titlespacing\subsection{0pt}{0pt}{-0.75\baselineskip}
 
-% Enumerate spacing
-\let\oldenumerate\enumerate
-\renewcommand{\enumerate}{
-  \oldenumerate
-  \setlength{\itemsep}{\baselineskip}
+% Itemize spacing
+\let\olditemize\itemize
+\renewcommand\itemize{
+  \olditemize
   \setlength{\parskip}{\baselineskip}
 }
 
+% Enumerate spacing
+\let\oldenumerate\enumerate
+\renewcommand\enumerate{
+  \oldenumerate
+  \setlength\itemsep{\baselineskip}
+  \setlength\parskip{\baselineskip}
+}
+
 % Enumerate numbering
-\renewcommand{\labelenumi}{\alph{enumi}) }
-\renewcommand{\labelenumii}{\roman{enumii}) }
+\renewcommand\labelenumi{\alph{enumi}) }
+\renewcommand\labelenumii{\roman{enumii}) }
 
 % Theorems
 \usepackage{amsthm}
