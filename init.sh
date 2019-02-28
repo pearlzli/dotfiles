@@ -169,6 +169,10 @@ cd "$HOME/.emacs.d"
 # Install cl-lib, AUCTeX (LaTeX) using ELPA
 emacs --script "$dotfile_dir/elpa-install.el"
 
+# outline-magic (used for LaTeX)
+$my_timeout $timeout_length git clone "https://github.com/tj64/outline-magic.git"
+timeout_result $? "outline-magic"
+
 # Git
 $my_timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
 timeout_result $? "git-modes"

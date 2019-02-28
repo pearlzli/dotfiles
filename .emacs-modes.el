@@ -1,3 +1,15 @@
+;; outline-minor-mode and outline-magic (LaTeX)
+;; https://emacs.stackexchange.com/questions/361/how-can-i-hide-display-latex-section-just-like-org-mode-does-with-headlines
+(add-hook 'LaTeX-mode-hook #'outline-minor-mode)
+(add-to-list 'load-path "~/.emacs.d/outline-magic")
+(add-hook 'outline-mode-hook
+          (lambda ()
+            (require 'outline-cycle)))
+(add-hook 'outline-minor-mode-hook
+          (lambda ()
+            (require 'outline-magic)
+            (define-key outline-minor-mode-map  (kbd "C-c TAB") 'outline-cycle)))
+
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 (autoload 'gitconfig-mode "gitconfig-mode"
