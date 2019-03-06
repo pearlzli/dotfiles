@@ -19,5 +19,9 @@ sed -i.backup '/^url/ s|{~}|~|g'   $bibpath # {~}  to ~
 sed -i.backup '/^url/ s|{\\%}|%|g' $bibpath # {\%} to %
 sed -i.backup '/^url/ s|{\\_}|_|g' $bibpath # {\_} to _
 
+# Change double braces around titles to single braces
+sed -i.backup '/^title/ s|{{|{|g' $bibpath
+sed -i.backup '/^title/ s|}}|}|g' $bibpath
+
 # Print success and return
 echo "Successfully fixed up $bibfile"
