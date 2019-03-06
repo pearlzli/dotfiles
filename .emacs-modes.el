@@ -1,5 +1,6 @@
 ;; outline-minor-mode and outline-magic (LaTeX)
 ;; https://emacs.stackexchange.com/questions/361/how-can-i-hide-display-latex-section-just-like-org-mode-does-with-headlines
+;; https://emacs.stackexchange.com/questions/13426/auctex-doesnt-run-bibtex
 (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
 (add-to-list 'load-path "~/.emacs.d/outline-magic")
 (add-hook 'outline-mode-hook
@@ -9,6 +10,8 @@
           (lambda ()
             (require 'outline-magic)
             (define-key outline-minor-mode-map  (kbd "C-c TAB") 'outline-cycle)))
+(setq TeX-parse-self t) ; run bibtex on C-c C-c
+(setq TeX-auto-save t)  ;
 
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
