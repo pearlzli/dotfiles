@@ -138,7 +138,7 @@ for file in ".bashrc-local" ".gitconfig-local"; do
     fi
 done
 
-# Create symlinks for TeX files
+# TeX files
 cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
 
@@ -147,12 +147,19 @@ if not_installed kpsewhich; then
 else
     texdir=$(kpsewhich -var-value=TEXMFHOME)
     maybe_mkdir "$texdir"
-    maybe_mkdir "$texdir/tex/latex"
 
+    # Style and class files
+    maybe_mkdir "$texdir/tex/latex"
     cd $texdir
     for file in $texfiles; do
         try_symlink $file
     done
+
+    # Bibliography style files
+    maybe_mkdir "$texdir/bibtex/bst"
+    cd $texdir/bibtex/bst
+    wget "https://raw.githubusercontent.com/ShiroTakeda/econ-bst/master/econ.bst"
+    echo "${green}Installed econ.bst${normal}"
 fi
 
 
