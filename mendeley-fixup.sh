@@ -1,18 +1,13 @@
 #!/bin/bash
 
-# Parse argument (input file)
+# Parse aux file for bib file
 if [[ "$#" -ne 1 ]]; then
-    echo "ERROR: Run script using path/to/mendeley-fixup.sh path/to/bib-file.bib"
+    echo "ERROR: Run script using path/to/mendeley-fixup.sh path/to/aux-file-no-ext"
     exit 1
 fi
 
-if [[ "$(dirname $1)" == . ]]; then
-    bibfile=$1
-    bibpath="$(pwd)/$1"
-else
-    bibfile="$(basename $1)"
-    bibpath=$1
-fi
+bibfile="$(grep -h \bibdata $1.aux | sed 's|.*\\bibdata{\(.*\)}|\1|').bib"
+bibpath="$(realpath $bibfile)"
 
 if [[ ! -e $bibpath ]]; then
     echo "ERROR: File $bibpath can't be found"
