@@ -126,7 +126,7 @@ esac
 cd $HOME
 
 # Create symlinks
-for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
+for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig" ".Xmodmap" ".Xdefaults"; do
     try_symlink $file
 done
 
