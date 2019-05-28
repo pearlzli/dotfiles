@@ -35,7 +35,6 @@ sed -i.backup '/^isbn/d'          $bibpath
 sed -i.backup '/^issn/d'          $bibpath
 sed -i.backup '/^keywords/d'      $bibpath
 sed -i.backup '/^mendeley-tags/d' $bibpath
-sed -i.backup '/^publisher/d'     $bibpath
 sed -i.backup '/^url/d'           $bibpath
 
 # Print success and return
