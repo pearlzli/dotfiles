@@ -122,6 +122,3 @@ export GREP_OPTIONS='-inr --color=auto'
 
 # Source system-specific aliases
 source ~/.bashrc-local
-
-# Source X11 key modifications
-xmodmap ~/.Xmodmap
