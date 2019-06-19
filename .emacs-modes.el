@@ -31,11 +31,6 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 
-;; ESS (Stata only)
-(add-to-list 'load-path "~/.emacs.d/ESS/lisp")
-(require 'ess-site)
-(require 'ess-stata-mode)
-
 ;; Julia
 (add-to-list 'load-path "~/.emacs.d/julia-emacs")
 (require 'julia-mode)
