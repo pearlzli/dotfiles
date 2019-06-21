@@ -14,4 +14,5 @@
 
         ; List of packages to be installed (separated by linebreaks)
         '(auctex
-          cl-lib))
+          cl-lib
+          xclip))

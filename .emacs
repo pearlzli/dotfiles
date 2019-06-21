@@ -254,7 +254,7 @@
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
- '(package-selected-packages (quote (cl-lib auctex))))
+ '(package-selected-packages (quote (xclip cl-lib auctex))))
 (custom-set-faces
   ;; custom-set-faces was added by Custom.
   ;; If you edit it by hand, you could mess it up, so be careful.
