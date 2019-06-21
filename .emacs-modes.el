@@ -51,3 +51,7 @@
 (add-hook 'matlab-mode-hook 'my-matlab-mode-hook)
 (add-hook 'matlab-mode-hook (lambda () (local-set-key "\M-;" nil)))
 (add-hook 'matlab-mode-hook (lambda () (local-set-key "\M-q" nil)))
+
+;; Stata
+(add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
+(require 'ado-mode)

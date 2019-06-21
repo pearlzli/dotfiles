@@ -195,3 +195,7 @@ timeout_result $? "markdown-mode"
 # MATLAB
 $my_timeout $timeout_length git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
 timeout_result $? "matlab-emacs"
+
+# Stata
+$my_timeout $timeout_length git clone "https://github.com/louabill/ado-mode.git"
+timeout_result $? "ado-mode"
