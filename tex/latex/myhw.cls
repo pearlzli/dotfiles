@@ -7,30 +7,30 @@
 \evensidemargin=-0.25in
 
 % Paragraph spacing
-\setlength\parskip\baselineskip
-\setlength\parindent{0pt}
+\setlength{\parskip}{\baselineskip}
+\setlength{\parindent}{0pt}
 
 \usepackage{titlesec}
-\titlespacing\subsection{0pt}{0pt}{-0.75\baselineskip}
+\titlespacing{\subsection}{0pt}{0pt}{-0.75\baselineskip}
 
 % Itemize spacing
-\let\olditemize\itemize
-\renewcommand\itemize{
+\let{\olditemize}{\itemize}
+\renewcommand{\itemize}{
   \olditemize
   \setlength{\parskip}{\baselineskip}
 }
 
 % Enumerate spacing
-\let\oldenumerate\enumerate
-\renewcommand\enumerate{
+\let{\oldenumerate}{\enumerate}
+\renewcommand{\enumerate}{
   \oldenumerate
-  \setlength\itemsep{\baselineskip}
-  \setlength\parskip{\baselineskip}
+  \setlength{\itemsep}{\baselineskip}
+  \setlength{\parskip}{\baselineskip}
 }
 
 % Enumerate numbering
-\renewcommand\labelenumi{\alph{enumi}) }
-\renewcommand\labelenumii{\roman{enumii}) }
+\renewcommand{\labelenumi}{\alph{enumi}) }
+\renewcommand{\labelenumii}{\roman{enumii}) }
 
 % Theorems
 \usepackage{amsthm}

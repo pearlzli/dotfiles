@@ -27,44 +27,44 @@
 %     h(x) &= f(x) + g(x)
 %   \end{align*}
 %   As we see in equation~\eqref{eq:f}...
-\newcommand*\tageq{\refstepcounter{equation}\tag{\theequation}}
+\newcommand*{\tageq}{\refstepcounter{equation}\tag{\theequation}}
 
 % Switch \epsilon and \varepsilon
-\let\oldepsilon\epsilon
-\let\oldvarepsilon\varepsilon
-\renewcommand\epsilon{\oldvarepsilon}
-\renewcommand\varepsilon{\oldepsilon}
+\let{\oldepsilon}{\epsilon}
+\let{\oldvarepsilon}{\varepsilon}
+\renewcommand{\epsilon}{\oldvarepsilon}
+\renewcommand{\varepsilon}{\oldepsilon}
 
 % Left and right brackets
-\newcommand\paren[1]{\left( #1 \right)}
-\newcommand\bracket[1]{\left[ #1 \right]}
-\newcommand\curly[1]{\left\{ #1 \right\}}
-\newcommand\inner[1]{\left\langle #1 \right\rangle}  % Inner product
-\newcommand\floor[1]{\left\lfloor #1 \right\rfloor}  % Floor
-\newcommand\ceil[1]{\left\lceil #1 \right\rceil}     % Ceiling
-\newcommand\abs[1]{\left| #1 \right|}                % Absolute value
-\newcommand\norm[1]{\left\lVert #1 \right\rVert}     % Norm
-\newcommand\eval[1]{\left. #1 \right|}               % Evaluated at
+\newcommand{\paren}[1]{\left( #1 \right)}
+\newcommand{\bracket}[1]{\left[ #1 \right]}
+\newcommand{\curly}[1]{\left\{ #1 \right\}}
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}  % Inner product
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}  % Floor
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}     % Ceiling
+\newcommand{\abs}[1]{\left| #1 \right|}                % Absolute value
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}     % Norm
+\newcommand{\eval}[1]{\left. #1 \right|}               % Evaluated at
 
 % General math
-\newcommand\st{\text{\ s.t.\ }}                      % Such that
-\newcommand\where{\middle|}                          % Where
-\newcommand\comp[1]{#1^{\mathsf{c}}}                 % Complement
-\newcommand\inv[1]{#1^{-1}}                          % Inverse
-\renewcommand\d{\ \mathrm{d}}                        % Differential
-\newcommand\corrto{\rightrightarrows}                % Correspondence
-\newcommand\N{\mathbb{N}}                            % Natural numbers
-\newcommand\Z{\mathbb{Z}}                            % Integers
-\newcommand\Q{\mathbb{Q}}                            % Rational numbers
-\newcommand\R{\mathbb{R}}                            % Real numbers
-\newcommand\C{\mathbb{C}}                            % Complex numbers
-\renewcommand\L{\mathcal{L}}                         % Lagrangian for optimization problem
-\newcommand\sumin{\sum_{i=1}^n}                      % Sum from 1 to n
-\newcommand\prodin{\prod_{i=1}^n}                    % Product from 1 to n
-\newcommand\join{\vee}                               % Join
-\newcommand\bigjoin{\bigvee}                         %
-\newcommand\meet{\wedge}                             % Meet
-\newcommand\bigmeet{\bigwedge}                       %
+\newcommand{\st}{\text{\ s.t.\ }}                      % Such that
+\newcommand{\where}{\middle|}                          % Where
+\newcommand{\comp}[1]{#1^{\mathsf{c}}}                 % Complement
+\newcommand{\inv}[1]{#1^{-1}}                          % Inverse
+\renewcommand{\d}{\ \mathrm{d}}                        % Differential
+\newcommand{\corrto}{\rightrightarrows}                % Correspondence
+\newcommand{\N}{\mathbb{N}}                            % Natural numbers
+\newcommand{\Z}{\mathbb{Z}}                            % Integers
+\newcommand{\Q}{\mathbb{Q}}                            % Rational numbers
+\newcommand{\R}{\mathbb{R}}                            % Real numbers
+\newcommand{\C}{\mathbb{C}}                            % Complex numbers
+\renewcommand{\L}{\mathcal{L}}                         % Lagrangian for optimization problem
+\newcommand{\sumin}{\sum_{i=1}^n}                      % Sum from 1 to n
+\newcommand{\prodin}{\prod_{i=1}^n}                    % Product from 1 to n
+\newcommand{\join}{\vee}                               % Join
+\newcommand{\bigjoin}{\bigvee}                         %
+\newcommand{\meet}{\wedge}                             % Meet
+\newcommand{\bigmeet}{\bigwedge}                       %
 \DeclareMathOperator*{\argmax}{arg\,max}             % Argmax
 \DeclareMathOperator*{\argmin}{arg\,min}             % Argmin
 
@@ -184,7 +184,7 @@
 % Inline code snippets
 % http://tex.stackexchange.com/a/42964
 % http://tex.stackexchange.com/a/83883/50294
-\newcommand\hltext[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
-\newcommand\bashinline[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
-\newcommand\matlabinline[1]{\colorbox{lightgray}{{\lstset{style=matlab}\lstinline!#1!}}}
-\newcommand\juliainline[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
+\newcommand{\hltext}[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
+\newcommand{\bashinline}[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
+\newcommand{\matlabinline}[1]{\colorbox{lightgray}{{\lstset{style=matlab}\lstinline!#1!}}}
+\newcommand{\juliainline}[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
