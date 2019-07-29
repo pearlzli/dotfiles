@@ -14,14 +14,14 @@
 \titlespacing{\subsection}{0pt}{0pt}{-0.75\baselineskip}
 
 % Itemize spacing
-\let{\olditemize}{\itemize}
+\let\olditemize\itemize
 \renewcommand{\itemize}{
   \olditemize
   \setlength{\parskip}{\baselineskip}
 }
 
 % Enumerate spacing
-\let{\oldenumerate}{\enumerate}
+\let\oldenumerate\enumerate
 \renewcommand{\enumerate}{
   \oldenumerate
   \setlength{\itemsep}{\baselineskip}
