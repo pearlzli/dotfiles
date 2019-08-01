@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# DefaultKeyBinding.dict can't be symlinked, so copy it to ~/Library/KeyBindings whenever a commit is made that modifies it
+# https://apple.stackexchange.com/a/224074
+if [[ $(git diff --cached --name-only | grep 'DefaultKeyBinding.dict' | wc -l) -eq 1 ]];
+then
+   FILE_PATH_IN_LIBRARY=~/Library/KeyBindings/DefaultKeyBinding.dict
+   BASE_DIR=$(git rev-parse --show-toplevel)
+   FILE_PATH_IN_SCM=${BASE_DIR}/DefaultKeyBinding.dict
+
+   NORMAL=$(tput sgr0)
+   BRIGHT=$(tput bold)
+   GREEN=$(tput setaf 2)
+
+   cp $FILE_PATH_IN_SCM $FILE_PATH_IN_LIBRARY
+   printf "${GREEN}Updated %s${NORMAL}\n" $FILE_PATH_IN_LIBRARY
+fi

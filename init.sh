@@ -112,6 +112,10 @@ case $OSTYPE in
             echo "${red}Did not add TeX Live binaries to PATH in ~/.bashrc-local: already there${normal}"
         fi
 
+        # Copy Mac key bindings
+        maybe_mkdir ~/Library/KeyBindings
+        cp "$dotfile_dir/DefaultKeyBinding.dict" ~/Library/KeyBindings
+
         my_timeout=gtimeout
         ;;
 

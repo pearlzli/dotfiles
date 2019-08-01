@@ -1,0 +1,42 @@
+/* Adapted from http://www.hcs.harvard.edu/~jrus/site/KeyBindings/Emacs%20Opt%20Bindings.dict
+ * Place in ~/Library/KeyBindings, making directory if necesary
+ * Symlink will not work, but see https://apple.stackexchange.com/a/224074 for git hook workaround
+*/
+
+{
+    /* Navigation */
+    "~f"      = "moveWordForward:";              /* M-f */
+    "~b"      = "moveWordBackward:";             /* M-b */
+    "~<"      = "moveToBeginningOfDocument:";    /* M-< */
+    "~>"      = "moveToEndOfDocument:";          /* M-> */
+    "~v"      = "pageUp:";                       /* M-v */
+    "^v"      = "pageDown:";                     /* C-v */
+
+    /* Editing */
+    "~d"      = "deleteWordForward:";            /* M-d */
+    "~\010"   = "deleteWordBackward:";           /* M-DEL */
+    "^u"      = "undo:";                         /* C-u */
+    "~c"      = ( "capitalizeWord:",             /* M-c */
+                  "moveRight:");
+    "~u"      = ( "uppercaseWord:",              /* M-u */
+                  "moveRight:");
+    "~l"      = ( "lowercaseWord:",              /* M-l */
+                  "moveRight:");
+    "^t"      = "transpose:";                    /* C-t */
+    "~t"      = "transposeWords:";               /* M-t */
+    "^g"      = "_cancelKey:";                   /* C-g */
+    "^ "      = "setMark:";                      /* C-SPC */
+    "^w"      = "deleteToMark:";                 /* C-w */
+    "~w"      = ( "selectToMark:",               /* M-w */
+                  "copy:",
+                  "swapWithMark:");
+
+    "^x" = {
+        "^x"  = "swapWithMark:";                 /* C-x C-x */
+        "^m"  = "selectToMark:";                 /* C-x C-m */
+        "^f"  = "openDocument:";                 /* C-x C-f */
+        "^s"  = "save:";                         /* C-x C-s */
+        "^w"  = "saveAs:";                       /* C-x C-w */
+        "k"   = "performClose:";                 /* C-x C-k */
+    };
+}
