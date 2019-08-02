@@ -4,14 +4,9 @@
 # https://apple.stackexchange.com/a/224074
 if [[ $(git diff --cached --name-only | grep 'DefaultKeyBinding.dict' | wc -l) -eq 1 ]];
 then
-   FILE_PATH_IN_LIBRARY=~/Library/KeyBindings/DefaultKeyBinding.dict
-   BASE_DIR=$(git rev-parse --show-toplevel)
-   FILE_PATH_IN_SCM=${BASE_DIR}/DefaultKeyBinding.dict
+   bdir=$(git rev-parse --show-toplevel)
+   ldir=~/Library/KeyBindings
 
-   NORMAL=$(tput sgr0)
-   BRIGHT=$(tput bold)
-   GREEN=$(tput setaf 2)
-
-   cp $FILE_PATH_IN_SCM $FILE_PATH_IN_LIBRARY
-   printf "${GREEN}Updated %s${NORMAL}\n" $FILE_PATH_IN_LIBRARY
+   cp $bdir/DefaultKeyBinding.dict $ldir/DefaultKeyBinding.dict
+   printf "Copied updated DefaultKeyBinding.dict to %s\n" $ldir
 fi
