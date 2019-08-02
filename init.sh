@@ -142,6 +142,11 @@ for file in ".bashrc-local" ".gitconfig-local"; do
     fi
 done
 
+# Julia startup
+maybe_mkdir ~/.julia/config
+cd ~/.julia/config
+try_symlink startup.jl
+
 # TeX files
 cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
