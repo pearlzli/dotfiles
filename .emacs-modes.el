@@ -24,7 +24,6 @@
 
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(load "~/.emacs.d/elpa/cl-lib-0.6.1/cl-lib.el")
 (load "markdown-mode.el")
 (autoload 'gfm-mode "gfm-mode"
    "Major mode for editing GitHub Flavored Markdown files" t)
