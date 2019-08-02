@@ -14,7 +14,9 @@ To set up a new machine:
 
 4. Run `./init.sh path/to/dotfile/repo`. (If necessary, `chmod init.sh u+x` first.)
 
-5. Add new Emacs version to `PATH` if necessary (in .bashrc-local).
+5. Add things to .bashrc-local, like aliases and environment variables.
+
+6. If desired and on OS X, set up SSHFS: run `brew cask install osxfuse`, restart computer, run `brew install sshfs`. (This isn't in init.sh because of the computer restarting step.) Then run `sshfs username@hostname:remotedir localdir` to mount and `umount localdir` to unmount.
 
 ## Attribution
 
