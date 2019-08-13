@@ -1,4 +1,7 @@
-# Automatically load project-specific packages
+# Load Revise.jl
+using Revise
+
+# Load project-specific packages
 if isfile("Project.toml")
     using Pkg
     Pkg.activate(".")
