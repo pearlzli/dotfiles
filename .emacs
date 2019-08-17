@@ -229,7 +229,7 @@
      ("ConTeXt Full" "%(cntxcom) %(extraopts) %(execopts)%t" TeX-run-TeX nil
       (context-mode)
       :help "Run ConTeXt until completion")
-     ("BibTeX" "~/dotfiles/mendeley-fixup.sh %s; bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
+     ("BibTeX" "[ -e %s ] && ~/dotfiles/mendeley-fixup.sh %s; bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
      ("Biber" "biber %s" TeX-run-Biber nil t :help "Run Biber")
      ("View" "open -a Google\\ Chrome.app %s.pdf" TeX-run-discard-or-function t t :help "Run Viewer")
      ("Print" "%p" TeX-run-command t t :help "Print the file")
@@ -252,6 +252,7 @@
      ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
+ '(bibtex-align-at-equal-sign t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
  '(package-selected-packages (quote (xclip cl-lib auctex))))

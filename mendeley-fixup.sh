@@ -7,7 +7,7 @@ if [[ "$#" -ne 1 ]]; then
 fi
 
 bibfile="$(grep -h \bibdata $1.aux | sed 's|.*\\bibdata{\(.*\)}|\1|').bib"
-bibpath="$(realpath $bibfile)"
+bibpath="$(realpath \"$bibfile\")"
 
 if [[ ! -e $bibpath ]]; then
     echo "ERROR: File $bibpath can't be found"
