@@ -166,9 +166,12 @@ else
 
     # Bibliography style files
     maybe_mkdir "$texdir/bibtex/bst"
-    cd $texdir/bibtex/bst
-    wget "https://raw.githubusercontent.com/ShiroTakeda/econ-bst/master/econ.bst"
-    echo "${green}Installed econ.bst${normal}"
+    tmpdir=$(mktemp -d)
+    cd $tmpdir
+    wget "https://www.aeaweb.org/content/file?id=57"
+    unzip "file?id=57"
+    mv latex_templates/aea.bst "$texdir/bibtex/bst"
+    echo "${green}Installed aea.bst${normal}"
 fi
 
 
