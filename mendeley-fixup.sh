@@ -32,13 +32,11 @@ for bibname in $bibnames; do
     # Delete fields
     sed -i.backup '/^abstract/d'      "$bibpath"
     sed -i.backup '/^doi/d'           "$bibpath"
-    sed -i.backup '/^edition/d'       "$bibpath"
     sed -i.backup '/^file/d'          "$bibpath"
     sed -i.backup '/^isbn/d'          "$bibpath"
     sed -i.backup '/^issn/d'          "$bibpath"
     sed -i.backup '/^keywords/d'      "$bibpath"
     sed -i.backup '/^mendeley-tags/d' "$bibpath"
-    sed -i.backup '/^url/d'           "$bibpath"
 
     # Print success and return
     echo "Successfully fixed up $bibfile"
