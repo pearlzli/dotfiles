@@ -29,6 +29,10 @@
    "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
+(add-hook 'markdown-mode-hook
+          (lambda()
+            (local-unset-key (kbd "M-n"))   ; M-n and M-p redefined in .emacs
+            (local-unset-key (kbd "M-p")))) ; https://stackoverflow.com/a/19324726/2756250
 
 ;; Julia
 (add-to-list 'load-path "~/.emacs.d/julia-emacs")
