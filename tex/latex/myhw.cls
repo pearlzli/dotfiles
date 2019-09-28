@@ -13,24 +13,12 @@
 \usepackage{titlesec}
 \titlespacing{\subsection}{0pt}{0pt}{-0.75\baselineskip}
 
-% Itemize spacing
-\let\olditemize\itemize
-\renewcommand{\itemize}{
-  \olditemize
-  \setlength{\parskip}{\baselineskip}
-}
-
-% Enumerate spacing
-\let\oldenumerate\enumerate
-\renewcommand{\enumerate}{
-  \oldenumerate
-  \setlength{\itemsep}{\baselineskip}
-  \setlength{\parskip}{\baselineskip}
-}
-
-% Enumerate numbering
-\renewcommand{\labelenumi}{\alph{enumi}) }
-\renewcommand{\labelenumii}{\roman{enumii}) }
+% List environments
+\usepackage{enumitem}
+\setlist[enumerate]{parsep=\baselineskip}
+\setlist[enumerate,1]{label=\alph*), ref=(\alph*)}
+\setlist[enumerate,2]{label=\roman*), ref=(\roman*)}
+\setlist[itemize]{parsep=\baselineskip}
 
 % Theorems
 \usepackage{amsthm}
