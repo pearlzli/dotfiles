@@ -59,11 +59,16 @@
 (global-set-key (kbd "C-u") 'undo)
 
 ;; Use M-n and M-p to move forward and back 10 lines
+;; Use M-F and M-B to move forward and back 20 characters
 ;; https://stackoverflow.com/a/2657587
 (global-set-key (kbd "M-n")
     (lambda () (interactive) (next-line 10)))
 (global-set-key (kbd "M-p")
-    (lambda () (interactive) (next-line -10)))
+    (lambda () (interactive) (previous-line 10)))
+(global-set-key (kbd "M-F")
+    (lambda () (interactive) (forward-char 20)))
+(global-set-key (kbd "M-B")
+    (lambda () (interactive) (backward-char 20)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
