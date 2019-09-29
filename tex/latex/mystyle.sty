@@ -194,8 +194,9 @@
 %%% 4. Cross-References
 
 % Customize reference formats
-% https://tex.stackexchange.com/a/122178
-% https://tex.stackexchange.com/a/359651
+% https://tex.stackexchange.com/a/122178/116532 (general)
+% https://tex.stackexchange.com/a/359651/116532 (subequation)
+% https://tex.stackexchange.com/a/10116/116532 (footnote)
 \crefformat{equation}{equation (#2#1#3)}
 \crefrangeformat{equation}{equations (#3#1#4) to~(#5#2#6)}
 \crefmultiformat{equation}{equations (#2#1#3)}{ and~(#2#1#3)}{, (#2#1#3)}{ and~(#2#1#3)}
@@ -206,3 +207,4 @@
 \crefformat{table}{Table #2#1#3}
 \crefrangeformat{table}{Tables (#3#1#4) to~(#5#2#6)}
 \crefmultiformat{table}{Tables (#2#1#3)}{ and~(#2#1#3)}{, (#2#1#3)}{ and~(#2#1#3)}
+\crefformat{footnote}{#2\footnotemark[#1]#3}
