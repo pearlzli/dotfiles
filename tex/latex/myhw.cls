@@ -13,6 +13,9 @@
 \usepackage{titlesec}
 \titlespacing{\subsection}{0pt}{0pt}{-0.75\baselineskip}
 
+\usepackage{caption}
+\captionsetup[table]{skip=0.5\baselineskip}
+
 % List environments
 \usepackage{enumitem}
 \setlist[enumerate]{parsep=\baselineskip}
