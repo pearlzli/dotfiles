@@ -36,6 +36,10 @@
 \renewcommand{\epsilon}{\oldvarepsilon}
 \renewcommand{\varepsilon}{\oldepsilon}
 
+% Add space before \forall
+\let\oldforall\forall
+\renewcommand{\forall}{\ \oldforall}
+
 % Left and right brackets
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\bracket}[1]{\left[ #1 \right]}
