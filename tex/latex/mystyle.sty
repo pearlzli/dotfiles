@@ -44,63 +44,63 @@
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\bracket}[1]{\left[ #1 \right]}
 \newcommand{\curly}[1]{\left\{ #1 \right\}}
-\newcommand{\inner}[1]{\left\langle #1 \right\rangle} % Inner product
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor} % Floor
-\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}    % Ceiling
-\newcommand{\abs}[1]{\left| #1 \right|}               % Absolute value
-\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}    % Norm
-\newcommand{\eval}[1]{\left. #1 \right|}              % Evaluated at
+\newcommand{\inner}[1]{\left\langle #1 \right\rangle}  % Inner product
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}  % Floor
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}     % Ceiling
+\newcommand{\abs}[1]{\left| #1 \right|}                % Absolute value
+\newcommand{\norm}[1]{\left\lVert #1 \right\rVert}     % Norm
+\newcommand{\eval}[1]{\left. #1 \right|}               % Evaluated at
 
 % General math
-\newcommand{\st}{\text{\ s.t.\ }}                     % Such that
-\newcommand{\where}{\middle|}                         % Where
-\newcommand{\comp}[1]{#1^{\mathsf{c}}}                % Complement
-\newcommand{\inv}[1]{#1^{-1}}                         % Inverse
-\renewcommand{\d}{\ \mathrm{d}}                       % Differential
-\newcommand{\corrto}{\rightrightarrows}               % Correspondence
-\newcommand{\N}{\mathbb{N}}                           % Natural numbers
-\newcommand{\Z}{\mathbb{Z}}                           % Integers
-\newcommand{\Q}{\mathbb{Q}}                           % Rational numbers
-\newcommand{\R}{\mathbb{R}}                           % Real numbers
-\newcommand{\C}{\mathbb{C}}                           % Complex numbers
-\renewcommand{\L}{\mathcal{L}}                        % Lagrangian for optimization problem
-\newcommand{\sumin}{\sum_{i=1}^n}                     % Sum from 1 to n
-\newcommand{\prodin}{\prod_{i=1}^n}                   % Product from 1 to n
-\newcommand{\join}{\vee}                              % Join
-\newcommand{\bigjoin}{\bigvee}                        %
-\newcommand{\meet}{\wedge}                            % Meet
-\newcommand{\bigmeet}{\bigwedge}                      %
-\DeclareMathOperator*{\argmax}{arg\,max}              % Argmax
-\DeclareMathOperator*{\argmin}{arg\,min}              % Argmin
+\newcommand{\st}{\text{\ s.t.\ }}                      % Such that
+\newcommand{\where}{\middle|}                          % Where
+\newcommand{\comp}[1]{#1^{\mathsf{c}}}                 % Complement
+\newcommand{\inv}[1]{#1^{-1}}                          % Inverse
+\renewcommand{\d}{\ \mathrm{d}}                        % Differential
+\newcommand{\corrto}{\rightrightarrows}                % Correspondence
+\newcommand{\N}{\mathbb{N}}                            % Natural numbers
+\newcommand{\Z}{\mathbb{Z}}                            % Integers
+\newcommand{\Q}{\mathbb{Q}}                            % Rational numbers
+\newcommand{\R}{\mathbb{R}}                            % Real numbers
+\newcommand{\C}{\mathbb{C}}                            % Complex numbers
+\renewcommand{\L}{\mathcal{L}}                         % Lagrangian for optimization problem
+\newcommand{\sumin}{\sum_{i=1}^n}                      % Sum from 1 to n
+\newcommand{\prodin}{\prod_{i=1}^n}                    % Product from 1 to n
+\newcommand{\join}{\vee}                               % Join
+\newcommand{\bigjoin}{\bigvee}                         %
+\newcommand{\meet}{\wedge}                             % Meet
+\newcommand{\bigmeet}{\bigwedge}                       %
+\DeclareMathOperator*{\argmax}{arg\,max}               % Argmax
+\DeclareMathOperator*{\argmin}{arg\,min}               % Argmin
 
 % Derivatives
-\newcommand\der[2]{\frac{\d #1}{\d #2}}               % Derivative
-\newcommand\derol[2]{\mathrm{d} #1/\mathrm{d} #2}     % Derivative (one line)
-\newcommand\sder[2]{\frac{\d^2 #1}{\d #2^2}}          % Second derivative
-\newcommand\pder[2]{\frac{\partial #1}{\partial #2}}  % Partial derivative
-\newcommand\pderol[2]{\partial #1/\partial #2}        % Partial derivative (one line)
-\newcommand\spder[2]{\frac{\partial^2 #1}{\partial #2^2}} % Second partial derivative
-\newcommand\mpder[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}} % Mixed second partial derivative
+\newcommand{\der}[2]{\frac{\d #1}{\d #2}}              % Derivative
+\newcommand{\derol}[2]{\mathrm{d} #1/\mathrm{d} #2}    % Derivative (one line)
+\newcommand{\sder}[2]{\frac{\d^2 #1}{\d #2^2}}         % Second derivative
+\newcommand{\pder}[2]{\frac{\partial #1}{\partial #2}} % Partial derivative
+\newcommand{\pderol}[2]{\partial #1/\partial #2}       % Partial derivative (one line)
+\newcommand{\spder}[2]{\frac{\partial^2 #1}{\partial #2^2}} % Second partial derivative
+\newcommand{\mpder}[3]{\frac{\partial^2 #1}{\partial #2 \partial #3}} % Mixed second partial derivative
 
 % Probability
-\newcommand\given{\where}                             % Conditional expectation
-\newcommand\ind{\bm{1}}                               % Indicator function
-\newcommand\m{\mathbf{m}}                             % Lebesgue measure
-\renewcommand\P{\mathbb{P}}                           % Probability measure
-\newcommand\F{\mathcal{F}}                            % Filtration
-\renewcommand\wp{\text{ w.p. }}                       % With probability
-\newcommand\iid{\text{iid}}                           % Independent and identically distributed
-\newcommand\iidsim{\stackrel{\iid}{\sim}}             % iid over ~
-\newcommand\E{\mathbb{E}}                             % Expectation
-\newcommand\Var{\text{Var}}                           % Variance
-\newcommand\Cov{\text{Cov}}                           % Covariance
-\newcommand\Avar{\text{Avar}}                         % Asymptotic variance
-\newcommand\Acov{\text{Acov}}                         % Asymptotic covariance
-\newcommand\eqd{\,{\buildrel \mathcal{D} \over =}\,}  % Equal in distribution
-\newcommand\dto{\,{\buildrel d \over \to}\,}          % Converges in distribution
-\newcommand\pto{\,{\buildrel p \over \to}\,}          % Converges in probability
-\newcommand\io{\text{ i.o.}}                          % Infinitely often
-\DeclareMathOperator*{\plim}{plim}                    % Probability limit
+\newcommand{\given}{\where}                            % Conditional expectation
+\newcommand{\ind}{\bm{1}}                              % Indicator function
+\newcommand{\m}{\mathbf{m}}                            % Lebesgue measure
+\renewcommand{\P}{\mathbb{P}}                          % Probability measure
+\newcommand{\F}{\mathcal{F}}                           % Filtration
+\renewcommand{\wp}{\text{ w.p. }}                      % With probability
+\newcommand{\iid}{\text{iid}}                          % Independent and identically distributed
+\newcommand{\iidsim}{\stackrel{\iid}{\sim}}            % iid over ~
+\newcommand{\E}{\mathbb{E}}                            % Expectation
+\newcommand{\Var}{\text{Var}}                          % Variance
+\newcommand{\Cov}{\text{Cov}}                          % Covariance
+\newcommand{\Avar}{\text{Avar}}                        % Asymptotic variance
+\newcommand{\Acov}{\text{Acov}}                        % Asymptotic covariance
+\newcommand{\eqd}{\,{\buildrel \mathcal{D} \over =}\,} % Equal in distribution
+\newcommand{\dto}{\,{\buildrel d \over \to}\,}         % Converges in distribution
+\newcommand{\pto}{\,{\buildrel p \over \to}\,}         % Converges in probability
+\newcommand{\io}{\text{ i.o.}}                         % Infinitely often
+\DeclareMathOperator*{\plim}{plim}                     % Probability limit
 
 
 %%% 3. Syntax Highlighting
