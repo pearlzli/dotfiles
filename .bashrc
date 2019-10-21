@@ -94,30 +94,6 @@ parse_display() {
     echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
 }
 
-# Open using extension-specific application
-ev() {
-    filename=$(basename $1)
-    extension="${filename##*.}"
-
-    case $extension in
-        gdoc|gsheet) browser $(cat $1 | cut -f4 -d "\"") ;;
-        html) browser $@ ;;
-        pdf)
-            case $OSTYPE in
-                linux*) evince $@ 2>/dev/null & ;;
-                *) browser $@ ;;
-            esac
-            ;;
-        png)
-            case $OSTYPE in
-                linux*) eog $@ & ;;
-                *) browser $@ ;;
-            esac
-            ;;
-        *) echo "No ev behavior for file extension .$extension defined" ;;
-    esac
-}
-
 # Set default grep options:
 # -i: ignore case
 # -n: show line number
