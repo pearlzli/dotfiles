@@ -44,6 +44,10 @@ case $OSTYPE in
     darwin*) # OS X
         alias browser="open -a \"Google Chrome\""
         alias ls="ls -G"
+
+        # Stop Skim asking about auto-reloading
+        # https://tex.stackexchange.com/a/43060/116532
+        defaults write -app Skim SKAutoReloadFileUpdate -boolean true
         ;;
     linux*)
         alias browser="firefox"

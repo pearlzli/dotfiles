@@ -236,7 +236,7 @@
       :help "Run ConTeXt until completion")
      ("BibTeX" "[ -e %s ] && ~/dotfiles/mendeley-fixup.sh %s; bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
      ("Biber" "biber %s" TeX-run-Biber nil t :help "Run Biber")
-     ("View" "open -a Google\\ Chrome.app %s.pdf" TeX-run-discard-or-function t t :help "Run Viewer")
+     ("View" "open -a Skim %s.pdf" TeX-run-discard-or-function t t :help "Run Viewer")
      ("Print" "%p" TeX-run-command t t :help "Print the file")
      ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command)
      ("File" "%(o?)dvips %d -o %f " TeX-run-dvips t t :help "Generate PostScript file")
