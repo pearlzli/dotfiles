@@ -7,7 +7,8 @@
 \setlength{\parindent}{0pt}
 
 \usepackage{titlesec}
-\titlespacing{\subsection}{0pt}{0pt}{-0.75\baselineskip}
+\titlespacing{\subsection}{0pt}{0pt}{-0.5\baselineskip}
+\titlespacing{\subsubsection}{0pt}{0pt}{-0.5\baselineskip}
 
 \usepackage{caption}
 \captionsetup[table]{skip=0.5\baselineskip}
