@@ -44,6 +44,7 @@ case $OSTYPE in
     darwin*) # OS X
         alias browser="open -a \"Google Chrome\""
         alias ls="ls -G"
+        alias openf="open -R" # show in Finder
 
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
