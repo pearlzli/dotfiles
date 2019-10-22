@@ -211,3 +211,7 @@ timeout_result $? "matlab-emacs"
 # Stata
 $my_timeout $timeout_length git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
+
+# R (ESS)
+$my_timeout $timeout_length git clone "https://github.com/emacs-ess/ESS.git"
+timeout_result $? "ESS"

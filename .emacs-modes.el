@@ -61,3 +61,7 @@
 (xclip-mode 1) ; let emacs use clipboard
 (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
 (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
+
+;; ESS (R only)
+(add-to-list 'load-path "~/.emacs.d/ESS/lisp")
+(require 'ess-r-mode)
