@@ -159,6 +159,17 @@
 ;; Replace string
 (global-set-key (kbd "C-c %") 'replace-string)
 
+;; Align text in columns
+;; https://www.emacswiki.org/emacs/AlignCommands#toc7
+(defun align-repeat (start end regexp)
+  "Repeat alignment with respect to the given regular expression."
+  (interactive "r\nsAlign regexp: ")
+  (align-regexp start end
+      (concat "\\(\\s-*\\)" regexp) 1 0 t))
+(defun align-columns (start end)
+  "Align columns"
+  (interactive "r")
+  (align-repeat start end " +"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DISPLAY
