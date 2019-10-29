@@ -13,6 +13,9 @@
 \usepackage{caption}
 \captionsetup[table]{skip=0.5\baselineskip}
 
+% Don't number (sub...)sections
+\setcounter{secnumdepth}{0}
+
 % List environments
 \usepackage{enumitem}
 \setlist[enumerate]{parsep=\baselineskip}
