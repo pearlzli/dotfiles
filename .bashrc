@@ -42,13 +42,13 @@ case $OSTYPE in
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     darwin*) # OS X
-        alias browser="open -a \"Google Chrome\""
-        alias ls="ls -G"
-        alias openf="open -R" # show in Finder
-
         alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
         alias safari="open -a Safari.app"
         alias skim="open -a Skim.app"
+
+        alias browser="safari"
+        alias ls="ls -G"
+        alias openf="open -R" # show in Finder
 
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
