@@ -46,6 +46,10 @@ case $OSTYPE in
         alias ls="ls -G"
         alias openf="open -R" # show in Finder
 
+        alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
+        alias safari="open -a Safari.app"
+        alias skim="open -a Skim.app"
+
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
         defaults write -app Skim SKAutoReloadFileUpdate -boolean true
