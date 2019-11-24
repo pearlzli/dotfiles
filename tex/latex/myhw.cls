@@ -19,8 +19,6 @@
 % List environments
 \usepackage{enumitem}
 \setlist[enumerate]{parsep=\baselineskip}
-\setlist[enumerate,1]{label=\alph*), ref=(\alph*)}
-\setlist[enumerate,2]{label=\roman*), ref=(\roman*)}
 \setlist[itemize]{parsep=\baselineskip}
 
 % Theorems
