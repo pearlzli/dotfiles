@@ -1,6 +1,17 @@
-;; outline-minor-mode and outline-magic (LaTeX)
+;; LaTeX
 ;; https://emacs.stackexchange.com/questions/361/how-can-i-hide-display-latex-section-just-like-org-mode-does-with-headlines
 ;; https://emacs.stackexchange.com/questions/13426/auctex-doesnt-run-bibtex
+(setq TeX-parse-self t) ; enable AUCTeX parse on load
+(setq TeX-auto-save t)  ; enable AUCTeX parse on save
+
+(require 'reftex)
+(add-hook 'LaTeX-mode-hook 'turn-on-reftex)
+(setq reftex-plug-into-AUCTeX t)
+(setq reftex-ref-macro-prompt nil) ; turn off initial reference type prompt
+(defun reftex-format-cref (label def-fmt ref-style)   ; use cref when referencing labels using C-c )
+  (format "\\cref{%s}" label))                        ; https://tex.stackexchange.com/a/186877/116532
+(setq reftex-format-ref-function 'reftex-format-cref) ;
+
 (add-hook 'LaTeX-mode-hook #'outline-minor-mode)
 (add-to-list 'load-path "~/.emacs.d/outline-magic")
 (add-hook 'outline-mode-hook
@@ -10,8 +21,6 @@
           (lambda ()
             (require 'outline-magic)
             (define-key outline-minor-mode-map  (kbd "C-c TAB") 'outline-cycle)))
-(setq TeX-parse-self t) ; run bibtex on C-c C-c
-(setq TeX-auto-save t)  ;
 
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
