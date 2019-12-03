@@ -43,10 +43,10 @@ case $OSTYPE in
         ;;
     darwin*) # OS X
         alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
-        alias safari="open -a Safari.app"
+        alias chrome="open -a Google\ Chrome.app"
         alias skim="open -a Skim.app"
 
-        alias browser="safari"
+        alias browser="chrome"
         alias ls="ls -G"
         alias openf="open -R" # show in Finder
 
