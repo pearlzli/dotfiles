@@ -14,5 +14,14 @@
   \end{frame}
 }
 
+% Tikz overlays
+% https://tex.stackexchange.com/q/6135/116532
+\usepackage{tikz}
+\usetikzlibrary{positioning}
+\tikzset{onslide/.code args={<#1>#2}{%
+  \only<#1>{\pgfkeysalso{#2}}%
+}}
+\newcommand<>{\btikzset}[2]{\alt#3{\tikzset{#1}}{\tikzset{#2}}}
+
 % Load mystyle.sty
 \usepackage{mystyle}
