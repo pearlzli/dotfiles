@@ -1,6 +1,5 @@
 % Page formatting
 \LoadClass{beamer}
-\usetheme{Boadilla}
 
 % Section title slide
 % http://tex.stackexchange.com/a/178803
