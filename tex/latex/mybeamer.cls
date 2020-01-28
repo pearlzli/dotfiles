@@ -1,6 +1,9 @@
 % Page formatting
 \LoadClass{beamer}
 
+% Remove navigation controls from bottom right
+\setbeamertemplate{navigation symbols}{}
+
 % Section title slide
 % http://tex.stackexchange.com/a/178803
 \AtBeginSection[]{
