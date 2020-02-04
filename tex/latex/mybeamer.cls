@@ -1,8 +1,10 @@
 % Page formatting
 \LoadClass{beamer}
 
-% Remove navigation controls from bottom right
+% Page numbers (not nav controls) in bottom right
 \setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{footline}[frame number]
+\usepackage{appendixnumberbeamer}
 
 % Section title slide
 % http://tex.stackexchange.com/a/178803
