@@ -6,6 +6,9 @@
 \setbeamertemplate{footline}[frame number]
 \usepackage{appendixnumberbeamer}
 
+% Remove frame title numbering from allowframebreaks
+\setbeamertemplate{frametitle continuation}{}
+
 % Add TOC slide at the beginning of each section
 % Use \section* to suppress this slide for a given section
 % https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
@@ -15,6 +18,10 @@
   \end{frame}
 }
 \setbeamertemplate{section in toc}[sections numbered]
+
+% Box theorems and definitions
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
 
 % Tikz overlays
 % https://tex.stackexchange.com/q/6135/116532
