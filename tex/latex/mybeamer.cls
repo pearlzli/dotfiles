@@ -6,18 +6,15 @@
 \setbeamertemplate{footline}[frame number]
 \usepackage{appendixnumberbeamer}
 
-% Section title slide
-% http://tex.stackexchange.com/a/178803
+% Add TOC slide at the beginning of each section
+% Use \section* to suppress this slide for a given section
+% https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
 \AtBeginSection[]{
   \begin{frame}
-    \vfill
-    \centering
-    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}
-      \usebeamerfont{title}\insertsectionhead\par%
-    \end{beamercolorbox}
-    \vfill
+    \tableofcontents[currentsection]
   \end{frame}
 }
+\setbeamertemplate{section in toc}[sections numbered]
 
 % Tikz overlays
 % https://tex.stackexchange.com/q/6135/116532
