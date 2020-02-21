@@ -23,6 +23,8 @@ To set up a new machine:
    * `sshfs username@hostname:remotedir localdir` to mount
    * `umount localdir` to unmount
 
+7. If desired and on OS X, [set up text replacements](https://support.apple.com/guide/mac-help/back-up-and-share-text-replacements-on-mac-mchl2a7bd795/mac)
+
 ## Attribution
 
 Thanks to [Matt Cocci](https://github.com/MattCocci/ConfigurationTemplates), [Micah Smith](https://github.com/micahjsmith/dotfiles), and [Erica Moszkwoski](https://github.com/emoszkowski/configFiles) for much of this stuff.
