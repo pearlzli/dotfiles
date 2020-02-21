@@ -1,7 +1,0 @@
-! Send escape (meta in emacs) using option key
-! See https://apple.stackexchange.com/a/353377
-clear Mod1
-keycode 66 = Escape
-keycode 69 = Escape
-add Mod1 = Escape
-add Mod1 = Escape
