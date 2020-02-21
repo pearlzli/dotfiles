@@ -71,6 +71,7 @@ alias gd="git diff"
 alias gdt="git difftool"
 alias gg="git grep"
 alias gpo="git push origin"
+alias gri="git rebase -i"
 alias gs="git status"
 
 # Stop graphical display popup for password when git pushing
