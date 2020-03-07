@@ -34,3 +34,9 @@
 
 % Load mystyle.sty
 \usepackage{mystyle}
+
+% Necessary to use subcaption package with Beamer
+% https://tex.stackexchange.com/a/426090/116532
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
