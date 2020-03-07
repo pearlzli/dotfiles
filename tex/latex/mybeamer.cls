@@ -32,6 +32,11 @@
 }}
 \newcommand<>{\btikzset}[2]{\alt#3{\tikzset{#1}}{\tikzset{#2}}}
 
+% Single command to pause and add vertical space
+\newcommand{\pauseskip}{\pause
+
+\vspace{\baselineskip}}
+
 % Load mystyle.sty
 \usepackage{mystyle}
 
