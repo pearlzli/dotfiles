@@ -22,6 +22,7 @@
 % Box theorems and definitions
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\newcommand{\theoremcite}[1]{{\hypersetup{citecolor=white}\citealt{#1}}}
 
 % Tikz overlays
 % https://tex.stackexchange.com/q/6135/116532
