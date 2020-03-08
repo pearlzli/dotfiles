@@ -164,6 +164,11 @@ else
         try_symlink $file
     done
 
+    # kbordermatrix package
+    cd "$texdir/tex/latex"
+    wget "http://mirrors.concertpass.com/tex-archive/macros/generic/misc/kbordermatrix.sty"
+    echo "${green}Installed kbordermatrix.sty${normal}"
+
     # Bibliography style files
     maybe_mkdir "$texdir/bibtex/bst"
     tmpdir=$(mktemp -d)
