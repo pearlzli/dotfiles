@@ -1,9 +1,8 @@
 ;; LaTeX
-;; https://emacs.stackexchange.com/questions/361/how-can-i-hide-display-latex-section-just-like-org-mode-does-with-headlines
-;; https://emacs.stackexchange.com/questions/13426/auctex-doesnt-run-bibtex
-(setq TeX-parse-self t) ; enable AUCTeX parse on load
-(setq TeX-auto-save t)  ; enable AUCTeX parse on save
-(setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
+(setq TeX-parse-self t) ; make AUCTeX run bibtex
+(setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
+(setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer
+                                          ; https://emacs.stackexchange.com/a/7573/14500
 
 (setq reftex-extra-bindings t) ; use more intuitive key bindings (must be defined before loading RefTeX)
 (require 'reftex)
