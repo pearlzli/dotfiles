@@ -14,16 +14,6 @@
   (format "\\cref{%s}" label))                        ; https://tex.stackexchange.com/a/186877/116532
 (setq reftex-format-ref-function 'reftex-format-cref) ;
 
-(add-hook 'LaTeX-mode-hook #'outline-minor-mode)
-(add-to-list 'load-path "~/.emacs.d/outline-magic")
-(add-hook 'outline-mode-hook
-          (lambda ()
-            (require 'outline-cycle)))
-(add-hook 'outline-minor-mode-hook
-          (lambda ()
-            (require 'outline-magic)
-            (define-key outline-minor-mode-map  (kbd "C-c TAB") 'outline-cycle)))
-
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
 (autoload 'gitconfig-mode "gitconfig-mode"
