@@ -116,11 +116,11 @@ case $OSTYPE in
         maybe_mkdir ~/Library/KeyBindings
         cp "$dotfile_dir/DefaultKeyBinding.dict" ~/Library/KeyBindings
 
-        my_timeout=gtimeout
+        my_timeout="gtimeout $timeout_length"
         ;;
 
     *)
-        my_timeout=timeout
+        my_timeout="timeout $timeout_length"
         ;;
 esac
 
@@ -194,25 +194,25 @@ cd "$HOME/.emacs.d"
 emacs --script "$dotfile_dir/elpa-install.el"
 
 # Git
-$my_timeout $timeout_length git clone "https://github.com/magit/git-modes.git"
+$my_timeout git clone "https://github.com/magit/git-modes.git"
 timeout_result $? "git-modes"
 
 # Julia
-$my_timeout $timeout_length git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
+$my_timeout git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
 timeout_result $? "julia-emacs"
 
 # Markdown
-$my_timeout $timeout_length git clone "https://github.com/defunkt/markdown-mode.git"
+$my_timeout git clone "https://github.com/defunkt/markdown-mode.git"
 timeout_result $? "markdown-mode"
 
 # MATLAB
-$my_timeout $timeout_length git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
+$my_timeout git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
 timeout_result $? "matlab-emacs"
 
 # Stata
-$my_timeout $timeout_length git clone "https://github.com/louabill/ado-mode.git"
+$my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
 
 # R (ESS)
-$my_timeout $timeout_length git clone "https://github.com/emacs-ess/ESS.git"
+$my_timeout git clone "https://github.com/emacs-ess/ESS.git"
 timeout_result $? "ESS"
