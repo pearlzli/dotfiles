@@ -14,10 +14,11 @@
 % https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
 \AtBeginSection[]{
   \begin{frame}
-    \tableofcontents[currentsection]
+    \tableofcontents[currentsection,hideothersubsections]
   \end{frame}
 }
 \setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
 
 % Box theorems and definitions
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
