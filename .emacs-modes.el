@@ -5,11 +5,12 @@
 (setq TeX-auto-save t)  ; enable AUCTeX parse on save
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
 
+(setq reftex-extra-bindings t) ; use more intuitive key bindings (must be defined before loading RefTeX)
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-ref-macro-prompt nil) ; turn off initial reference type prompt
-(defun reftex-format-cref (label def-fmt ref-style)   ; use cref when referencing labels using C-c )
+(defun reftex-format-cref (label def-fmt ref-style)   ; use cref in reftex-label
   (format "\\cref{%s}" label))                        ; https://tex.stackexchange.com/a/186877/116532
 (setq reftex-format-ref-function 'reftex-format-cref) ;
 
