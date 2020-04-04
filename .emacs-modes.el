@@ -12,6 +12,7 @@
 (defun reftex-format-cref (label def-fmt ref-style)   ; use cref in reftex-label
   (format "\\cref{%s}" label))                        ; https://tex.stackexchange.com/a/186877/116532
 (setq reftex-format-ref-function 'reftex-format-cref) ;
+(setq reftex-default-bibliography '("~/Drive/research/papers/library.bib")) ; set default bib file (https://tex.stackexchange.com/a/54825/116532)
 
 ;; Git
 (add-to-list 'load-path "~/.emacs.d/git-modes")
