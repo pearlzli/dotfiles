@@ -117,6 +117,13 @@ FUNCTION {doublequote}
   if$
 }
 
+FUNCTION {urlify}
+{ duplicate$ empty$
+    { pop$ "" }
+    { "\url{ " swap$ * "}" * }
+  if$
+}
+
 FUNCTION {join}
 {  't := % second string
    'f := % join character
@@ -259,6 +266,13 @@ FUNCTION {output.title.italic}
     { skip$ }
 	{ title add.period$ emphasize " " * write$ }
 	if$
+}
+
+FUNCTION {output.url}
+{ URL empty$
+  { skip$ }
+  { URL urlify add.period$ " " * write$}
+  if$
 }
 
 FUNCTION {output.entry}
@@ -957,8 +971,10 @@ FUNCTION {unpublished}
     { output.year }
 	if$
   output.title.quoted
+  output.url
   author "author" required
   title "title" required
+  URL "URL" required
   note "note" required
   format.note
   output.entry
