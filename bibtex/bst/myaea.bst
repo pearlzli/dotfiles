@@ -829,6 +829,7 @@ FUNCTION {inproceedings}
   output.list.label % write author or surrogate label
   output.year
   output.title.quoted
+  "In " format.booktitle * ". " * output
   author "author" required
   title "title" required
   booktitle "booktitle" required
