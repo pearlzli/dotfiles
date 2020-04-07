@@ -9,7 +9,12 @@ fi
 basedir="$(realpath $(dirname $1))"
 bibnames="$(grep -h \bibdata $1.aux | sed 's|.*\\bibdata{\(.*\)}|\1|' | sed 's|,| |')"
 for bibname in $bibnames; do
-    bibfile="$bibname.bib"
+    # Add .bib to file name if necessary
+    if [[ $bibname == *.bib ]]; then
+        bibfile=$bibname
+    else
+        bibfile="$bibname.bib"
+    fi
     bibpath="$(realpath "$basedir/$bibfile")"
 
     if [[ ! -e "$bibpath" ]]; then
