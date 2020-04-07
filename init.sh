@@ -150,6 +150,7 @@ try_symlink startup.jl
 # TeX files
 cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
+bstfiles=$(find bibtex/bst -mindepth 1)
 
 if not_installed kpsewhich; then
     echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
@@ -164,19 +165,17 @@ else
         try_symlink $file
     done
 
+    # Bibliography style files
+    maybe_mkdir "$texdir/bibtex/bst"
+    cd $texdir
+    for file in $bstfiles; do
+        try_symlink $file
+    done
+
     # kbordermatrix package
     cd "$texdir/tex/latex"
     wget "http://mirrors.concertpass.com/tex-archive/macros/generic/misc/kbordermatrix.sty"
     echo "${green}Installed kbordermatrix.sty${normal}"
-
-    # Bibliography style files
-    maybe_mkdir "$texdir/bibtex/bst"
-    tmpdir=$(mktemp -d)
-    cd $tmpdir
-    wget "https://www.aeaweb.org/content/file?id=57"
-    unzip "file?id=57"
-    mv latex_templates/aea.bst "$texdir/bibtex/bst"
-    echo "${green}Installed aea.bst${normal}"
 fi
 
 
