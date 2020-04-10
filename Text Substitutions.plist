@@ -10,15 +10,39 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>̅</string>
+		<key>shortcut</key>
+		<string>\bar</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>β</string>
 		<key>shortcut</key>
 		<string>\beta</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>∩</string>
+		<key>shortcut</key>
+		<string>\cap</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>·</string>
+		<key>shortcut</key>
+		<string>\cdot</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>χ</string>
 		<key>shortcut</key>
 		<string>\chi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∪</string>
+		<key>shortcut</key>
+		<string>\cup</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -46,6 +70,42 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≥</string>
+		<key>shortcut</key>
+		<string>\geq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>̂</string>
+		<key>shortcut</key>
+		<string>\hat</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⟺</string>
+		<key>shortcut</key>
+		<string>\iff</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⟹</string>
+		<key>shortcut</key>
+		<string>\implies</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∈</string>
+		<key>shortcut</key>
+		<string>\in</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∫</string>
+		<key>shortcut</key>
+		<string>\int</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ι</string>
 		<key>shortcut</key>
 		<string>\iota</string>
@@ -61,6 +121,12 @@
 		<string>λ</string>
 		<key>shortcut</key>
 		<string>\lambda</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>≤</string>
+		<key>shortcut</key>
+		<string>\leq</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -88,6 +154,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>̅</string>
+		<key>shortcut</key>
+		<string>\over</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>φ</string>
 		<key>shortcut</key>
 		<string>\phi</string>
@@ -97,6 +169,12 @@
 		<string>π</string>
 		<key>shortcut</key>
 		<string>\pi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∏</string>
+		<key>shortcut</key>
+		<string>\prod</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -118,6 +196,24 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>⊆</string>
+		<key>shortcut</key>
+		<string>\subseteq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∑</string>
+		<key>shortcut</key>
+		<string>\sum</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⊇</string>
+		<key>shortcut</key>
+		<string>\supseteq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>τ</string>
 		<key>shortcut</key>
 		<string>\tau</string>
@@ -127,6 +223,24 @@
 		<string>θ</string>
 		<key>shortcut</key>
 		<string>\theta</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>̃</string>
+		<key>shortcut</key>
+		<string>\tilde</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>→</string>
+		<key>shortcut</key>
+		<string>\to</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>̲</string>
+		<key>shortcut</key>
+		<string>\under</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
