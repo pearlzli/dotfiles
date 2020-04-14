@@ -15,7 +15,12 @@ for bibname in $bibnames; do
     else
         bibfile="$bibname.bib"
     fi
-    bibpath="$(realpath "$basedir/$bibfile")"
+
+    if [[ -e "$bibfile" ]]; then
+        bibpath="$bibfile"
+    else
+        bibpath="$(realpath "$basedir/$bibfile")"
+    fi
 
     if [[ ! -e "$bibpath" ]]; then
         echo "ERROR: File $bibpath can't be found"
