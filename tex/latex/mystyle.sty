@@ -218,3 +218,11 @@
 
 % Add references section to table of contents
 \newcommand{\addrefstoc}{\phantomsection\addcontentsline{toc}{section}{References}}
+
+%%% 5. Other
+
+% Break URLs at hyphens
+% https://tex.stackexchange.com/a/254734/116532
+\makeatletter
+\g@addto@macro{\UrlBreaks}{\do\/\do\-}
+\makeatother
