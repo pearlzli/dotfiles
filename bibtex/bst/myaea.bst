@@ -904,6 +904,7 @@ FUNCTION {misc}
     { output.title.quoted }
 	if$
   format.howpublished ", "
+  output.url
 %  format.month join ". "
   format.note join
   output.entry
