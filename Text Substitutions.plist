@@ -136,6 +136,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≠</string>
+		<key>shortcut</key>
+		<string>\neq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ν</string>
 		<key>shortcut</key>
 		<string>\nu</string>
