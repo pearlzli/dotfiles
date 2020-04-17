@@ -112,6 +112,26 @@ case $OSTYPE in
             echo "${red}Did not add TeX Live binaries to PATH in ~/.bashrc-local: already there${normal}"
         fi
 
+        # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
+        # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
+        # https://apple.stackexchange.com/a/376828
+        cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SFMono-*.otf ~/Library/Fonts
+        if [ $? -eq 0 ]; then
+            echo "${green}Copied SF Mono font files to ~/Library/Fonts${normal}"
+        else
+            echo "${green}Could not copy SF Mono font files to ~/Library/Fonts${normal}"
+        fi
+
+        # Use SF Mono in Meld
+        # https://github.com/yousseb/meld/issues/38#issuecomment-547577592
+        defaults write org.gnome.meld "/org/gnome/meld/use-system-font" 0
+        defaults write org.gnome.meld "/org/gnome/meld/custom-font" "SF Mono, 14"
+        if [ $? -eq 0 ]; then
+            echo "${green}Set SF Mono as Meld font${normal}"
+        else
+            echo "${green}Could not set SF Mono as Meld font${normal}"
+        fi
+
         # Copy Mac key bindings
         maybe_mkdir ~/Library/KeyBindings
         cp "$dotfile_dir/DefaultKeyBinding.dict" ~/Library/KeyBindings
