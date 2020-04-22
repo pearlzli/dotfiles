@@ -256,8 +256,13 @@
   ;; If you edit it by hand, you could mess it up, so be careful.
   ;; Your init file should contain only one such instance.
   ;; If there is more than one, they won't work right.
- '(diff-added ((t (:inherit diff-changed :background "green"))))
- '(diff-removed ((t (:inherit diff-changed :background "brightred"))))
+ '(diff-added ((t (:background "green"))))
+ '(diff-changed ((t (:background "yellow"))))
+ '(diff-context ((t (:foreground "brightblack"))))
+ '(diff-refine-added ((t (:inherit diff-added))))
+ '(diff-refine-changed ((t (:inherit diff-changed))))
+ '(diff-refine-removed ((t (:inherit diff-removed))))
+ '(diff-removed ((t (:background "brightred"))))
  '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
  '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
  '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
