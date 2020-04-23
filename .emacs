@@ -201,6 +201,9 @@
      ("equation*")
      ("picture")
      ("tabbing"))))
+ '(LaTeX-section-hook
+   (quote
+    (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
  '(TeX-command-list
    (quote
     (("TeX" "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil
