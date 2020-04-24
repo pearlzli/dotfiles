@@ -255,7 +255,16 @@
  '(bibtex-align-at-equal-sign t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
- '(package-selected-packages (quote (xclip cl-lib auctex))))
+ '(package-selected-packages (quote (xclip cl-lib auctex)))
+ '(reftex-label-alist
+   (quote
+    (("claim" 84 "claim:" nil nil nil -3)
+     ("corollary" 84 "cor:" nil nil nil -3)
+     ("lemma" 84 "lemma:" nil nil nil -3)
+     ("note" 84 "note:" nil nil nil -3)
+     ("prop" 84 "prop:" nil nil nil -3)
+     ("theorem" 84 "thm:" nil nil nil -3))))
+ '(reftex-ref-style-default-list (quote ("Default" "Cleveref"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
