@@ -1,11 +1,10 @@
 ;; LaTeX
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
-(defun my-LaTeX-hook (file)
+(defun my-TeX-auto-generate ()
   "Custom LaTeX hook"
   (TeX-auto-generate "~/dotfiles/tex/latex" "~/.emacs.d/auctex/auto") ; https://tex.stackexchange.com/a/410552/116532
   'TeX-normal-mode) ; https://www.gnu.org/software/auctex/manual/auctex/Parsing-Files.html
-(add-hook 'TeX-after-compilation-finished-functions #'my-LaTeX-hook) ; https://emacs.stackexchange.com/a/45334/14500
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer
                                           ; https://emacs.stackexchange.com/a/7573/14500
 
