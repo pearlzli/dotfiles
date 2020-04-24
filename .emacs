@@ -251,6 +251,7 @@
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
  '(TeX-date-format "%B %d, %Y")
+ '(TeX-style-private (quote ("~/dotfiles/tex/latex")))
  '(bibtex-align-at-equal-sign t)
  '(markdown-asymmetric-header t)
  '(markdown-enable-math t)
