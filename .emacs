@@ -79,7 +79,7 @@
 (with-temp-buffer
   (activate-input-method "TeX")
   (let ((quail-current-package (assoc "TeX" quail-package-alist)))
-   (quail-define-rules (('append . t))
+   (quail-define-rules ((append . t))
                        ("\\Phi" "Φ"))))
 
 ;; Delete trailing whitespace upon saving
