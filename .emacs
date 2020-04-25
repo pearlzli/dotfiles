@@ -74,6 +74,14 @@
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Add missing rules to tex input method
+;; https://www.emacswiki.org/emacs/TeXInputMethod
+(with-temp-buffer
+  (activate-input-method "TeX")
+  (let ((quail-current-package (assoc "TeX" quail-package-alist)))
+   (quail-define-rules (('append . t))
+                       ("\\Phi" "Φ"))))
+
 ;; Delete trailing whitespace upon saving
 ;; Toggle auto-deleting with C-c w (useful for editing hunks in git add --patch)
 (defvar my-inhibit-dtw nil)
