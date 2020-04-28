@@ -16,9 +16,11 @@ for bibname in $bibnames; do
         bibfile="$bibname.bib"
     fi
 
-    if [[ -e "$bibfile" ]]; then
+    if [[ "${bibfile:0:1}" == / || "${bibfile:0:2}" == ~[/a-z] ]]; then
+        # Absolute path
         bibpath="$bibfile"
     else
+        # Relative path
         bibpath="$(realpath "$basedir/$bibfile")"
     fi
 
