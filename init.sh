@@ -171,6 +171,7 @@ try_symlink startup.jl
 cd $dotfile_dir
 texfiles=$(find tex/latex -mindepth 1)
 bstfiles=$(find bibtex/bst -mindepth 1)
+elfiles=$(find auctex/auto -mindepth 1)
 
 if not_installed kpsewhich; then
     echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
@@ -189,6 +190,13 @@ else
     maybe_mkdir "$texdir/bibtex/bst"
     cd $texdir
     for file in $bstfiles; do
+        try_symlink $file
+    done
+
+    # AUCTeX style hooks
+    maybe_mkdir "~/.emacs.d/auctex/auto"
+    cd ~/.emacs.d
+    for file in $elfiles; do
         try_symlink $file
     done
 
