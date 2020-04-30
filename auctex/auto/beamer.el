@@ -143,10 +143,7 @@
 		     (save-excursion
 		       (LaTeX-find-matching-begin)
 		       (end-of-line)
-		       (LaTeX-newline)
-		       (insert (format "\\frametitle{%s}" title))
-		       ;; This works because \frametitle is a
-		       ;; paragraph command.
+		       (insert (format "{%s}" title))
 		       (backward-char)
 		       (LaTeX-fill-paragraph))))))
     '("onlyenv" (lambda (env &rest ignore)
