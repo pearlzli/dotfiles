@@ -70,7 +70,8 @@
 	     LaTeX-section-section)))
 
    (setq LaTeX-item-list
-	 (append '(("itemize" . LaTeX-item-beamer)
+	 (append '(("wideitemize" . LaTeX-item-beamer)
+		   ("itemize" . LaTeX-item-beamer)
 		   ("enumerate" . LaTeX-item-beamer))
 		 LaTeX-item-list))
 

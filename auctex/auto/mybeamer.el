@@ -25,7 +25,7 @@
     '("theoremcite" 1)
     "pauseskip")
    (LaTeX-add-environments
-    "itemize")
+    '("wideitemize" LaTeX-env-item))
    (LaTeX-add-xcolor-definecolors
     "blue"
     "green"
