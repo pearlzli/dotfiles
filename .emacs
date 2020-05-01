@@ -269,8 +269,6 @@
      ("titlepage"))))
  '(TeX-style-private (quote ("~/dotfiles/tex/latex")))
  '(bibtex-align-at-equal-sign t)
- '(markdown-asymmetric-header t)
- '(markdown-enable-math t)
  '(package-selected-packages (quote (xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
