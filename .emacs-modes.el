@@ -56,6 +56,9 @@
 (add-to-list 'auto-mode-alist '("\\.jl\\'" . julia-mode))
 (autoload 'julia-mode "julia-mode" "Julia mode" t)
 
+;; Python
+(setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
+
 ;; MATLAB
 (add-to-list 'load-path "~/.emacs.d/matlab-emacs")
 (autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
