@@ -59,7 +59,6 @@
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
 (require 'ado-mode)
-(xclip-mode 1) ; let emacs use clipboard
 (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
 (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
 
