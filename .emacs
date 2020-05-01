@@ -82,16 +82,7 @@
                        ("\\Phi" "Φ"))))
 
 ;; Delete trailing whitespace upon saving
-;; Toggle auto-deleting with C-c w (useful for editing hunks in git add --patch)
-(defvar my-inhibit-dtw nil)
-(defun my-delete-trailing-whitespace ()
-  (unless my-inhibit-dtw (delete-trailing-whitespace)))
-(add-hook 'before-save-hook 'my-delete-trailing-whitespace)
-(defun my-inhibit-dtw ()
-  (interactive)
-  (set (make-local-variable 'my-inhibit-dtw) (not my-inhibit-dtw))
-  (message "Toggled deleting trailing whitespace in this buffer"))
-(global-set-key (kbd "C-c w") 'my-inhibit-dtw)
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; Delete file and buffer
 ;; http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/
