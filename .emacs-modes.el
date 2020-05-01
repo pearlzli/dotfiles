@@ -64,7 +64,6 @@
   (setq fill-column 80)
   (setq matlab-indent-function t)
   (setq matlab-comment-region-s "% ")
-  (turn-on-auto-fill)
   (local-set-key "\M-;" nil)
   (local-set-key "\M-q" nil))
 
