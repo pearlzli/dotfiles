@@ -9,6 +9,12 @@
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
 
 ;; LaTeX
+(with-eval-after-load 'font-latex
+  (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
+  (set-face-foreground 'font-latex-bold-face "brightred")
+  (set-face-foreground 'font-latex-italic-face "brightred")
+  (set-face-foreground 'font-latex-math-face "brightyellow"))
+
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
 (defun my-TeX-auto-generate ()

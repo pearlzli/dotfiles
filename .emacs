@@ -271,12 +271,3 @@
      ("prop" 84 "prop:" nil nil nil -3)
      ("theorem" 84 "thm:" nil nil nil -3))))
  '(reftex-ref-style-default-list (quote ("Default" "Cleveref"))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
- '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
- '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))
- '(font-latex-sectioning-5-face ((((type tty pc) (class color) (background light)) (:foreground "magenta" :weight bold)))))
