@@ -27,15 +27,10 @@
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode t)
-  (global-set-key [mouse-4] (lambda ()
-                              (interactive)
-                              (scroll-down 1)))
-  (global-set-key [mouse-5] (lambda ()
-                              (interactive)
-                              (scroll-up 1)))
+  (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 1)))
+  (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 1)))
   (defun track-mouse (e))
-  (setq mouse-sel-mode t)
-)
+  (setq mouse-sel-mode t))
 
 ;; Load custom modes, e.g. Julia mode
 (load "~/.emacs-modes.el")
@@ -61,14 +56,10 @@
 ;; Use M-n and M-p to move forward and back 10 lines
 ;; Use M-F and M-B to move forward and back 20 characters
 ;; https://stackoverflow.com/a/2657587
-(global-set-key (kbd "M-n")
-    (lambda () (interactive) (next-line 10)))
-(global-set-key (kbd "M-p")
-    (lambda () (interactive) (previous-line 10)))
-(global-set-key (kbd "M-F")
-    (lambda () (interactive) (forward-char 20)))
-(global-set-key (kbd "M-B")
-    (lambda () (interactive) (backward-char 20)))
+(global-set-key (kbd "M-n") (lambda () (interactive) (next-line 10)))
+(global-set-key (kbd "M-p") (lambda () (interactive) (previous-line 10)))
+(global-set-key (kbd "M-F") (lambda () (interactive) (forward-char 20)))
+(global-set-key (kbd "M-B") (lambda () (interactive) (backward-char 20)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
