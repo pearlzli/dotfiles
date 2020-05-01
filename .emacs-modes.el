@@ -17,6 +17,8 @@
 
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
+(setq TeX-date-format "%B %d, %Y") ; Month D, YYYY
+(setq TeX-style-private '("~/dotfiles/tex/latex"))
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
 (setq bibtex-align-at-equal-sign t)
 (defun my-TeX-auto-generate ()

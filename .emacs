@@ -250,7 +250,6 @@
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Auto Generate" "my-TeX-auto-generate" TeX-run-function nil t :help "Auto generate and reapply style hooks")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
- '(TeX-date-format "%B %d, %Y")
  '(TeX-insert-braces-alist
    (quote
     (("centering")
@@ -259,8 +258,6 @@
      ("noindent")
      ("pagebreak")
      ("titlepage"))))
- '(TeX-style-private (quote ("~/dotfiles/tex/latex")))
- '(bibtex-align-at-equal-sign t)
  '(package-selected-packages (quote (xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
