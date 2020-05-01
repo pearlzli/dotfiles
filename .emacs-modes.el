@@ -3,7 +3,7 @@
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
 (defun my-TeX-auto-generate ()
   "Custom LaTeX hook"
-  (TeX-auto-generate "~/dotfiles/tex/latex" "~/.emacs.d/auctex/auto") ; https://tex.stackexchange.com/a/410552/116532
+  (TeX-auto-generate "~/dotfiles/tex/latex" "~/dotfiles/tex/latex/auto") ; https://tex.stackexchange.com/a/410552/116532
   'TeX-normal-mode) ; https://www.gnu.org/software/auctex/manual/auctex/Parsing-Files.html
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer
                                           ; https://emacs.stackexchange.com/a/7573/14500
