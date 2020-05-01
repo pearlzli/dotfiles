@@ -160,8 +160,9 @@
 
 ;; Colors
 (set-face-attribute 'region nil :inverse-video t)
-(set-face-foreground 'linum "brightblack")
-(set-face-foreground 'minibuffer-prompt "brightblue")
+(set-face-background 'show-paren-match "brightblack")
+(set-face-background 'show-paren-mismatch "red")
+(set-face-background 'trailing-whitespace "brightred")
 (set-face-foreground font-lock-builtin-face "brightmagenta")
 (set-face-foreground font-lock-comment-face "green")
 (set-face-foreground font-lock-constant-face "brightcyan")
@@ -170,9 +171,9 @@
 (set-face-foreground font-lock-string-face "brightred")
 (set-face-foreground font-lock-type-face "brightcyan")
 (set-face-foreground font-lock-variable-name-face "yellow")
-(set-face-background 'trailing-whitespace "brightred")
-(set-face-background 'show-paren-match "brightblack")
-(set-face-background 'show-paren-mismatch "red")
+(set-face-foreground 'linum "brightblack")
+(set-face-foreground 'minibuffer-prompt "brightblue")
+(set-face-background 'region "yellow")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; CUSTOM VARIABLES
@@ -275,13 +276,6 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(diff-added ((t (:background "green"))))
- '(diff-changed ((t (:background "yellow"))))
- '(diff-context ((t (:foreground "brightblack"))))
- '(diff-refine-added ((t (:inherit diff-added))))
- '(diff-refine-changed ((t (:inherit diff-changed))))
- '(diff-refine-removed ((t (:inherit diff-removed))))
- '(diff-removed ((t (:background "brightred"))))
  '(font-latex-bold-face ((((class color) (background light)) (:inherit bold :foreground "brightred"))))
  '(font-latex-italic-face ((((class color) (background light)) (:inherit italic :foreground "brightred"))))
  '(font-latex-math-face ((((class color) (background light)) (:foreground "brightyellow"))))

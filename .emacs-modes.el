@@ -1,3 +1,13 @@
+;; Diff mode
+(with-eval-after-load 'diff-mode
+  (set-face-foreground 'diff-context "brightblack")
+  (set-face-background 'diff-added "green")
+  (set-face-background 'diff-changed "yellow")
+  (set-face-background 'diff-removed "brightred")
+  (set-face-attribute 'diff-refine-added nil :inherit 'diff-added)
+  (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
+  (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
+
 ;; LaTeX
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
