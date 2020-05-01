@@ -65,6 +65,10 @@
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;; Reload .emacs with C-x C-r
+(global-unset-key (kbd "C-x C-r")) ; originally bound to find-file-read-only
+(global-set-key (kbd "C-x C-r") (lambda () (interactive) (load-file "~/.emacs")))
+
 ;; Add missing rules to tex input method
 ;; https://www.emacswiki.org/emacs/TeXInputMethod
 (with-temp-buffer
