@@ -71,9 +71,14 @@
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
-(require 'ado-mode)
-(define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
-(define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
+(autoload 'ado-mode "ado-mode" "Stata mode (ado-mode)" t)
+(setq auto-mode-alist (cons '("\\.do$" . ado-mode) auto-mode-alist))
+(with-eval-after-load 'ado-mode
+  (setq ado-close-under-line-flag nil) ; indent close brace at same indent level as open brace
+  (setq ado-tab-width 4)
+  (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
+  (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
+  (define-key ado-mode-map (kbd "TAB") 'ado-indent-region)) ; default is ado-indent-line
 
 ;; ESS (R only)
 (add-to-list 'load-path "~/.emacs.d/ESS/lisp")
