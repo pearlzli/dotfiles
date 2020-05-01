@@ -1,3 +1,8 @@
+% Pass in options to beamer class
+% https://tex.stackexchange.com/a/418947/116532
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+\ProcessOptions\relax
+
 % Page formatting
 \LoadClass[aspectratio=169]{beamer}
 
