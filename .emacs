@@ -262,7 +262,8 @@
  '(TeX-date-format "%B %d, %Y")
  '(TeX-insert-braces-alist
    (quote
-    (("clearpage")
+    (("centering")
+     ("clearpage")
      ("maketitle")
      ("noindent")
      ("pagebreak")
