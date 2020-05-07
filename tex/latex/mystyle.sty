@@ -58,7 +58,7 @@
 
 % General math
 \newcommand{\oh}{\frac{1}{2}}
-\newcommand{\st}{\text{\ s.t.\ }}                      % Such that
+\newcommand{\st}{\text{ s.t. }}                        % Such that
 \newcommand{\where}{\middle|}                          % Where
 \newcommand{\comp}[1]{#1^{\mathsf{c}}}                 % Complement
 \newcommand{\inv}[1]{#1^{-1}}                          % Inverse
@@ -95,13 +95,13 @@
 \renewcommand{\P}{\mathbb{P}}                          % Probability measure
 \newcommand{\F}{\mathcal{F}}                           % Filtration
 \renewcommand{\wp}{\text{ w.p. }}                      % With probability
-\newcommand{\iid}{\text{iid}}                          % Independent and identically distributed
+\DeclareMathOperator*{\iid}{iid}                       % Independent and identically distributed
 \newcommand{\iidsim}{\stackrel{\iid}{\sim}}            % iid over ~
 \newcommand{\E}{\mathbb{E}}                            % Expectation
-\newcommand{\Var}{\text{Var}}                          % Variance
-\newcommand{\Cov}{\text{Cov}}                          % Covariance
-\newcommand{\Avar}{\text{Avar}}                        % Asymptotic variance
-\newcommand{\Acov}{\text{Acov}}                        % Asymptotic covariance
+\DeclareMathOperator*{\Var}{Var}                       % Variance
+\DeclareMathOperator*{\Cov}{Cov}                       % Covariance
+\DeclareMathOperator*{\Avar}{Avar}                     % Asymptotic variance
+\DeclareMathOperator*{\Acov}{Acov}                     % Asymptotic covariance
 \newcommand{\eqd}{\,{\buildrel \mathcal{D} \over =}\,} % Equal in distribution
 \newcommand{\dto}{\,{\buildrel d \over \to}\,}         % Converges in distribution
 \newcommand{\pto}{\,{\buildrel p \over \to}\,}         % Converges in probability
