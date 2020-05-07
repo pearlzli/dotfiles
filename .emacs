@@ -268,4 +268,15 @@
      ("note" 84 "note:" nil nil nil -3)
      ("prop" 84 "prop:" nil nil nil -3)
      ("theorem" 84 "thm:" nil nil nil -3))))
+ '(reftex-ref-style-alist
+   (quote
+    (("Default" t
+      (("\\ref" 13)
+       ("\\pageref" 112)
+       ("\\eqref" 101)))
+     ("Cleveref" "cleveref"
+      (("\\cref" 99)
+       ("\\Cref" 67)
+       ("\\cpageref" 100)
+       ("\\Cpageref" 68))))))
  '(reftex-ref-style-default-list (quote ("Default" "Cleveref"))))
