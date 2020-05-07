@@ -262,6 +262,7 @@
  '(reftex-label-alist
    (quote
     (("claim" 84 "claim:" nil nil nil -3)
+     ("conj" 84 "conj:" nil nil nil -3)
      ("corollary" 84 "cor:" nil nil nil -3)
      ("lemma" 84 "lemma:" nil nil nil -3)
      ("note" 84 "note:" nil nil nil -3)
