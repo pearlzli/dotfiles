@@ -8,6 +8,15 @@
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
 
+;; SMerge mode
+(with-eval-after-load 'smerge-mode
+  (set-face-background 'smerge-markers "brightblack")
+  (set-face-attribute 'smerge-lower nil :inherit 'diff-added)
+  (set-face-attribute 'smerge-upper nil :inherit 'diff-removed)
+  (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added)
+  (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed)
+  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed))
+
 ;; LaTeX
 (with-eval-after-load 'font-latex
   (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
