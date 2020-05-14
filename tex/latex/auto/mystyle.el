@@ -91,7 +91,8 @@
     "addrefstoc"
     "oldepsilon"
     "oldvarepsilon"
-    "oldforall")
+    "oldforall"
+    "renewtheorem")
    (LaTeX-add-color-definecolors
     "codegreen"
     "codepurple"
