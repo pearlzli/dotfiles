@@ -11,11 +11,11 @@
 ;; SMerge mode
 (with-eval-after-load 'smerge-mode
   (set-face-background 'smerge-markers "brightblack")
-  (set-face-attribute 'smerge-lower nil :inherit 'diff-added)
-  (set-face-attribute 'smerge-upper nil :inherit 'diff-removed)
-  (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added)
-  (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed)
-  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed))
+  (set-face-attribute 'smerge-lower nil :inherit 'diff-added :background nil)
+  (set-face-attribute 'smerge-upper nil :inherit 'diff-removed :background nil)
+  (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added :background nil)
+  (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed :background nil)
+  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil)
 
 ;; LaTeX
 (with-eval-after-load 'font-latex
