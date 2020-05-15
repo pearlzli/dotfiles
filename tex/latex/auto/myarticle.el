@@ -20,6 +20,16 @@
     "article"
     "art11"
     "geometry"
-    "mystyle"))
+    "amsthm"
+    "mystyle")
+   (LaTeX-add-environments
+    "assump"
+    "claim"
+    "conj"
+    "corollary"
+    "lemma"
+    "prop"
+    "theorem"
+    "remark"))
  :latex)
 

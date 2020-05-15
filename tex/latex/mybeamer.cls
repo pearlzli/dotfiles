@@ -5,8 +5,9 @@
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
 \ProcessOptions\relax
 
-% Page formatting
-\LoadClass[aspectratio=169]{beamer}
+% Load beamer class
+% Disable automatic theorem definitions (https://tex.stackexchange.com/a/285558/116532)
+\LoadClass[aspectratio=169,notheorems]{beamer}
 
 
 %%% 2. Appearance
@@ -62,6 +63,19 @@
 \newcommand{\pauseskip}{\pause
 
   \vspace{\baselineskip}}
+
+% Theorem definitions
+% Don't italicize any theorem environments
+\usepackage{amsthm}
+\theoremstyle{definition}
+\newtheorem{assump}{Assumption}
+\newtheorem{claim}{Claim}
+\newtheorem{conj}{Conjecture}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{remark}{Remark}
+\newtheorem{theorem}{Theorem}
 
 % Load mystyle.sty
 \usepackage{mystyle}

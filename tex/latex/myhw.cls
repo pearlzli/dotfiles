@@ -21,8 +21,10 @@
 \setlist[enumerate]{parsep=\baselineskip}
 \setlist[itemize]{parsep=\baselineskip}
 
-% Theorems
+% Theorem definitions
+% Italicize non-remark theorem environments
 \usepackage{amsthm}
+\theoremstyle{plain}
 \newtheorem{lemma}{Lemma}
 \newtheorem{prop}{Proposition}
 

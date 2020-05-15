@@ -2,7 +2,7 @@
  "mybeamer"
  (lambda ()
    (TeX-add-to-alist 'LaTeX-provided-class-options
-                     '(("beamer" "aspectratio=169")))
+                     '(("beamer" "aspectratio=169" "notheorems")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("lato" "default")))
    (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
@@ -22,12 +22,22 @@
     "beamer10"
     "lato"
     "appendixnumberbeamer"
+    "amsthm"
     "mystyle")
    (TeX-add-symbols
     '("theoremcite" 1)
     "pauseskip")
    (LaTeX-add-environments
     '("wideitemize" LaTeX-env-item))
+   (LaTeX-add-amsthm-newtheorems
+    "assump"
+    "claim"
+    "conj"
+    "corollary"
+    "lemma"
+    "prop"
+    "remark"
+    "theorem")
    (LaTeX-add-xcolor-definecolors
     "blue"
     "green"
