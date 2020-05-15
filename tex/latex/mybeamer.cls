@@ -85,3 +85,7 @@
 \makeatletter
 \let\@@magyar@captionfix\relax
 \makeatother
+
+% Open PDFs in full page mode
+% https://tex.stackexchange.com/a/16473/116532
+\hypersetup{pdfstartview=Fit}
