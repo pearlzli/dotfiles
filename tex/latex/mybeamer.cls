@@ -56,24 +56,12 @@
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
 
 
-%%% 4. Overlays
-
-% Tikz overlays
-% https://tex.stackexchange.com/q/6135/116532
-\usepackage{tikz}
-\usetikzlibrary{positioning}
-\tikzset{onslide/.code args={<#1>#2}{%
-  \only<#1>{\pgfkeysalso{#2}}%
-}}
-\newcommand<>{\btikzset}[2]{\alt#3{\tikzset{#1}}{\tikzset{#2}}}
+%%% 4. Other
 
 % Single command to pause and add vertical space
 \newcommand{\pauseskip}{\pause
 
   \vspace{\baselineskip}}
-
-
-%%% 5. Load mystyle.sty and handle package clashes
 
 % Load mystyle.sty
 \usepackage{mystyle}

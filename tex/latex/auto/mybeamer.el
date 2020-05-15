@@ -22,7 +22,6 @@
     "beamer10"
     "lato"
     "appendixnumberbeamer"
-    "tikz"
     "mystyle")
    (TeX-add-symbols
     '("theoremcite" 1)
