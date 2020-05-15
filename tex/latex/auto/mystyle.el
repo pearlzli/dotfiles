@@ -76,6 +76,7 @@
     "ind"
     "m"
     "F"
+    "supp"
     "iid"
     "iidsim"
     "E"
@@ -102,4 +103,3 @@
     "matlab"
     "julia"))
  :latex)
-
