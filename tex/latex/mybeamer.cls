@@ -53,8 +53,9 @@
 % Use circular bullets for subitems
 \setbeamertemplate{itemize subitem}[circle]
 
-% Define wideitemize environment for use with nested itemize
+% Define wideitemize and widenumerate environments
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
+\newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{\baselineskip}}{\endenumerate}
 
 
 %%% 4. Other

@@ -28,7 +28,8 @@
     '("theoremcite" 1)
     "pauseskip")
    (LaTeX-add-environments
-    '("wideitemize" LaTeX-env-item))
+    '("wideitemize" LaTeX-env-item)
+    '("wideenumerate" LaTeX-env-item))
    (LaTeX-add-amsthm-newtheorems
     "assump"
     "claim"
