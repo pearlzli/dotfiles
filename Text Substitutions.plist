@@ -52,7 +52,7 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>ε</string>
+		<string>ϵ</string>
 		<key>shortcut</key>
 		<string>\epsilon</string>
 	</dict>
@@ -166,7 +166,7 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>φ</string>
+		<string>ϕ</string>
 		<key>shortcut</key>
 		<string>\phi</string>
 	</dict>
@@ -253,6 +253,42 @@
 		<string>υ</string>
 		<key>shortcut</key>
 		<string>\upsilon</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ε</string>
+		<key>shortcut</key>
+		<string>\varepsilon</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>𝜑</string> <!--Typing this in comment makes Adobe Reader crash-->
+		<key>shortcut</key>
+		<string>\varphi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ϖ</string>
+		<key>shortcut</key>
+		<string>\varpi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ϱ</string>
+		<key>shortcut</key>
+		<string>\varrho</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ς</string>
+		<key>shortcut</key>
+		<string>\varsigma</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ϑ</string>
+		<key>shortcut</key>
+		<string>\vartheta</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
