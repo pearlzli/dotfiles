@@ -62,7 +62,6 @@ try_symlink() {
     else
         echo "${red}Did not link $1: non-symlink file already exists. Merge $1 into $dotfile_dir/$1 first and then delete $1 before retrying${normal}"
     fi
-
 }
 
 # Length of time before timing out
@@ -166,6 +165,11 @@ done
 maybe_mkdir ~/.julia/config
 cd ~/.julia/config
 try_symlink startup.jl
+
+# Stata startup
+maybe_mkdir ~/Documents/Stata
+cd ~/Documents/Stata
+try_symlink profile.do
 
 # TeX files
 cd $dotfile_dir
