@@ -23,6 +23,10 @@
   (set-face-foreground 'font-latex-bold-face "brightred")
   (set-face-foreground 'font-latex-italic-face "brightred")
   (set-face-foreground 'font-latex-math-face "brightyellow"))
+(with-eval-after-load 'latex
+  (add-to-list 'LaTeX-font-list '(112 "" "" "\\paren{" "}"))  ; add font key bindings
+  (add-to-list 'LaTeX-font-list '(98 "" "" "\\bracket{" "}")) ; https://tex.stackexchange.com/a/523728/116532
+  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))  ; https://en.wikipedia.org/wiki/ASCII#Printable_characters
 
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
