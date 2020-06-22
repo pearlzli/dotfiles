@@ -44,8 +44,14 @@
 (load "~/.emacs-modes.el")
 
 ;; Move backup files to central location
-(setq backup-directory-alist
-      `((".*" . , "~/.emacs.d/backup/")))
+;; https://stackoverflow.com/a/2680682/2756250
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
+  backup-by-copying t    ; don't delink hardlinks
+  version-control t      ; use version numbers on backups
+  delete-old-versions t  ; automatically delete excess backups
+  kept-new-versions 10   ; how many of the newest versions to keep
+  kept-old-versions 5    ; and how many of the old
+  )
 (setq auto-save-file-name-transforms
       `((".*" , "~/.emacs.d/backup/" t)))
 (setq auto-save-list-file-prefix nil)
