@@ -213,7 +213,7 @@ maybe_mkdir "$HOME/.emacs.d/backup"
 
 cd "$HOME/.emacs.d"
 
-# Install cl-lib, AUCTeX (LaTeX) using ELPA
+# Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
 # Git

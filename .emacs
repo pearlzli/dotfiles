@@ -4,6 +4,10 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
+;; Add package archives (https://emacs.stackexchange.com/q/268/14500)
+;; Marmalade discontinued (https://www.emacswiki.org/emacs/MarmaladeRepo)
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; BASIC EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
