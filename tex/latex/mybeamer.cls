@@ -73,6 +73,7 @@
 \newtheorem{claim}{Claim}
 \newtheorem{conj}{Conjecture}
 \newtheorem{corollary}{Corollary}
+\newtheorem{defn}{Definition}
 \newtheorem{lemma}{Lemma}
 \newtheorem{prop}{Proposition}
 \newtheorem{remark}{Remark}

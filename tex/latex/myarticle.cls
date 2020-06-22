@@ -3,7 +3,7 @@
 \usepackage[margin=1in]{geometry}
 
 % Theorem definitions
-% Italicize non-remark theorem environments
+% Italicize non-{defn,remark} theorem environments
 \usepackage{amsthm}
 \theoremstyle{plain}
 \newtheorem{assump}{Assumption}
@@ -14,6 +14,7 @@
 \newtheorem{prop}{Proposition}
 \newtheorem{theorem}{Theorem}
 \theoremstyle{definition}
+\newtheorem{defn}{Definition}
 \newtheorem{remark}{Remark}
 
 % Load mystyle.sty

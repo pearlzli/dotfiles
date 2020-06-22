@@ -22,7 +22,7 @@
     "geometry"
     "amsthm"
     "mystyle")
-   (LaTeX-add-environments
+   (LaTeX-add-amsthm-newtheorems
     "assump"
     "claim"
     "conj"
@@ -30,6 +30,7 @@
     "lemma"
     "prop"
     "theorem"
+    "defn"
     "remark"))
  :latex)
 

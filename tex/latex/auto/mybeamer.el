@@ -35,6 +35,7 @@
     "claim"
     "conj"
     "corollary"
+    "defn"
     "lemma"
     "prop"
     "remark"

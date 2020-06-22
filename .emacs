@@ -278,6 +278,7 @@
      ("claim" 84 "claim:" nil nil nil -3)
      ("conj" 84 "conj:" nil nil nil -3)
      ("corollary" 84 "cor:" nil nil nil -3)
+     ("defn" 84 "defn:" nil nil nil -3)
      ("lemma" 84 "lemma:" nil nil nil -3)
      ("prop" 84 "prop:" nil nil nil -3)
      ("theorem" 84 "theorem:" nil nil nil -3)
