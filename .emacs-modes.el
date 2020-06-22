@@ -54,9 +54,6 @@
 (add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
-(with-eval-after-load 'gfm-mode
-  (local-unset-key (kbd "M-n"))  ; I redefined M-n and M-p in .emacs
-  (local-unset-key (kbd "M-p"))) ; https://stackoverflow.com/a/19324726/2756250
 
 ;; Julia
 (add-to-list 'load-path "~/.emacs.d/julia-emacs")

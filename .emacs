@@ -31,8 +31,8 @@
 (unless window-system
   (require 'mouse)
   (xterm-mouse-mode t)
-  (global-set-key [mouse-4] (lambda () (interactive) (scroll-down 1)))
-  (global-set-key [mouse-5] (lambda () (interactive) (scroll-up 1)))
+  (bind-key* [mouse-4] (lambda () (interactive) (scroll-down 1)))
+  (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1)))
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
@@ -58,24 +58,22 @@
 
 ;; Use C-u for undo
 ;; C-/ doesn't work on OS X (see https://github.com/bbatsov/prelude/issues/327)
-(global-unset-key (kbd "C-u"))
-(global-set-key (kbd "C-u") 'undo)
+(bind-key* (kbd "C-u") 'undo)
 
 ;; Use M-n and M-p to move forward and back 10 lines
 ;; Use M-F and M-B to move forward and back 20 characters
 ;; https://stackoverflow.com/a/2657587
-(global-set-key (kbd "M-n") (lambda () (interactive) (next-line 10)))
-(global-set-key (kbd "M-p") (lambda () (interactive) (previous-line 10)))
-(global-set-key (kbd "M-F") (lambda () (interactive) (forward-char 20)))
-(global-set-key (kbd "M-B") (lambda () (interactive) (backward-char 20)))
+(bind-key* (kbd "M-n") (lambda () (interactive) (next-line 10)))
+(bind-key* (kbd "M-p") (lambda () (interactive) (previous-line 10)))
+(bind-key* (kbd "M-F") (lambda () (interactive) (forward-char 20)))
+(bind-key* (kbd "M-B") (lambda () (interactive) (backward-char 20)))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Reload .emacs with C-x C-r
-(global-unset-key (kbd "C-x C-r")) ; originally bound to find-file-read-only
-(global-set-key (kbd "C-x C-r") (lambda () (interactive) (load-file "~/.emacs")))
+;; Reload .emacs with C-x C-r (originally bound to find-file-read-only)
+(bind-key* (kbd "C-x C-r") (lambda () (interactive) (load-file "~/.emacs")))
 
 ;; Add missing rules to tex input method
 ;; https://www.emacswiki.org/emacs/TeXInputMethod
@@ -104,7 +102,7 @@
               (kill-buffer))
           (progn
             message "Did not delete file %s" filename))))))
-(global-set-key (kbd "C-c D")  'delete-file-and-buffer)
+(bind-key* (kbd "C-c D")  'delete-file-and-buffer)
 
 ;; Rename file and buffer
 ;; http://steve.yegge.googlepages.com/my-dot-emacs-file
@@ -122,7 +120,7 @@
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
-(global-set-key (kbd "C-c R")  'rename-file-and-buffer)
+(bind-key* (kbd "C-c R")  'rename-file-and-buffer)
 
 ;; Align text in columns
 ;; https://www.emacswiki.org/emacs/AlignCommands#toc7
@@ -149,7 +147,7 @@
 ;; Show line numbers
 (global-linum-mode t)
 (setq linum-format "%4d ")
-(global-set-key (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
+(bind-key* (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
@@ -265,7 +263,9 @@
      ("pagebreak")
      ("paren" . t)
      ("titlepage"))))
- '(package-selected-packages (quote (gitignore-mode gitconfig-mode xclip cl-lib auctex)))
+ '(package-selected-packages
+   (quote
+    (bind-key gitignore-mode gitconfig-mode xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
     (("assump" 84 "assump:" nil nil nil -3)

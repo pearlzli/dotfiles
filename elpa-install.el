@@ -9,6 +9,7 @@
 
         ; List of packages to be installed (separated by linebreaks)
         '(auctex
+          bind-key
           cl-lib
           gitconfig-mode
           gitignore-mode
