@@ -46,13 +46,6 @@
 (setq reftex-default-bibliography '("~/Drive/research/papers/library.bib")) ; set default bib file (https://tex.stackexchange.com/a/54825/116532)
 (setq reftex-plug-into-AUCTeX t)
 
-;; Git
-(add-to-list 'load-path "~/.emacs.d/git-modes")
-(add-to-list 'auto-mode-alist '("\\.gitconfig\\'" . gitconfig-mode))
-(add-to-list 'auto-mode-alist '("\\.gitignore\\'" . gitignore-mode))
-(autoload 'gitconfig-mode "gitconfig-mode" "Major mode for editing .gitconfig files" t)
-(autoload 'gitignore-mode "gitignore-mode" "Major mode for editing .gitignore files" t)
-
 ;; Markdown
 (add-to-list 'load-path "~/.emacs.d/markdown-mode")
 (load "markdown-mode.el")

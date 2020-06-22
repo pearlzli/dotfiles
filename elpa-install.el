@@ -10,4 +10,6 @@
         ; List of packages to be installed (separated by linebreaks)
         '(auctex
           cl-lib
+          gitconfig-mode
+          gitignore-mode
           xclip))

@@ -265,7 +265,7 @@
      ("pagebreak")
      ("paren" . t)
      ("titlepage"))))
- '(package-selected-packages (quote (xclip cl-lib auctex)))
+ '(package-selected-packages (quote (gitignore-mode gitconfig-mode xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
     (("assump" 84 "assump:" nil nil nil -3)

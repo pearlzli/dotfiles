@@ -216,10 +216,6 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Git
-$my_timeout git clone "https://github.com/magit/git-modes.git"
-timeout_result $? "git-modes"
-
 # Julia
 $my_timeout git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
 timeout_result $? "julia-emacs"
