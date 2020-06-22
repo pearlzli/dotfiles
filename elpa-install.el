@@ -13,5 +13,6 @@
           cl-lib
           gitconfig-mode
           gitignore-mode
+          julia-mode
           markdown-mode
           xclip))

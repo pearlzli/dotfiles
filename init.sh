@@ -216,10 +216,6 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Julia
-$my_timeout git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
-timeout_result $? "julia-emacs"
-
 # MATLAB
 $my_timeout git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
 timeout_result $? "matlab-emacs"
