@@ -252,11 +252,14 @@
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
  '(TeX-insert-braces-alist
    (quote
-    (("centering")
+    (("bracket" . t)
+     ("centering")
      ("clearpage")
+     ("curly" . t)
      ("maketitle")
      ("noindent")
      ("pagebreak")
+     ("paren" . t)
      ("titlepage"))))
  '(package-selected-packages (quote (xclip cl-lib auctex)))
  '(reftex-label-alist
