@@ -216,10 +216,6 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# MATLAB
-$my_timeout git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
-timeout_result $? "matlab-emacs"
-
 # Stata
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"

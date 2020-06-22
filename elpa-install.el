@@ -15,4 +15,5 @@
           gitignore-mode
           julia-mode
           markdown-mode
+          matlab-mode
           xclip))

@@ -54,16 +54,7 @@
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 
 ;; MATLAB
-(add-to-list 'load-path "~/.emacs.d/matlab-emacs")
-(autoload 'matlab-mode "matlab" "Enter Matlab mode." t)
-(autoload 'matlab-shell "matlab" "Interactive Matlab mode." t)
-(setq auto-mode-alist (cons '("\\.m$" . matlab-mode) auto-mode-alist))
 (setq matlab-indent-function t)
-(setq matlab-comment-region-s "% ")
-(with-eval-after-load 'matlab-mode
-  (setq fill-column 80)
-  (local-set-key "\M-;" nil)
-  (local-set-key "\M-q" nil))
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
