@@ -220,10 +220,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 $my_timeout git clone "https://github.com/JuliaEditorSupport/julia-emacs.git"
 timeout_result $? "julia-emacs"
 
-# Markdown
-$my_timeout git clone "https://github.com/defunkt/markdown-mode.git"
-timeout_result $? "markdown-mode"
-
 # MATLAB
 $my_timeout git clone "https://git.code.sf.net/p/matlab-emacs/src" "matlab-emacs"
 timeout_result $? "matlab-emacs"

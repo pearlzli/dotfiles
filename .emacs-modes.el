@@ -47,11 +47,6 @@
 (setq reftex-plug-into-AUCTeX t)
 
 ;; Markdown
-(add-to-list 'load-path "~/.emacs.d/markdown-mode")
-(load "markdown-mode.el")
-(autoload 'gfm-mode "gfm-mode" "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . gfm-mode))
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 

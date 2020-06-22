@@ -265,7 +265,7 @@
      ("titlepage"))))
  '(package-selected-packages
    (quote
-    (bind-key gitignore-mode gitconfig-mode xclip cl-lib auctex)))
+    (markdown-mode bind-key gitignore-mode gitconfig-mode xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
     (("assump" 84 "assump:" nil nil nil -3)
