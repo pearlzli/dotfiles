@@ -11,6 +11,7 @@
         '(auctex
           bind-key
           cl-lib
+          ess
           gitconfig-mode
           gitignore-mode
           julia-mode

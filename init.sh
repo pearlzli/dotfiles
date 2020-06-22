@@ -219,7 +219,3 @@ emacs --script "$dotfile_dir/elpa-install.el"
 # Stata
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
-
-# R (ESS)
-$my_timeout git clone "https://github.com/emacs-ess/ESS.git"
-timeout_result $? "ESS"

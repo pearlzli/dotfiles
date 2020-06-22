@@ -66,8 +66,3 @@
   (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
   (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
   (define-key ado-mode-map (kbd "TAB") 'ado-indent-region)) ; default is ado-indent-line
-
-;; ESS (R only)
-(add-to-list 'load-path "~/.emacs.d/ESS/lisp")
-(autoload 'ess-r-mode "ess-r-mode" "R mode (ESS)" t)
-(setq auto-mode-alist (cons '("\\.r$" . ess-r-mode) auto-mode-alist))
