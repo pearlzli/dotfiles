@@ -203,7 +203,7 @@ else
 fi
 
 
-### 3. Clone necessary packages into .emacs.d, timing out after $timeout_length if necessary
+### 3. Clone emacs and tmux packages, timing out after $timeout_length if necessary
 
 cd $HOME
 
@@ -216,6 +216,17 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Stata
+# Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
+
+# Tmux plugin manager
+if not_installed tmux; then
+    echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
+else
+    if [ $(echo "$TMUX_VERSION >= 1.9" | bc) -eq 1 ]; then
+        $my_timeout git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    else
+        echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
+    fi
+fi
