@@ -78,8 +78,8 @@
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Reload .emacs with C-x r
-(bind-key* (kbd "C-x r") (lambda () (interactive) (load-file "~/.emacs")))
+;; Reload .emacs with C-x C-r (originally bound to find-file-read-only)
+(bind-key* (kbd "C-x C-r") (lambda () (interactive) (load-file "~/.emacs")))
 
 ;; Add missing rules to tex input method
 ;; https://www.emacswiki.org/emacs/TeXInputMethod
