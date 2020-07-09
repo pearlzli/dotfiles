@@ -35,6 +35,8 @@
     '("matlabinline" 1)
     '("bashinline" 1)
     '("hltext" 1)
+    '("nmpder" 4)
+    '("npder" 3)
     '("mpder" 3)
     '("spder" 2)
     '("pderol" 2)
