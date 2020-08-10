@@ -75,6 +75,13 @@
 (bind-key* (kbd "M-F") (lambda () (interactive) (forward-char 20)))
 (bind-key* (kbd "M-B") (lambda () (interactive) (backward-char 20)))
 
+;; Use C-x h and C-x v to split windows horizontally and vertically, mirroring
+;;   tmux key bindings
+(global-unset-key (kbd "C-x 2")) ; formerly split-window-below
+(global-unset-key (kbd "C-x 3")) ; formerly wplit-window-right
+(bind-key* (kbd "C-x h") 'split-window-right)
+(bind-key* (kbd "C-x v") 'split-window-below)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
