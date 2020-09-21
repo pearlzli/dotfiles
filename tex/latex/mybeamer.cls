@@ -60,6 +60,9 @@
 
 %%% 4. Other
 
+% Load mystyle.sty
+\usepackage{mystyle}
+
 % Single command to pause and add vertical space
 \newcommand{\pauseskip}{\pause
 
@@ -67,20 +70,17 @@
 
 % Theorem definitions
 % Don't italicize any theorem environments
-\usepackage{amsthm}
 \theoremstyle{definition}
 \newtheorem{assump}{Assumption}
 \newtheorem{claim}{Claim}
 \newtheorem{conj}{Conjecture}
 \newtheorem{corollary}{Corollary}
 \newtheorem{defn}{Definition}
+\newtheorem{example}{Example}
 \newtheorem{lemma}{Lemma}
 \newtheorem{prop}{Proposition}
 \newtheorem{remark}{Remark}
 \newtheorem{theorem}{Theorem}
-
-% Load mystyle.sty
-\usepackage{mystyle}
 
 % Necessary to use subcaption package with Beamer
 % https://tex.stackexchange.com/a/426090/116532

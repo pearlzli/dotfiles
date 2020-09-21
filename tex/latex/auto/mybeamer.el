@@ -22,7 +22,6 @@
     "beamer10"
     "lato"
     "appendixnumberbeamer"
-    "amsthm"
     "mystyle")
    (TeX-add-symbols
     '("theoremcite" 1)
@@ -36,6 +35,7 @@
     "conj"
     "corollary"
     "defn"
+    "example"
     "lemma"
     "prop"
     "remark"
