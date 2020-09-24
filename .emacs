@@ -153,6 +153,31 @@
   (interactive "r")
   (align-repeat start end " +"))
 
+;; Spell check
+;; https://www.tenderisthebyte.com/blog/2019/06/09/spell-checking-emacs/
+(dolist (hook '(text-mode-hook))
+  (add-hook hook (lambda () (flyspell-mode 1))))
+
+;; Turn keymap numbers into key sequences
+;; https://emacs.stackexchange.com/a/38518/14500
+(defun keymap-number-to-char (number)
+  "Display key sequence associated with keymap number."
+  (interactive "sNumber: ")
+  (message "Key is %s" (single-key-description (string-to-number number))))
+(defun keymap-number-to-char-buffer (&optional undo)
+  "Change keymap numbers in buffer to characters. For example, display 24 as C-x."
+  (interactive "P")
+  (if undo
+      (remove-overlays nil nil 'chunyang-show-number-as-char t)
+    (save-excursion
+      (goto-char (point-min))
+      (let (ov)
+        (while (re-search-forward "[0-9]+" nil :no-error)
+          (setq ov (make-overlay (match-beginning 0) (match-end 0)))
+          (overlay-put ov 'display (single-key-description
+                                    (string-to-number (match-string 0))))
+          (overlay-put ov 'chunyang-show-number-as-char t))))))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; DISPLAY
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
