@@ -51,6 +51,7 @@
 (setq markdown-enable-math t)
 
 ;; Pandoc
+(setq pandoc-data-dir "~/dotfiles/pandoc-mode")
 (setq pandoc-pdf-viewer "skim")
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 (add-hook 'markdown-mode-hook 'pandoc-mode)
