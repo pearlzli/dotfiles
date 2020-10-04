@@ -221,6 +221,13 @@ emacs --script "$dotfile_dir/elpa-install.el"
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
 
+# Pandoc templates
+maybe_mkdir "$HOME/.pandoc"
+maybe_mkdir "$HOME/.pandoc/templates"
+cd "$HOME/.pandoc/templates"
+wget "https://raw.githubusercontent.com/tajmone/pandoc-goodies/master/templates/html5/github/GitHub.html5"
+echo "${green}Installed Github HTML5 Pandoc template${normal}"
+
 # Tmux plugin manager
 if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"

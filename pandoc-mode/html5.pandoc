@@ -51,7 +51,7 @@
  (pdf-engine-opt)
  (ipynb-output)
  (standalone)
- (template)
+ (template . "GitHub.html5") ; https://htmlpreview.github.io/?https://github.com/tajmone/pandoc-goodies/blob/master/templates/html5/github/GitHub-Template-Preview.html
  (variable)
  (dpi)
  (eol)
@@ -87,7 +87,7 @@
  (track-changes)
  (strip-empty-paragraphs)
  (abbreviations)
- (read . "markdown")
+ (read . "gfm")
  (read-lhs)
  (read-extensions
   ("abbreviations")
