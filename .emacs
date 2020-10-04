@@ -309,7 +309,7 @@
      ("titlepage"))))
  '(package-selected-packages
    (quote
-    (ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex)))
+    (pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex)))
  '(reftex-label-alist
    (quote
     (("assump" 84 "assump:" nil nil nil -3)

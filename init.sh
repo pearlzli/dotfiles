@@ -90,6 +90,7 @@ case $OSTYPE in
 
         brew install coreutils
         brew install emacs
+        brew install pandoc
         brew install tmux
         brew install wget
         brew cask install mactex

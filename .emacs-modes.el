@@ -50,6 +50,11 @@
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 
+;; Pandoc
+(setq pandoc-pdf-viewer "skim")
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
+(add-hook 'markdown-mode-hook 'pandoc-mode)
+
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 
