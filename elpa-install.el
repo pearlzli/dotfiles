@@ -17,4 +17,5 @@
           julia-mode
           markdown-mode
           matlab-mode
+          pandoc-mode
           xclip))
