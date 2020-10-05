@@ -49,6 +49,7 @@
 ;; Markdown
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
+(add-hook 'markdown-mode-hook 'pandoc-mode)
 
 ;; Pandoc
 ;; Notes on pandoc-{revert,load-default}-settings:
@@ -57,7 +58,6 @@
 ;; - Must add hooks in (revert, load-default) order so that they're run in (load-default, revert) order
 (setq pandoc-data-dir "~/dotfiles/pandoc-mode")
 (setq pandoc-pdf-viewer "skim")
-(add-hook 'markdown-mode-hook 'pandoc-mode)
 (add-hook 'pandoc-mode-hook 'pandoc-revert-settings)       ; see notes above
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings) ;
 
