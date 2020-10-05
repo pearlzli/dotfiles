@@ -74,7 +74,7 @@ $if(description)$
   <meta name="description" content="$description$">
 $endif$
 $------------------------------------------------------------------------> title
-  <title>$if(title-prefix)$$title-prefix$ – $endif$$pagetitle$</title>
+  <title>$if(title-prefix)$$title-prefix$ – $endif$$title$</title>
 $--===========================================================================
 $--                            CSS STYLESHEETS
 $--===========================================================================
