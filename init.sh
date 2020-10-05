@@ -203,6 +203,12 @@ else
     echo "${green}Installed kbordermatrix.sty${normal}"
 fi
 
+# Pandoc templates
+maybe_mkdir "$HOME/.pandoc"
+maybe_mkdir "$HOME/.pandoc/templates"
+cd ~/.pandoc/templates
+try_symlink pandoc/templates/GitHub.html5
+
 
 ### 3. Clone emacs and tmux packages, timing out after $timeout_length if necessary
 
@@ -220,13 +226,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
-
-# Pandoc templates
-maybe_mkdir "$HOME/.pandoc"
-maybe_mkdir "$HOME/.pandoc/templates"
-cd "$HOME/.pandoc/templates"
-wget "https://raw.githubusercontent.com/tajmone/pandoc-goodies/master/templates/html5/github/GitHub.html5"
-echo "${green}Installed Github HTML5 Pandoc template${normal}"
 
 # Tmux plugin manager
 if not_installed tmux; then
