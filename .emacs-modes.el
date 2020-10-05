@@ -51,10 +51,15 @@
 (setq markdown-enable-math t)
 
 ;; Pandoc
+;; Notes on pandoc-{revert,load-default}-settings:
+;; - In theory, load-default should look for local settings first, then global settings
+;; - In practice, only global settings are read, so need to call revert
+;; - Must add hooks in (revert, load-default) order so that they're run in (load-default, revert) order
 (setq pandoc-data-dir "~/dotfiles/pandoc-mode")
 (setq pandoc-pdf-viewer "skim")
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings)
 (add-hook 'markdown-mode-hook 'pandoc-mode)
+(add-hook 'pandoc-mode-hook 'pandoc-revert-settings)       ; see notes above
+(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings) ;
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
