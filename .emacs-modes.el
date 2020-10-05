@@ -60,6 +60,11 @@
 (setq pandoc-pdf-viewer "skim")
 (add-hook 'pandoc-mode-hook 'pandoc-revert-settings)       ; see notes above
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings) ;
+(with-eval-after-load 'pandoc-mode
+  (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
+  (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output)       ;
+  (define-key pandoc-mode-map (kbd "C-c C-a")                            ;
+    (lambda () (interactive) (pandoc-run-pandoc) (pandoc-view-output)))) ;
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
