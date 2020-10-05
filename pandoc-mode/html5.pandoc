@@ -172,7 +172,7 @@
   ("ascii_identifiers")
   ("auto_identifiers")
   ("autolink_bare_uris")
-  ("backtick_code_blocks")
+  ("backtick_code_blocks") ; enabled for gfm inputs
   ("blank_before_blockquote")
   ("blank_before_header")
   ("bracketed_spans")
@@ -204,7 +204,7 @@
   ("latex_macros")
   ("line_blocks")
   ("link_attributes")
-  ("lists_without_preceding_blankline")
+  ("lists_without_preceding_blankline") ; enabled for gfm inputs
   ("literate_haskell")
   ("markdown_attribute")
   ("markdown_in_html_blocks")
@@ -232,7 +232,7 @@
   ("subscript")
   ("superscript")
   ("table_captions")
-  ("task_lists" . +)
+  ("task_lists") ; enabled for gfm inputs
   ("tex_math_dollars")
   ("tex_math_double_backslash")
   ("tex_math_single_backslash")
