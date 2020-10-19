@@ -233,7 +233,7 @@
   ("superscript")
   ("table_captions")
   ("task_lists") ; enabled for gfm inputs
-  ("tex_math_dollars")
+  ("tex_math_dollars" . +)
   ("tex_math_double_backslash")
   ("tex_math_single_backslash")
   ("yaml_metadata_block"))
