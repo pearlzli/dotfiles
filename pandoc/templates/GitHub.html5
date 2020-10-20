@@ -100,9 +100,20 @@ $for(css)$
   <link rel="stylesheet" href="$css$">
 $endfor$
 $-------------------------------------------------------------------------> math
-$if(math)$
-  $math$
-$endif$
+$-- https://stackoverflow.com/a/39669578
+$-- http://docs.mathjax.org/en/latest/web/start.html#configuring-mathjax
+$-- Type literal $ in template as $$
+<script>
+MathJax = {
+  tex: {
+    inlineMath: [['$$', '$$'], ['\\(', '\\)']],
+    displayMath: [['$$$$', '$$$$'], ['\\[', '\\]']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+ type="text/javascript">
+</script>
 $-------------------------------------------------------------------------------
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
