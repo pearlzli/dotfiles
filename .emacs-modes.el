@@ -50,6 +50,22 @@
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 (add-hook 'markdown-mode-hook 'pandoc-mode)
+(with-eval-after-load 'markdown-mode
+  (define-key markdown-mode-map (kbd "C-c C-f") (lookup-key markdown-mode-map (kbd "C-c C-s"))) ; use AUCTeX-like key bindings
+  (define-key markdown-mode-map (kbd "C-c C-s") nil)                                            ;
+  (define-key markdown-mode-map (kbd "C-c C-b") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "C-b") 'markdown-insert-bold)                        ;
+  (define-key markdown-mode-style-map (kbd "C-c") 'markdown-insert-code)                        ;
+  (define-key markdown-mode-style-map (kbd "C-e") 'markdown-insert-italic)                      ;
+  (define-key markdown-mode-style-map (kbd "C-i") 'markdown-insert-italic)                      ;
+  (define-key markdown-mode-style-map (kbd "C-s") 'markdown-insert-strike-through)              ;
+  (define-key markdown-mode-style-map (kbd "b") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "c") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "e") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "i") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
+  (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
+  (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
 
 ;; Pandoc
 ;; Notes on pandoc-{revert,load-default}-settings:
