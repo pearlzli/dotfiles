@@ -153,11 +153,6 @@
   (interactive "r")
   (align-repeat start end " +"))
 
-;; Spell check
-;; https://www.tenderisthebyte.com/blog/2019/06/09/spell-checking-emacs/
-(dolist (hook '(text-mode-hook))
-  (add-hook hook (lambda () (flyspell-mode 1))))
-
 ;; Turn keymap numbers into key sequences
 ;; https://emacs.stackexchange.com/a/38518/14500
 (defun keymap-number-to-char (number)
