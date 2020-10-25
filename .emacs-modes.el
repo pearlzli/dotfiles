@@ -50,6 +50,18 @@
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 (add-hook 'markdown-mode-hook 'pandoc-mode)
+(defconst markdown-regex-highlight
+  "\\(?1:^\\|[^\\]\\)\\(?2:\\(?3:<mark>\\)\\(?4:[^ \n\t\\]\\|[^ \n\t]\\(?:.\\|\n[^\n]\\)*?[^\\ ]\\)\\(?5:</mark>\\)\\)"
+  "Regular expression for matching highlighted (marked) text.
+Group 1 matches the character before the opening tilde, if any,
+ensuring that it is not a backslash escape.
+Group 2 matches the entire expression, including delimiters.
+Groups 3 and 5 matches the opening and closing delimiters.
+Group 4 matches the text inside the delimiters.")
+(defun markdown-insert-highlight ()
+  (interactive)
+  (markdown--insert-common
+   "<mark>" "</mark>" markdown-regex-highlight 2 4 'markdown-highlight-face))
 (with-eval-after-load 'markdown-mode
   (define-key markdown-mode-map (kbd "C-c C-f") (lookup-key markdown-mode-map (kbd "C-c C-s"))) ; use AUCTeX-like key bindings
   (define-key markdown-mode-map (kbd "C-c C-s") nil)                                            ;
@@ -58,6 +70,7 @@
   (define-key markdown-mode-style-map (kbd "C-c") 'markdown-insert-code)                        ;
   (define-key markdown-mode-style-map (kbd "C-e") 'markdown-insert-italic)                      ;
   (define-key markdown-mode-style-map (kbd "C-i") 'markdown-insert-italic)                      ;
+  (define-key markdown-mode-style-map (kbd "C-m") 'markdown-insert-highlight)                   ;
   (define-key markdown-mode-style-map (kbd "C-s") 'markdown-insert-strike-through)              ;
   (define-key markdown-mode-style-map (kbd "b") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "c") nil)                                            ;
