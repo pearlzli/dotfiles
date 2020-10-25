@@ -49,6 +49,7 @@
 ;; Markdown
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
+(setq markdown-list-indent-width 2)
 (add-hook 'markdown-mode-hook 'pandoc-mode)
 (defconst markdown-regex-highlight
   "\\(?1:^\\|[^\\]\\)\\(?2:\\(?3:<mark>\\)\\(?4:[^ \n\t\\]\\|[^ \n\t]\\(?:.\\|\n[^\n]\\)*?[^\\ ]\\)\\(?5:</mark>\\)\\)"
