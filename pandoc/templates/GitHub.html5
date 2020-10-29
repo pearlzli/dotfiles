@@ -86,6 +86,22 @@ $-- by the CSS file in the finalized template:
 $-------------------------------------------------------------------------------
   <style type="text/css">code{white-space: pre;}</style>
 $-------------------------------------------------------------------------------
+$-- Scrolling table of contents on left
+$-- https://stackoverflow.com/a/58670825
+  <style type="text/css">
+  #TOC {
+    position: fixed;
+    top: 0px;
+    left: 20px;
+    height: 100%;
+    max-width: 20%;
+    overflow-y: auto;
+  }
+  body {
+    margin-left: 20%;
+  }
+  </style>
+$-------------------------------------------------------------------------------
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
 $endif$
@@ -158,12 +174,10 @@ $endif$
 $--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END IF: title
 $--------------------------------------------------------------------------> toc
 $if(toc)$
-<hr>
 <nav id="$idprefix$TOC">
 <h2 class="toc-title">$if(toc-title)$$toc-title$$else$Contents$endif$</h2>
 $table-of-contents$
 </nav>
-<hr>
 $endif$
 $-------------------------------------------------------------------------> body
 $body$
