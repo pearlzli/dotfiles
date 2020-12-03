@@ -38,8 +38,11 @@
 
 ;; Let emacs kill ring use clipboard
 ;; Nice to have in general; needed for sending commands to Stata in ado-mode
-(if (executable-find "xclip")
-    (xclip-mode 1))
+(when (cl-some 'executable-find
+             '("xclip" ; X11
+               "pbcopy" ; OS X
+               "getclip")) ; Cygwin
+  (xclip-mode t))
 
 ;; Load custom modes, e.g. Julia mode
 (load "~/.emacs-modes.el")
