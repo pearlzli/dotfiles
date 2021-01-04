@@ -103,7 +103,7 @@
   (activate-input-method "TeX")
   (let ((quail-current-package (assoc "TeX" quail-package-alist)))
    (quail-define-rules ((append . t))
-                       ("\\Phi" "Φ"))))
+                       ("\\Phi" "Φ") ("\\hi" "̅") ("\\lo" "̲"))))
 
 ;; Delete trailing whitespace upon saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
