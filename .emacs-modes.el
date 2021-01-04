@@ -63,6 +63,18 @@ Group 4 matches the text inside the delimiters.")
   (interactive)
   (markdown--insert-common
    "<mark>" "</mark>" markdown-regex-highlight 2 4 'markdown-highlight-face))
+(defconst markdown-regex-math-inline
+  "\\(?1:^\\|[^\\]\\)\\(?2:\\(?3:\\$\\)\\(?4:[^ \n\t\\]\\|[^ \n\t]\\(?:.\\|\n[^\n]\\)*?[^\\ ]\\)\\(?5:\\$\\)\\)"
+  "Regular expression for matching math mode text.
+Group 1 matches the character before the opening tilde, if any,
+ensuring that it is not a backslash escape.
+Group 2 matches the entire expression, including delimiters.
+Groups 3 and 5 matches the opening and closing delimiters.
+Group 4 matches the text inside the delimiters.")
+(defun markdown-insert-math-inline ()
+  (interactive)
+  (markdown--insert-common
+   "\$" "\$" markdown-regex-math-inline 2 4 'markdown-math-face))
 (with-eval-after-load 'markdown-mode
   (define-key markdown-mode-map (kbd "C-c C-f") (lookup-key markdown-mode-map (kbd "C-c C-s"))) ; use AUCTeX-like key bindings
   (define-key markdown-mode-map (kbd "C-c C-s") nil)                                            ;
@@ -77,6 +89,7 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-style-map (kbd "c") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "e") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "i") nil)                                            ;
+  (define-key markdown-mode-style-map (kbd "m") 'markdown-insert-math-inline)                   ;
   (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
