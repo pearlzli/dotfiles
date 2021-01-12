@@ -103,8 +103,9 @@ parse_display() {
 # -i: ignore case
 # -n: show line number
 # -r: search recursively
+# -I: exclude binary files
 # --color=auto
-export GREP_OPTIONS='-inr --color=auto'
+export GREP_OPTIONS='-inr -I --color=auto'
 
 # Automatically convert between local and remote userids in sshfs
 alias sshfs="sshfs -o idmap=user"
