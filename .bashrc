@@ -82,19 +82,12 @@ umask 0002
 
 # When evince and other graphical displays don't work, it's often because the
 # DISPLAY environment variable inside tmux isn't the same as the one outside
-# tmux.
-#
-# 1. Detach from tmux session and use cache_display.
-# 2. Reattach to tmux session and use parse_display. (You'll have to do this in
-#    each pane in which you want to open a graphical display.)
-cache_display() {
-    echo "$DISPLAY" > ~/.DISPLAY
-    echo "DISPLAY cached as $DISPLAY"
-}
-
-parse_display() {
+# tmux. To fix, run update_display in each pane where you want to open a
+# graphical display (backgrounding current process if necessary).
+# https://goosebearingbashshell.github.io/2017/12/07/reset-display-variable-in-tmux.html
+update_display() {
     DISPLAY_OLD="$DISPLAY"
-    export DISPLAY="$(cat ~/.DISPLAY)"
+    export DISPLAY="`tmux show-env | sed -n 's/^DISPLAY=//p'`"
     echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
 }
 
