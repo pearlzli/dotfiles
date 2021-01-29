@@ -108,6 +108,18 @@
 ;; Delete trailing whitespace upon saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
+;; Turn many spaces into just one space in a highlighted region
+(defun just-one-space-in-region (beg end)
+  "replace all whitespace in the region with single spaces"
+  (interactive "r")
+  (save-excursion
+    (save-restriction
+      (narrow-to-region beg end)
+      (goto-char (point-min))
+      (while (re-search-forward "\\s-+" nil t)
+        (replace-match " ")))))
+(global-set-key (kbd "C-x SPC") 'just-one-space-in-region)
+
 ;; Delete file and buffer
 ;; http://emacsredux.com/blog/2013/04/03/delete-file-and-buffer/
 (defun delete-file-and-buffer ()
