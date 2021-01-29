@@ -125,5 +125,5 @@ Group 4 matches the text inside the delimiters.")
   (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
   (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
   (define-key ado-mode-map (kbd "TAB") 'ado-indent-region) ; default is ado-indent-line
-  (unless (executable-find "xclip")
+  (unless (cl-some 'executable-find '("xclip" "pbcopy" "getclip"))
     (display-warning 'initialization "xclip not found; can't use ado-send-{command,buffer}-to-stata")))
