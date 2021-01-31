@@ -48,19 +48,22 @@ maybe_mkdir() {
 }
 
 # Create symlinks verbosely
-# Usage: try_symlink <file>
+# Usage: try_symlink <src> <dst=src>
+# See https://stackoverflow.com/a/33419280 for reference on bash optional arguments
 try_symlink() {
-    if [ -L $1 ]; then
-        echo "${red}Did not link $1: symlink already exists${normal}"
+    src=$1
+    dst=${2:-$src}
+    if [ -L $dst ]; then
+        echo "${red}Did not link $dst: symlink already exists${normal}"
     elif [ ! -f $1 ]; then
-        ln -s "$dotfile_dir/$1" $1
+        ln -s "$dotfile_dir/$src" $dst
         if [ $? -eq 0 ]; then
-            echo "${green}Linked $1${normal}"
+            echo "${green}Linked $dst -> $dotfile_dir/$src${normal}"
         else
-            echo "${red}Could not link $1${normal}"
+            echo "${red}Could not link $dst${normal}"
         fi
     else
-        echo "${red}Did not link $1: non-symlink file already exists. Merge $1 into $dotfile_dir/$1 first and then delete $1 before retrying${normal}"
+        echo "${red}Did not link $dst: non-symlink file already exists. Merge $dst into $dotfile_dir/$src first and then delete $dst before retrying${normal}"
     fi
 }
 
