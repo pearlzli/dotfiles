@@ -139,6 +139,10 @@ case $OSTYPE in
         maybe_mkdir ~/Library/KeyBindings
         cp "$dotfile_dir/DefaultKeyBinding.dict" ~/Library/KeyBindings
 
+        # Symlink AppleScripts
+        cd /Applications
+        try_symlink "emacs-nw.app" "emacs -nw.app"
+
         my_timeout="gtimeout $timeout_length"
         ;;
 
