@@ -328,6 +328,7 @@
      ("pagebreak")
      ("paren" . t)
      ("titlepage"))))
+ '(markdown-hide-urls t)
  '(package-selected-packages
    (quote
     (pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex)))
