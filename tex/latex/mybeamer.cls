@@ -12,16 +12,15 @@
 
 %%% 2. Appearance
 
+% Use light blue colortheme
+\usecolortheme{seahorse}
+
 % Use Lato font
 \usepackage[default]{lato}
 
 % Set colors
 % https://ramblingacademic.com/2015/12/08/how-to-quickly-overhaul-beamer-colors
-\definecolor{blue}{RGB}{0,100,190}
-\definecolor{green}{RGB}{0,160,0}
-\definecolor{gray}{RGB}{205,205,205}
-\definecolor{violet}{RGB}{90,90,180}
-\setbeamercolor{structure}{fg=violet}
+\definecolor{blue}{rgb}{0.2,0.2,0.7}
 
 % Page numbers (not nav controls) in bottom right
 \setbeamertemplate{navigation symbols}{}

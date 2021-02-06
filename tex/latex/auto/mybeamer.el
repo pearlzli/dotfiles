@@ -42,9 +42,6 @@
     "remark"
     "theorem")
    (LaTeX-add-xcolor-definecolors
-    "blue"
-    "green"
-    "gray"
-    "violet"))
+    "blue"))
  :latex)
 
