@@ -36,8 +36,10 @@
 % Add TOC slide at the beginning of each section
 % Use \section* to suppress this slide for a given section
 % https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
+% Don't count TOC slides toward frame numbering
+% https://tex.stackexchange.com/a/49805/116532
 \AtBeginSection[]{
-  \begin{frame}
+  \begin{frame}[plain,noframenumbering]
     \tableofcontents[currentsection,hideothersubsections]
   \end{frame}
 }
