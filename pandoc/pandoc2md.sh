@@ -21,6 +21,7 @@ sed -i .backup 's/\\\]/\]/g' $outfile # replace \] with ]
 sed -i .backup "s/\\\'/\'/g" $outfile # replace \' with '
 sed -i .backup "s/\\\</\</g" $outfile # replace \< with <
 sed -i .backup "s/\\\>/\>/g" $outfile # replace \> with >
+sed -i .backup "s/\\\~/\~/g" $outfile # replace \~ with ~
 # sed -i .backup "s/\\\*/\*/g" $outfile # replace \* with * (TODO: doesn't work)
 
 # Remove > indents
@@ -96,6 +97,7 @@ sed -i backup 's/≥/\\geq/g' $outfile
 sed -i backup 's/⇒/\$\\implies\$/g' $outfile
 sed -i backup 's/∈/\\in/g' $outfile
 sed -i backup 's/∞/\\infty/g' $outfile
+sed -i backup 's/∫/\\int/g' $outfile
 sed -i backup 's/≤/\\leq/g' $outfile
 sed -i backup 's/∇/\\nabla/g' $outfile
 sed -i backup 's/∏/\\prod/g' $outfile
