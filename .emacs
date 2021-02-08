@@ -89,8 +89,8 @@
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Reload .emacs with C-x C-r (originally bound to find-file-read-only)
-(bind-key* (kbd "C-x C-r") (lambda () (interactive) (load-file "~/.emacs")))
+;; Reload .emacs with C-x C-e (originally bound to eval-last-sexp)
+(bind-key* (kbd "C-x C-e") (lambda () (interactive) (load-file "~/.emacs")))
 
 ;; Rebind minibuffer history browsing to C-n and C-p (originally M-n and M-p)
 ;; https://www.emacswiki.org/emacs/MinibufferHistory
