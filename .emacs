@@ -92,6 +92,17 @@
 ;; Reload .emacs with C-x C-e (originally bound to eval-last-sexp)
 (bind-key* (kbd "C-x C-e") (lambda () (interactive) (load-file "~/.emacs")))
 
+;; Reload current file if buffer not modified
+;; https://emacs.stackexchange.com/a/171/14500
+;; Bind to C-x C-r (originally bound to find-file-read-only)
+(defun revert-buffer-no-confirm ()
+    "Revert buffer without asking for confirmation."
+    (interactive)
+    (progn
+      (revert-buffer t (not (buffer-modified-p)) t)
+      (message "Reloaded file %s" buffer-file-name)))
+(bind-key* (kbd "C-x C-r") 'revert-buffer-no-confirm)
+
 ;; Rebind minibuffer history browsing to C-n and C-p (originally M-n and M-p)
 ;; https://www.emacswiki.org/emacs/MinibufferHistory
 (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
