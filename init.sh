@@ -141,7 +141,7 @@ case $OSTYPE in
 
         # Symlink AppleScripts
         cd /Applications
-        try_symlink "emacs-nw.app" "emacs -nw.app"
+        try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
 
         my_timeout="gtimeout $timeout_length"
         ;;
