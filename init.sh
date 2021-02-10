@@ -142,6 +142,8 @@ case $OSTYPE in
         # Symlink AppleScripts
         cd /Applications
         try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
+        cd ~/Library/Services
+        try_symlink "applescripts/desktop-alias.workflow" "Make Desktop alias.workflow"
 
         my_timeout="gtimeout $timeout_length"
         ;;
