@@ -41,7 +41,7 @@ sed -i .backup 's/\]\]/\]/g' $outfile
 sed -E -i .backup 's/\[\(.*\)\](\1)/\[\1\]()/g' $outfile # plain URLs
 
 # Turn Unicode into TeX
-sed -i backup 's/\(.\)̃/\\tilde\{\1\}/g' $outfile # replace ã with \tilde{a}
+sed -i .backup 's/\(.\)̃/\\tilde\{\1\}/g' $outfile # replace ã with \tilde{a}
 
 sed -i backup 's/α/\\alpha/g' $outfile
 sed -i backup 's/β/\\beta/g' $outfile
