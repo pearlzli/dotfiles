@@ -385,12 +385,14 @@ $-- by the CSS file in the finalized template:
 </style>
 $-------------------------------------------------------------------------------
 $if(quotes)$
-  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <style type="text/css">
+    q { quotes: "“" "”" "‘" "’"; }
+  </style>
 $endif$
 $-------------------------------------------------------------> highlighting-css
 $if(highlighting-css)$
   <style type="text/css">
-$highlighting-css$
+    $highlighting-css$
   </style>
 $endif$
 $--------------------------------------------------------------------------> css
@@ -418,6 +420,7 @@ $for(header-includes)$
 $endfor$
 $-------------------------------------------------------------------------------
 </head>
+
 <body>
 <article class="markdown-body">
 $---------------------------------------------------------------> include-before
@@ -426,58 +429,58 @@ $include-before$
 $endfor$
 $--------------------------------------------------------------------------> toc
 $if(toc)$
-$-- Scrolling table of contents on left
-$-- https://stackoverflow.com/a/58670825
-<style type="text/css">
-  #TOC {
-    position: fixed;
-    top: 0px;
-    left: 0px;
-    padding-left: 20px;
-    padding-right: 20px;
-    max-width: 20%;
-    height: 100%;
-    overflow-y: auto;
-  }
-  #non-TOC {
-    position: relative;
-    top: 0px;
-    left: 20%;
-    max-width: 80%;
-    overflow-x: auto;
-  }
-</style>
-<nav id="$idprefix$TOC">
-<h2 class="toc-title">$if(toc-title)$$toc-title$$else$Contents$endif$</h2>
-$table-of-contents$
-</nav>
+  $-- Scrolling table of contents on left
+  $-- https://stackoverflow.com/a/58670825
+  <style type="text/css">
+    #TOC {
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      padding-left: 20px;
+      padding-right: 20px;
+      max-width: 20%;
+      height: 100%;
+      overflow-y: auto;
+    }
+    #non-TOC {
+      position: relative;
+      top: 0px;
+      left: 20%;
+      max-width: 80%;
+      overflow-x: auto;
+    }
+  </style>
+  <nav id="$idprefix$TOC">
+    <h2 class="toc-title">$if(toc-title)$$toc-title$$else$Contents$endif$</h2>
+    $table-of-contents$
+  </nav>
 $endif$
 <div id="non-TOC">
 <div id="non-TOC-content">
 $-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IF: title
 $if(title)$
-<header>
-<h1 class="title$if(subtitle)$ followed-by-subtitle$endif$">$title$</h1>
-$---------------------------------------------------------------------> subtitle
-$if(subtitle)$
-<p class="subtitle">$subtitle$</p>
-$endif$
-$-----------------------------------------------------------------------> author
-$for(author)$
-<p class="author">$author$</p>
-$endfor$
-$-------------------------------------------------------------------------> date
-$if(date)$
-<p class="date">$date$</p>
-$endif$
-$----------------------------------------------------------------------> summary
-$if(summary)$
-<div class="summary">
-$summary$
-</div>
-$endif$
-$-------------------------------------------------------------------------------
-</header>
+  <header>
+  <h1 class="title$if(subtitle)$ followed-by-subtitle$endif$">$title$</h1>
+  $---------------------------------------------------------------------> subtitle
+  $if(subtitle)$
+    <p class="subtitle">$subtitle$</p>
+  $endif$
+  $-----------------------------------------------------------------------> author
+  $for(author)$
+    <p class="author">$author$</p>
+  $endfor$
+  $-------------------------------------------------------------------------> date
+  $if(date)$
+    <p class="date">$date$</p>
+  $endif$
+  $----------------------------------------------------------------------> summary
+  $if(summary)$
+    <div class="summary">
+    $summary$
+    </div>
+  $endif$
+  $-------------------------------------------------------------------------------
+  </header>
 $endif$
 $--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END IF: title
 $-------------------------------------------------------------------------> body
