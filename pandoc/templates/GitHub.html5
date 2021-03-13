@@ -82,7 +82,7 @@ $-- Here comes the placeholder (within double braces) that will be replaced
 $-- by the CSS file in the finalized template:
   <style type="text/css">
 @charset "UTF-8";
-.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}
+.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;margin:0 auto;padding:45px}
 .markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}
 .markdown-body a:active,.markdown-body a:hover{outline-width:0}
 .markdown-body a:hover{text-decoration:underline}
@@ -162,26 +162,16 @@ h1.title,p.subtitle{text-align:center}
 h1.title.followed-by-subtitle{margin-bottom:0}
 p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}
 div.line-block{white-space:pre-line}
+#non-TOC-content {
+  min-width: 200px;
+  max-width: 980px;
+  overflow-x: visible;
+  margin: auto;
+}
 
   </style>
 $-------------------------------------------------------------------------------
   <style type="text/css">code{white-space: pre;}</style>
-$-------------------------------------------------------------------------------
-$-- Scrolling table of contents on left
-$-- https://stackoverflow.com/a/58670825
-  <style type="text/css">
-  #TOC {
-    position: fixed;
-    top: 0px;
-    left: 20px;
-    height: 100%;
-    max-width: 20%;
-    overflow-y: auto;
-  }
-  body {
-    margin-left: 20%;
-  }
-  </style>
 $-------------------------------------------------------------------------------
 $if(quotes)$
   <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
@@ -227,6 +217,36 @@ $---------------------------------------------------------------> include-before
 $for(include-before)$
 $include-before$
 $endfor$
+$--------------------------------------------------------------------------> toc
+$if(toc)$
+$-- Scrolling table of contents on left
+$-- https://stackoverflow.com/a/58670825
+<style type="text/css">
+#TOC {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 20%;
+  height: 100%;
+  overflow-y: auto;
+}
+#non-TOC {
+  position: relative;
+  top: 0px;
+  left: 20%;
+  max-width: 80%;
+  overflow-x: auto;
+}
+</style>
+<nav id="$idprefix$TOC">
+<h2 class="toc-title">$if(toc-title)$$toc-title$$else$Contents$endif$</h2>
+$table-of-contents$
+</nav>
+$endif$
+<div id="non-TOC">
+<div id="non-TOC-content">
 $-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> IF: title
 $if(title)$
 <header>
@@ -253,15 +273,10 @@ $-------------------------------------------------------------------------------
 </header>
 $endif$
 $--<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< END IF: title
-$--------------------------------------------------------------------------> toc
-$if(toc)$
-<nav id="$idprefix$TOC">
-<h2 class="toc-title">$if(toc-title)$$toc-title$$else$Contents$endif$</h2>
-$table-of-contents$
-</nav>
-$endif$
 $-------------------------------------------------------------------------> body
 $body$
+</div>
+</div>
 $----------------------------------------------------------------> include-after
 $for(include-after)$
 $include-after$
