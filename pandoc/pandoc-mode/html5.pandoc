@@ -78,7 +78,7 @@
  (indented-code-classes)
  (default-image-extension)
  (lua-filter)
- (filter)
+ (filter "pandoc-eqnos")
  (metadata)
  (metadata-file)
  (normalize)
