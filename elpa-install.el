@@ -1,6 +1,7 @@
 (require 'package)
 (package-initialize)
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(package-refresh-contents)
 
 (mapcar (lambda (package)
          ; Install package if not already installed
