@@ -96,9 +96,9 @@ case $OSTYPE in
         brew install pandoc
         brew install tmux
         brew install wget
-        brew cask install mactex
-        brew cask install meld
-        brew cask install julia
+        brew install --cask mactex
+        brew install --cask meld
+        brew install --cask julia
 
         # The following are easier to build using Brew than in Julia
         brew install gcc   # HDF5.jl

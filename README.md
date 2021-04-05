@@ -17,7 +17,7 @@ To set up a new machine:
 5. Add things to .bashrc-local, like aliases and environment variables.
 
 6. If desired and on OS X, set up SSHFS:
-   * `brew cask install osxfuse`
+   * `brew install --cask osxfuse`
    * Restart computer (this step is why this isn't in init.sh)
    * `brew install sshfs`
    * `sshfs username@hostname:remotedir localdir` to mount
