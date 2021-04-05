@@ -122,7 +122,7 @@ case $OSTYPE in
         if [ $? -eq 0 ]; then
             echo "${green}Copied SF Mono font files to ~/Library/Fonts${normal}"
         else
-            echo "${green}Could not copy SF Mono font files to ~/Library/Fonts${normal}"
+            echo "${red}Could not copy SF Mono font files to ~/Library/Fonts${normal}"
         fi
 
         # Use SF Mono in Meld
@@ -132,7 +132,7 @@ case $OSTYPE in
         if [ $? -eq 0 ]; then
             echo "${green}Set SF Mono as Meld font${normal}"
         else
-            echo "${green}Could not set SF Mono as Meld font${normal}"
+            echo "${red}Could not set SF Mono as Meld font${normal}"
         fi
 
         # Copy Mac key bindings
