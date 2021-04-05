@@ -44,14 +44,18 @@ case $OSTYPE in
     darwin*) # OS X
         alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
         alias chrome="open -a Google\ Chrome.app"
-        alias skim="open -a Skim.app"
+        if [ -d "/Applications/Skim.app" ]; then
+            alias skim="open -a Skim.app"
+        fi
 
         alias browser="chrome"
         alias ls="ls -G"
 
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
-        defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+        if [ -d "/Applications/Skim.app" ]; then
+            defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+        fi
         ;;
     linux*)
         alias browser="firefox"
