@@ -49,18 +49,19 @@ maybe_mkdir() {
 
 # Create symlinks verbosely
 # Usage: try_symlink <src> <dst=src>
+# Performs: ln -s "$dotfile_dir/$src" "$(pwd)/$dst"
 # See https://stackoverflow.com/a/33419280 for reference on bash optional arguments
 try_symlink() {
     src=$1
     dst=${2:-$src}
-    if [ -L $dst ]; then
-        echo "${red}Did not link $dst: symlink already exists${normal}"
-    elif [ ! -f $1 ]; then
-        ln -s "$dotfile_dir/$src" $dst
+    if [ -L "$dst" ]; then
+        echo "${red}Did not link $(pwd)/$dst: symlink already exists${normal}"
+    elif [ ! -f "$src" ]; then
+        ln -s "$dotfile_dir/$src" "$dst"
         if [ $? -eq 0 ]; then
-            echo "${green}Linked $dst -> $dotfile_dir/$src${normal}"
+            echo "${green}Linked $(pwd)/$dst -> $dotfile_dir/$src${normal}"
         else
-            echo "${red}Could not link $dst${normal}"
+            echo "${red}Could not link $(pwd)/$dst${normal}"
         fi
     else
         echo "${red}Did not link $dst: non-symlink file already exists. Merge $dst into $dotfile_dir/$src first and then delete $dst before retrying${normal}"
@@ -216,7 +217,7 @@ fi
 maybe_mkdir "$HOME/.pandoc"
 maybe_mkdir "$HOME/.pandoc/templates"
 cd ~/.pandoc/templates
-try_symlink pandoc/templates/GitHub.html5
+try_symlink pandoc/templates/GitHub.html5 GitHub.html5
 
 
 ### 3. Clone emacs and tmux packages, timing out after $timeout_length if necessary
