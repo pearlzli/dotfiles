@@ -71,8 +71,11 @@
 % Load mystyle.sty
 \usepackage{mystyle}
 
-% Single command to pause and add vertical space
-\newcommand{\pauseskip}{\pause
+% Redefine some macros
+\renewcommand{\P}{\text{Pr}}
+
+% Add vertical space
+\newcommand{\myvskip}{
 
   \vspace{\baselineskip}}
 

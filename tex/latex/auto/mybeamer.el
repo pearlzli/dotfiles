@@ -26,7 +26,7 @@
     "mystyle")
    (TeX-add-symbols
     '("theoremcite" 1)
-    "pauseskip")
+    "myvskip")
    (LaTeX-add-environments
     '("wideitemize" LaTeX-env-item)
     '("wideenumerate" LaTeX-env-item))
