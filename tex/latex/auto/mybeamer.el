@@ -42,6 +42,8 @@
     "remark"
     "theorem")
    (LaTeX-add-xcolor-definecolors
-    "blue"))
+    "indigo"
+    "blue"
+    "pink"))
  :latex)
 

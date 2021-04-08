@@ -19,8 +19,15 @@
 \usepackage[default]{lato}
 
 % Set colors
-% https://ramblingacademic.com/2015/12/08/how-to-quickly-overhaul-beamer-colors
-\definecolor{blue}{rgb}{0.2,0.2,0.7}
+\definecolor{indigo}{RGB}{51,51,178}
+\definecolor{blue}{RGB}{20,115,251}
+\definecolor{pink}{RGB}{222,15,112}
+
+\hypersetup{colorlinks=true,
+  linkcolor=indigo, % internal links (sections, equations, etc.)
+  urlcolor=indigo,  % URL links
+  citecolor=indigo, % citations
+}
 
 % Page numbers (not nav controls) in bottom right
 \setbeamertemplate{navigation symbols}{}

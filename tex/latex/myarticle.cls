@@ -23,3 +23,10 @@
 \newtheorem{defn}[theorem]{Definition}
 \newtheorem{example}[theorem]{Example}
 \newtheorem{remark}[theorem]{Remark}
+
+% Link colors
+\hypersetup{colorlinks=true,
+  linkcolor=blue, % internal links (sections, equations, etc.)
+  urlcolor=blue,  % URL links
+  citecolor=blue, % citations
+}
