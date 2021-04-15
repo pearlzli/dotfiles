@@ -68,6 +68,27 @@ try_symlink() {
     fi
 }
 
+# Add to PATH environment variable verbosely
+# Usage: try_addpath <dir> <front>
+try_addpath() {
+    dir=$1
+    front=$2 # whether to add dir to front of PATH
+    if [ -z "$(grep $dir ~/.bashrc-local)" ]; then
+        if [ $front -eq 1 ]; then
+            echo "export PATH=$dir:\$PATH" >> ~/.bashrc-local
+        else
+            echo "export PATH=\$PATH:$dir" >> ~/.bashrc-local
+        fi
+        if [ $? -eq 0 ]; then
+            echo "${green}Added $dir to PATH in ~/.bashrc-local${normal}"
+        else
+            echo "${red}Could not add $dir to PATH in ~/.bashrc-local${normal}"
+        fi
+    else
+        echo "${red}Did not add $dir to PATH in ~/.bashrc-local: already there${normal}"
+    fi
+}
+
 # Length of time before timing out
 timeout_length="30s"
 
@@ -105,16 +126,8 @@ case $OSTYPE in
         brew install gcc   # HDF5.jl
         brew install cmake # Polynomials.jl
 
-        if [ -z "$(grep texbin ~/.bashrc-local)" ]; then
-            echo "export PATH=\$PATH:/Library/TeX/texbin" >> ~/.bashrc-local
-            if [ $? -eq 0 ]; then
-                echo "${green}Added TeX Live binaries to PATH in ~/.bashrc-local${normal}"
-            else
-                echo "${red}Could not add TeX Live binaries to PATH in ~/.bashrc-local${normal}"
-            fi
-        else
-            echo "${red}Did not add TeX Live binaries to PATH in ~/.bashrc-local: already there${normal}"
-        fi
+        # Add to PATH
+        try_addpath "/Library/TeX/texbin" 0
 
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
