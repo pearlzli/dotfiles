@@ -58,8 +58,8 @@
 \setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
 \newcommand{\theoremcite}[1]{{\hypersetup{citecolor=white}\citealt{#1}}}
 
-% Use circular bullets for subitems
-\setbeamertemplate{itemize subitem}[circle]
+% Use circular bullets
+\setbeamertemplate{itemize items}[circle]
 
 % Define wideitemize and widenumerate environments
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
