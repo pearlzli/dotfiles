@@ -121,6 +121,7 @@ case $OSTYPE in
         brew install --cask mactex
         brew install --cask meld
         brew install --cask julia
+        brew install --cask anaconda
 
         # The following are easier to build using Brew than in Julia
         brew install gcc   # HDF5.jl
@@ -128,6 +129,7 @@ case $OSTYPE in
 
         # Add to PATH
         try_addpath "/Library/TeX/texbin" 0
+        try_addpath "/usr/local/anaconda3/bin" 1
 
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
