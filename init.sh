@@ -121,7 +121,6 @@ case $OSTYPE in
         brew install wget
         brew install --cask mactex
         brew install --cask meld
-        brew install --cask julia
         brew install --cask anaconda
 
         # The following are easier to build using Brew than in Julia
