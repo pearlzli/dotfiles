@@ -4,6 +4,7 @@
 [github]
     user = pearlzli
 [alias]
+    apply = apply --3way
     ch = checkout
     changes = diff --name-status -r
     diffstat = diff --stat -r
