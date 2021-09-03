@@ -68,29 +68,29 @@
 
 ;; Use C-u for undo
 ;; C-/ doesn't work on OS X (see https://github.com/bbatsov/prelude/issues/327)
-(bind-key* (kbd "C-u") 'undo)
+(bind-key* "C-u" 'undo)
 
 ;; Use M-n and M-p to move forward and back 10 lines
 ;; Use M-F and M-B to move forward and back 20 characters
 ;; https://stackoverflow.com/a/2657587
-(bind-key* (kbd "M-n") (lambda () (interactive) (next-line 10)))
-(bind-key* (kbd "M-p") (lambda () (interactive) (previous-line 10)))
-(bind-key* (kbd "M-F") (lambda () (interactive) (forward-char 20)))
-(bind-key* (kbd "M-B") (lambda () (interactive) (backward-char 20)))
+(bind-key* "M-n" (lambda () (interactive) (next-line 10)))
+(bind-key* "M-p" (lambda () (interactive) (previous-line 10)))
+(bind-key* "M-F" (lambda () (interactive) (forward-char 20)))
+(bind-key* "M-B" (lambda () (interactive) (backward-char 20)))
 
 ;; Use C-x h and C-x v to split windows horizontally and vertically, mirroring
 ;;   tmux key bindings
 (global-unset-key (kbd "C-x 2")) ; formerly split-window-below
 (global-unset-key (kbd "C-x 3")) ; formerly wplit-window-right
-(bind-key* (kbd "C-x h") 'split-window-right)
-(bind-key* (kbd "C-x v") 'split-window-below)
+(bind-key* "C-x h" 'split-window-right)
+(bind-key* "C-x v" 'split-window-below)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Reload .emacs with C-x C-e (originally bound to eval-last-sexp)
-(bind-key* (kbd "C-x C-e") (lambda () (interactive) (load-file "~/.emacs")))
+(bind-key* "C-x C-e" (lambda () (interactive) (load-file "~/.emacs")))
 
 ;; Reload current file if buffer not modified
 ;; https://emacs.stackexchange.com/a/171/14500
@@ -101,7 +101,7 @@
     (progn
       (revert-buffer t (not (buffer-modified-p)) t)
       (message "Reloaded file %s" buffer-file-name)))
-(bind-key* (kbd "C-x C-r") 'revert-buffer-no-confirm)
+(bind-key* "C-x C-r" 'revert-buffer-no-confirm)
 
 ;; Rebind minibuffer history browsing to C-n and C-p (originally M-n and M-p)
 ;; https://www.emacswiki.org/emacs/MinibufferHistory
@@ -147,7 +147,7 @@
               (kill-buffer))
           (progn
             message "Did not delete file %s" filename))))))
-(bind-key* (kbd "C-c D")  'delete-file-and-buffer)
+(bind-key* "C-c D"  'delete-file-and-buffer)
 
 ;; Rename file and buffer
 ;; http://steve.yegge.googlepages.com/my-dot-emacs-file
@@ -165,7 +165,7 @@
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
-(bind-key* (kbd "C-c R")  'rename-file-and-buffer)
+(bind-key* "C-c R"  'rename-file-and-buffer)
 
 ;; Align text in columns
 ;; https://www.emacswiki.org/emacs/AlignCommands#toc7
@@ -212,7 +212,7 @@
 ;; Show line numbers
 (global-linum-mode t)
 (setq linum-format "%4d ")
-(bind-key* (kbd "C-x l") 'linum-mode) ; toggle linum-mode for tmux copy-paste
+(bind-key* "C-x l" 'linum-mode) ; toggle linum-mode for tmux copy-paste
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
