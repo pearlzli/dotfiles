@@ -63,6 +63,11 @@
 ;; Set default max line width to 80 characters
 (setq-default fill-column 80)
 
+;; Rebind C-j to set-mark-command (originally bound to electric-newline-and-maybe-indent)
+;; Needed on iPad because C-SPC switches keyboard language with no way to unset
+;; https://unix.stackexchange.com/q/91834
+(bind-key* "C-j" (lambda () (interactive) (push-mark nil nil 1)))
+
 ;; Unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
