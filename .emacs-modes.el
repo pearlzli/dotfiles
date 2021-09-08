@@ -107,6 +107,13 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
 
+;; Julia
+(unless (version< emacs-version "27")
+  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
+  (progn
+    (add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
+    (add-hook 'julia-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
+
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 
