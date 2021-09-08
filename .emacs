@@ -212,7 +212,10 @@
 (setq transient-mark-mode t)
 
 ;; Show row and column numbers in bottom bar
+;; https://stackoverflow.com/a/43902887/2756250
 (setq column-number-mode t)
+(unless (version< emacs-version "26")
+  (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
 (global-linum-mode t)
