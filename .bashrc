@@ -4,6 +4,10 @@ export TERM="xterm-256color"
 # Set default editor for command-line programs
 export EDITOR="emacs"
 
+# Cache tmux version
+# https://stackoverflow.com/a/40902312/2756250
+export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
+
 # Custom PS1:
 #   user@hostname current-directory (git branch) $
 # See:
