@@ -18,6 +18,7 @@
           gitconfig-mode
           gitignore-mode
           julia-mode
+          jupyter ; requires emacs built with module support, which is the case by default in 27.1
           markdown-mode
           matlab-mode
           pandoc-mode
