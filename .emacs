@@ -275,8 +275,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(LaTeX-indent-environment-list
-   (quote
-    (("verbatim" current-indentation)
+   '(("verbatim" current-indentation)
      ("verbatim*" current-indentation)
      ("tabular" LaTeX-indent-tabular)
      ("tabular*" LaTeX-indent-tabular)
@@ -289,13 +288,11 @@
      ("equation")
      ("equation*")
      ("picture")
-     ("tabbing"))))
+     ("tabbing")))
  '(LaTeX-section-hook
-   (quote
-    (LaTeX-section-heading LaTeX-section-title LaTeX-section-section)))
+   '(LaTeX-section-heading LaTeX-section-title LaTeX-section-section))
  '(TeX-command-list
-   (quote
-    (("TeX" "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil
+   '(("TeX" "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil
       (plain-tex-mode texinfo-mode ams-tex-mode)
       :help "Run plain TeX")
      ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil
@@ -339,10 +336,9 @@
      ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
      ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
      ("Auto Generate" "my-TeX-auto-generate" TeX-run-function nil t :help "Auto generate and reapply style hooks")
-     ("Other" "" TeX-run-command t t :help "Run an arbitrary command"))))
+     ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
  '(TeX-insert-braces-alist
-   (quote
-    (("bracket" . t)
+   '(("bracket" . t)
      ("centering")
      ("clearpage")
      ("curly" . t)
@@ -350,14 +346,12 @@
      ("noindent")
      ("pagebreak")
      ("paren" . t)
-     ("titlepage"))))
+     ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   (quote
-    (pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex)))
+   '(pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex))
  '(reftex-label-alist
-   (quote
-    (("assump" 84 "assump:" nil nil nil -3)
+   '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)
      ("conj" 84 "conj:" nil nil nil -3)
      ("corollary" 84 "cor:" nil nil nil -3)
@@ -365,10 +359,9 @@
      ("lemma" 84 "lemma:" nil nil nil -3)
      ("prop" 84 "prop:" nil nil nil -3)
      ("theorem" 84 "theorem:" nil nil nil -3)
-     ("remark" 84 "remark:" nil nil nil -3))))
+     ("remark" 84 "remark:" nil nil nil -3)))
  '(reftex-ref-style-alist
-   (quote
-    (("Default" t
+   '(("Default" t
       (("\\ref" 13)
        ("\\pageref" 112)
        ("\\eqref" 101)))
@@ -376,5 +369,5 @@
       (("\\cref" 99)
        ("\\Cref" 67)
        ("\\cpageref" 100)
-       ("\\Cpageref" 68))))))
- '(reftex-ref-style-default-list (quote ("Default" "Cleveref"))))
+       ("\\Cpageref" 68)))))
+ '(reftex-ref-style-default-list '("Default" "Cleveref")))
