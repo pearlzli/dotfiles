@@ -259,9 +259,14 @@ pip install --user pandoc-eqnos
 if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
 else
-    if [ $(echo "$TMUX_VERSION >= 1.9" | bc) -eq 1 ]; then
-        $my_timeout git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    if not_installed bc; then
+        echo "${red}bc is not installed; needed to compare tmux verions${normal}"
+        echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
     else
-        echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
+        if [ $(echo "$TMUX_VERSION >= 1.9" | bc) -eq 1 ]; then
+            $my_timeout git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+        else
+            echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
+        fi
     fi
 fi
