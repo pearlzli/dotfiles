@@ -14,6 +14,7 @@
         '(auctex
           bind-key
           cl-lib
+          ein
           ess
           gitconfig-mode
           gitignore-mode
