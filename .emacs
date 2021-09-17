@@ -6,7 +6,10 @@
 
 ;; Add package archives (https://emacs.stackexchange.com/q/268/14500)
 ;; Marmalade discontinued (https://www.emacswiki.org/emacs/MarmaladeRepo)
-(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+;; If version < 26.3, disable TLS1.3 (https://melpa.org/#/getting-started, under "Known issues")
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(when (version< emacs-version "26.3")
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; BASIC EDITING
