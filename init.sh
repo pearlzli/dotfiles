@@ -105,10 +105,10 @@ function timeout_result {
 }
 
 
-### 1. Install Mac-specific things
+### 1. Install OS-specific things
 
 case $OSTYPE in
-    darwin*) # OS X
+    darwin*) # MacOS
         if not_installed brew; then
             /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
         fi
@@ -162,6 +162,21 @@ case $OSTYPE in
         try_symlink "applescripts/desktop-alias.workflow" "Make Desktop alias.workflow"
 
         my_timeout="gtimeout $timeout_length"
+        ;;
+
+    linux-gnu*)
+        apt-get update
+
+        if not_installed bc; then
+            sudo apt-get install bc
+            if [ $? -eq 0 ]; then
+                echo "${green}Installed bc${normal}"
+            else
+                echo "${red}Could not install bc${normal}"
+            fi
+        fi
+
+        my_timeout="timeout $timeout_length"
         ;;
 
     *)
