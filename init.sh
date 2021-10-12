@@ -1,15 +1,17 @@
 #!/bin/bash
 
 # init.sh
-#   Initialize (nearly) everything for a new machine. Install Homebrew (and
-#   use it to install other things) if on OS X, link dotfiles, and install
-#   Emacs packages.
+#   Initialize (nearly) everything for a new machine. Install Homebrew (and use
+#   it to install other things) if on OS X, link dotfiles, and install Emacs
+#   packages.
 #
 #   Usage:
 #     ./init.sh path/to/dotfile/repo
 
 
-### 0. init.sh Setup
+################################################################################
+# Define helper functions
+################################################################################
 
 # Colors
 # https://stackoverflow.com/questions/2924697/how-does-one-output-bold-text-in-bash
@@ -105,7 +107,9 @@ function timeout_result {
 }
 
 
-### 1. Install OS-specific things
+################################################################################
+# Install OS-specific things
+################################################################################
 
 case $OSTYPE in
     darwin*) # MacOS
@@ -185,7 +189,9 @@ case $OSTYPE in
 esac
 
 
-### 2. Link dotfiles
+################################################################################
+# Link dotfiles
+################################################################################
 
 cd $HOME
 
@@ -250,7 +256,9 @@ cd ~/.pandoc/templates
 try_symlink pandoc/templates/GitHub.html5 GitHub.html5
 
 
-### 3. Clone emacs and tmux packages, timing out after $timeout_length if necessary
+################################################################################
+# Install OS-agnostic things
+################################################################################
 
 cd $HOME
 
