@@ -1,6 +1,6 @@
 (require 'package)
 (package-initialize)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
 (when (version< emacs-version "26.3")
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 (package-refresh-contents)

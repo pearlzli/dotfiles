@@ -6,8 +6,9 @@
 
 ;; Add package archives (https://emacs.stackexchange.com/q/268/14500)
 ;; Marmalade discontinued (https://www.emacswiki.org/emacs/MarmaladeRepo)
+;; Use MELPA mirror (https://emacs.stackexchange.com/a/61577/14500)
 ;; If version < 26.3, disable TLS1.3 (https://melpa.org/#/getting-started, under "Known issues")
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://www.mirrorservice.org/sites/stable.melpa.org/packages/"))
 (when (version< emacs-version "26.3")
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
