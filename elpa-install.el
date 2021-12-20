@@ -22,4 +22,5 @@
           markdown-mode
           matlab-mode
           pandoc-mode
+          unfill
           xclip))
