@@ -27,10 +27,16 @@
     tool = meld
 [difftool]
     prompt = false
+[difftool "meld"]
+    path = /usr/local/bin/meld
+    cmd = meld "$LOCAL" "$REMOTE"
 [merge]
     tool = meld
 [mergetool]
     prompt = false
+[mergetool "meld"]
+    path = /usr/local/bin/meld
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [url "https://"]
     insteadof = git://
     pushInsteadOf = git://
