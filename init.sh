@@ -131,6 +131,9 @@ case $OSTYPE in
         brew install gcc   # HDF5.jl
         brew install cmake # Polynomials.jl
 
+        # This is required by nbdime
+        brew install node
+
         # Add to PATH
         try_addpath "/Library/TeX/texbin" 0
         try_addpath "/usr/local/anaconda3/bin" 1
@@ -196,7 +199,7 @@ esac
 cd $HOME
 
 # Create symlinks
-for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
+for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig" ".gitattributes"; do
     try_symlink $file
 done
 
@@ -280,6 +283,11 @@ pip install --user jupyter_contrib_nbextensions
 jupyter contrib nbextension install --user
 jupyter nbextension enable toc2/main --user
 jupyter nbextension enable collapsible_headings/main --user
+
+# Jupyter notebook git diffs
+pip install --user nbdime
+nbdime extensions --enable --user
+nbdime config-git --enable --global # global means all git repos
 
 # Pandoc filters
 pip install --user pandoc-eqnos
