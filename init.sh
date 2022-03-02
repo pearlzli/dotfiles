@@ -41,7 +41,7 @@ not_installed() {
 maybe_mkdir() {
     if [ ! -d "$1" ]; then
         mkdir -p $1
-        if [ $? -eq 0 ]; then
+        if [ "$?" -eq 0 ]; then
             echo "${green}Created $1${normal}"
         else
             echo "${red}Could not create $1${normal}"
@@ -60,7 +60,7 @@ try_symlink() {
         echo "${red}Did not link $(pwd)/$dst: symlink already exists${normal}"
     elif [ ! -f "$src" ]; then
         ln -s "$dotfile_dir/$src" "$dst"
-        if [ $? -eq 0 ]; then
+        if [ "$?" -eq 0 ]; then
             echo "${green}Linked $(pwd)/$dst -> $dotfile_dir/$src${normal}"
         else
             echo "${red}Could not link $(pwd)/$dst${normal}"
@@ -75,19 +75,19 @@ try_symlink() {
 try_addpath() {
     dir=$1
     front=$2 # whether to add dir to front of PATH
-    if [ -z "$(grep $dir ~/.bashrc-local)" ]; then
+    if [ -z "$(grep $dir $HOME/.bashrc-local)" ]; then
         if [ $front -eq 1 ]; then
-            echo "export PATH=$dir:\$PATH" >> ~/.bashrc-local
+            echo "export PATH=$dir:\$PATH" >> "$HOME/.bashrc-local"
         else
-            echo "export PATH=\$PATH:$dir" >> ~/.bashrc-local
+            echo "export PATH=\$PATH:$dir" >> "$HOME/.bashrc-local"
         fi
-        if [ $? -eq 0 ]; then
-            echo "${green}Added $dir to PATH in ~/.bashrc-local${normal}"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Added $dir to PATH in $HOME/.bashrc-local${normal}"
         else
-            echo "${red}Could not add $dir to PATH in ~/.bashrc-local${normal}"
+            echo "${red}Could not add $dir to PATH in $HOME/.bashrc-local${normal}"
         fi
     else
-        echo "${red}Did not add $dir to PATH in ~/.bashrc-local: already there${normal}"
+        echo "${red}Did not add $dir to PATH in $HOME/.bashrc-local: already there${normal}"
     fi
 }
 
@@ -144,31 +144,31 @@ case $OSTYPE in
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
         # https://apple.stackexchange.com/a/376828
-        cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-*.otf ~/Library/Fonts
-        if [ $? -eq 0 ]; then
-            echo "${green}Copied SF Mono font files to ~/Library/Fonts${normal}"
+        cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-*.otf "$HOME/Library/Fonts/"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Copied SF Mono font files to $HOME/Library/Fonts${normal}"
         else
-            echo "${red}Could not copy SF Mono font files to ~/Library/Fonts${normal}"
+            echo "${red}Could not copy SF Mono font files to $HOME/Library/Fonts${normal}"
         fi
 
         # Use SF Mono in Meld
         # https://github.com/yousseb/meld/issues/38#issuecomment-547577592
         defaults write org.gnome.meld "/org/gnome/meld/use-system-font" 0
         defaults write org.gnome.meld "/org/gnome/meld/custom-font" "SF Mono, 14"
-        if [ $? -eq 0 ]; then
+        if [ "$?" -eq 0 ]; then
             echo "${green}Set SF Mono as Meld font${normal}"
         else
             echo "${red}Could not set SF Mono as Meld font${normal}"
         fi
 
         # Copy Mac key bindings
-        maybe_mkdir ~/Library/KeyBindings
-        cp "$dotfile_dir/DefaultKeyBinding.dict" ~/Library/KeyBindings
+        maybe_mkdir "$HOME/Library/KeyBindings"
+        cp "$dotfile_dir/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings"
 
         # Symlink AppleScripts
-        cd /Applications
+        cd "/Applications"
         try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
-        cd ~/Library/Services
+        cd "$HOME/Library/Services"
         try_symlink "applescripts/desktop-alias.workflow" "Make Desktop alias.workflow"
 
         my_timeout="gtimeout $timeout_length"
@@ -179,7 +179,7 @@ case $OSTYPE in
 
         if not_installed bc; then
             sudo apt-get install bc
-            if [ $? -eq 0 ]; then
+            if [ "$?" -eq 0 ]; then
                 echo "${green}Installed bc${normal}"
             else
                 echo "${red}Could not install bc${normal}"
@@ -203,26 +203,26 @@ cd $HOME
 
 # Create symlinks
 for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig" ".gitattributes"; do
-    try_symlink $file
+    try_symlink "$file"
 done
 
 # Create local dotfiles if they don't already exist
 for file in ".bashrc-local" ".gitconfig-local"; do
-    if [ ! -f $file ]; then
-        touch $file
+    if [ ! -f "$file" ]; then
+        touch "$file"
         echo "${green}Created $file${normal}"
     fi
 done
 
 # Julia startup
-maybe_mkdir ~/.julia/config
-cd ~/.julia/config
-try_symlink startup.jl
+maybe_mkdir "$HOME/.julia/config"
+cd "$HOME/.julia/config"
+try_symlink "startup.jl"
 
 # Stata startup
-maybe_mkdir ~/Documents/Stata
-cd ~/Documents/Stata
-try_symlink profile.do
+maybe_mkdir "$HOME/Documents/Stata"
+cd "$HOME/Documents/Stata"
+try_symlink "profile.do"
 
 # TeX files
 cd $dotfile_dir
@@ -237,15 +237,15 @@ else
 
     # Style and class files
     maybe_mkdir "$texdir/tex/latex"
-    cd $texdir
+    cd "$texdir"
     for file in $texfiles; do
-        try_symlink $file
+        try_symlink "$file"
     done
 
     # Bibliography style files
     maybe_mkdir "$texdir/bibtex/bst"
-    cd $texdir
-    for file in $bstfiles; do
+    cd "$texdir"
+    for file in "$bstfiles"; do
         try_symlink $file
     done
 fi
@@ -253,15 +253,15 @@ fi
 # Pandoc templates
 maybe_mkdir "$HOME/.pandoc"
 maybe_mkdir "$HOME/.pandoc/templates"
-cd ~/.pandoc/templates
-try_symlink pandoc/templates/GitHub.html5 GitHub.html5
+cd "$HOME/.pandoc/templates"
+try_symlink "pandoc/templates/GitHub.html5" "GitHub.html5"
 
 
 ################################################################################
 # Install OS-agnostic things
 ################################################################################
 
-cd $HOME
+cd "$HOME"
 
 # Create .emacs.d if it doesn't already exist
 maybe_mkdir "$HOME/.emacs.d"
@@ -274,7 +274,7 @@ emacs --script "$dotfile_dir/elpa-install.el"
 
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
-timeout_result $? "ado-mode"
+timeout_result "$?" "ado-mode"
 
 # Pandoc filters
 pip install --user pandoc-eqnos
@@ -293,7 +293,7 @@ else
         elif [ $(echo "$TMUX_VERSION < 1.9" | bc) -eq 1 ]; then
             echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
         else
-            $my_timeout git clone https://github.com/tmux-plugins/tpm "$tpmdir"
+            $my_timeout git clone "https://github.com/tmux-plugins/tpm" "$tpmdir"
         fi
     fi
 fi
