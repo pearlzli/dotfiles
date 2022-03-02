@@ -122,13 +122,14 @@ case $OSTYPE in
             eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
 
-        brew install rename
         brew install coreutils
         brew install emacs
+        brew install jupyterlab
         brew install pandoc
+        brew install python
+        brew install rename
         brew install tmux
         brew install wget
-        brew install --cask anaconda
         brew install --cask mactex
         brew install --cask meld
         brew install --cask skim
@@ -137,12 +138,8 @@ case $OSTYPE in
         brew install gcc   # HDF5.jl
         brew install cmake # Polynomials.jl
 
-        # This is required by nbdime
-        brew install node
-
         # Add to PATH
         try_addpath "/Library/TeX/texbin" 0
-        try_addpath "/usr/local/anaconda3/bin" 1
 
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
@@ -287,17 +284,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result $? "ado-mode"
-
-# Jupyter notebook extensions
-pip install --user jupyter_contrib_nbextensions
-jupyter contrib nbextension install --user
-jupyter nbextension enable toc2/main --user
-jupyter nbextension enable collapsible_headings/main --user
-
-# Jupyter notebook git diffs
-pip install --user nbdime
-nbdime extensions --enable --user
-nbdime config-git --enable --global # global means all git repos
 
 # Pandoc filters
 pip install --user pandoc-eqnos
