@@ -114,7 +114,12 @@ function timeout_result {
 case $OSTYPE in
     darwin*) # MacOS
         if not_installed brew; then
-            /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+            # Install brew
+            /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+            # Add brew to PATH
+            echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.profile"
+            eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
 
         brew install rename
