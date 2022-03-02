@@ -128,9 +128,10 @@ case $OSTYPE in
         brew install pandoc
         brew install tmux
         brew install wget
+        brew install --cask anaconda
         brew install --cask mactex
         brew install --cask meld
-        brew install --cask anaconda
+        brew install --cask skim
 
         # The following are easier to build using Brew than in Julia
         brew install gcc   # HDF5.jl
