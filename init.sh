@@ -147,7 +147,7 @@ case $OSTYPE in
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
         # https://apple.stackexchange.com/a/376828
-        cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SFMono-*.otf ~/Library/Fonts
+        cp /System/Applications/Utilities/Terminal.app/Contents/Resources/Fonts/SF-Mono-*.otf ~/Library/Fonts
         if [ $? -eq 0 ]; then
             echo "${green}Copied SF Mono font files to ~/Library/Fonts${normal}"
         else
