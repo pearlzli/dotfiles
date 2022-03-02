@@ -133,25 +133,6 @@
   escapeinside={\%*}{*)}% if you want to add LaTeX within your code
 }
 
-% MATLAB syntax highlighting
-\lstdefinestyle{matlab}{%
-  language=Matlab,%
-  basicstyle=\footnotesize\ttfamily,%
-  breaklines=true,%
-  morekeywords={matlab2tikz},%
-  keywordstyle=\color{blue},%
-  morekeywords=[2]{1},%
-  keywordstyle=[2]{\color{black}},%
-  identifierstyle=\color{black},%
-  stringstyle=\color{codepurple},%
-  commentstyle=\color{codegreen},%
-  showstringspaces=false,%
-  emph=[1]{for,end,break,switch,case},%
-  emphstyle=[1]\color{blue},%
-  upquote=true,%
-  backgroundcolor=\color{lightgray}
-}
-
 % Highlight the 'julia>' prompt.
 % See http://tex.stackexchange.com/a/172076/50294 for the additional highlighting
 % See http://tex.stackexchange.com/a/180619/50294 for the '>' issue
@@ -196,7 +177,6 @@
 % http://tex.stackexchange.com/a/83883/50294
 \newcommand{\hltext}[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
 \newcommand{\bashinline}[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
-\newcommand{\matlabinline}[1]{\colorbox{lightgray}{{\lstset{style=matlab}\lstinline!#1!}}}
 \newcommand{\juliainline}[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
 
 % To-dos

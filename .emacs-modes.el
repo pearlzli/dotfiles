@@ -117,9 +117,6 @@ Group 4 matches the text inside the delimiters.")
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 
-;; MATLAB
-(setq matlab-indent-function t)
-
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
 (autoload 'ado-mode "ado-mode" "Stata mode (ado-mode)" t)

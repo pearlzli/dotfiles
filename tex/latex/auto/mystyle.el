@@ -34,7 +34,6 @@
    (TeX-add-symbols
     '("todo" 1)
     '("juliainline" 1)
-    '("matlabinline" 1)
     '("bashinline" 1)
     '("hltext" 1)
     '("nmpder" 4)
@@ -95,7 +94,6 @@
     "lightgray")
    (LaTeX-add-listings-lstdefinestyles
     "bash"
-    "matlab"
     "julia"))
  :latex)
 

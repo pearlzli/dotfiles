@@ -18,7 +18,6 @@
           git-modes
           julia-mode
           markdown-mode
-          matlab-mode
           pandoc-mode
           unfill
           xclip))
