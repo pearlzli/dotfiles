@@ -15,8 +15,7 @@
           bind-key
           cl-lib
           ess
-          gitconfig-mode
-          gitignore-mode
+          git-modes
           julia-mode
           markdown-mode
           matlab-mode

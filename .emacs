@@ -350,7 +350,7 @@
      ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(unfill pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode gitignore-mode gitconfig-mode xclip cl-lib auctex))
+   '(git-modes unfill pandoc-mode ess matlab-mode julia-mode bind-key markdown-mode xclip cl-lib auctex))
  '(reftex-label-alist
    '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)
