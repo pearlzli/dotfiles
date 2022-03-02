@@ -117,10 +117,6 @@ Group 4 matches the text inside the delimiters.")
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 
-;; Jupyter
-(add-hook 'ein:notebook-mode-hook
-          (lambda () (setq show-trailing-whitespace nil)))
-
 ;; MATLAB
 (setq matlab-indent-function t)
 
