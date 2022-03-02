@@ -310,10 +310,13 @@ else
         echo "${red}bc is not installed; needed to compare tmux verions${normal}"
         echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
     else
-        if [ $(echo "$TMUX_VERSION >= 1.9" | bc) -eq 1 ]; then
-            $my_timeout git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-        else
+        tpmdir="$HOME/.tmux/plugins/tpm"
+        if [ -d "$tpmdir" ]; then
+            echo "${red}Didn't install tmux plugin manager: directory already exists${normal}"
+        elif [ $(echo "$TMUX_VERSION < 1.9" | bc) -eq 1 ]; then
             echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
+        else
+            $my_timeout git clone https://github.com/tmux-plugins/tpm "$tpmdir"
         fi
     fi
 fi
