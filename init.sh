@@ -254,8 +254,12 @@ else
 
     # kbordermatrix package
     cd "$texdir/tex/latex"
-    wget "http://mirrors.concertpass.com/tex-archive/macros/generic/misc/kbordermatrix.sty"
-    echo "${green}Installed kbordermatrix.sty${normal}"
+    if [ -f "kbordermatrix.sty" ]; then
+        echo "${red}Didn't install kbordermatrix.sty: file already exists${normal}"
+    else
+        wget "http://mirrors.concertpass.com/tex-archive/macros/generic/misc/kbordermatrix.sty"
+        echo "${green}Installed kbordermatrix.sty${normal}"
+    fi
 fi
 
 # Pandoc templates
