@@ -277,7 +277,7 @@ $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
 
 # Pandoc filters
-pip install --user pandoc-eqnos
+pip3 install --user pandoc-eqnos
 
 # Tmux plugin manager
 if not_installed tmux; then
