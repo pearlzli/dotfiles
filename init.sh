@@ -130,6 +130,7 @@ case $OSTYPE in
         brew install rename
         brew install tmux
         brew install wget
+        brew install --cask lyx
         brew install --cask mactex
         brew install --cask meld
         brew install --cask skim
