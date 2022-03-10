@@ -28,12 +28,9 @@ dotfile_dir=$1
 
 # Check if something is installed
 # Usage: not_installed <program>
+# https://stackoverflow.com/a/677212
 not_installed() {
-  if [[ -n "$(which $1)" ]]; then
-    return 1
-  else
-    return 0
-  fi
+    return ! command -v $1 &> /dev/null
 }
 
 # Make directory if it doesn't already exist
