@@ -4,10 +4,17 @@ export TERM="xterm-256color"
 # Set default editor for command-line programs
 export EDITOR="emacs"
 
-# Cache tmux and ruby versions
-# https://stackoverflow.com/a/40902312/2756250
-export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
-export RUBY_VERSION="$(ruby -v | sed -En "s/^ruby ([0-9]+(.[0-9]+)(.[0-9]+)).*/\1/p")"
+# Cache tmux and ruby versions: https://stackoverflow.com/a/40902312/2756250
+# Only if tmux/ruby commands exist: https://stackoverflow.com/a/677212
+command_exists() {
+    return command -v $1 &> /dev/null
+}
+if command_exists tmux; then
+    export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
+fi
+if command_exists ruby; then
+    export RUBY_VERSION="$(ruby -v | sed -En "s/^ruby ([0-9]+(.[0-9]+)(.[0-9]+)).*/\1/p")"
+fi
 
 # Custom PS1:
 #   user@hostname current-directory (git branch) $
