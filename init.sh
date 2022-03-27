@@ -201,7 +201,7 @@ esac
 cd $HOME
 
 # Create symlinks
-for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig" ".gitattributes"; do
+for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
     try_symlink "$file"
 done
 
@@ -274,6 +274,12 @@ emacs --script "$dotfile_dir/elpa-install.el"
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
+
+# Jupyter notebook extensions
+pip install --user jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user
+jupyter nbextension enable toc2/main --user
+jupyter nbextension enable collapsible_headings/main --user
 
 # Pandoc filters
 pip3 install --user pandoc-eqnos

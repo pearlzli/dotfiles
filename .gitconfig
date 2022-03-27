@@ -25,26 +25,18 @@
     editor = emacs -nw
 [diff]
     tool = meld
-[diff "jupyternotebook"]
-	command = git-nbdiffdriver diff
 [difftool]
     prompt = false
 [difftool "meld"]
     path = /usr/local/bin/meld
-	cmd = meld "$LOCAL" "$REMOTE"
-[difftool "jupyternotebook"]
-	cmd = git-nbdiffdriver webdiff
+    cmd = meld "$LOCAL" "$REMOTE"
 [merge]
     tool = meld
-[merge "jupyternotebook"]
-	command = git-nbmergedriver merge %O %A %B %L %P
 [mergetool]
     prompt = false
 [mergetool "meld"]
     path = /usr/local/bin/meld
-	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
-[mergetool "nbdime"]
-	cmd = git-nbmergetool "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [url "https://"]
     insteadof = git://
     pushInsteadOf = git://
