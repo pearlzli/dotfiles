@@ -281,9 +281,6 @@ jupyter contrib nbextension install --user
 jupyter nbextension enable toc2/main --user
 jupyter nbextension enable collapsible_headings/main --user
 
-# Pandoc filters
-pip3 install --user pandoc-eqnos
-
 # Tmux plugin manager
 if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
