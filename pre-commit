@@ -1,12 +1,32 @@
 #!/bin/bash
 
-# DefaultKeyBinding.dict can't be symlinked, so copy it to ~/Library/KeyBindings whenever a commit is made that modifies it
-# https://apple.stackexchange.com/a/224074
-if [[ $(git diff --cached --name-only | grep 'DefaultKeyBinding.dict' | wc -l) -eq 1 ]];
-then
-   bdir=$(git rev-parse --show-toplevel)
-   ldir=~/Library/KeyBindings
+# dotfiles directory
+ddir=$(git rev-parse --show-toplevel)
 
-   cp $bdir/DefaultKeyBinding.dict $ldir/DefaultKeyBinding.dict
-   printf "Copied updated DefaultKeyBinding.dict to %s\n" $ldir
-fi
+# (file, remotedir) pairs
+# These files can't be symlinked to their remote directories for various reasons
+# https://apple.stackexchange.com/a/224074
+pairs=(
+    "DefaultKeyBinding.dict,$HOME/Library/KeyBindings"
+    "applescripts/Make Desktop alias.workflow,$HOME/Library/Services"
+    "applescripts/Open in Chrome.workflow,$HOME/Library/Services"
+    "applescripts/Open in Skim.workflow,$HOME/Library/Services"
+    "applescripts/Open in TextEdit.workflow,$HOME/Library/Services"
+)
+
+# Iterate through pairs of values
+# https://stackoverflow.com/a/61367055/2756250
+for pair in "${pairs[@]}"; do
+    # Split string to array on ',' delimiter
+    # https://stackoverflow.com/a/918931/2756250
+    IFS=',' read -ra pair <<< "$pair"
+    file="${pair[0]}"
+    rdir="${pair[1]}"
+
+    # If a commit is made that updates `file`, copy it to `rdir`
+    if [[ $(git diff --cached --name-only | grep "$file" | wc -l) -eq 1 ]];
+    then
+        cp -r "$ddir/$file" "$rdir/"
+        echo "Copied $file to $rdir/"
+    fi
+done
