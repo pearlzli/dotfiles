@@ -217,6 +217,11 @@ for file in ".bashrc-local" ".gitconfig-local"; do
     fi
 done
 
+# Pre-commit hook
+chmod u+x "$dotfile_dir/pre-commit"
+cd "$dotfile_dir/.git/hooks"
+try_symlink "pre-commit"
+
 # Julia startup
 maybe_mkdir "$HOME/.julia/config"
 cd "$HOME/.julia/config"
