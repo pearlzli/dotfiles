@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>509</string>
+	<string>512</string>
 	<key>AMApplicationVersion</key>
 	<string>2.10</string>
 	<key>AMDocumentVersion</key>
@@ -18,22 +18,27 @@
 					<key>Container</key>
 					<string>List</string>
 					<key>Optional</key>
-					<true/>
+					<false/>
 					<key>Types</key>
 					<array>
-						<string>com.apple.applescript.object</string>
+						<string>com.apple.cocoa.path</string>
 					</array>
 				</dict>
 				<key>AMActionVersion</key>
-				<string>1.0.2</string>
+				<string>1.1.1</string>
 				<key>AMApplication</key>
 				<array>
-					<string>Automator</string>
+					<string>Finder</string>
 				</array>
 				<key>AMParameterProperties</key>
 				<dict>
-					<key>source</key>
-					<dict/>
+					<key>appPath</key>
+					<dict>
+						<key>isPathPopUp</key>
+						<true/>
+						<key>variableUUIDsInMenu</key>
+						<array/>
+					</dict>
 				</dict>
 				<key>AMProvides</key>
 				<dict>
@@ -41,60 +46,56 @@
 					<string>List</string>
 					<key>Types</key>
 					<array>
-						<string>com.apple.applescript.object</string>
+						<string>com.apple.cocoa.path</string>
 					</array>
 				</dict>
 				<key>ActionBundlePath</key>
-				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<string>/System/Library/Automator/Open Finder Items.action</string>
 				<key>ActionName</key>
-				<string>Run AppleScript</string>
+				<string>Open Finder Items</string>
 				<key>ActionParameters</key>
 				<dict>
-					<key>source</key>
-					<string>tell application "Finder"	-- parse file name	set filealias to the selection as alias	set filepath to quoted form of (POSIX path of filealias as text)	set filebase to quoted form of (do shell script "basename " &amp; filepath)
-	do shell script "ln -s " &amp; filepath &amp; " ~/Desktop/" &amp; filebaseend tell</string>
+					<key>appPath</key>
+					<string>/System/Applications/TextEdit.app</string>
 				</dict>
 				<key>BundleIdentifier</key>
-				<string>com.apple.Automator.RunScript</string>
+				<string>com.apple.Automator.OpenFinderItems</string>
 				<key>CFBundleVersion</key>
-				<string>1.0.2</string>
+				<string>1.1.1</string>
 				<key>CanShowSelectedItemsWhenRun</key>
-				<false/>
+				<true/>
 				<key>CanShowWhenRun</key>
 				<true/>
 				<key>Category</key>
 				<array>
-					<string>AMCategoryUtilities</string>
+					<string>AMCategoryFilesAndFolders</string>
 				</array>
 				<key>Class Name</key>
-				<string>RunScriptAction</string>
+				<string>AMOpenFinderItems</string>
 				<key>InputUUID</key>
-				<string>9784D12B-D284-4484-8C79-1BC58EA758C6</string>
+				<string>0C8710D8-4C5A-4273-B5F7-3183DF6F9EF0</string>
 				<key>Keywords</key>
 				<array>
-					<string>Run</string>
+					<string>Open</string>
+					<string>Document</string>
+					<string>File</string>
 				</array>
 				<key>OutputUUID</key>
-				<string>357F0F75-7F5E-4532-ABC0-455BD8A9F311</string>
+				<string>C93B7F32-9A58-4692-BD19-E7627ABEAB36</string>
 				<key>UUID</key>
-				<string>F4ECF566-8E2E-4553-A682-2C19CD60AB70</string>
+				<string>40E7C953-3C4F-4459-BB06-A8514CBE6203</string>
 				<key>UnlocalizedApplications</key>
 				<array>
-					<string>Automator</string>
+					<string>Finder</string>
 				</array>
 				<key>arguments</key>
 				<dict>
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<string>on run {input, parameters}
-	
-	(* Your script goes here *)
-	
-	return input
-end run</string>
+						<string></string>
 						<key>name</key>
-						<string>source</string>
+						<string>appPath</string>
 						<key>required</key>
 						<string>0</string>
 						<key>type</key>
@@ -103,14 +104,12 @@ end run</string>
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>360.000000:500.000000</string>
+				<string>309.000000:224.000000</string>
 				<key>nibPath</key>
-				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+				<string>/System/Library/Automator/Open Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
 			<key>isViewVisible</key>
 			<integer>1</integer>
@@ -140,7 +139,7 @@ end run</string>
 		<key>presentationMode</key>
 		<integer>15</integer>
 		<key>processesInput</key>
-		<integer>0</integer>
+		<false/>
 		<key>serviceApplicationBundleID</key>
 		<string>com.apple.finder</string>
 		<key>serviceApplicationPath</key>
@@ -150,11 +149,11 @@ end run</string>
 		<key>serviceOutputTypeIdentifier</key>
 		<string>com.apple.Automator.nothing</string>
 		<key>serviceProcessesInput</key>
-		<integer>0</integer>
+		<false/>
 		<key>systemImageName</key>
 		<string>NSActionTemplate</string>
 		<key>useAutomaticInputType</key>
-		<integer>0</integer>
+		<false/>
 		<key>workflowTypeIdentifier</key>
 		<string>com.apple.Automator.servicesMenu</string>
 	</dict>

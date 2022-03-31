@@ -164,11 +164,15 @@ case $OSTYPE in
         maybe_mkdir "$HOME/Library/KeyBindings"
         cp "$dotfile_dir/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings"
 
-        # Symlink AppleScripts
+        # Symlink/copy AppleScripts
         cd "/Applications"
         try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
-        cd "$HOME/Library/Services"
-        try_symlink "applescripts/desktop-alias.workflow" "Make Desktop alias.workflow"
+
+        services_dir="$HOME/Library/Services/"
+        cp -r "$dotfile_dir/applescripts/Make Desktop alias.workflow" services_dir
+        cp -r "$dotfile_dir/applescripts/Open in Chrome.workflow" services_dir
+        cp -r "$dotfile_dir/applescripts/Open in Skim.workflow" services_dir
+        cp -r "$dotfile_dir/applescripts/Open in TextEdit.workflow" services_dir
 
         my_timeout="gtimeout $timeout_length"
         ;;
