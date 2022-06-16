@@ -59,7 +59,7 @@
     '("group" 1)
     "tageq"
     "oh"
-    "st"
+    "suchthat"
     "where"
     "corrto"
     "N"
