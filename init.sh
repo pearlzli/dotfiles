@@ -226,6 +226,7 @@ try_symlink "pre-commit"
 maybe_mkdir "$HOME/.julia/config"
 cd "$HOME/.julia/config"
 try_symlink "startup.jl"
+try_symlink "startup_ijulia.jl"
 
 # Stata startup
 maybe_mkdir "$HOME/Documents/Stata"
