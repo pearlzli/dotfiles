@@ -285,12 +285,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
 
-# Jupyter notebook extensions
-pip install --user jupyter_contrib_nbextensions
-jupyter contrib nbextension install --user
-jupyter nbextension enable toc2/main --user
-jupyter nbextension enable collapsible_headings/main --user
-
 # Tmux plugin manager
 if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
