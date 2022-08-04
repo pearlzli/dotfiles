@@ -281,6 +281,11 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
+# Install JupyterLab extensions
+pip install --user jupyterlab-git
+pip install --user nbdime
+nbdime extensions --enable --user
+
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
