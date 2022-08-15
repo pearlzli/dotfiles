@@ -282,8 +282,11 @@ cd "$HOME/.emacs.d"
 emacs --script "$dotfile_dir/elpa-install.el"
 
 # Install JupyterLab extensions
+pip install --user ipywidgets # required for plotly
 pip install --user jupyterlab-git
 pip install --user nbdime
+pip install --user plotly
+pip install --user webio_jupyter_extension # required for plotly
 nbdime extensions --enable --user
 
 # Emacs Stata mode
