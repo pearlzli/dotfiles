@@ -6,14 +6,11 @@ export EDITOR="emacs"
 
 # Cache tmux and ruby versions: https://stackoverflow.com/a/40902312/2756250
 # Only if tmux/ruby commands exist: https://stackoverflow.com/a/677212
-command_exists() {
-    return command -v $1 &> /dev/null
-}
-if command_exists tmux; then
-    export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
-fi
-if command_exists ruby; then
+if command -v ruby &> /dev/null; then
     export RUBY_VERSION="$(ruby -v | sed -En "s/^ruby ([0-9]+(.[0-9]+)(.[0-9]+)).*/\1/p")"
+fi
+if command -v tmux &> /dev/null; then
+    export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
 fi
 
 # Custom PS1:
