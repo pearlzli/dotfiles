@@ -37,6 +37,7 @@ alias ld="ls -d */"
 alias ll="ls -l -h"
 alias mv="mv -i"
 alias mytop="top -u $USER"
+alias pip="python -m pip"
 
 # Hide files from ls
 hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
