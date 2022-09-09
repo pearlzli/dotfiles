@@ -283,12 +283,12 @@ cd "$HOME/.emacs.d"
 emacs --script "$dotfile_dir/elpa-install.el"
 
 # Install JupyterLab extensions
-pip install --user ipywidgets # required for plotly
-pip install --user jupyterlab-git
-pip install --user nbdime
-pip install --user plotly
-pip install --user webio_jupyter_extension # required for plotly
-nbdime extensions --enable --user
+pip install ipywidgets # required for plotly
+pip install jupyterlab-git
+pip install nbdime
+pip install plotly
+pip install webio_jupyter_extension # required for plotly
+nbdime extensions --enable
 
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
