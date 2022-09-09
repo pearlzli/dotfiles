@@ -112,8 +112,5 @@ update_display() {
 # --color=auto
 export GREP_OPTIONS='-in -I --color=auto'
 
-# Automatically convert between local and remote userids in sshfs
-alias sshfs="sshfs -o idmap=user"
-
 # Source system-specific aliases
 source ~/.bashrc-local
