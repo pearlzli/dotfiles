@@ -48,8 +48,8 @@ Format 4
 #  +: "Control Option-Command-Eject" # Quit all applications (after giving you a chance to save changes to open documents), then shut down the computer
 #  +: "Command-Tab"                  # Move forward to the next most recently used application in a list of open applications
 #  +: "Shift-Command-Tab"            # Move backward through a list of open applications (sorted by recent use)
-#  -: "Control-A"                    # Move to beginning of line/paragraph
-# used by menu.bind - paragraph-params
+#  +: "Control-A"                    # Move to beginning of line/paragraph
+\bind "M-a"                          "line-begin"
 #  +: "Control-B"                    # Move one character backward
 \bind "M-b"                          "char-backward"
 #  +: "Control-D"                    # Delete the character in front of the cursor
@@ -60,8 +60,8 @@ Format 4
 \bind "M-f"                          "char-forward"
 #  +: "Control-H"                    # Delete the character behind the cursor
 \bind "M-h"                          "char-delete-backward"
-#  -: "Control-K"                    # Delete from the character in front of the cursor to the end of the line/paragraph
-# used by menu.bind - keymap
+#  +: "Control-K"                    # Delete from the character in front of the cursor to the end of the line/paragraph
+\bind "M-k"                          "line-delete-forward"
 #  +: "Control-L"                    # Center the cursor/selection in the visible area
 \bind "M-l"                          "screen-recenter"
 \bind "F5"                           "screen-recenter"
@@ -69,8 +69,8 @@ Format 4
 \bind "M-n"                          "down"
 #  +: "Control-O"                    # Insert a new line after the cursor
 \bind "M-o"                          "paragraph-break"
-#  -: "Control-P"                    # Move up one line
-# used by menu.bind - layouts
+#  +: "Control-P"                    # Move up one line
+\bind "M-p"                          "up"
 #  +: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
 \bind "M-t"                          "chars-transpose"
 #  +: "Control-V"                    # Move down one page
@@ -212,10 +212,10 @@ Format 4
 \bind "C-Left"                       "line-begin"
 #  +: "Command-Down Arrow"           # Move the text insertion point to the end of the document
 \bind "C-Down"                       "buffer-end"
-\bind "M-A-Down"                     "inset-end" 
+\bind "M-A-Down"                     "inset-end"
 #  +: "Command-Up Arrow"             # Move the text insertion point to the beginning of the document
 \bind "C-Up"                         "buffer-begin"
-\bind "M-A-Up"                       "inset-begin" 
+\bind "M-A-Up"                       "inset-begin"
 #  +: "Shift-Command-Right Arrow"    # Select text between the insertion point and the end of the current line (*)
 \bind "S-C-Right"                    "line-end-select"
 #  +: "Shift-Command-Left Arrow"     # Select text between the insertion point and the beginning of the current line (*)
@@ -234,18 +234,20 @@ Format 4
 \bind "S-Down"                       "down-select"
 #  +: "Shift-Option-Right Arrow"     # Extend text selection to the end of the current word, then to the end of the following word if pressed again (*)
 \bind "A-Right"                      "word-right"
+\bind "A-F"                          "word-right"
 \bind "S-A-Right"                    "word-right-select"
 #  +: "Shift-Option-Left Arrow"      # Extend text selection to the beginning of the current word, then to the beginning of the following word if pressed again (*)
 \bind "A-Left"                       "word-left"
+\bind "A-B"                          "word-left"
 \bind "S-A-Left"                     "word-left-select"
 #  +: "Shift-Option-Down Arrow"      # Extend text selection to the end of the current paragraph, then to the end of the following paragraph if pressed again (*)
 \bind "A-Down"                       "paragraph-down"
 \bind "S-A-Down"                     "paragraph-down-select"
-\bind "S-M-A-Down"                   "inset-end-select" 
+\bind "S-M-A-Down"                   "inset-end-select"
 #  +: "Shift-Option-Up Arrow"        # Extend text selection to the beginning of the current paragraph, then to the beginning of the following paragraph if pressed again (*)
 \bind "A-Up"                         "paragraph-up"
 \bind "S-A-Up"                       "paragraph-up-select"
-\bind "S-M-A-Up"                     "inset-begin-select" 
+\bind "S-M-A-Up"                     "inset-begin-select"
 #  -: "Control-Space"                # Toggle between the current and previous input sources
 #  -: "Option-Control-Space"         # Toggle through all enabled input sources
 #  +: "Option-Command-esc"           # Force Quit
@@ -368,9 +370,8 @@ Format 4
 
 \bind "C-M-F"                        "ui-toggle fullscreen"
 
-# Include menu and math bindings
+# Include math bindings
 
-\bind_file menus.bind
 \bind_file math.bind
 \bind_file latinkeys.bind
 \bind_file cyrkeys.bind
