@@ -12,6 +12,7 @@ pairs=(
     "applescripts/Open in Chrome.workflow,$HOME/Library/Services"
     "applescripts/Open in Skim.workflow,$HOME/Library/Services"
     "applescripts/Open in TextEdit.workflow,$HOME/Library/Services"
+    "mac.bind,$HOME/.lyx/bind"
 )
 
 # Iterate through pairs of values
