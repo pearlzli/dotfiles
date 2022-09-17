@@ -81,11 +81,19 @@ alias gb="git branch"
 alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gd="git diff"
-alias gdt="git difftool"
 alias gg="git grep"
 alias gpo="git push origin"
 alias gri="git rebase -i"
 alias gs="git status"
+
+function gdt {
+    if [ $# -eq 0 ]; then
+        # Do a directory diff if no arguments are passed in
+        git difftool --dir-diff
+    else
+        git difftool "$@"
+    fi
+}
 
 # Stop graphical display popup for password when git pushing
 unset SSH_ASKPASS
