@@ -122,7 +122,6 @@ case $OSTYPE in
         brew install coreutils
         brew install emacs
         brew install git
-        brew install jupyterlab
         brew install pandoc
         brew install python
         brew install rename
@@ -283,6 +282,7 @@ cd "$HOME/.emacs.d"
 emacs --script "$dotfile_dir/elpa-install.el"
 
 # Install JupyterLab extensions
+pip install jupyterlab
 pip install ipywidgets # required for plotly
 pip install jupyterlab-git
 pip install nbdime
