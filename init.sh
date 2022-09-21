@@ -290,6 +290,12 @@ pip install plotly
 pip install webio_jupyter_extension # required for plotly
 nbdime extensions --enable
 
+# Symlink Jupyter templates
+# https://stackoverflow.com/a/68188918
+maybe_mkdir "$HOME/Library/Jupyter/nbconvert"
+cd "$HOME/Library/Jupyter/nbconvert"
+ln -s "/opt/homebrew/share/jupyter/nbconvert/templates" "templates"
+
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
