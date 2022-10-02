@@ -1,32 +1,32 @@
 ;; Diff mode
-(with-eval-after-load 'diff-mode
+(eval-after-load 'diff-mode '(progn
   (set-face-foreground 'diff-context "brightblack")
   (set-face-background 'diff-added "green")
   (set-face-background 'diff-changed "yellow")
   (set-face-background 'diff-removed "brightred")
   (set-face-attribute 'diff-refine-added nil :inherit 'diff-added)
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
-  (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
+  (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed)))
 
 ;; SMerge mode
-(with-eval-after-load 'smerge-mode
+(eval-after-load 'smerge-mode '(progn
   (set-face-background 'smerge-markers "brightblack")
   (set-face-attribute 'smerge-lower nil :inherit 'diff-added :background nil)
   (set-face-attribute 'smerge-upper nil :inherit 'diff-removed :background nil)
   (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added :background nil)
   (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed :background nil)
-  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil)
+  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil))
 
 ;; LaTeX
-(with-eval-after-load 'font-latex
+(eval-after-load 'font-latex '(progn
   (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
   (set-face-foreground 'font-latex-bold-face "brightred")
   (set-face-foreground 'font-latex-italic-face "brightred")
-  (set-face-foreground 'font-latex-math-face "brightyellow"))
-(with-eval-after-load 'latex
+  (set-face-foreground 'font-latex-math-face "brightyellow")))
+(eval-after-load 'latex '(progn
   (add-to-list 'LaTeX-font-list '(112 "" "" "\\paren{" "}"))  ; add font key bindings
   (add-to-list 'LaTeX-font-list '(98 "" "" "\\bracket{" "}")) ; https://tex.stackexchange.com/a/523728/116532
-  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))  ; https://en.wikipedia.org/wiki/ASCII#Printable_characters
+  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))) ; https://en.wikipedia.org/wiki/ASCII#Printable_characters
 
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
@@ -75,7 +75,7 @@ Group 4 matches the text inside the delimiters.")
   (interactive)
   (markdown--insert-common
    "\$" "\$" markdown-regex-math-inline 2 4 'markdown-math-face))
-(with-eval-after-load 'markdown-mode
+(eval-after-load 'markdown-mode '(progn
   (define-key markdown-mode-map (kbd "C-c C-f") (lookup-key markdown-mode-map (kbd "C-c C-s"))) ; use AUCTeX-like key bindings
   (define-key markdown-mode-map (kbd "C-c C-s") nil)                                            ;
   (define-key markdown-mode-map (kbd "C-c C-b") nil)                                            ;
@@ -92,7 +92,7 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-style-map (kbd "m") 'markdown-insert-math-inline)                   ;
   (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
-  (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
+  (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level)))
 
 ;; Pandoc
 ;; Notes on pandoc-{revert,load-default}-settings:
@@ -103,9 +103,9 @@ Group 4 matches the text inside the delimiters.")
 (setq pandoc-pdf-viewer "skim")
 (add-hook 'pandoc-mode-hook 'pandoc-revert-settings)       ; see notes above
 (add-hook 'pandoc-mode-hook 'pandoc-load-default-settings) ;
-(with-eval-after-load 'pandoc-mode
+(eval-after-load 'pandoc-mode '(progn
   (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
-  (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
+  (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output)))     ;
 
 ;; Julia
 (unless (version< emacs-version "27")
@@ -123,9 +123,9 @@ Group 4 matches the text inside the delimiters.")
 (setq auto-mode-alist (cons '("\\.do$" . ado-mode) auto-mode-alist))
 (setq ado-close-under-line-flag nil) ; indent close brace at same indent level as open brace
 (setq ado-tab-width 4)
-(with-eval-after-load 'ado-mode
+(eval-after-load 'ado-mode '(progn
   (define-key ado-mode-map (kbd "C-c C-c") 'ado-send-command-to-stata)
   (define-key ado-mode-map (kbd "C-c C-a") 'ado-send-buffer-to-stata)
   (define-key ado-mode-map (kbd "TAB") 'ado-indent-region) ; default is ado-indent-line
   (unless (bound-and-true-p xclip-mode)
-    (display-warning 'initialization "xclip-mode not active; can't use ado-send-{command,buffer}-to-stata")))
+    (display-warning 'initialization "xclip-mode not active; can't use ado-send-{command,buffer}-to-stata"))))
