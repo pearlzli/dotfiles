@@ -20,6 +20,11 @@ To set up a new machine:
 
 7. If desired and on OS X, [set up text replacements](https://support.apple.com/guide/mac-help/back-up-and-share-text-replacements-on-mac-mchl2a7bd795/mac)
 
+## Branches
+
+- `master`
+- `pre-emacs-24.4`: replaces `with-eval-after-load` ([introduced in Emacs 24.4](https://stackoverflow.com/a/21880276/2756250)) with `eval-after-load`
+
 ## Attribution
 
 Thanks to [Matt Cocci](https://github.com/MattCocci/ConfigurationTemplates), [Micah Smith](https://github.com/micahjsmith/dotfiles), and [Erica Moszkwoski](https://github.com/emoszkowski/configFiles) for much of this stuff.
