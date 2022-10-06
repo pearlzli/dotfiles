@@ -15,6 +15,17 @@
 % Use light blue colortheme
 \usecolortheme{seahorse}
 
+% Show miniframes (horizontal nav bar with clickable circle for each slide)
+\useoutertheme[subsection=false]{miniframes}
+
+% Move miniframes to bottom
+% https://tex.stackexchange.com/a/649597/116532
+\makeatletter
+\newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
+\letbeamertemplate{footline}{headline}
+\setbeamertemplate{headline}[default]
+\makeatother
+
 % Use Lato font
 \usepackage[default]{lato}
 
@@ -29,29 +40,22 @@
   citecolor=indigo, % citations
 }
 
-% Page numbers (not nav controls) in bottom right
+% Turn off link coloring in miniframes
+% https://tex.stackexchange.com/a/481051/116532
+\makeatletter
+\newcommand*\disablecolorlinks{\def\HyColor@UseColor##1{}}
+\makeatletter
+\addtobeamertemplate{footline}{\disablecolorlinks}{}
+
+% No nav controls in bottom right
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
 \usepackage{appendixnumberbeamer}
 
 % Remove frame title numbering from allowframebreaks
 \setbeamertemplate{frametitle continuation}{}
 
 
-%%% 3. Sections and environments
-
-% Add TOC slide at the beginning of each section
-% Use \section* to suppress this slide for a given section
-% https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
-% Don't count TOC slides toward frame numbering
-% https://tex.stackexchange.com/a/49805/116532
-\AtBeginSection[]{
-  \begin{frame}[plain,noframenumbering]
-    \tableofcontents[currentsection,hideothersubsections]
-  \end{frame}
-}
-\setbeamertemplate{section in toc}[sections numbered]
-\setbeamertemplate{subsection in toc}[subsections numbered]
+%%% 3. Environments
 
 % Box theorems and definitions
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
