@@ -64,7 +64,8 @@
 
 % List styles
 \setbeamertemplate{itemize items}[circle] % circular bullets for all items
-\setbeamertemplate{enumerate subitem}{\alph{enumii}.} % letters for subitems
+\setbeamertemplate{enumerate subitem}{\alph{enumii})} % lowercase letters for subitems
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii})} % lowercase roman numerals for subsubitems
 
 % Define wideitemize and widenumerate environments
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
