@@ -15,17 +15,6 @@
 % Use light blue colortheme
 \usecolortheme{seahorse}
 
-% Show miniframes (horizontal nav bar with clickable circle for each slide)
-\useoutertheme[subsection=false]{miniframes}
-
-% Move miniframes to bottom
-% https://tex.stackexchange.com/a/649597/116532
-\makeatletter
-\newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
-\letbeamertemplate{footline}{headline}
-\setbeamertemplate{headline}[default]
-\makeatother
-
 % Use Lato font
 \usepackage[default]{lato}
 
@@ -40,6 +29,52 @@
   citecolor=indigo, % citations
 }
 
+% Show miniframes (horizontal nav bar with clickable circle for each slide)
+\useoutertheme[subsection=false]{miniframes}
+
+% Move miniframes to bottom
+% https://tex.stackexchange.com/a/649597/116532
+\makeatletter
+\newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
+\letbeamertemplate{footline}{headline}
+\setbeamertemplate{headline}[default]
+\makeatother
+
+% Add page numbers in bottom right
+% https://tex.stackexchange.com/a/228167/116532
+% https://tex.stackexchange.com/a/85744/116532
+\makeatletter
+\defbeamertemplate*{footline}{myminiframes theme}{
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[leftskip=.01cm,rightskip=0.3cm plus1fil]{section in head/foot}
+    \vskip2pt
+    \begin{minipage}[c]{0.9\paperwidth}
+      \insertnavigation{\linewidth}
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c]{0.05\paperwidth}
+      \raggedleft
+      \insertframenumber
+    \end{minipage}
+    \vskip4pt
+  \end{beamercolorbox}
+  \ifbeamer@theme@subsection
+    \begin{beamercolorbox}[colsep=1.5pt]{middle separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[
+      ht=2.5ex,dp=1.125ex,
+      leftskip=.3cm,
+      rightskip=.3cm plus1fil,
+    ]{subsection in head/foot}
+    \usebeamerfont{subsection in head/foot}\insertsubsectionhead
+    \end{beamercolorbox}
+  \fi
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+  \end{beamercolorbox}
+}
+\makeatother
+
 % Turn off link coloring in miniframes
 % https://tex.stackexchange.com/a/481051/116532
 \makeatletter
@@ -49,10 +84,12 @@
 
 % No nav controls in bottom right
 \setbeamertemplate{navigation symbols}{}
-\usepackage{appendixnumberbeamer}
 
 % Remove frame title numbering from allowframebreaks
 \setbeamertemplate{frametitle continuation}{}
+
+% Number appendix slides separately
+\usepackage{appendixnumberbeamer}
 
 
 %%% 3. Environments
