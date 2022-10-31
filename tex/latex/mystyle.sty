@@ -14,6 +14,7 @@
 \usepackage{cleveref}         % Better cross-references, must be loaded after hyperref
 \usepackage{listings}         % Syntax-highlighted code
 \usepackage{mathrsfs}         % Script math
+\usepackage{mathtools}        % Fix spacing around over-/underbraces with \mathclap
 \usepackage{natbib}           % Bibliography support
 \usepackage{subcaption}       % Subfigures and subtables
 
@@ -45,7 +46,7 @@
 \renewcommand{\hat}[1]{\widehat{#1}}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
 
-% Left and right brackets
+% Paired delimiters
 \newcommand{\group}[1]{\left. #1 \right.}
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\bracket}[1]{\left[ #1 \right]}
@@ -56,6 +57,18 @@
 \newcommand{\abs}[1]{\left| #1 \right|}                % Absolute value
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}     % Norm
 \newcommand{\eval}[1]{\left. #1 \right|}               % Evaluated at
+
+% Overbrace and underbrace text
+% Usage:
+%   \undertexti{x}{one line}
+%   \undertextii{x}{two lines}{stacked}
+%   \undertextiii{x}{three}{lines}{stacked}
+\newcommand{\overtexti}[2]{\overbrace{#1}^{\mathclap{\text{#2}}}}
+\newcommand{\overtextii}[3]{\overbrace{#1}^{\mathclap{\substack{\text{#2} \\ \text{#3}}}}}
+\newcommand{\overtextiii}[4]{\overbrace{#1}^{\mathclap{\substack{\text{#2} \\ \text{#3} \\ text{#4}}}}}
+\newcommand{\undertexti}[2]{\underbrace{#1}_{\mathclap{\text{#2}}}}
+\newcommand{\undertextii}[3]{\underbrace{#1}_{\mathclap{\substack{\text{#2} \\ \text{#3}}}}}
+\newcommand{\undertextiii}[4]{\underbrace{#1}_{\mathclap{\substack{\text{#2} \\ \text{#3} \\ text{#4}}}}}
 
 % General math
 \newcommand{\oh}{\frac{1}{2}}
