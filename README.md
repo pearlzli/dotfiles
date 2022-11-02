@@ -18,7 +18,9 @@ To set up a new machine:
 
 6. Add things to .bashrc-local, like aliases and environment variables.
 
-7. If desired and on OS X, [set up text replacements](https://support.apple.com/guide/mac-help/back-up-and-share-text-replacements-on-mac-mchl2a7bd795/mac)
+7. If desired and on OS X, [set up text replacements](https://support.apple.com/guide/mac-help/back-up-and-share-text-replacements-on-mac-mchl2a7bd795/mac).
+
+8. Install [Vimium](https://chrome.google.com/webstore/detail/vimium/dbepggeogbaibhgnhhndojpepiihcmeb?hl=en) Chrome extension and copy [vimium-mappings.md](https://github.com/pearlzli/dotfiles/blob/master/vimium-mappings.md) into custom key mappings. If on OS X, [check the "Ignore keyboard layout" advanced setting](https://github.com/philc/vimium/issues/3197#issuecomment-614829140) in order to use mappings involving the meta key.
 
 ## Branches
 
