@@ -281,13 +281,9 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Install JupyterLab extensions
-pip install jupyterlab
-pip install ipywidgets # required for plotly
-pip install jupyterlab-git
-pip install nbdime
-pip install plotly
-pip install webio_jupyter_extension # required for plotly
+# Install Python packages (Jupyter + Plotly)
+cd $dotfile_dir
+pip install -r requirements.txt
 nbdime extensions --enable
 
 # Symlink Jupyter templates

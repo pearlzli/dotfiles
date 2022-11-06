@@ -1,0 +1,9 @@
+# Jupyter
+jupyterlab
+jupyterlab-git
+nbdime
+
+# Plotly
+plotly
+ipywidgets
+webio_jupyter_extension
