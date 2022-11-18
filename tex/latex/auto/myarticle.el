@@ -4,7 +4,7 @@
    (TeX-add-to-alist 'LaTeX-provided-class-options
                      '(("article" "11pt")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
-                     '(("geometry" "margin=1in")))
+                     '(("geometry" "margin=1in") ("setspace" "onehalfspacing")))
    (add-to-list 'LaTeX-verbatim-environments-local "lstlisting")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "lstinline")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
@@ -21,6 +21,7 @@
     "article"
     "art11"
     "geometry"
+    "setspace"
     "mystyle")
    (LaTeX-add-amsthm-newtheorems
     "assump"
