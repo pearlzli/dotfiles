@@ -41,6 +41,9 @@ for bibname in $bibnames; do
     # Change double hyphens to single hyphens
     sed -i.backup '/^pages/ s|--|-|g' "$bibpath"
 
+    # Escape ampersands in journal names
+    sed -i.backup '/^journal/ s|&|\\&|g' "$bibpath"
+
     # Delete fields
     sed -i.backup '/^abstract/d'      "$bibpath"
     sed -i.backup '/^doi/d'           "$bibpath"
