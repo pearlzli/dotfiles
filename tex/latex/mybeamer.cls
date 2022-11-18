@@ -166,6 +166,47 @@
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
 \newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{\baselineskip}}{\endenumerate}
 
+% Blocks
+% \setbeamertemplate{blocks}[default][shadow=false]
+
+\setbeamercolor{block title alerted}{bg=white,fg=black}
+\setbeamercolor{block body alerted}{bg=white}
+\AtBeginEnvironment{alertblock}{
+  \setbeamercolor{itemize item}{fg=indigo}
+  \setbeamercolor{itemize subitem}{fg=indigo}
+  \setbeamercolor{itemize subsubitem}{fg=indigo}
+  \setbeamercolor{enumerate item}{fg=indigo}
+  \setbeamercolor{enumerate subitem}{fg=indigo}
+  \setbeamercolor{enumerate subsubitem}{fg=indigo}
+  \setbeamercolor{button}{bg=themepurple,fg=white}
+}
+\newcommand{\bl}[2]{{\begin{alertblock}{#1}#2\end{alertblock}}}
+
+\setbeamercolor{block title example}{bg=lightgray!70, fg=black}
+\setbeamercolor{block body example}{bg=white, fg=black}
+\newcommand{\blg}[2]{{
+  \setbeamercolor{itemize item}{fg=repmedgrey}
+  \setbeamercolor{itemize subitem}{fg=repmedgrey}
+  \setbeamercolor{itemize subsubitem}{fg=repmedgrey}
+  \setbeamercolor{enumerate item}{fg=repmedgrey}
+  \setbeamercolor{enumerate subitem}{fg=repmedgrey}
+  \setbeamercolor{enumerate subsubitem}{fg=repmedgrey}
+  \setbeamercolor{button}{bg=themepurple,fg=repmedgrey}
+  \begin{exampleblock}{#1}#2\end{exampleblock}
+}}
+\newcommand{\blmb}[2]{{
+  \setbeamercolor{block title example}{bg=indigo!15, fg=black}
+  \setbeamercolor{block body example}{bg=lightgray!70, fg=black}
+  \setbeamercolor{itemize item}{fg=indigo}
+  \setbeamercolor{itemize subitem}{fg=indigo}
+  \setbeamercolor{itemize subsubitem}{fg=indigo}
+  \setbeamercolor{enumerate item}{fg=indigo}
+  \setbeamercolor{enumerate subitem}{fg=indigo}
+  \setbeamercolor{enumerate subsubitem}{fg=indigo}
+  \setbeamercolor{button}{bg=themepurple,fg=indigo}
+  \begin{exampleblock}{#1}#2\end{exampleblock}
+}}
+
 
 %%% 4. Other
 
