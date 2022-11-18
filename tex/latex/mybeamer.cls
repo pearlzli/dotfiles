@@ -111,6 +111,44 @@
 % Number appendix slides separately
 \usepackage{appendixnumberbeamer}
 
+% Exclude some frames from miniframes
+% https://tex.stackexchange.com/a/244640/116532
+\makeatletter
+\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+\def\beamer@writeslidentry@miniframesoff{%
+  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+  {%else
+    % removed \addtocontents commands
+    \clearpage\beamer@notesactions%
+  }
+}
+\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+\beamer@compresstrue
+\makeatother
+
+% Add TOC slide at the beginning of each section
+% Use \section* to suppress this slide for a given section
+% https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
+% Don't count TOC slides toward frame numbering
+% https://tex.stackexchange.com/a/49805/116532
+\AtBeginSection[]{
+  \miniframesoff
+  \begin{frame}[plain,noframenumbering]
+    \tableofcontents[currentsection]
+  \end{frame}
+  \miniframeson
+}
+\AtBeginSubsection[]{
+  \miniframesoff
+  \begin{frame}[plain,noframenumbering]
+    \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/shaded]
+  \end{frame}
+  \miniframeson
+}
+\setbeamertemplate{section in toc}[sections numbered]
+\setbeamertemplate{subsection in toc}[subsections numbered]
+
 
 %%% 3. Environments
 
