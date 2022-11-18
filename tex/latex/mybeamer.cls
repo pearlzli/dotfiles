@@ -239,3 +239,28 @@
 % Open PDFs in full page mode
 % https://tex.stackexchange.com/a/16473/116532
 \hypersetup{pdfstartview=Fit}
+
+% Specify which overlays to include in presentation and handout modes
+% https://tex.stackexchange.com/a/455459/116532
+% Usage:
+%   \begin{handoutframeselect}[overlays to include in handout mode]
+%     \begin{frame}<\slideselection{overlays to include in presentation mode}>{Frame title}
+%     \end{frame}
+%   \end{handoutframeselect}
+\makeatletter
+\newif\ifOnBeamerModeTransition
+\newcommand{\slideselection}[1]{#1}%
+\newenvironment{handoutframeselect}[1][1-]{%
+  \begingroup%
+  \mode<handout>{%
+    \gdef\beamer@currentmode{beamer}%
+    \OnBeamerModeTransitiontrue%
+    \renewcommand{\slideselection}[1]{#1}}%
+}{%
+  \ifOnBeamerModeTransition%
+    \OnBeamerModeTransitionfalse%
+    \gdef\beamer@currentmode{handout}%
+  \fi%
+  \endgroup%
+}
+\makeatother
