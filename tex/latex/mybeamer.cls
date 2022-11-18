@@ -216,11 +216,6 @@
 % Redefine some macros
 \renewcommand{\P}{\text{Pr}}
 
-% Add vertical space
-\newcommand{\myvskip}{
-
-  \vspace{\baselineskip}}
-
 % Theorem definitions
 % Don't italicize any theorem environments
 \theoremstyle{definition}
