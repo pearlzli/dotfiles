@@ -22,12 +22,32 @@
 \definecolor{indigo}{RGB}{51,51,178}
 \definecolor{blue}{RGB}{20,115,251}
 \definecolor{pink}{RGB}{222,15,112}
+\definecolor{replightgrey}{RGB}{218 222 223}
+\definecolor{repmedgrey}{RGB}{143 150 152}
+\definecolor{reporange}{RGB}{255,93,56}
+\definecolor{repdarkpurple}{RGB}{107,64,129}
+\definecolor{themepurple}{RGB}{153,153,217}
+\newcommand<>{\blue}[1]{\textcolor#2{blue}{#1}} %#418cfc
+\newcommand<>{\pink}[1]{\textcolor#2{pink}{#1}} %#e02279
+\newcommand<>{\orange}[1]{\textcolor#2{reporange}{#1}}
+\newcommand<>{\purple}[1]{\textcolor#2{repdarkpurple}{#1}}
+\newcommand<>{\gray}[1]{\textcolor#2{black!25!white}{#1}}
 
 \hypersetup{colorlinks=true,
   linkcolor=indigo, % internal links (sections, equations, etc.)
-  urlcolor=indigo,  % URL links
-  citecolor=indigo, % citations
+  urlcolor=repmedgrey,  % URL links
+  citecolor=repmedgrey, % citations
 }
+
+% Fix citation colors
+% Without this, closing parenthesis is not colored
+\usepackage{natbib}
+\let\oldcite=\cite
+\let\oldcitep=\citep
+\let\oldcitet=\citet
+\renewcommand{\cite}[2][]{\textcolor{repmedgrey}{\oldcite[#1]{#2}}}
+\renewcommand{\citep}[2][]{\textcolor{repmedgrey}{\oldcitep[#1]{#2}}}
+\renewcommand{\citet}[2][]{\textcolor{repmedgrey}{\oldcitet[#1]{#2}}}
 
 % Show miniframes (horizontal nav bar with clickable circle for each slide)
 \useoutertheme[subsection=false]{miniframes}
