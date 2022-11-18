@@ -7,7 +7,7 @@
 
 % Load beamer class
 % Disable automatic theorem definitions (https://tex.stackexchange.com/a/285558/116532)
-\LoadClass[aspectratio=169,notheorems]{beamer}
+\LoadClass[aspectratio=169,notheorems,10pt]{beamer}
 
 
 %%% 2. Appearance
