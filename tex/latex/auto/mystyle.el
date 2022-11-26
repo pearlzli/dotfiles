@@ -25,12 +25,13 @@
     "float"
     "footmisc"
     "graphicx"
-    "hyperref"
-    "cleveref"
     "listings"
     "mathrsfs"
+    "mathtools"
     "natbib"
-    "subcaption")
+    "subcaption"
+    "hyperref"
+    "cleveref")
    (TeX-add-symbols
     '("todo" 1)
     '("juliainline" 1)
