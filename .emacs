@@ -40,6 +40,10 @@
   (defun track-mouse (e))
   (setq mouse-sel-mode t))
 
+;; Highlight cursor
+(beacon-mode 1)
+(setq beacon-size 20)
+
 ;; Let emacs kill ring use clipboard
 ;; Nice to have in general; needed for sending commands to Stata in ado-mode
 (when (cl-some 'executable-find
@@ -350,7 +354,7 @@
      ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(git-modes unfill pandoc-mode ess julia-mode bind-key markdown-mode xclip cl-lib auctex))
+   '(beacon git-modes unfill pandoc-mode ess julia-mode bind-key markdown-mode xclip cl-lib auctex))
  '(reftex-label-alist
    '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)
