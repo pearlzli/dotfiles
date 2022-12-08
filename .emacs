@@ -43,7 +43,7 @@
 ;; Highlight cursor
 (beacon-mode 1)
 (setq beacon-size 40)
-(bind-key* "C-c C-m" 'beacon-blink)
+(bind-key* "M-o" 'beacon-blink)
 
 ;; Let emacs kill ring use clipboard
 ;; Nice to have in general; needed for sending commands to Stata in ado-mode
