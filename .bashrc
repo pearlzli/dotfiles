@@ -118,7 +118,7 @@ update_display() {
 # -n: show line number
 # -I: exclude binary files
 # --color=auto
-export GREP_OPTIONS='-in -I --color=auto'
+alias grep='grep -in -I --color=auto'
 
 # Source system-specific aliases
 source ~/.bashrc-local
