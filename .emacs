@@ -33,12 +33,9 @@
 
 ;; Mouse support
 (unless window-system
-  (require 'mouse)
   (xterm-mouse-mode t)
   (bind-key* [mouse-4] (lambda () (interactive) (scroll-down 1)))
-  (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1)))
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t))
+  (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1))))
 
 ;; Highlight cursor
 (beacon-mode 1)
