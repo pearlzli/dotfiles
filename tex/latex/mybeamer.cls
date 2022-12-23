@@ -1,8 +1,18 @@
-%%% 1. Basic
+%%% 1. Class options
 
-% Pass in options to beamer class
+% See https://www.overleaf.com/learn/latex/Writing_your_own_class#Options
+
+% Turn off miniframes?
+\newif\if@miniframes
+\@miniframestrue
+\DeclareOption{miniframesoff}{\@miniframesfalse}
+
+% Pass in remaining options to beamer class
 % https://tex.stackexchange.com/a/418947/116532
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+
+% Execute the code for each option
+% Must be inserted after all option-handling commands
 \ProcessOptions\relax
 
 % Load beamer class
@@ -22,6 +32,7 @@
 \definecolor{indigo}{RGB}{51,51,178}
 \definecolor{blue}{RGB}{20,115,251}
 \definecolor{pink}{RGB}{222,15,112}
+\definecolor{lightgray}{gray}{.95}
 \definecolor{replightgrey}{RGB}{218 222 223}
 \definecolor{repmedgrey}{RGB}{143 150 152}
 \definecolor{reporange}{RGB}{255,93,56}
@@ -49,59 +60,6 @@
 \renewcommand{\citep}[2][]{\textcolor{repmedgrey}{\oldcitep[#1]{#2}}}
 \renewcommand{\citet}[2][]{\textcolor{repmedgrey}{\oldcitet[#1]{#2}}}
 
-% Show miniframes (horizontal nav bar with clickable circle for each slide)
-\useoutertheme[subsection=false]{miniframes}
-
-% Move miniframes to bottom
-% https://tex.stackexchange.com/a/649597/116532
-\makeatletter
-\newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
-\letbeamertemplate{footline}{headline}
-\setbeamertemplate{headline}[default]
-\makeatother
-
-% Add page numbers in bottom right
-% https://tex.stackexchange.com/a/228167/116532
-% https://tex.stackexchange.com/a/85744/116532
-\makeatletter
-\defbeamertemplate*{footline}{myminiframes theme}{
-  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
-  \end{beamercolorbox}
-  \begin{beamercolorbox}[leftskip=.01cm,rightskip=0.3cm plus1fil]{section in head/foot}
-    \vskip2pt
-    \begin{minipage}[c]{0.9\paperwidth}
-      \insertnavigation{\linewidth}
-    \end{minipage}
-    \hfill
-    \begin{minipage}[c]{0.05\paperwidth}
-      \raggedleft
-      \insertframenumber
-    \end{minipage}
-    \vskip4pt
-  \end{beamercolorbox}
-  \ifbeamer@theme@subsection
-    \begin{beamercolorbox}[colsep=1.5pt]{middle separation line head}
-    \end{beamercolorbox}
-    \begin{beamercolorbox}[
-      ht=2.5ex,dp=1.125ex,
-      leftskip=.3cm,
-      rightskip=.3cm plus1fil,
-    ]{subsection in head/foot}
-    \usebeamerfont{subsection in head/foot}\insertsubsectionhead
-    \end{beamercolorbox}
-  \fi
-  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
-  \end{beamercolorbox}
-}
-\makeatother
-
-% Turn off link coloring in miniframes
-% https://tex.stackexchange.com/a/481051/116532
-\makeatletter
-\newcommand*\disablecolorlinks{\def\HyColor@UseColor##1{}}
-\makeatletter
-\addtobeamertemplate{footline}{\disablecolorlinks}{}
-
 % No nav controls in bottom right
 \setbeamertemplate{navigation symbols}{}
 
@@ -110,22 +68,6 @@
 
 % Number appendix slides separately
 \usepackage{appendixnumberbeamer}
-
-% Exclude some frames from miniframes
-% https://tex.stackexchange.com/a/244640/116532
-\makeatletter
-\let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
-\def\beamer@writeslidentry@miniframesoff{%
-  \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
-  {%else
-    % removed \addtocontents commands
-    \clearpage\beamer@notesactions%
-  }
-}
-\newcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
-\newcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
-\beamer@compresstrue
-\makeatother
 
 % Add TOC slide at the beginning of each section
 % Use \section* to suppress this slide for a given section
@@ -150,7 +92,78 @@
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
 
-%%% 3. Environments
+%%% 3. Miniframes
+
+% These are called by \AtBeginSection and \AtBeginSubsection
+% So they need to be defined outside of \if@miniframes
+\newcommand*{\miniframeson}{}
+\newcommand*{\miniframesoff}{}
+
+\if@miniframes
+  % Show miniframes (horizontal nav bar with clickable circle for each slide)
+  \useoutertheme[subsection=false]{miniframes}
+
+  % Move miniframes to bottom
+  % https://tex.stackexchange.com/a/649597/116532
+  \makeatletter
+  \newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
+  \letbeamertemplate{footline}{headline}
+  \setbeamertemplate{headline}[default]
+  \makeatother
+
+  % Page numbers in bottom right
+  % https://tex.stackexchange.com/a/228167/116532
+  % https://tex.stackexchange.com/a/85744/116532
+  \makeatletter
+  \defbeamertemplate*{footline}{myminiframes theme}{
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[leftskip=.01cm,rightskip=0.3cm plus1fil]{section in head/foot}
+      \vskip2pt
+      \begin{minipage}[c]{0.9\paperwidth}
+        \insertnavigation{\linewidth}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.05\paperwidth}
+        \raggedleft
+        \insertframenumber
+      \end{minipage}
+      \vskip4pt
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+  }
+  \makeatother
+
+  % Turn off link coloring in miniframes
+  % https://tex.stackexchange.com/a/481051/116532
+  \makeatletter
+  \newcommand*\disablecolorlinks{\def\HyColor@UseColor##1{}}
+  \makeatletter
+  \addtobeamertemplate{footline}{\disablecolorlinks}{}
+
+  % Exclude some frames from miniframes
+  % https://tex.stackexchange.com/a/244640/116532
+  \makeatletter
+  \let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+  \def\beamer@writeslidentry@miniframesoff{%
+    \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+    {%else
+      % removed \addtocontents commands
+      \clearpage\beamer@notesactions%
+    }
+  }
+  \renewcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+  \renewcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+  \beamer@compresstrue
+  \makeatother
+\else
+  % Page numbers in bottom right
+  \setbeamertemplate{footline}[frame number]
+\fi
+
+
+%%% 4. Environments
 
 % Box theorems and definitions
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
@@ -208,7 +221,7 @@
 }}
 
 
-%%% 4. Other
+%%% 5. Other
 
 % Load mystyle.sty
 \usepackage{mystyle}
