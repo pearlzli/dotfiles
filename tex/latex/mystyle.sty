@@ -71,7 +71,7 @@
 \newcommand{\undertextiii}[4]{\underbrace{#1}_{\mathclap{\substack{\text{#2} \\ \text{#3} \\ \text{#4}}}}}
 
 % General math
-\newcommand{\oh}{\frac{1}{2}}
+\newcommand{\oh}{\frac{1}{2}}                          % 1/2
 \newcommand{\suchthat}{\text{ s.t. }}                  % Such that
 \newcommand{\where}{\middle|}                          % Where
 \newcommand{\comp}[1]{#1^{\mathsf{c}}}                 % Complement
@@ -127,77 +127,7 @@
 \DeclareMathOperator*{\plim}{plim}                     % Probability limit
 
 
-%%% 3. Syntax Highlighting
-
-% Colors
-\definecolor{codegreen}{RGB}{28,172,0}
-\definecolor{codepurple}{RGB}{170,55,241}
-\definecolor{lightgray}{gray}{.95}
-
-% Bash syntax highlighting
-\lstdefinestyle{bash}{%
-  language=bash,%
-  basicstyle=\footnotesize\ttfamily,%
-  showstringspaces=false,%
-  commentstyle=\color{gray},%
-  keywordstyle=\color{blue},%
-  xleftmargin=0.0in,%
-  xrightmargin=0.0in,%
-  backgroundcolor=\color{lightgray},
-  escapeinside={\%*}{*)}% if you want to add LaTeX within your code
-}
-
-% Highlight the 'julia>' prompt.
-% See http://tex.stackexchange.com/a/172076/50294 for the additional highlighting
-% See http://tex.stackexchange.com/a/180619/50294 for the '>' issue
-\makeatletter
-\lst@InstallKeywords k{attributes}{attributestyle}\slshape{attributestyle}{}ld
-\makeatother
-
-% Julia definition (c) 2014 Jubobs
-\lstdefinelanguage{Julia}%
-  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
-      end,export,false,for,function,immutable,import,importall,if,in,%
-      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
-      using,while},%
-   sensitive=true,%
-   alsoother={\$},%
-   morecomment=[l]\#,%
-   morecomment=[n]{\#=}{=\#},%
-   morestring=[s]{"}{"},%
-   morestring=[m]{'}{'},%
-}[keywords,comments,strings]%
-
-% Julia syntax highlighting
-\lstdefinestyle{julia}{%
-  language=Julia,%
-  basicstyle=\footnotesize\ttfamily,%
-  breaklines=true,%
-  keywordstyle=\bfseries\color{blue},%
-  identifierstyle=\color{black},%
-  stringstyle=\color{codegreen},%
-  commentstyle=\color{codepurple},%
-  showstringspaces=false,%
-  upquote=true,%
-  backgroundcolor=\color{lightgray},%
-  alsoletter={>},%
-  moreattributes={julia>},%
-  attributestyle = \bfseries\color{green},%
-  escapeinside={\%*}{*)},% if you want to add LaTeX within your code
-}
-
-% Inline code snippets
-% http://tex.stackexchange.com/a/42964
-% http://tex.stackexchange.com/a/83883/50294
-\newcommand{\hltext}[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
-\newcommand{\bashinline}[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
-\newcommand{\juliainline}[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
-
-% To-dos
-\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
-
-
-%%% 4. Cross-References
+%%% 3. Cross-References
 
 % Customize reference formats
 % https://tex.stackexchange.com/a/122178/116532 (general)
@@ -224,7 +154,10 @@
 \newcommand{\addrefstoc}{\phantomsection\addcontentsline{toc}{section}{References}}
 
 
-%%% 5. Other
+%%% 4. Other
+
+% Format listings (code snippets)
+\lstset{basicstyle=\normalsize\ttfamily,breaklines=true}
 
 % Break URLs at hyphens
 % https://tex.stackexchange.com/a/254734/116532
