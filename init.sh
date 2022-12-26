@@ -164,6 +164,10 @@ case $OSTYPE in
         maybe_mkdir "$HOME/Library/KeyBindings"
         cp "$dotfile_dir/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings"
 
+        # Symlink Mac keyboard layouts
+        cd "$HOME/Library/Keyboard Layouts"
+        try_symlink "$dotfile_dir/My Layout.keylayout" "My Layout.keylayout"
+
         # Symlink/copy AppleScripts
         cd "/Applications"
         try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
