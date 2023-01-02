@@ -392,7 +392,9 @@
 			<key code="126" output="&#x1E;" />
 		</keyMap>
 		<keyMap index="3">
-			<!-- gap, 0-35 -->
+			<!-- gap, 0-26 -->
+			<key code="27" output="&#x2013;" />
+			<!-- gap, 28-36 -->
 			<key code="36" output="&#xD;" />
 			<!-- gap, 37-47 -->
 			<key code="48" output="&#x9;" />
