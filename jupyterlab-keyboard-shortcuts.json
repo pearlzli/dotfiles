@@ -38,7 +38,8 @@
             "keys": [
                 "Alt W"
             ],
-            "selector": ".jp-Activity"
+            "selector": ".jp-Activity",
+            "disabled": "true",
         },
         {
             "args": {},
@@ -310,7 +311,8 @@
             "keys": [
                 "Accel V"
             ],
-            "selector": ".jp-DirListing-content .jp-DirListing-itemText"
+            "selector": ".jp-DirListing-content .jp-DirListing-itemText",
+            "disabled": true
         },
         {
             "args": {},
@@ -655,7 +657,7 @@
             "args": {},
             "command": "notebook:move-cursor-down",
             "keys": [
-                "J"
+                "N"
             ],
             "selector": ".jp-Notebook:focus"
         },
@@ -671,7 +673,21 @@
             "args": {},
             "command": "notebook:move-cursor-up",
             "keys": [
-                "K"
+                "P"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "command": "notebook:move-cell-up",
+            "keys": [
+                "Ctrl Shift ArrowUp"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "command": "notebook:move-cell-down",
+            "keys": [
+                "Ctrl Shift ArrowDown"
             ],
             "selector": ".jp-Notebook:focus"
         },
@@ -882,6 +898,70 @@
                 "Shift Tab"
             ],
             "selector": ".jp-Notebook.jp-mod-editMode .jp-InputArea-editor:not(.jp-mod-has-primary-selection):not(.jp-mod-in-leading-whitespace):not(.jp-mod-completer-active)"
+        },
+        {
+            "args": {},
+            "command": "notebook:toggle-all-cell-line-numbers",
+            "keys": [
+                "Shift L"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:toggle-cell-line-numbers",
+            "keys": [
+                "L"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "application:close",
+            "keys": [
+                "Alt W"
+            ],
+            "selector": ".jp-Activity"
+        },
+        {
+            "args": {},
+            "command": "filebrowser:paste",
+            "keys": [
+                "Accel V"
+            ],
+            "selector": ".jp-DirListing-content .jp-DirListing-itemText"
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-down",
+            "keys": [
+                "J"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-up",
+            "keys": [
+                "K"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:undo-cell-action",
+            "keys": [
+                "Z"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "runmenu:run",
+            "keys": [
+                "Shift Enter"
+            ],
+            "selector": "[data-jp-code-runner]"
         }
     ]
 }
