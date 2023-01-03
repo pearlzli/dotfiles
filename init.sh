@@ -309,6 +309,9 @@ emacs --script "$dotfile_dir/elpa-install.el"
 cd $dotfile_dir
 pip install -r requirements.txt
 
+# Install JupyterLab extensions that aren't installable via pip
+jupyter labextension install jupyterlab-emacskeys
+
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
