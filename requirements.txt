@@ -1,7 +1,6 @@
 # Jupyter
 jupyterlab
 jupyterlab-git
-nbdime
 
 # Plotly
 plotly

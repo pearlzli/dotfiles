@@ -288,7 +288,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 # Install Python packages (Jupyter + Plotly)
 cd $dotfile_dir
 pip install -r requirements.txt
-nbdime extensions --enable
 
 # Symlink Jupyter templates
 # https://stackoverflow.com/a/68188918
