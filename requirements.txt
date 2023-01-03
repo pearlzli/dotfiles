@@ -1,5 +1,6 @@
 # Jupyter
 jupyterlab
+jupyterlab_execute_time
 jupyterlab-git
 
 # Plotly
