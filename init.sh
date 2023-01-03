@@ -67,6 +67,23 @@ try_symlink() {
     fi
 }
 
+# Set environment variable verbosely
+# Usage: try_setenv <variable> <value>
+try_setenv() {
+    var=$1
+    val=$2
+    if [ -z "$var" ]; then
+        echo "export $var=\"$val\"" >> "$HOME/.bashrc-local"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Set $var to $val in $HOME/.bashrc-local${normal}"
+        else
+            echo "${red}Could not set $var to $val in $HOME/.bashrc-local${normal}"
+        fi
+    else
+        echo "${red}Did not set $var to $val in $HOME/.bashrc-local: already has a value${normal}"
+    fi
+}
+
 # Add to PATH environment variable verbosely
 # Usage: try_addpath <dir> <front>
 try_addpath() {
@@ -137,8 +154,11 @@ case $OSTYPE in
         brew install gcc   # HDF5.jl
         brew install cmake # Polynomials.jl
 
-        # Add to PATH
+        # Set environment variables
         try_addpath "/Library/TeX/texbin" 0
+        try_setenv "JUPYTER" "/opt/homebrew/bin/jupyter"
+        try_setenv "JUPYTER_PATH" "/opt/homebrew/share/jupyter"
+        try_setenv "JUPYTERLAB_DIR" "/opt/homebrew/share/jupyter/lab"
 
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
@@ -289,12 +309,6 @@ emacs --script "$dotfile_dir/elpa-install.el"
 cd $dotfile_dir
 pip install -r requirements.txt
 
-# Symlink Jupyter templates
-# https://stackoverflow.com/a/68188918
-maybe_mkdir "$HOME/Library/Jupyter/nbconvert"
-cd "$HOME/Library/Jupyter/nbconvert"
-ln -s "/opt/homebrew/share/jupyter/nbconvert/templates" "templates"
-
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
@@ -304,7 +318,7 @@ if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
 else
     if not_installed bc; then
-        echo "${red}bc is not installed; needed to compare tmux verions${normal}"
+        echo "${red}bc is not installed; needed to compare tmux versions${normal}"
         echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
     else
         tpmdir="$HOME/.tmux/plugins/tpm"
