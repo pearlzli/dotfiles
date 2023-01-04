@@ -62,9 +62,6 @@
         (comment-or-uncomment-region beg end)))
 (bind-key* "M-;" 'comment-or-uncomment-region-or-line)
 
-;; Load custom modes, e.g. Julia mode
-(load "~/.emacs-modes.el")
-
 ;; Move backup files to central location
 ;; https://stackoverflow.com/a/2680682/2756250
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup"))
@@ -102,6 +99,12 @@
 (global-unset-key (kbd "C-x 3")) ; formerly wplit-window-right
 (bind-key* "C-x h" 'split-window-right)
 (bind-key* "C-x v" 'split-window-below)
+
+;; Load custom modes, e.g. Julia mode
+(load "~/.emacs-modes.el")
+
+;; Load local settings
+(load "~/.emacs-local.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING

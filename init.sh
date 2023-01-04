@@ -33,11 +33,24 @@ not_installed() {
     return ! command -v $1 &> /dev/null
 }
 
+# Make file if it doesn't already exist
+# Usage: maybe_touch <path>
+maybe_touch() {
+    if [ ! -f "$1" ]; then
+        touch -p "$1"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Created $1${normal}"
+        else
+            echo "${red}Could not create $1${normal}"
+        fi
+    fi
+}
+
 # Make directory if it doesn't already exist
 # Usage: maybe_mkdir <path>
 maybe_mkdir() {
     if [ ! -d "$1" ]; then
-        mkdir -p $1
+        mkdir -p "$1"
         if [ "$?" -eq 0 ]; then
             echo "${green}Created $1${normal}"
         else
@@ -234,11 +247,8 @@ for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
 done
 
 # Create local dotfiles if they don't already exist
-for file in ".bashrc-local" ".gitconfig-local"; do
-    if [ ! -f "$file" ]; then
-        touch "$file"
-        echo "${green}Created $file${normal}"
-    fi
+for file in ".bashrc-local" ".emacs-local.el" ".gitconfig-local"; do
+    try_touch "$file"
 done
 
 # Pre-commit hook
