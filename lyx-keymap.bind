@@ -68,7 +68,7 @@ Format 4
 #  +: "Control-N"                    # Move down one line
 \bind "M-n"                          "down"
 #  +: "Control-O"                    # Insert a new line after the cursor
-\bind "M-o"                          "paragraph-break"
+#bind "M-o"                          "paragraph-break"
 #  +: "Control-P"                    # Move up one line
 \bind "M-p"                          "up"
 #  +: "Control-T"                    # Transpose the character behind the cursor and the character in front of the cursor
@@ -136,7 +136,7 @@ Format 4
 #  -: "Control-Command-C"            # Copy the formatting settings of the selected item and store on the Clipboard
 #  +: "Option-Command-D"             # Show or hide the Dock
 #  -: "Command-Control D"            # Display the definition of the selected word in the Dictionary application
-\bind "C-d"                          "buffer-view dvi"	# 'd' for dvi
+#bind "C-d"                          "buffer-view dvi"	# 'd' for dvi
 \bind "C-M-d"                        "command-alternatives master-buffer-view dvi; buffer.view dvi"
 \bind "C-S-D"                        "buffer-update dvi"	# 'd' for dvi
 #  -: "Command-E"                    # Use the selection for a find
@@ -163,7 +163,7 @@ Format 4
 \bind "C-S-M"                        "math-display"
 \bind "C-M-n"                        "command-sequence math-display; math-number-toggle;"
 #  +: "Command-N"                    # Create a new document in the frontmost application
-\bind "C-n"                          "buffer-new"
+#bind "C-n"                          "buffer-new"
 \bind "C-S-N"                        "buffer-new-template"
 #  +: "Command-O"                    # Display a dialog for choosing a document to open in the frontmost application
 \bind "C-o"                          "file-open"
@@ -295,6 +295,8 @@ Format 4
 # Additional Motion + select group
 #
 
+\bind "A-v"                          "screen-up"
+\bind "M-v"                          "screen-down"
 \bind "S-Prior"                      "screen-up-select"
 \bind "S-Next"                       "screen-down-select"
 \bind "C-Insert"                     "copy"
@@ -366,13 +368,13 @@ Format 4
 \bind "C-M-Down"                     "command-alternatives outline-down; paragraph-move-down; tabular-feature move-row-down"
 \bind "C-M-Right"                    "tabular-feature move-column-right"
 \bind "C-M-Left"                     "tabular-feature move-column-left"
-#\bind "F9"                          "meta-prefix"
+#bind "F9"                           "meta-prefix"
 
 \bind "C-M-F"                        "ui-toggle fullscreen"
 
 # Include math bindings
 
-\bind_file math.bind
-\bind_file latinkeys.bind
-\bind_file cyrkeys.bind
-\bind_file greekkeys.bind
+#bind_file math.bind
+#bind_file latinkeys.bind
+#bind_file cyrkeys.bind
+#bind_file greekkeys.bind
