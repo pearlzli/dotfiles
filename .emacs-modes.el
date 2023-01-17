@@ -116,6 +116,11 @@ Group 4 matches the text inside the delimiters.")
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
+(unless (version< emacs-version "27")
+  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
+  (progn
+    (add-hook 'python-mode-hook (lambda () (setq fill-column 120)))
+    (add-hook 'python-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
