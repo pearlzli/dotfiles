@@ -2,6 +2,9 @@
 # Start from a blank slate
 unmapAll
 
+# Remap escape key
+mapkey <c-g> <c-[>
+
 # Scrolling
 map <c-b> scrollLeft
 map <c-f> scrollRight
@@ -16,7 +19,10 @@ map <a->> scrollToBottom
 
 # Page navigation
 map <c-x><c-r> reload
-map <c-x><c-f> LinkHints.activateMode
+map <c-x><c-v> LinkHints.activateMode
+map <c-x><c-f> LinkHints.activateModeToOpenInNewTab
+map <c-x>[ goBack
+map <c-x>] goForward
 
 # Tabs
 map <c-o>c createTab
