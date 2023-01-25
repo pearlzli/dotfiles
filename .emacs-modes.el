@@ -121,6 +121,8 @@ Group 4 matches the text inside the delimiters.")
   (progn
     (add-hook 'python-mode-hook (lambda () (setq fill-column 120)))
     (add-hook 'python-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
+(with-eval-after-load 'python
+  (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def")))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
