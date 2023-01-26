@@ -8,10 +8,10 @@ Note: in Logitech Options, need to remap the mouse side buttons to the keystroke
 
 | Name                            | Shortcut     | Note                      |
 | ------------------------------- | ------------ | ------------------------- |
-| Move left a space               | `Cmd [`      | Formerly `Ctrl LeftArrow` |
-| Move right a space              | `Cmd ]`      | Formerly `Ctrl RightArrow`|
-| Mission Control                 | `Cmd -`      | Formerly `Ctrl UpArrow`   |
-| Application windows             | `Cmd =`      | Formerly `Ctrl DownArrow` |
+| Move left a space               | `Ctrl [`     | Formerly `Ctrl LeftArrow` |
+| Move right a space              | `Ctrl ]`     | Formerly `Ctrl RightArrow`|
+| Mission Control                 | `Ctrl -`     | Formerly `Ctrl UpArrow`   |
+| Application windows             | `Ctrl =`     | Formerly `Ctrl DownArrow` |
 
 ## All Applications
 
