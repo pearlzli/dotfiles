@@ -27,10 +27,10 @@
                   "moveUp:",
                   "moveUp:",
                   "moveUp:");
-    "~<"      = "moveToBeginningOfDocument:";    /* M-< */
-    "~>"      = "moveToEndOfDocument:";          /* M-> */
     "~v"      = "pageUp:";                       /* M-v */
     "^v"      = "pageDown:";                     /* C-v */
+    "~<"      = "moveToBeginningOfDocument:";    /* M-< */
+    "~>"      = "moveToEndOfDocument:";          /* M-> */
 
     /* Editing */
     "~d"      = "deleteWordForward:";            /* M-d */
@@ -50,13 +50,4 @@
     "~w"      = ( "selectToMark:",               /* M-w */
                   "copy:",
                   "swapWithMark:");
-
-    "^x" = {
-        "^x"  = "swapWithMark:";                 /* C-x C-x */
-        "^m"  = "selectToMark:";                 /* C-x C-m */
-        "^f"  = "openDocument:";                 /* C-x C-f */
-        "^s"  = "save:";                         /* C-x C-s */
-        "^w"  = "saveAs:";                       /* C-x C-w */
-        "k"   = "performClose:";                 /* C-x C-k */
-    };
 }
