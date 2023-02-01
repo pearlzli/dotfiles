@@ -7,6 +7,26 @@
     /* Navigation */
     "~f"      = "moveWordForward:";              /* M-f */
     "~b"      = "moveWordBackward:";             /* M-b */
+    "~n"      = ( "moveDown:",                   /* M-n */
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:");
+    "~p"      = ( "moveUp:",                     /* M-p */
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:");
     "~<"      = "moveToBeginningOfDocument:";    /* M-< */
     "~>"      = "moveToEndOfDocument:";          /* M-> */
     "~v"      = "pageUp:";                       /* M-v */
