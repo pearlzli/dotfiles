@@ -1,9 +1,11 @@
 ;; Diff mode
 (with-eval-after-load 'diff-mode
+  (set-face-background 'trailing-whitespace nil)
+  (set-face-foreground 'diff-header "black")
   (set-face-foreground 'diff-context "brightblack")
-  (set-face-background 'diff-added "green")
-  (set-face-background 'diff-changed "yellow")
-  (set-face-background 'diff-removed "brightred")
+  (set-face-attribute 'diff-added nil :background "green" :foreground "black")
+  (set-face-attribute 'diff-changed nil :background "yellow" :foreground "black")
+  (set-face-attribute 'diff-removed nil :background "brightred" :foreground "black")
   (set-face-attribute 'diff-refine-added nil :inherit 'diff-added)
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
