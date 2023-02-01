@@ -197,10 +197,11 @@ case $OSTYPE in
         maybe_mkdir "$HOME/Library/KeyBindings"
         cp "$dotfile_dir/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings"
 
-        # Symlink/copy AppleScripts
-        cd "/Applications"
-        try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
+        # Symlink Mac keyboard layouts
+        cd "$HOME/Library/Keyboard Layouts"
+        try_symlink "$dotfile_dir/MyLayout.keylayout" "MyLayout.keylayout"
 
+        # Symlink/copy AppleScripts
         services_dir="$HOME/Library/Services/"
         cp -r "$dotfile_dir/applescripts/Make Desktop alias.workflow" services_dir
         cp -r "$dotfile_dir/applescripts/Open in Chrome.workflow" services_dir
