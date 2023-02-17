@@ -53,7 +53,7 @@
 ;; Comment current line if no active region
 ;; https://stackoverflow.com/a/9697222/2756250
 (defun comment-or-uncomment-region-or-line ()
-    "Comments or uncomments the region or the current line if there's no active region."
+    "Comment or uncomment the region or the current line if there's no active region."
     (interactive)
     (let (beg end)
         (if (region-active-p)
@@ -61,6 +61,29 @@
             (setq beg (line-beginning-position) end (line-end-position)))
         (comment-or-uncomment-region beg end)))
 (bind-key* "M-;" 'comment-or-uncomment-region-or-line)
+
+;; Indent/outdent current line/region with M-} and M-{
+;; These key bindings were originally used for forward-paragraph and backward-paragraph
+;; Would prefer M-] and M-[, but the latter is forbidden
+;; https://emacs.stackexchange.com/a/48739/14500
+(defun my-indent-region-or-line ()
+  "Indent the region (or the current line if there's no active region) by 4 spaces."
+  (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (indent-rigidly beg end 4)))
+(defun my-outdent-region-or-line ()
+  "Outdent the region (or the current line if there's no active region) by 4 spaces."
+  (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (indent-rigidly beg end -4)))
+(bind-key* "M-}" 'my-indent-region-or-line)
+(bind-key* "M-{" 'my-outdent-region-or-line)
 
 ;; Move backup files to central location
 ;; https://stackoverflow.com/a/2680682/2756250
