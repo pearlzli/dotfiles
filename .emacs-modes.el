@@ -115,6 +115,8 @@ Group 4 matches the text inside the delimiters.")
   (progn
     (add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
     (add-hook 'julia-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
+(with-eval-after-load 'julia-mode
+  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
