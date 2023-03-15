@@ -25,9 +25,6 @@
     editor = emacs -nw
 [diff]
     tool = meld
-[diff "jupyternotebook"]
-    command = git-nbdiffdriver webdiff
-    tool = nbdime
 [difftool]
     prompt = false
 [difftool "meld"]
