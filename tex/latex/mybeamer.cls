@@ -7,6 +7,11 @@
 \@miniframestrue
 \DeclareOption{miniframesoff}{\@miniframesfalse}
 
+% Turn off roadmap slides?
+\newif\if@roadmap
+\@roadmaptrue
+\DeclareOption{roadmapoff}{\@roadmapfalse}
+
 % Pass in remaining options to beamer class
 % https://tex.stackexchange.com/a/418947/116532
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
@@ -74,6 +79,7 @@
 % https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
 % Don't count TOC slides toward frame numbering
 % https://tex.stackexchange.com/a/49805/116532
+\if@roadmap
 \AtBeginSection[]{
   \miniframesoff
   \begin{frame}[plain,noframenumbering]
@@ -88,6 +94,7 @@
   \end{frame}
   \miniframeson
 }
+\fi
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
