@@ -3,81 +3,123 @@
 # It must be the first line in the file
 # https://www.gnu.org/software/emacs/manual/html_node/efaq/Associating-modes-with-files.html
 
-# Note: these bindings assume the swapped Meta and Control modifiers standard of Qt
-# Command - C
+# Modifier keys:
+# Control - C
 # Option  - A
-# Control - M
+# Command - M
 
 # Partial function list: https://wiki.lyx.org/LyX/LyxFunctionList
 
-# Start with default Mac bindings and unbind conflicts
-# Can't load emacs.bind because it doesn't use swapped Meta/Control
-\bind_file mac.bind
-\unbind "C-d"                        "buffer-view dvi"
-\unbind "C-n"                        "buffer-new"
-\unbind "M-o"                        "paragraph-break"
-\unbind "M-x"                        "command-execute"
-\unbind "M-c r"                      "font-roman"
+# ----------------------------------------------------------
+# Mac
+# ----------------------------------------------------------
 
 # Motion
-\bind "M-a"                          "line-begin"
-\bind "M-e"                          "line-end"
-\bind "M-p"                          "up"
-\bind "M-n"                          "down"
+\bind "A-Right"                      "word-right"
+\bind "A-Left"                       "word-left"
+\bind "A-Down"                       "paragraph-down"
+\bind "A-Up"                         "paragraph-up"
+
+# Editing
+\bind "A-BackSpace"                  "word-delete-backward"
+\bind "M-z"                          "undo"
+\bind "M-y"                          "redo"
+\bind "M-c"                          "command-sequence copy; cancel;" # copy, then unset selection
+\bind "M-x"                          "cut"
+\bind "M-v"                          "paste"
+\bind "M-f"                          "dialog-show findreplace"
+\bind "S-Right"                      "char-right-select"
+\bind "S-Left"                       "char-left-select"
+\bind "S-Up"                         "up-select"
+\bind "S-Down"                       "down-select"
+\bind "S-A-Right"                    "word-right-select"
+\bind "S-A-Left"                     "word-left-select"
+\bind "S-A-Down"                     "paragraph-down-select"
+\bind "S-A-Up"                       "paragraph-up-select"
+\bind "M-m"                          "math-mode"
+\bind "M-S-m"                        "math-display"
+\bind "M-l"                          "ert-insert" # enter raw LaTeX
+
+# View
+\bind "M-plus"                       "buffer-zoom-in"
+\bind "M-equal"                      "buffer-zoom-in"
+\bind "M-minus"                      "buffer-zoom-out"
+
+# Files and buffers
+\bind "M-o"                          "file-open"
+\bind "C-Tab"                        "buffer-next"     # doesn't work
+\bind "C-S-BackTab"                  "buffer-previous" # doesn't work
+\bind "M-s"                          "buffer-write"
+\bind "M-w"                          "buffer-close"
+\bind "M-q"                          "lyx-quit"
+
+# ----------------------------------------------------------
+# Emacs-like
+# ----------------------------------------------------------
+
+# Motion
+\bind "C-f"                          "char-forward"
+\bind "C-b"                          "char-backward"
+\bind "C-a"                          "line-begin"
+\bind "C-e"                          "line-end"
+\bind "C-p"                          "up"
+\bind "C-n"                          "down"
 \bind "A-f"                          "word-right"
 \bind "A-b"                          "word-left"
 \bind "A-p"                          "scroll page up"   # doesn't work; inserts Unicode char
 \bind "A-n"                          "scroll page down" # doesn't work; inserts Unicode char
 \bind "A-v"                          "screen-up"
-\bind "M-v"                          "screen-down"
-\bind "M-l"                          "screen-recenter"
+\bind "C-v"                          "screen-down"
+\bind "C-l"                          "screen-recenter"
 \bind "A-~S-less"                    "buffer-begin"
 \bind "A-~S-greater"                 "buffer-end"
 
 # Editing
-\bind "M-g"                          "cancel"
-\bind "M-u"                          "undo"
-\bind "M-space"                      "mark-on"
+\bind "C-g"                          "cancel"
+\bind "C-u"                          "undo"
+\bind "C-space"                      "mark-on"
+\bind "C-d"                          "char-delete-forward"
 \bind "A-d"                          "word-delete-forward"
-\bind "M-k"                          "line-delete-forward"
+\bind "C-k"                          "line-delete-forward"
+\bind "C-t"                          "chars-transpose"
 \bind "A-w"                          "command-sequence copy; cancel;" # copy, then unset selection
-\bind "M-w"                          "cut"
-\bind "M-y"                          "paste"
+\bind "C-w"                          "cut"
+\bind "C-y"                          "paste"
 \bind "A-l"                          "word-lowcase partial" # doesn't work; inserts Unicode char
 \bind "A-u"                          "word-upcase partial"
 \bind "A-c"                          "word-capitalize partial"
-\bind "M-s"                          "dialog-show findreplace"
+\bind "C-s"                          "dialog-show findreplace"
 \bind "A-~S-percent"                 "dialog-show findreplaceadv"
 \bind "A-x"                          "command-execute"
 
 # Labels, references, and citations
-\bind "M-c t"                        "dialog-show toc"
-\bind "M-c M-s"                      "drop-layouts-choice"
-\bind "M-c l"                        "label-insert"
-\bind "M-c r"                        "dialog-show-new-inset ref"
-\bind "M-c c"                        "citation-insert"
+\bind "C-c t"                        "dialog-show toc"
+\bind "C-c C-s"                      "drop-layouts-choice"
+\bind "C-c l"                        "label-insert"
+\bind "C-c r"                        "dialog-show-new-inset ref"
+\bind "C-c c"                        "citation-insert"
 
 # Font formatting
-\bind "M-c M-f M-b"                  "font-bold"
-\bind "M-c M-f M-i"                  "font-ital"
-\bind "M-c M-f M-r"                  "font-roman"
-\bind "M-c M-f M-e"                  "font-emph"
-\bind "M-c M-f M-t"                  "font-typewriter"
-\bind "M-c M-f M-d"                  "font-default"
+\bind "C-c C-f C-b"                  "font-bold"
+\bind "C-c C-f C-i"                  "font-ital"
+\bind "C-c C-f C-r"                  "font-roman"
+\bind "C-c C-f C-e"                  "font-emph"
+\bind "C-c C-f C-t"                  "font-typewriter"
+\bind "C-c C-f C-d"                  "font-default"
 
 # Files and buffers
-\bind "M-x M-f"                      "file-open"
-\bind "M-o p"                        "buffer-previous"
-\bind "M-o n"                        "buffer-next"
-\bind "M-o M-p"                      "buffer-move-previous"
-\bind "M-o M-n"                      "buffer-move-next"
-\bind "M-x M-r"                      "buffer-reload"
-\bind "M-x M-s"                      "buffer-write"
-\bind "M-x M-w"                      "buffer-write-as"
-\bind "M-x k"                        "buffer-close"
-\bind "M-x M-c"                      "lyx-quit"
+\bind "C-x C-f"                      "file-open"
+\bind "C-o p"                        "buffer-previous"
+\bind "C-o n"                        "buffer-next"
+\bind "C-o C-p"                      "buffer-move-previous"
+\bind "C-o C-n"                      "buffer-move-next"
+\bind "C-x C-r"                      "buffer-reload"
+\bind "C-x C-s"                      "buffer-write"
+\bind "C-x C-w"                      "buffer-write-as"
+\bind "C-x k"                        "buffer-close"
+\bind "C-x C-c"                      "lyx-quit"
 
 # Compiling
-\bind "M-c M-c"                      "master-buffer-update pdf"
-\bind "M-c M-v"                      "master-buffer-view"
-\bind "M-c M-a"                      "command-sequence master-buffer-update pdf; master-buffer-view;"
+\bind "C-c C-c"                      "master-buffer-update pdf"
+\bind "C-c C-v"                      "master-buffer-view"
+\bind "C-c C-a"                      "command-sequence master-buffer-update pdf; master-buffer-view;"
