@@ -22,7 +22,7 @@
             "args": {},
             "command": "application:activate-next-tab",
             "keys": [
-                "Shift ]"
+                "Ctrl ArrowRight"
             ],
             "selector": "body",
         },
@@ -30,7 +30,7 @@
             "args": {},
             "command": "application:activate-previous-tab",
             "keys": [
-                "Shift ["
+                "Ctrl ArrowLeft"
             ],
             "selector": "body",
         },
