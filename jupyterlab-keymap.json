@@ -82,6 +82,54 @@
             ],
             "selector": ".jp-Notebook:focus",
         },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-1",
+            "keys": [
+                "Ctrl 1"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-2",
+            "keys": [
+                "Ctrl 2"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-3",
+            "keys": [
+                "Ctrl 3"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-4",
+            "keys": [
+                "Ctrl 4"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-5",
+            "keys": [
+                "Ctrl 5"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-6",
+            "keys": [
+                "Ctrl 6"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
 
 
         // *****************************************
