@@ -48,18 +48,15 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 # OS-specific command aliases
 case $OSTYPE in
     cygwin*)
-        alias browser="chrome"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     darwin*) # OS X
-        alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
-        alias chrome="open -a Google\ Chrome.app"
-        if [ -d "/Applications/Skim.app" ]; then
-            alias skim="open -a Skim.app"
-        fi
-
-        alias browser="chrome"
         alias ls="ls -G"
+
+        alias acrobat="open -a Adobe\ Acrobat\ DC.app"
+        alias chrome="open -a Google\ Chrome.app"
+        alias skim="open -a Skim.app"
+        alias textedit="open -a TextEdit.app"
 
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
@@ -68,7 +65,6 @@ case $OSTYPE in
         fi
         ;;
     linux*)
-        alias browser="firefox"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     *) ;;
