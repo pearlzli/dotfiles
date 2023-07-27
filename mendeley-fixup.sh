@@ -42,7 +42,8 @@ for bibname in $bibnames; do
     sed -i.backup '/^pages/ s|--|-|g' "$bibpath"
 
     # Escape ampersands in journal names
-    sed -i.backup '/^journal/ s|&|\\&|g' "$bibpath"
+    # TODO: repeatedly running mendeley-fixup adds duplicate backslashes
+    # sed -i.backup '/^journal/ s| &| \\&|g' "$bibpath"
 
     # Delete fields
     sed -i.backup '/^abstract/d'      "$bibpath"
