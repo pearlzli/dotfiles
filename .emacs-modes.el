@@ -110,21 +110,11 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
 
 ;; Julia
-(unless (version< emacs-version "27")
-  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
-  (progn
-    (add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
-    (add-hook 'julia-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
 (with-eval-after-load 'julia-mode
   (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
-(unless (version< emacs-version "27")
-  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
-  (progn
-    (add-hook 'python-mode-hook (lambda () (setq fill-column 120)))
-    (add-hook 'python-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
 (with-eval-after-load 'python
   (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
 
