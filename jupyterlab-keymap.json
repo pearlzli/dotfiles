@@ -68,6 +68,22 @@
         },
         {
             "args": {},
+            "command": "notebook:hide-cell-outputs",
+            "keys": [
+                "H"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:show-cell-outputs",
+            "keys": [
+                "Shift H"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
             "command": "notebook:enable-output-scrolling",
             "keys": [
                 "S"
