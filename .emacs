@@ -259,9 +259,8 @@
   (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
-(global-linum-mode t)
-(setq linum-format "%4d ")
-(bind-key* "C-x l" 'linum-mode) ; toggle linum-mode for tmux copy-paste
+(global-display-line-numbers-mode 1)
+(bind-key* "C-x l" 'display-line-numbers-mode) ; toggle line numbers for tmux copy-paste
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
@@ -287,7 +286,6 @@
 (set-face-foreground font-lock-string-face "brightred")
 (set-face-foreground font-lock-type-face "brightcyan")
 (set-face-foreground font-lock-variable-name-face "yellow")
-(set-face-foreground 'linum "brightblack")
 (set-face-foreground 'minibuffer-prompt "brightblue")
 (set-face-background 'region "yellow")
 
