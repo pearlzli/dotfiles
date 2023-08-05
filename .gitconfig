@@ -24,19 +24,23 @@
 [core]
     editor = emacs -nw
 [diff]
-    tool = meld
+    tool = ediff
 [difftool]
-    prompt = false
+	prompt = false
+[difftool "ediff"]
+	cmd = emacs --eval \"(ediff-files \\\"$LOCAL\\\" \\\"$REMOTE\\\")\" # https://stackoverflow.com/a/42636500/2756250
 [difftool "meld"]
     path = /opt/homebrew/bin/meld
     cmd = meld "$LOCAL" "$REMOTE"
 [merge]
-    tool = meld
+    tool = ediff
 [mergetool]
-    prompt = false
+	prompt = false
+[mergetool "ediff"]
+	cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\" # https://stackoverflow.com/a/1817763/2756250
 [mergetool "meld"]
     path = /opt/homebrew/bin/meld
-    cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
+	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
 [url "https://"]
     insteadof = git://
     pushInsteadOf = git://
