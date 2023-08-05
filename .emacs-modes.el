@@ -11,8 +11,23 @@
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
 
 ;; Ediff mode
-(with-eval-after-load 'ediff-mode
-  (set-face-foreground 'ediff-current-diff-C "black"))
+(with-eval-after-load 'ediff
+  (set-face-foreground 'ediff-current-diff-Ancestor "black")
+  (set-face-foreground 'ediff-current-diff-A "black")
+  (set-face-foreground 'ediff-current-diff-B "black")
+  (set-face-foreground 'ediff-current-diff-C "black")
+  (set-face-foreground 'ediff-even-diff-Ancestor "black")
+  (set-face-foreground 'ediff-even-diff-A "black")
+  (set-face-foreground 'ediff-even-diff-B "black")
+  (set-face-foreground 'ediff-even-diff-C "black")
+  (set-face-foreground 'ediff-fine-diff-Ancestor "black")
+  (set-face-foreground 'ediff-fine-diff-A "black")
+  (set-face-foreground 'ediff-fine-diff-B "black")
+  (set-face-foreground 'ediff-fine-diff-C "black")
+  (set-face-foreground 'ediff-odd-diff-Ancestor "black")
+  (set-face-foreground 'ediff-odd-diff-A "black")
+  (set-face-foreground 'ediff-odd-diff-B "black")
+  (set-face-foreground 'ediff-odd-diff-C "black"))
 
 ;; SMerge mode
 (with-eval-after-load 'smerge-mode
