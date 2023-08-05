@@ -10,6 +10,10 @@
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
 
+;; Ediff mode
+(with-eval-after-load 'ediff-mode
+  (set-face-foreground 'ediff-current-diff-C "black"))
+
 ;; SMerge mode
 (with-eval-after-load 'smerge-mode
   (set-face-background 'smerge-markers "brightblack")
