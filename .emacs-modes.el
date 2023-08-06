@@ -10,7 +10,16 @@
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed))
 
-;; Ediff mode
+;; SMerge mode
+(with-eval-after-load 'smerge-mode
+  (set-face-background 'smerge-markers "brightblack")
+  (set-face-attribute 'smerge-lower nil :inherit 'diff-added :background nil)
+  (set-face-attribute 'smerge-upper nil :inherit 'diff-removed :background nil)
+  (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added :background nil)
+  (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed :background nil)
+  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil)
+
+;; Ediff (interactive diffing and merging)
 (with-eval-after-load 'ediff
   (set-face-foreground 'ediff-current-diff-Ancestor "black")
   (set-face-foreground 'ediff-current-diff-A "black")
@@ -28,15 +37,6 @@
   (set-face-foreground 'ediff-odd-diff-A "black")
   (set-face-foreground 'ediff-odd-diff-B "black")
   (set-face-foreground 'ediff-odd-diff-C "black"))
-
-;; SMerge mode
-(with-eval-after-load 'smerge-mode
-  (set-face-background 'smerge-markers "brightblack")
-  (set-face-attribute 'smerge-lower nil :inherit 'diff-added :background nil)
-  (set-face-attribute 'smerge-upper nil :inherit 'diff-removed :background nil)
-  (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added :background nil)
-  (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed :background nil)
-  (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil)
 
 ;; LaTeX
 (with-eval-after-load 'font-latex
