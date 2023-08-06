@@ -1,3 +1,8 @@
+# -*- shell-script -*-
+# The above line tells emacs to open this file in shell-script-mode
+# It must be the first line in the file
+# https://www.gnu.org/software/emacs/manual/html_node/efaq/Associating-modes-with-files.html
+
 # Need this for emacs syntax highlighting to display properly
 export TERM="xterm-256color"
 
