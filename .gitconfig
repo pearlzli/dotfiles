@@ -37,7 +37,7 @@
 [mergetool]
 	prompt = false
 [mergetool "ediff"]
-	cmd = emacs --eval \"(ediff-merge-files-with-ancestor \\\"$LOCAL\\\" \\\"$REMOTE\\\" \\\"$BASE\\\" nil \\\"$MERGED\\\")\" # https://stackoverflow.com/a/1817763/2756250
+	cmd = emacs --eval \"(ediff-merge-files \\\"$LOCAL\\\" \\\"$REMOTE\\\" nil \\\"$MERGED\\\")\" # https://stackoverflow.com/a/1817763/2756250
 [mergetool "meld"]
     path = /opt/homebrew/bin/meld
 	cmd = meld "$LOCAL" "$MERGED" "$REMOTE" --output "$MERGED"
