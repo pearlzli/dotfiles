@@ -312,16 +312,15 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Install Python packages (Jupyter + Plotly)
-cd $dotfile_dir
-pip install -r requirements.txt
-
-# Install JupyterLab extensions that aren't installable via pip
-jupyter labextension install jupyterlab-emacskeys
-
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
+
+# Install Python packages (Jupyter + Plotly)
+pip install -r $dotfile_dir/requirements.txt
+
+# Install JupyterLab extensions that aren't installable via pip
+jupyter labextension install jupyterlab-emacskeys
 
 # Tmux plugin manager
 if not_installed tmux; then
