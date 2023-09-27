@@ -14,7 +14,7 @@
             "args": {},
             "command": "notebook:split-cell-at-cursor",
             "keys": [
-                "Accel Ctrl -"
+                "Accel Ctrl /"
             ],
             "selector": ".jp-Notebook.jp-mod-editMode"
         },
@@ -22,7 +22,7 @@
             "args": {},
             "command": "application:activate-next-tab",
             "keys": [
-                "Ctrl ArrowRight"
+                "Accel Ctrl ]"
             ],
             "selector": "body",
         },
@@ -30,7 +30,7 @@
             "args": {},
             "command": "application:activate-previous-tab",
             "keys": [
-                "Ctrl ArrowLeft"
+                "Accel Ctrl ["
             ],
             "selector": "body",
         },
