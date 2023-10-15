@@ -234,6 +234,7 @@
 \usepackage{mystyle}
 
 % Redefine some macros
+\newcommand{\beamerhfill}{\hspace{0pt plus 1 filll}} % https://tex.stackexchange.com/a/118234/116532
 \renewcommand{\P}{\text{Pr}}
 
 % Theorem definitions
