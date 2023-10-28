@@ -47,8 +47,8 @@
 
 # Files and buffers
 \bind "M-o"                          "file-open"
-\bind "C-Tab"                        "buffer-next"     # doesn't work
-\bind "C-S-BackTab"                  "buffer-previous" # doesn't work
+\bind "M-S-]"                        "buffer-next"
+\bind "M-S-["                        "buffer-previous"
 \bind "M-s"                          "buffer-write"
 \bind "M-w"                          "buffer-close"
 \bind "M-q"                          "lyx-quit"
