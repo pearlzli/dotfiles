@@ -30,6 +30,7 @@ for bibname in $bibnames; do
     fi
 
     # Remove escape characters from URLs
+    sed -i.backup '/^url/ s|\$\\sim\$|~|g' "$bibpath" # $\sim$  to ~
     sed -i.backup '/^url/ s|{~}|~|g'   "$bibpath" # {~}  to ~
     sed -i.backup '/^url/ s|{\\%}|%|g' "$bibpath" # {\%} to %
     sed -i.backup '/^url/ s|{\\_}|_|g' "$bibpath" # {\_} to _
