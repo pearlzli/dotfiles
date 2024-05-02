@@ -76,7 +76,7 @@
      ("subsubsection" . 4)
      ("paragraph" . 5)
      ("subparagraph" . 6)
-     ("frametitle" . 5)))
+     ("frametitle" . -5))) ; negative level is unnumbered version of positive value
 
 ;; Markdown
 (setq markdown-asymmetric-header t)
