@@ -114,6 +114,7 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-style-map (kbd "i") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "m") 'markdown-insert-math-inline)                   ;
   (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
+  (define-key markdown-mode-map (kbd "C-c t") (lambda () (interactive) (occur "#+ ") (other-window 1))) ; https://stackoverflow.com/a/24994254/2756250
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
 
