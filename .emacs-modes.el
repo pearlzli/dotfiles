@@ -68,6 +68,15 @@
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-toc-split-windows-horizontally t) ; split window horizontally to show toc (https://www.reddit.com/r/emacs/comments/bdwqwy/get_reftexs_toc_to_open_to_the_left_of_the_tex/el5qfw1/)
 (setq reftex-toc-split-windows-fraction 0.5) ; set toc width
+(setq reftex-section-levels ; show beamer frametitles in toc (https://tex.stackexchange.com/a/561161)
+   '(("part" . 0)
+     ("chapter" . 1)
+     ("section" . 2)
+     ("subsection" . 3)
+     ("subsubsection" . 4)
+     ("paragraph" . 5)
+     ("subparagraph" . 6)
+     ("frametitle" . 5)))
 
 ;; Markdown
 (setq markdown-asymmetric-header t)
