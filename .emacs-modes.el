@@ -77,6 +77,11 @@
      ("paragraph" . 5)
      ("subparagraph" . 6)
      ("frametitle" . -5))) ; negative level is unnumbered version of positive value
+(defun LaTeX-beamer-replace-frametitle ()
+  "Replace \\begin{frame}{My Title} with \\begin{frame}\\n\\frametitle{My Title}"
+  (interactive)
+  (replace-regexp "\\\\begin{frame}\\(<.*>\\)?\\(\\[.*\\]\\)?{" "\\\\begin{frame}\\1\\2
+  \\\\frametitle{"))
 
 ;; Markdown
 (setq markdown-asymmetric-header t)
