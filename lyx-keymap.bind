@@ -1,0 +1,125 @@
+# -*- shell-script -*-
+# The above line tells emacs to open this file in shell-script-mode
+# It must be the first line in the file
+# https://www.gnu.org/software/emacs/manual/html_node/efaq/Associating-modes-with-files.html
+
+# Modifier keys:
+# Control - C
+# Option  - A
+# Command - M
+
+# Partial function list: https://wiki.lyx.org/LyX/LyxFunctionList
+
+# ----------------------------------------------------------
+# Mac
+# ----------------------------------------------------------
+
+# Motion
+\bind "A-Right"                      "word-right"
+\bind "A-Left"                       "word-left"
+\bind "A-Down"                       "paragraph-down"
+\bind "A-Up"                         "paragraph-up"
+
+# Editing
+\bind "A-BackSpace"                  "word-delete-backward"
+\bind "M-z"                          "undo"
+\bind "M-y"                          "redo"
+\bind "M-c"                          "command-sequence copy; cancel;" # copy, then unset selection
+\bind "M-x"                          "cut"
+\bind "M-v"                          "paste"
+\bind "M-f"                          "dialog-show findreplace"
+\bind "S-Right"                      "char-right-select"
+\bind "S-Left"                       "char-left-select"
+\bind "S-Up"                         "up-select"
+\bind "S-Down"                       "down-select"
+\bind "S-A-Right"                    "word-right-select"
+\bind "S-A-Left"                     "word-left-select"
+\bind "S-A-Down"                     "paragraph-down-select"
+\bind "S-A-Up"                       "paragraph-up-select"
+\bind "M-m"                          "math-mode"
+\bind "M-S-m"                        "math-display"
+\bind "M-l"                          "ert-insert" # enter raw LaTeX
+
+# View
+\bind "M-plus"                       "buffer-zoom-in"
+\bind "M-equal"                      "buffer-zoom-in"
+\bind "M-minus"                      "buffer-zoom-out"
+
+# Files and buffers
+\bind "M-o"                          "file-open"
+\bind "M-S-]"                        "buffer-next"
+\bind "M-S-["                        "buffer-previous"
+\bind "M-s"                          "buffer-write"
+\bind "M-w"                          "buffer-close"
+\bind "M-q"                          "lyx-quit"
+
+# ----------------------------------------------------------
+# Emacs-like
+# ----------------------------------------------------------
+
+# Motion
+\bind "C-f"                          "char-forward"
+\bind "C-b"                          "char-backward"
+\bind "C-a"                          "line-begin"
+\bind "C-e"                          "line-end"
+\bind "C-p"                          "up"
+\bind "C-n"                          "down"
+\bind "A-f"                          "word-right"
+\bind "A-b"                          "word-left"
+\bind "A-p"                          "scroll page up"   # doesn't work; inserts Unicode char
+\bind "A-n"                          "scroll page down" # doesn't work; inserts Unicode char
+\bind "A-v"                          "screen-up"
+\bind "C-v"                          "screen-down"
+\bind "C-l"                          "screen-recenter"
+\bind "A-~S-less"                    "buffer-begin"
+\bind "A-~S-greater"                 "buffer-end"
+
+# Editing
+\bind "C-g"                          "cancel"
+\bind "C-u"                          "undo"
+\bind "C-space"                      "mark-on"
+\bind "C-d"                          "char-delete-forward"
+\bind "A-d"                          "word-delete-forward"
+\bind "C-k"                          "line-delete-forward"
+\bind "C-t"                          "chars-transpose"
+\bind "A-w"                          "command-sequence copy; cancel;" # copy, then unset selection
+\bind "C-w"                          "cut"
+\bind "C-y"                          "paste"
+\bind "A-l"                          "word-lowcase partial" # doesn't work; inserts Unicode char
+\bind "A-u"                          "word-upcase partial"
+\bind "A-c"                          "word-capitalize partial"
+\bind "C-s"                          "dialog-show findreplace"
+\bind "A-~S-percent"                 "dialog-show findreplaceadv"
+\bind "A-x"                          "command-execute"
+
+# Labels, references, and citations
+\bind "C-c t"                        "dialog-show toc"
+\bind "C-c C-s"                      "drop-layouts-choice"
+\bind "C-c l"                        "label-insert"
+\bind "C-c r"                        "dialog-show-new-inset ref"
+\bind "C-c c"                        "citation-insert"
+
+# Font formatting
+\bind "C-c C-f C-b"                  "font-bold"
+\bind "C-c C-f C-i"                  "font-ital"
+\bind "C-c C-f C-r"                  "font-roman"
+\bind "C-c C-f C-e"                  "font-emph"
+\bind "C-c C-f C-t"                  "font-typewriter"
+\bind "C-c C-f C-d"                  "font-default"
+
+# Files and buffers
+\bind "C-x C-f"                      "file-open"
+\bind "C-o p"                        "buffer-previous"
+\bind "C-o n"                        "buffer-next"
+\bind "C-o C-p"                      "buffer-move-previous"
+\bind "C-o C-n"                      "buffer-move-next"
+\bind "C-x C-r"                      "buffer-reload"
+\bind "C-x C-s"                      "buffer-write"
+\bind "C-x C-w"                      "buffer-write-as"
+\bind "C-x k"                        "buffer-close"
+\bind "C-x C-c"                      "lyx-quit"
+
+# Compiling
+\bind "C-c C-c"                      "master-buffer-update pdf"
+\bind "C-c C-v"                      "master-buffer-view"
+\bind "C-c C-a"                      "command-sequence master-buffer-update pdf; master-buffer-view;"

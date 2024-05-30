@@ -1,0 +1,23 @@
+{
+  "excludedUrls": "",
+  "linkHintCharacters": "asdfjklqwerzxc",
+  "detectByCursorStyle": false,
+  "scrollSize": 150,
+  "modifier": "",
+  "smoothScroll": true,
+  "scrollDuration": 25,
+  "transparentBindings": true,
+  "bindings": {
+      "hintToggle": "ctrl+x+v",
+      "newTabHintToggle": "ctrl+x+f",
+      "scrollUp": "ctrl+p",
+      "scrollDown": "ctrl+n",
+      "scrollLeft": "ctrl+f",
+      "scrollRight": "ctrl+b",
+      "scrollUpHalfPage": "alt+p",
+      "scrollDownHalfPage": "alt+n",
+      "goToPageTop": "alt+shift+,",
+      "goToPageBottom": "alt+shift+.",
+      "reload": "ctrl+x+r",
+  }
+}

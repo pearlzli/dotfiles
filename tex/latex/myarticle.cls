@@ -1,6 +1,7 @@
 % Page formatting
 \LoadClass[11pt]{article}
 \usepackage[margin=1in]{geometry}
+\usepackage[onehalfspacing]{setspace}
 
 % Load mystyle.sty
 \usepackage{mystyle}

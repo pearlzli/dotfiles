@@ -12,6 +12,7 @@
 
         ; List of packages to be installed (separated by linebreaks)
         '(auctex
+          beacon
           bind-key
           cl-lib
           ess

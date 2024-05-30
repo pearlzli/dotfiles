@@ -5,3 +5,6 @@ _CodeSignature/
 MacOS/
 QuickLook/
 Resources/
+
+# AUCTeX parsed information
+auto/

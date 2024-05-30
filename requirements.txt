@@ -1,0 +1,9 @@
+# Jupyter
+jupyterlab
+jupyterlab_execute_time
+jupyterlab-git
+
+# Plotly
+plotly
+ipywidgets
+webio_jupyter_extension

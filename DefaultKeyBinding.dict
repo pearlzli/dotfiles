@@ -1,4 +1,5 @@
 /* Adapted from http://www.hcs.harvard.edu/~jrus/site/KeyBindings/Emacs%20Opt%20Bindings.dict
+ * Available commands: https://developer.apple.com/documentation/appkit/nsstandardkeybindingresponding
  * Place in ~/Library/KeyBindings, making directory if necesary
  * Symlink will not work, but see https://apple.stackexchange.com/a/224074 for git hook workaround
 */
@@ -7,10 +8,30 @@
     /* Navigation */
     "~f"      = "moveWordForward:";              /* M-f */
     "~b"      = "moveWordBackward:";             /* M-b */
-    "~<"      = "moveToBeginningOfDocument:";    /* M-< */
-    "~>"      = "moveToEndOfDocument:";          /* M-> */
+    "~n"      = ( "moveDown:",                   /* M-n */
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:",
+                  "moveDown:");
+    "~p"      = ( "moveUp:",                     /* M-p */
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:",
+                  "moveUp:");
     "~v"      = "pageUp:";                       /* M-v */
     "^v"      = "pageDown:";                     /* C-v */
+    "~<"      = "moveToBeginningOfDocument:";    /* M-< */
+    "~>"      = "moveToEndOfDocument:";          /* M-> */
 
     /* Editing */
     "~d"      = "deleteWordForward:";            /* M-d */
@@ -30,13 +51,4 @@
     "~w"      = ( "selectToMark:",               /* M-w */
                   "copy:",
                   "swapWithMark:");
-
-    "^x" = {
-        "^x"  = "swapWithMark:";                 /* C-x C-x */
-        "^m"  = "selectToMark:";                 /* C-x C-m */
-        "^f"  = "openDocument:";                 /* C-x C-f */
-        "^s"  = "save:";                         /* C-x C-s */
-        "^w"  = "saveAs:";                       /* C-x C-w */
-        "k"   = "performClose:";                 /* C-x C-k */
-    };
 }

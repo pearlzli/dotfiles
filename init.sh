@@ -33,11 +33,24 @@ not_installed() {
     return ! command -v $1 &> /dev/null
 }
 
+# Make file if it doesn't already exist
+# Usage: maybe_touch <path>
+maybe_touch() {
+    if [ ! -f "$1" ]; then
+        touch -p "$1"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Created $1${normal}"
+        else
+            echo "${red}Could not create $1${normal}"
+        fi
+    fi
+}
+
 # Make directory if it doesn't already exist
 # Usage: maybe_mkdir <path>
 maybe_mkdir() {
     if [ ! -d "$1" ]; then
-        mkdir -p $1
+        mkdir -p "$1"
         if [ "$?" -eq 0 ]; then
             echo "${green}Created $1${normal}"
         else
@@ -64,6 +77,23 @@ try_symlink() {
         fi
     else
         echo "${red}Did not link $dst: non-symlink file already exists. Merge $dst into $dotfile_dir/$src first and then delete $dst before retrying${normal}"
+    fi
+}
+
+# Set environment variable verbosely
+# Usage: try_setenv <variable> <value>
+try_setenv() {
+    var=$1
+    val=$2
+    if [ -z "$var" ]; then
+        echo "export $var=\"$val\"" >> "$HOME/.bashrc-local"
+        if [ "$?" -eq 0 ]; then
+            echo "${green}Set $var to $val in $HOME/.bashrc-local${normal}"
+        else
+            echo "${red}Could not set $var to $val in $HOME/.bashrc-local${normal}"
+        fi
+    else
+        echo "${red}Did not set $var to $val in $HOME/.bashrc-local: already has a value${normal}"
     fi
 }
 
@@ -137,8 +167,11 @@ case $OSTYPE in
         brew install gcc   # HDF5.jl
         brew install cmake # Polynomials.jl
 
-        # Add to PATH
+        # Set environment variables
         try_addpath "/Library/TeX/texbin" 0
+        try_setenv "JUPYTER" "/opt/homebrew/bin/jupyter"
+        try_setenv "JUPYTER_PATH" "/opt/homebrew/share/jupyter"
+        try_setenv "JUPYTERLAB_DIR" "/opt/homebrew/share/jupyter/lab"
 
         # Copy SF Mono font for use in non-Terminal apps (symlinking doesn't seem like enough)
         # https://osxdaily.com/2018/01/07/use-sf-mono-font-mac/
@@ -164,10 +197,11 @@ case $OSTYPE in
         maybe_mkdir "$HOME/Library/KeyBindings"
         cp "$dotfile_dir/DefaultKeyBinding.dict" "$HOME/Library/KeyBindings"
 
-        # Symlink/copy AppleScripts
-        cd "/Applications"
-        try_symlink "applescripts/emacs-nw.app" "emacs -nw.app"
+        # Symlink Mac keyboard layouts
+        cd "$HOME/Library/Keyboard Layouts"
+        try_symlink "$dotfile_dir/MyLayout.keylayout" "MyLayout.keylayout"
 
+        # Symlink/copy AppleScripts
         services_dir="$HOME/Library/Services/"
         cp -r "$dotfile_dir/applescripts/Make Desktop alias.workflow" services_dir
         cp -r "$dotfile_dir/applescripts/Open in Chrome.workflow" services_dir
@@ -210,11 +244,8 @@ for file in ".bashrc" ".tmux.conf" ".emacs" ".emacs-modes.el" ".gitconfig"; do
 done
 
 # Create local dotfiles if they don't already exist
-for file in ".bashrc-local" ".gitconfig-local"; do
-    if [ ! -f "$file" ]; then
-        touch "$file"
-        echo "${green}Created $file${normal}"
-    fi
+for file in ".bashrc-local" ".emacs-local.el" ".gitconfig-local"; do
+    try_touch "$file"
 done
 
 # Pre-commit hook
@@ -281,31 +312,22 @@ cd "$HOME/.emacs.d"
 # Install emacs packages from package manager
 emacs --script "$dotfile_dir/elpa-install.el"
 
-# Install JupyterLab extensions
-pip install jupyterlab
-pip install ipywidgets # required for plotly
-pip install jupyterlab-git
-pip install nbdime
-pip install plotly
-pip install webio_jupyter_extension # required for plotly
-nbdime extensions --enable
-
-# Symlink Jupyter templates
-# https://stackoverflow.com/a/68188918
-maybe_mkdir "$HOME/Library/Jupyter/nbconvert"
-cd "$HOME/Library/Jupyter/nbconvert"
-ln -s "/opt/homebrew/share/jupyter/nbconvert/templates" "templates"
-
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
+
+# Install Python packages (Jupyter + Plotly)
+pip install -r $dotfile_dir/requirements.txt
+
+# Install JupyterLab extensions that aren't installable via pip
+jupyter labextension install jupyterlab-emacskeys
 
 # Tmux plugin manager
 if not_installed tmux; then
     echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
 else
     if not_installed bc; then
-        echo "${red}bc is not installed; needed to compare tmux verions${normal}"
+        echo "${red}bc is not installed; needed to compare tmux versions${normal}"
         echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
     else
         tpmdir="$HOME/.tmux/plugins/tpm"

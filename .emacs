@@ -33,12 +33,14 @@
 
 ;; Mouse support
 (unless window-system
-  (require 'mouse)
   (xterm-mouse-mode t)
   (bind-key* [mouse-4] (lambda () (interactive) (scroll-down 1)))
-  (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1)))
-  (defun track-mouse (e))
-  (setq mouse-sel-mode t))
+  (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1))))
+
+;; Highlight cursor
+(beacon-mode 1)
+(setq beacon-size 40)
+(bind-key* "M-o" 'beacon-blink)
 
 ;; Let emacs kill ring use clipboard
 ;; Nice to have in general; needed for sending commands to Stata in ado-mode
@@ -51,7 +53,7 @@
 ;; Comment current line if no active region
 ;; https://stackoverflow.com/a/9697222/2756250
 (defun comment-or-uncomment-region-or-line ()
-    "Comments or uncomments the region or the current line if there's no active region."
+    "Comment or uncomment the region or the current line if there's no active region."
     (interactive)
     (let (beg end)
         (if (region-active-p)
@@ -60,8 +62,30 @@
         (comment-or-uncomment-region beg end)))
 (bind-key* "M-;" 'comment-or-uncomment-region-or-line)
 
-;; Load custom modes, e.g. Julia mode
-(load "~/.emacs-modes.el")
+;; Indent/outdent current line/region with M-} and M-{
+;; These key bindings were originally used for forward-paragraph and backward-paragraph
+;; Would prefer M-] and M-[, but the latter is forbidden
+;; https://emacs.stackexchange.com/a/48739/14500
+(defun my-indent-region-or-line ()
+  "Indent the region (or the current line if there's no active region) by 4 spaces."
+  (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (indent-rigidly beg end 4)
+        (setq deactivate-mark nil)))
+(defun my-outdent-region-or-line ()
+  "Outdent the region (or the current line if there's no active region) by 4 spaces."
+  (interactive)
+    (let (beg end)
+        (if (region-active-p)
+            (setq beg (region-beginning) end (region-end))
+            (setq beg (line-beginning-position) end (line-end-position)))
+        (indent-rigidly beg end -4)
+        (setq deactivate-mark nil)))
+(bind-key* "M-}" 'my-indent-region-or-line)
+(bind-key* "M-{" 'my-outdent-region-or-line)
 
 ;; Move backup files to central location
 ;; https://stackoverflow.com/a/2680682/2756250
@@ -78,11 +102,6 @@
 
 ;; Set default max line width to 80 characters
 (setq-default fill-column 80)
-
-;; Rebind C-j to set-mark-command (originally bound to electric-newline-and-maybe-indent)
-;; Needed on iPad because C-SPC switches keyboard language with no way to unset
-;; https://unix.stackexchange.com/q/91834
-(bind-key* "C-j" (lambda () (interactive) (push-mark nil nil 1)))
 
 ;; Unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
@@ -105,6 +124,12 @@
 (global-unset-key (kbd "C-x 3")) ; formerly wplit-window-right
 (bind-key* "C-x h" 'split-window-right)
 (bind-key* "C-x v" 'split-window-below)
+
+;; Load custom modes, e.g. Julia mode
+(load "~/.emacs-modes.el")
+
+;; Load local settings
+(load "~/.emacs-local.el")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ADVANCED EDITING
@@ -234,9 +259,8 @@
   (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
-(global-linum-mode t)
-(setq linum-format "%4d ")
-(bind-key* "C-x l" 'linum-mode) ; toggle linum-mode for tmux copy-paste
+(global-display-line-numbers-mode 1)
+(bind-key* "C-x l" 'display-line-numbers-mode) ; toggle line numbers for tmux copy-paste
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
@@ -262,7 +286,6 @@
 (set-face-foreground font-lock-string-face "brightred")
 (set-face-foreground font-lock-type-face "brightcyan")
 (set-face-foreground font-lock-variable-name-face "yellow")
-(set-face-foreground 'linum "brightblack")
 (set-face-foreground 'minibuffer-prompt "brightblue")
 (set-face-background 'region "yellow")
 
@@ -350,7 +373,7 @@
      ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(git-modes unfill pandoc-mode ess julia-mode bind-key markdown-mode xclip cl-lib auctex))
+   '(beacon git-modes unfill pandoc-mode ess julia-mode bind-key markdown-mode xclip cl-lib auctex))
  '(reftex-label-alist
    '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)
@@ -371,4 +394,11 @@
        ("\\Cref" 67)
        ("\\cpageref" 100)
        ("\\Cpageref" 68)))))
- '(reftex-ref-style-default-list '("Default" "Cleveref")))
+ '(reftex-ref-style-default-list '("Default" "Cleveref"))
+ '(warning-suppress-types '((auctex))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

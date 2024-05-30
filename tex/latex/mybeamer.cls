@@ -1,13 +1,28 @@
-%%% 1. Basic
+%%% 1. Class options
 
-% Pass in options to beamer class
+% See https://www.overleaf.com/learn/latex/Writing_your_own_class#Options
+
+% Turn off miniframes?
+\newif\if@miniframes
+\@miniframestrue
+\DeclareOption{miniframesoff}{\@miniframesfalse}
+
+% Turn off roadmap slides?
+\newif\if@roadmap
+\@roadmaptrue
+\DeclareOption{roadmapoff}{\@roadmapfalse}
+
+% Pass in remaining options to beamer class
 % https://tex.stackexchange.com/a/418947/116532
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{beamer}}
+
+% Execute the code for each option
+% Must be inserted after all option-handling commands
 \ProcessOptions\relax
 
 % Load beamer class
 % Disable automatic theorem definitions (https://tex.stackexchange.com/a/285558/116532)
-\LoadClass[aspectratio=169,notheorems]{beamer}
+\LoadClass[aspectratio=169,notheorems,10pt]{beamer}
 
 
 %%% 2. Appearance
@@ -22,36 +37,140 @@
 \definecolor{indigo}{RGB}{51,51,178}
 \definecolor{blue}{RGB}{20,115,251}
 \definecolor{pink}{RGB}{222,15,112}
+\definecolor{lightgray}{gray}{.95}
+\definecolor{replightgrey}{RGB}{218 222 223}
+\definecolor{repmedgrey}{RGB}{143 150 152}
+\definecolor{reporange}{RGB}{255,93,56}
+\definecolor{repdarkpurple}{RGB}{107,64,129}
+\definecolor{themepurple}{RGB}{153,153,217}
+\newcommand<>{\blue}[1]{\textcolor#2{blue}{#1}} %#418cfc
+\newcommand<>{\pink}[1]{\textcolor#2{pink}{#1}} %#e02279
+\newcommand<>{\orange}[1]{\textcolor#2{reporange}{#1}}
+\newcommand<>{\purple}[1]{\textcolor#2{repdarkpurple}{#1}}
+\newcommand<>{\gray}[1]{\textcolor#2{black!25!white}{#1}}
 
 \hypersetup{colorlinks=true,
   linkcolor=indigo, % internal links (sections, equations, etc.)
-  urlcolor=indigo,  % URL links
-  citecolor=indigo, % citations
+  urlcolor=repmedgrey,  % URL links
+  citecolor=repmedgrey, % citations
 }
 
-% Page numbers (not nav controls) in bottom right
+% Fix citation colors
+% Without this, closing parenthesis is not colored
+\usepackage{natbib}
+\let\oldcite=\cite
+\let\oldcitep=\citep
+\let\oldcitet=\citet
+\renewcommand{\cite}[2][]{\textcolor{repmedgrey}{\oldcite[#1]{#2}}}
+\renewcommand{\citep}[2][]{\textcolor{repmedgrey}{\oldcitep[#1]{#2}}}
+\renewcommand{\citet}[2][]{\textcolor{repmedgrey}{\oldcitet[#1]{#2}}}
+
+% No nav controls in bottom right
 \setbeamertemplate{navigation symbols}{}
-\setbeamertemplate{footline}[frame number]
-\usepackage{appendixnumberbeamer}
 
 % Remove frame title numbering from allowframebreaks
 \setbeamertemplate{frametitle continuation}{}
 
-
-%%% 3. Sections and environments
+% Number appendix slides separately
+\usepackage{appendixnumberbeamer}
 
 % Add TOC slide at the beginning of each section
 % Use \section* to suppress this slide for a given section
 % https://en.wikibooks.org/wiki/LaTeX/Presentations#Table_of_Contents
 % Don't count TOC slides toward frame numbering
 % https://tex.stackexchange.com/a/49805/116532
+\if@roadmap
 \AtBeginSection[]{
+  \miniframesoff
   \begin{frame}[plain,noframenumbering]
-    \tableofcontents[currentsection,hideothersubsections]
+    \tableofcontents[currentsection]
   \end{frame}
+  \miniframeson
 }
+\AtBeginSubsection[]{
+  \miniframesoff
+  \begin{frame}[plain,noframenumbering]
+    \tableofcontents[currentsection,currentsubsection,subsectionstyle=show/shaded]
+  \end{frame}
+  \miniframeson
+}
+\fi
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
+
+
+%%% 3. Miniframes
+
+% These are called by \AtBeginSection and \AtBeginSubsection
+% So they need to be defined outside of \if@miniframes
+\newcommand*{\miniframeson}{}
+\newcommand*{\miniframesoff}{}
+
+\if@miniframes
+  % Show miniframes (horizontal nav bar with clickable circle for each slide)
+  \useoutertheme[subsection=false]{miniframes}
+
+  % Move miniframes to bottom
+  % https://tex.stackexchange.com/a/649597/116532
+  \makeatletter
+  \newcommand\letbeamertemplate[2]{\csletcs{beamer@@tmpl@#1}{beamer@@tmpl@#2}}
+  \letbeamertemplate{footline}{headline}
+  \setbeamertemplate{headline}[default]
+  \makeatother
+
+  % Page numbers in bottom right
+  % https://tex.stackexchange.com/a/228167/116532
+  % https://tex.stackexchange.com/a/85744/116532
+  \makeatletter
+  \defbeamertemplate*{footline}{myminiframes theme}{
+    \begin{beamercolorbox}[colsep=1.5pt]{upper separation line head}
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[leftskip=.01cm,rightskip=0.3cm plus1fil]{section in head/foot}
+      \vskip2pt
+      \begin{minipage}[c]{0.9\paperwidth}
+        \insertnavigation{\linewidth}
+      \end{minipage}
+      \hfill
+      \begin{minipage}[c]{0.05\paperwidth}
+        \raggedleft
+        \insertframenumber
+      \end{minipage}
+      \vskip4pt
+    \end{beamercolorbox}
+    \begin{beamercolorbox}[colsep=1.5pt]{lower separation line head}
+    \end{beamercolorbox}
+  }
+  \makeatother
+
+  % Turn off link coloring in miniframes
+  % https://tex.stackexchange.com/a/481051/116532
+  \makeatletter
+  \newcommand*\disablecolorlinks{\def\HyColor@UseColor##1{}}
+  \makeatletter
+  \addtobeamertemplate{footline}{\disablecolorlinks}{}
+
+  % Exclude some frames from miniframes
+  % https://tex.stackexchange.com/a/244640/116532
+  \makeatletter
+  \let\beamer@writeslidentry@miniframeson=\beamer@writeslidentry
+  \def\beamer@writeslidentry@miniframesoff{%
+    \expandafter\beamer@ifempty\expandafter{\beamer@framestartpage}{}% does not happen normally
+    {%else
+      % removed \addtocontents commands
+      \clearpage\beamer@notesactions%
+    }
+  }
+  \renewcommand*{\miniframeson}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframeson}
+  \renewcommand*{\miniframesoff}{\let\beamer@writeslidentry=\beamer@writeslidentry@miniframesoff}
+  \beamer@compresstrue
+  \makeatother
+\else
+  % Page numbers in bottom right
+  \setbeamertemplate{footline}[frame number]
+\fi
+
+
+%%% 4. Environments
 
 % Box theorems and definitions
 \setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
@@ -60,25 +179,63 @@
 
 % List styles
 \setbeamertemplate{itemize items}[circle] % circular bullets for all items
-\setbeamertemplate{enumerate subitem}{\alph{enumii}.} % letters for subitems
+\setbeamertemplate{enumerate subitem}{\alph{enumii})} % lowercase letters for subitems
+\setbeamertemplate{enumerate subsubitem}{\roman{enumiii})} % lowercase roman numerals for subsubitems
 
 % Define wideitemize and widenumerate environments
 \newenvironment{wideitemize}{\itemize\addtolength{\itemsep}{\baselineskip}}{\enditemize}
 \newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{\baselineskip}}{\endenumerate}
 
+% Blocks
+% \setbeamertemplate{blocks}[default][shadow=false]
 
-%%% 4. Other
+\setbeamercolor{block title alerted}{bg=white,fg=black}
+\setbeamercolor{block body alerted}{bg=white}
+\AtBeginEnvironment{alertblock}{
+  \setbeamercolor{itemize item}{fg=indigo}
+  \setbeamercolor{itemize subitem}{fg=indigo}
+  \setbeamercolor{itemize subsubitem}{fg=indigo}
+  \setbeamercolor{enumerate item}{fg=indigo}
+  \setbeamercolor{enumerate subitem}{fg=indigo}
+  \setbeamercolor{enumerate subsubitem}{fg=indigo}
+  \setbeamercolor{button}{bg=themepurple,fg=white}
+}
+\newcommand{\bl}[2]{{\begin{alertblock}{#1}#2\end{alertblock}}}
+
+\setbeamercolor{block title example}{bg=lightgray!70, fg=black}
+\setbeamercolor{block body example}{bg=white, fg=black}
+\newcommand{\blg}[2]{{
+  \setbeamercolor{itemize item}{fg=repmedgrey}
+  \setbeamercolor{itemize subitem}{fg=repmedgrey}
+  \setbeamercolor{itemize subsubitem}{fg=repmedgrey}
+  \setbeamercolor{enumerate item}{fg=repmedgrey}
+  \setbeamercolor{enumerate subitem}{fg=repmedgrey}
+  \setbeamercolor{enumerate subsubitem}{fg=repmedgrey}
+  \setbeamercolor{button}{bg=themepurple,fg=repmedgrey}
+  \begin{exampleblock}{#1}#2\end{exampleblock}
+}}
+\newcommand{\blmb}[2]{{
+  \setbeamercolor{block title example}{bg=indigo!15, fg=black}
+  \setbeamercolor{block body example}{bg=lightgray!70, fg=black}
+  \setbeamercolor{itemize item}{fg=indigo}
+  \setbeamercolor{itemize subitem}{fg=indigo}
+  \setbeamercolor{itemize subsubitem}{fg=indigo}
+  \setbeamercolor{enumerate item}{fg=indigo}
+  \setbeamercolor{enumerate subitem}{fg=indigo}
+  \setbeamercolor{enumerate subsubitem}{fg=indigo}
+  \setbeamercolor{button}{bg=themepurple,fg=indigo}
+  \begin{exampleblock}{#1}#2\end{exampleblock}
+}}
+
+
+%%% 5. Other
 
 % Load mystyle.sty
 \usepackage{mystyle}
 
 % Redefine some macros
+\newcommand{\beamerhfill}{\hspace{0pt plus 1 filll}} % https://tex.stackexchange.com/a/118234/116532
 \renewcommand{\P}{\text{Pr}}
-
-% Add vertical space
-\newcommand{\myvskip}{
-
-  \vspace{\baselineskip}}
 
 % Theorem definitions
 % Don't italicize any theorem environments
@@ -103,3 +260,28 @@
 % Open PDFs in full page mode
 % https://tex.stackexchange.com/a/16473/116532
 \hypersetup{pdfstartview=Fit}
+
+% Specify which overlays to include in presentation and handout modes
+% https://tex.stackexchange.com/a/455459/116532
+% Usage:
+%   \begin{handoutframeselect}[overlays to include in handout mode]
+%     \begin{frame}<\slideselection{overlays to include in presentation mode}>{Frame title}
+%     \end{frame}
+%   \end{handoutframeselect}
+\makeatletter
+\newif\ifOnBeamerModeTransition
+\newcommand{\slideselection}[1]{#1}%
+\newenvironment{handoutframeselect}[1][1-]{%
+  \begingroup%
+  \mode<handout>{%
+    \gdef\beamer@currentmode{beamer}%
+    \OnBeamerModeTransitiontrue%
+    \renewcommand{\slideselection}[1]{#1}}%
+}{%
+  \ifOnBeamerModeTransition%
+    \OnBeamerModeTransitionfalse%
+    \gdef\beamer@currentmode{handout}%
+  \fi%
+  \endgroup%
+}
+\makeatother

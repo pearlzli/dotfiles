@@ -1,0 +1,201 @@
+{
+    // Keyboard Shortcuts
+    // @jupyterlab/shortcuts-extension:shortcuts
+    // Keyboard shortcut settings.
+    // *****************************************
+
+    "shortcuts": [
+
+        // *****************************************
+        // Add new key bindings
+        // *****************************************
+
+        {
+            "args": {},
+            "command": "notebook:split-cell-at-cursor",
+            "keys": [
+                "Accel Ctrl /"
+            ],
+            "selector": ".jp-Notebook.jp-mod-editMode"
+        },
+        {
+            "args": {},
+            "command": "application:activate-next-tab",
+            "keys": [
+                "Accel Ctrl ]"
+            ],
+            "selector": "body",
+        },
+        {
+            "args": {},
+            "command": "application:activate-previous-tab",
+            "keys": [
+                "Accel Ctrl ["
+            ],
+            "selector": "body",
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-down",
+            "keys": [
+                "N"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-up",
+            "keys": [
+                "P"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cell-down",
+            "keys": [
+                "Shift N"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cell-up",
+            "keys": [
+                "Shift P"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:hide-cell-outputs",
+            "keys": [
+                "H"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:show-cell-outputs",
+            "keys": [
+                "Shift H"
+            ],
+            "selector": ".jp-Notebook:focus"
+        },
+        {
+            "args": {},
+            "command": "notebook:enable-output-scrolling",
+            "keys": [
+                "S"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:disable-output-scrolling",
+            "keys": [
+                "Shift S"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-1",
+            "keys": [
+                "Ctrl 1"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-2",
+            "keys": [
+                "Ctrl 2"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-3",
+            "keys": [
+                "Ctrl 3"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-4",
+            "keys": [
+                "Ctrl 4"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-5",
+            "keys": [
+                "Ctrl 5"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+        {
+            "args": {},
+            "command": "notebook:change-cell-to-heading-6",
+            "keys": [
+                "Ctrl 6"
+            ],
+            "selector": ".jp-Notebook:focus",
+        },
+
+
+        // *****************************************
+        // Disable some default key bindings
+        // *****************************************
+
+        {
+            "args": {},
+            "command": "application:activate-next-tab",
+            "keys": [
+                "Ctrl Shift ]"
+            ],
+            "selector": "body",
+            "disabled": true,
+        },
+        {
+            "args": {},
+            "command": "application:activate-previous-tab",
+            "keys": [
+                "Ctrl Shift ["
+            ],
+            "selector": "body",
+            "disabled": true,
+        },
+        {
+            "args": {},
+            "command": "application:close",
+            "keys": [
+                "Alt W"
+            ],
+            "selector": ".jp-Activity",
+            "disabled": true,
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-down",
+            "keys": [
+                "J"
+            ],
+            "selector": ".jp-Notebook:focus",
+            "disabled": true,
+        },
+        {
+            "args": {},
+            "command": "notebook:move-cursor-up",
+            "keys": [
+                "K"
+            ],
+            "selector": ".jp-Notebook:focus",
+            "disabled": true,
+        },
+    ]
+}

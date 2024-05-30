@@ -10,12 +10,13 @@
 \usepackage{float}            % Force figure placement with H option
 \usepackage[bottom]{footmisc} % Footnote at page bottom
 \usepackage{graphicx}         % Graphics support
-\usepackage{hyperref}         % Link support
-\usepackage{cleveref}         % Better cross-references, must be loaded after hyperref
 \usepackage{listings}         % Syntax-highlighted code
 \usepackage{mathrsfs}         % Script math
+\usepackage{mathtools}        % Fix spacing around over-/underbraces with \mathclap
 \usepackage{natbib}           % Bibliography support
 \usepackage{subcaption}       % Subfigures and subtables
+\usepackage{hyperref}         % Link support, should be loaded last if possible (https://tex.stackexchange.com/q/1863/116532)
+\usepackage{cleveref}         % Better cross-references, must be loaded after hyperref
 
 
 %%% 2. Math Typesetting
@@ -45,7 +46,7 @@
 \renewcommand{\hat}[1]{\widehat{#1}}
 \renewcommand{\tilde}[1]{\widetilde{#1}}
 
-% Left and right brackets
+% Paired delimiters
 \newcommand{\group}[1]{\left. #1 \right.}
 \newcommand{\paren}[1]{\left( #1 \right)}
 \newcommand{\bracket}[1]{\left[ #1 \right]}
@@ -57,8 +58,20 @@
 \newcommand{\norm}[1]{\left\lVert #1 \right\rVert}     % Norm
 \newcommand{\eval}[1]{\left. #1 \right|}               % Evaluated at
 
+% Overbrace and underbrace text
+% Usage:
+%   \undertexti{x}{one line}
+%   \undertextii{x}{two lines}{stacked}
+%   \undertextiii{x}{three}{lines}{stacked}
+\newcommand{\overtexti}[2]{\overbrace{#1}^{\mathclap{\text{#2}}}}
+\newcommand{\overtextii}[3]{\overbrace{#1}^{\mathclap{\substack{\text{#2} \\ \text{#3}}}}}
+\newcommand{\overtextiii}[4]{\overbrace{#1}^{\mathclap{\substack{\text{#2} \\ \text{#3} \\ \text{#4}}}}}
+\newcommand{\undertexti}[2]{\underbrace{#1}_{\mathclap{\text{#2}}}}
+\newcommand{\undertextii}[3]{\underbrace{#1}_{\mathclap{\substack{\text{#2} \\ \text{#3}}}}}
+\newcommand{\undertextiii}[4]{\underbrace{#1}_{\mathclap{\substack{\text{#2} \\ \text{#3} \\ \text{#4}}}}}
+
 % General math
-\newcommand{\oh}{\frac{1}{2}}
+\newcommand{\oh}{\frac{1}{2}}                          % 1/2
 \newcommand{\suchthat}{\text{ s.t. }}                  % Such that
 \newcommand{\where}{\middle|}                          % Where
 \newcommand{\comp}[1]{#1^{\mathsf{c}}}                 % Complement
@@ -79,6 +92,7 @@
 \newcommand{\bigmeet}{\bigwedge}                       %
 \DeclareMathOperator*{\argmax}{arg\,max}               % Argmax
 \DeclareMathOperator*{\argmin}{arg\,min}               % Argmin
+\newcommand{\bmat}[1]{\begin{bmatrix} #1 \end{bmatrix}} % Bracket matrix
 
 % Derivatives
 \newcommand{\der}[2]{\frac{\d #1}{\d #2}}              % Derivative
@@ -113,77 +127,7 @@
 \DeclareMathOperator*{\plim}{plim}                     % Probability limit
 
 
-%%% 3. Syntax Highlighting
-
-% Colors
-\definecolor{codegreen}{RGB}{28,172,0}
-\definecolor{codepurple}{RGB}{170,55,241}
-\definecolor{lightgray}{gray}{.95}
-
-% Bash syntax highlighting
-\lstdefinestyle{bash}{%
-  language=bash,%
-  basicstyle=\footnotesize\ttfamily,%
-  showstringspaces=false,%
-  commentstyle=\color{gray},%
-  keywordstyle=\color{blue},%
-  xleftmargin=0.0in,%
-  xrightmargin=0.0in,%
-  backgroundcolor=\color{lightgray},
-  escapeinside={\%*}{*)}% if you want to add LaTeX within your code
-}
-
-% Highlight the 'julia>' prompt.
-% See http://tex.stackexchange.com/a/172076/50294 for the additional highlighting
-% See http://tex.stackexchange.com/a/180619/50294 for the '>' issue
-\makeatletter
-\lst@InstallKeywords k{attributes}{attributestyle}\slshape{attributestyle}{}ld
-\makeatother
-
-% Julia definition (c) 2014 Jubobs
-\lstdefinelanguage{Julia}%
-  {morekeywords={abstract,break,case,catch,const,continue,do,else,elseif,%
-      end,export,false,for,function,immutable,import,importall,if,in,%
-      macro,module,otherwise,quote,return,switch,true,try,type,typealias,%
-      using,while},%
-   sensitive=true,%
-   alsoother={\$},%
-   morecomment=[l]\#,%
-   morecomment=[n]{\#=}{=\#},%
-   morestring=[s]{"}{"},%
-   morestring=[m]{'}{'},%
-}[keywords,comments,strings]%
-
-% Julia syntax highlighting
-\lstdefinestyle{julia}{%
-  language=Julia,%
-  basicstyle=\footnotesize\ttfamily,%
-  breaklines=true,%
-  keywordstyle=\bfseries\color{blue},%
-  identifierstyle=\color{black},%
-  stringstyle=\color{codegreen},%
-  commentstyle=\color{codepurple},%
-  showstringspaces=false,%
-  upquote=true,%
-  backgroundcolor=\color{lightgray},%
-  alsoletter={>},%
-  moreattributes={julia>},%
-  attributestyle = \bfseries\color{green},%
-  escapeinside={\%*}{*)},% if you want to add LaTeX within your code
-}
-
-% Inline code snippets
-% http://tex.stackexchange.com/a/42964
-% http://tex.stackexchange.com/a/83883/50294
-\newcommand{\hltext}[1]{{\fontfamily{pcr}\selectfont\colorbox{lgray}{#1}}}
-\newcommand{\bashinline}[1]{\colorbox{lightgray}{{\lstset{style=bash}\lstinline!#1!}}}
-\newcommand{\juliainline}[1]{\colorbox{lightgray}{{\lstset{style=julia}\lstinline!#1!}}}
-
-% To-dos
-\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
-
-
-%%% 4. Cross-References
+%%% 3. Cross-References
 
 % Customize reference formats
 % https://tex.stackexchange.com/a/122178/116532 (general)
@@ -210,7 +154,10 @@
 \newcommand{\addrefstoc}{\phantomsection\addcontentsline{toc}{section}{References}}
 
 
-%%% 5. Other
+%%% 4. Other
+
+% Format listings (code snippets)
+\lstset{basicstyle=\normalsize\ttfamily,breaklines=true}
 
 % Break URLs at hyphens
 % https://tex.stackexchange.com/a/254734/116532

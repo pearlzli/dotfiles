@@ -1,3 +1,8 @@
+# -*- shell-script -*-
+# The above line tells emacs to open this file in shell-script-mode
+# It must be the first line in the file
+# https://www.gnu.org/software/emacs/manual/html_node/efaq/Associating-modes-with-files.html
+
 # Need this for emacs syntax highlighting to display properly
 export TERM="xterm-256color"
 
@@ -48,18 +53,15 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 # OS-specific command aliases
 case $OSTYPE in
     cygwin*)
-        alias browser="chrome"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     darwin*) # OS X
-        alias adobe="open -a Adobe\ Acrobat\ Reader\ DC.app"
-        alias chrome="open -a Google\ Chrome.app"
-        if [ -d "/Applications/Skim.app" ]; then
-            alias skim="open -a Skim.app"
-        fi
-
-        alias browser="chrome"
         alias ls="ls -G"
+
+        alias acrobat="open -a Adobe\ Acrobat\ DC.app"
+        alias chrome="open -a Google\ Chrome.app"
+        alias skim="open -a Skim.app"
+        alias textedit="open -a TextEdit.app"
 
         # Stop Skim asking about auto-reloading
         # https://tex.stackexchange.com/a/43060/116532
@@ -68,7 +70,6 @@ case $OSTYPE in
         fi
         ;;
     linux*)
-        alias browser="firefox"
         alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
         ;;
     *) ;;
@@ -118,7 +119,7 @@ update_display() {
 # -n: show line number
 # -I: exclude binary files
 # --color=auto
-export GREP_OPTIONS='-in -I --color=auto'
+alias grep='grep -in -I --color=auto'
 
 # Source system-specific aliases
 source ~/.bashrc-local

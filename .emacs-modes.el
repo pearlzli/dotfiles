@@ -1,9 +1,9 @@
 ;; Diff mode
 (eval-after-load 'diff-mode '(progn
   (set-face-foreground 'diff-context "brightblack")
-  (set-face-background 'diff-added "green")
-  (set-face-background 'diff-changed "yellow")
-  (set-face-background 'diff-removed "brightred")
+  (set-face-attribute 'diff-added nil :background "green" :foreground "black")
+  (set-face-attribute 'diff-changed nil :background "yellow" :foreground "black")
+  (set-face-attribute 'diff-removed nil :background "brightred" :foreground "black")
   (set-face-attribute 'diff-refine-added nil :inherit 'diff-added)
   (set-face-attribute 'diff-refine-changed nil :inherit 'diff-changed)
   (set-face-attribute 'diff-refine-removed nil :inherit 'diff-removed)))
@@ -16,6 +16,25 @@
   (set-face-attribute 'smerge-refined-added nil :inherit 'diff-added :background nil)
   (set-face-attribute 'smerge-refined-changed nil :inherit 'diff-changed :background nil)
   (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil))
+
+;; Ediff (interactive diffing and merging)
+(with-eval-after-load 'ediff
+  (set-face-foreground 'ediff-current-diff-Ancestor "black")
+  (set-face-foreground 'ediff-current-diff-A "black")
+  (set-face-foreground 'ediff-current-diff-B "black")
+  (set-face-foreground 'ediff-current-diff-C "black")
+  (set-face-foreground 'ediff-even-diff-Ancestor "black")
+  (set-face-foreground 'ediff-even-diff-A "black")
+  (set-face-foreground 'ediff-even-diff-B "black")
+  (set-face-foreground 'ediff-even-diff-C "black")
+  (set-face-foreground 'ediff-fine-diff-Ancestor "black")
+  (set-face-foreground 'ediff-fine-diff-A "black")
+  (set-face-foreground 'ediff-fine-diff-B "black")
+  (set-face-foreground 'ediff-fine-diff-C "black")
+  (set-face-foreground 'ediff-odd-diff-Ancestor "black")
+  (set-face-foreground 'ediff-odd-diff-A "black")
+  (set-face-foreground 'ediff-odd-diff-B "black")
+  (set-face-foreground 'ediff-odd-diff-C "black"))
 
 ;; LaTeX
 (eval-after-load 'font-latex '(progn
@@ -45,6 +64,17 @@
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
 (setq reftex-default-bibliography '("~/Drive/research/papers/library.bib")) ; set default bib file (https://tex.stackexchange.com/a/54825/116532)
 (setq reftex-plug-into-AUCTeX t)
+(setq reftex-toc-split-windows-horizontally t) ; split window horizontally to show toc (https://www.reddit.com/r/emacs/comments/bdwqwy/get_reftexs_toc_to_open_to_the_left_of_the_tex/el5qfw1/)
+(setq reftex-toc-split-windows-fraction 0.5) ; set toc width
+(setq reftex-section-levels ; show beamer frametitles in toc (https://tex.stackexchange.com/a/561161)
+   '(("part" . 0)
+     ("chapter" . 1)
+     ("section" . 2)
+     ("subsection" . 3)
+     ("subsubsection" . 4)
+     ("paragraph" . 5)
+     ("subparagraph" . 6)
+     ("frametitle" . 5)))
 
 ;; Markdown
 (setq markdown-asymmetric-header t)
@@ -91,6 +121,7 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-style-map (kbd "i") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "m") 'markdown-insert-math-inline)                   ;
   (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
+  (define-key markdown-mode-map (kbd "C-c t") (lambda () (interactive) (occur "#+ ") (other-window 1))) ; https://stackoverflow.com/a/24994254/2756250
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level)))
 
@@ -108,14 +139,13 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output)))     ;
 
 ;; Julia
-(unless (version< emacs-version "27")
-  ; https://www.gnu.org/software/emacs/manual/html_node/emacs/Displaying-Boundaries.html
-  (progn
-    (add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
-    (add-hook 'julia-mode-hook (lambda () (display-fill-column-indicator-mode t)))))
+(with-eval-after-load 'julia-mode
+  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
+(with-eval-after-load 'python
+  (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")

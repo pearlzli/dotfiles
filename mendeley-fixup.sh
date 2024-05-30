@@ -30,6 +30,7 @@ for bibname in $bibnames; do
     fi
 
     # Remove escape characters from URLs
+    sed -i.backup '/^url/ s|\$\\sim\$|~|g' "$bibpath" # $\sim$  to ~
     sed -i.backup '/^url/ s|{~}|~|g'   "$bibpath" # {~}  to ~
     sed -i.backup '/^url/ s|{\\%}|%|g' "$bibpath" # {\%} to %
     sed -i.backup '/^url/ s|{\\_}|_|g' "$bibpath" # {\_} to _
@@ -40,6 +41,10 @@ for bibname in $bibnames; do
 
     # Change double hyphens to single hyphens
     sed -i.backup '/^pages/ s|--|-|g' "$bibpath"
+
+    # Escape ampersands in journal names
+    # TODO: repeatedly running mendeley-fixup adds duplicate backslashes
+    # sed -i.backup '/^journal/ s| &| \\&|g' "$bibpath"
 
     # Delete fields
     sed -i.backup '/^abstract/d'      "$bibpath"
