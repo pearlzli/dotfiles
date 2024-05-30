@@ -18,7 +18,7 @@
   (set-face-attribute 'smerge-refined-removed nil :inherit 'diff-removed) :background nil))
 
 ;; Ediff (interactive diffing and merging)
-(with-eval-after-load 'ediff
+(eval-after-load 'ediff '(progn
   (set-face-foreground 'ediff-current-diff-Ancestor "black")
   (set-face-foreground 'ediff-current-diff-A "black")
   (set-face-foreground 'ediff-current-diff-B "black")
@@ -34,7 +34,7 @@
   (set-face-foreground 'ediff-odd-diff-Ancestor "black")
   (set-face-foreground 'ediff-odd-diff-A "black")
   (set-face-foreground 'ediff-odd-diff-B "black")
-  (set-face-foreground 'ediff-odd-diff-C "black"))
+  (set-face-foreground 'ediff-odd-diff-C "black")))
 
 ;; LaTeX
 (eval-after-load 'font-latex '(progn
@@ -139,13 +139,13 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output)))     ;
 
 ;; Julia
-(with-eval-after-load 'julia-mode
-  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
+(eval-after-load 'julia-mode '(progn
+  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1))))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
-(with-eval-after-load 'python
-  (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
+(eval-after-load 'python '(progn
+  (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def") (other-window 1))))) ; https://stackoverflow.com/a/24994254/2756250
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
