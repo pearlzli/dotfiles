@@ -259,8 +259,14 @@
   (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
-(global-display-line-numbers-mode 1)
-(bind-key* "C-x l" 'display-line-numbers-mode) ; toggle line numbers for tmux copy-paste
+(if (version< emacs-version "29.1")
+  (progn
+    (global-linum-mode t)
+    (setq linum-format "%4d ")
+    (bind-key* "C-x l" 'linum-mode)) ; toggle line numbers for tmux copy-paste
+  (progn
+    (global-display-line-numbers-mode 1)
+    (bind-key* "C-x l" 'display-line-numbers-mode))) ; toggle line numbers for tmux copy-paste)
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
