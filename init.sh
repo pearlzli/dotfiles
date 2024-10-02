@@ -155,7 +155,6 @@ case $OSTYPE in
         brew install pandoc
         brew install python
         brew install rename
-        brew install rsync
         brew install tmux
         brew install wget
         brew install --cask lyx
