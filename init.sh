@@ -153,6 +153,7 @@ case $OSTYPE in
         brew install emacs
         brew install git
         brew install pandoc
+        brew install pdfsandwich
         brew install python
         brew install rename
         brew install tmux
