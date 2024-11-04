@@ -58,7 +58,7 @@ case $OSTYPE in
     darwin*) # OS X
         alias ls="ls -G"
 
-        alias acrobat="open -a Adobe\ Acrobat\ DC.app"
+        alias acrobat="open -a Adobe\ Acrobat.app"
         alias chrome="open -a Google\ Chrome.app"
         alias skim="open -a Skim.app"
         alias textedit="open -a TextEdit.app"
