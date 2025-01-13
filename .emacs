@@ -251,7 +251,7 @@
   "Toggle line numbers and fill column indicator for tmux copy-paste."
   (interactive)
   (display-line-numbers-mode 'toggle)
-  (if (bound-and-true-p 'display-fill-column-indicator-in-mode)
+  (if (bound-and-true-p display-fill-column-indicator-in-mode)
       (display-fill-column-indicator-mode 'toggle)
       ()))
 (bind-key* "C-x l" 'toggle-line-numbers-and-fill-column-indicator)
