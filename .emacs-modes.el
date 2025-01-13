@@ -112,6 +112,9 @@ Group 4 matches the text inside the delimiters.")
   (interactive)
   (markdown--insert-common
    "\$" "\$" markdown-regex-math-inline 2 4 'markdown-math-face))
+(defun markdown-occur-headings () ; https://stackoverflow.com/a/24994254/2756250
+  "Show the table of contents for the current document."
+  (interactive) (occur "#+ ") (other-window 1))
 (with-eval-after-load 'markdown-mode
   (define-key markdown-mode-map (kbd "C-c C-f") (lookup-key markdown-mode-map (kbd "C-c C-s"))) ; use AUCTeX-like key bindings
   (define-key markdown-mode-map (kbd "C-c C-s") nil)                                            ;
@@ -128,7 +131,7 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-style-map (kbd "i") nil)                                            ;
   (define-key markdown-mode-style-map (kbd "m") 'markdown-insert-math-inline)                   ;
   (define-key markdown-mode-style-map (kbd "s") nil)                                            ;
-  (define-key markdown-mode-map (kbd "C-c t") (lambda () (interactive) (occur "#+ ") (other-window 1))) ; https://stackoverflow.com/a/24994254/2756250
+  (define-key markdown-mode-map (kbd "C-c t") 'markdown-occur-headings)
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
 
@@ -146,16 +149,22 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
 
 ;; Julia
+(defun julia-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
+  "Show a table of contents of function definitions for the current document."
+  (interactive) (occur "^function") (other-window 1))
 (with-eval-after-load 'julia-mode
-  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
+  (define-key julia-mode-map (kbd "C-c t") 'julia-occur-functions))
 (add-hook 'julia-mode-hook #'display-fill-column-indicator-mode)
 (add-hook 'julia-mode-hook (lambda () (setq-local fill-column 92)))
 (add-hook 'julia-mode-hook (lambda () (setq-local display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
 ;; Python
+(defun python-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
+  "Show a table of contents of function definitions for the current document."
+  (interactive) (occur "^def") (other-window 1))
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 (with-eval-after-load 'python
-  (define-key python-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^def") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
+  (define-key python-mode-map (kbd "C-c t") 'python-occur-functions))
 
 ;; Stata
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
