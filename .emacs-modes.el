@@ -147,8 +147,10 @@ Group 4 matches the text inside the delimiters.")
 
 ;; Julia
 (with-eval-after-load 'julia-mode
-  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1))) ; https://stackoverflow.com/a/24994254/2756250
-  (setq fill-column 92))
+  (define-key julia-mode-map (kbd "C-c t") (lambda () (interactive) (occur "^function") (other-window 1)))) ; https://stackoverflow.com/a/24994254/2756250
+(add-hook 'julia-mode-hook #'display-fill-column-indicator-mode)
+(add-hook 'julia-mode-hook (lambda () (setq-local fill-column 92)))
+(add-hook 'julia-mode-hook (lambda () (setq-local display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
 ;; Python
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250

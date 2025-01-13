@@ -100,9 +100,6 @@
       `((".*" , "~/.emacs.d/backup/" t)))
 (setq auto-save-list-file-prefix nil)
 
-;; Set default max line width to 80 characters
-(setq-default fill-column 80)
-
 ;; Unbind C-o (insertline, but I use C-o as my tmux prefix)
 (global-unset-key (kbd "C-o"))
 
@@ -246,17 +243,17 @@
 (unless (version< emacs-version "26")
   (setq column-number-indicator-zero-based nil))
 
-;; Show line numbers and fill column indicator
-;; When calling display-line-numbers-mode or display-fill-column-indicator-mode
-;;   inside a function, need to specify an argument: https://stackoverflow.com/a/72228838
+;; Show line numbers
+;; Set default max line width to 80 characters
 (global-display-line-numbers-mode 1)
-(global-display-fill-column-indicator-mode 1)
-(setq fill-column 9999) ; effectively no FCI by default (change depending on mode)
+(setq fill-column 80)
 (defun toggle-line-numbers-and-fill-column-indicator ()
   "Toggle line numbers and fill column indicator for tmux copy-paste."
   (interactive)
   (display-line-numbers-mode 'toggle)
-  (display-fill-column-indicator-mode 'toggle))
+  (if (bound-and-true-p 'display-fill-column-indicator-in-mode)
+      (display-fill-column-indicator-mode 'toggle)
+      ()))
 (bind-key* "C-x l" 'toggle-line-numbers-and-fill-column-indicator)
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
