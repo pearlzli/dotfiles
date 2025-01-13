@@ -213,18 +213,6 @@
           (set-buffer-modified-p nil))))))
 (bind-key* "C-c R"  'rename-file-and-buffer)
 
-;; Align text in columns
-;; https://www.emacswiki.org/emacs/AlignCommands#toc7
-(defun align-repeat (start end regexp)
-  "Repeat alignment with respect to the given regular expression."
-  (interactive "r\nsAlign regexp: ")
-  (align-regexp start end
-      (concat "\\(\\s-*\\)" regexp) 1 0 t))
-(defun align-columns (start end)
-  "Align columns"
-  (interactive "r")
-  (align-repeat start end " +"))
-
 ;; Turn keymap numbers into key sequences
 ;; https://emacs.stackexchange.com/a/38518/14500
 (defun keymap-number-to-char (number)
