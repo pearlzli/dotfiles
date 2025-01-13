@@ -258,15 +258,18 @@
 (unless (version< emacs-version "26")
   (setq column-number-indicator-zero-based nil))
 
-;; Show line numbers
-(if (version< emacs-version "29.1")
-  (progn
-    (global-linum-mode t)
-    (setq linum-format "%4d ")
-    (bind-key* "C-x l" 'linum-mode)) ; toggle line numbers for tmux copy-paste
-  (progn
-    (global-display-line-numbers-mode 1)
-    (bind-key* "C-x l" 'display-line-numbers-mode))) ; toggle line numbers for tmux copy-paste)
+;; Show line numbers and fill column indicator
+;; When calling display-line-numbers-mode or display-fill-column-indicator-mode
+;;   inside a function, need to specify an argument: https://stackoverflow.com/a/72228838
+(global-display-line-numbers-mode 1)
+(global-display-fill-column-indicator-mode 1)
+(setq fill-column 9999) ; effectively no FCI by default (change depending on mode)
+(defun toggle-line-numbers-and-fill-column-indicator ()
+  "Toggle line numbers and fill column indicator for tmux copy-paste."
+  (interactive)
+  (display-line-numbers-mode 'toggle)
+  (display-fill-column-indicator-mode 'toggle))
+(bind-key* "C-x l" 'toggle-line-numbers-and-fill-column-indicator)
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)
