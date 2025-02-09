@@ -19,10 +19,19 @@ map <a->> scrollToBottom
 
 # Page navigation
 map <c-x><c-r> reload
+map <c-s> LinkHints.activateMode
 map <c-x><c-v> LinkHints.activateMode
 map <c-x><c-f> LinkHints.activateModeToOpenInNewTab
 
 # Tabs
+map <c-o>c createTab
+map <c-o>x removeTab
+map <c-o>p previousTab
+map <c-o>n nextTab
 map <c-o><c-p> moveTabLeft
 map <c-o><c-n> moveTabRight
+map <c-o>m togglePinTab
+
+# Miscellaneous
+map <c-h>k showHelp
 ```
