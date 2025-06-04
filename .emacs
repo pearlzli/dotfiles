@@ -27,9 +27,6 @@
 ;; Don't prompt when opening a symlink
 (setq vc-follow-symlinks nil)
 
-;; Default to unified diffs
-(setq diff-switches "-u")
-
 ;; Mouse support
 (unless window-system
   (xterm-mouse-mode t)
