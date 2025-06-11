@@ -36,7 +36,8 @@
   (set-face-foreground 'ediff-odd-diff-Ancestor "black")
   (set-face-foreground 'ediff-odd-diff-A "black")
   (set-face-foreground 'ediff-odd-diff-B "black")
-  (set-face-foreground 'ediff-odd-diff-C "black"))
+  (set-face-foreground 'ediff-odd-diff-C "black")
+  (setq ediff-split-window-function 'split-window-horizontally))
 
 ;; LaTeX
 (with-eval-after-load 'font-latex
