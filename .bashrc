@@ -35,12 +35,13 @@ bind '"\C-p": history-search-backward' 2>/dev/null
 bind '"\C-n": history-search-forward'  2>/dev/null
 
 # Command aliases
-alias cp="cp -i"
+alias cp="cp -i" # ask before overwriting
 alias e="emacs -nw"
 alias la="ls -a"
 alias ld="ls -d */"
 alias ll="ls -l -h"
-alias mv="mv -i"
+alias less="less -r" # handle escape characters
+alias mv="mv -i" # ask before overwriting
 alias mytop="top -u $USER"
 alias pip="python -m pip"
 
