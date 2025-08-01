@@ -34,9 +34,12 @@
   (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1))))
 
 ;; Highlight cursor
-(beacon-mode 1)
-(setq beacon-size 40)
-(bind-key* "M-o" 'beacon-blink)
+;; Requires `after-focus-change-function`, introduced in emacs 27
+;; https://github.com/Malabarba/beacon/issues/87
+(unless (version< emacs-version "27")
+  (beacon-mode 1)
+  (setq beacon-size 40)
+  (bind-key* "M-o" 'beacon-blink))
 
 ;; Let emacs kill ring use clipboard
 ;; Nice to have in general; needed for sending commands to Stata in ado-mode
