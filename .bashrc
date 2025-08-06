@@ -19,14 +19,22 @@ if command -v tmux &> /dev/null; then
 fi
 
 # Custom PS1:
-#   user@hostname current-directory (git branch) $
+#   user@hostname current-directory (git branch) (python venv) $
 # See:
 # 1. https://www.linux.com/learn/how-make-fancy-and-useful-bash-prompt-linux
 # 2. https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
+# 3. https://stackoverflow.com/questions/10406926/how-do-i-change-the-default-virtualenv-prompt
 parse_git_branch() {
-  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
-export PS1="\[\e[1;35m\]\u@\h \[\e[0;35m\]\w\[\e[0;36m\]\$(parse_git_branch)\[\e[0;35m\] $ \[\e[m\]"
+parse_python_venv() {
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        venv="$(basename $VIRTUAL_ENV)"
+        echo "($venv) "
+    fi
+}
+export VIRTUAL_ENV_DISABLE_PROMPT=1
+export PS1="\[\e[1;35m\]\u@\h \[\e[0;35m\]\w \[\e[0;36m\]\$(parse_git_branch)\[\e[0;33m\]\$(parse_python_venv)\[\e[0;35m\]$ \[\e[m\]"
 
 # Arrows and C-p/C-n search from current command
 bind '"\e[A": history-search-backward' 2>/dev/null
