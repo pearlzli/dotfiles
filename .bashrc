@@ -42,7 +42,7 @@ bind '"\e[B": history-search-forward'  2>/dev/null
 bind '"\C-p": history-search-backward' 2>/dev/null
 bind '"\C-n": history-search-forward'  2>/dev/null
 
-# Command aliases
+# Bash aliases
 alias cp="cp -i" # ask before overwriting
 alias e="emacs -nw"
 alias la="ls -a"
@@ -51,7 +51,6 @@ alias ll="ls -l -h"
 alias less="less -r" # handle escape characters
 alias mv="mv -i" # ask before overwriting
 alias mytop="top -u $USER"
-alias pip="python -m pip"
 
 # Hide files from ls
 hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
@@ -84,7 +83,7 @@ case $OSTYPE in
     *) ;;
 esac
 
-# Git-specific aliases
+# Git aliases
 alias ga="git add"
 alias gap="git add --patch"
 alias gb="git branch"
@@ -104,6 +103,23 @@ function gdt {
     else
         git difftool "$@"
     fi
+}
+
+# Python aliases
+alias pip="python -m pip"
+
+activate_python_venv() {
+    venv_dir=${1:-"venv"}
+    if [ -f "$venv_dir/bin/activate" ]; then
+        source "$venv_dir/bin/activate"
+        venv_path="$(realpath $venv_dir)"
+        echo "Activated Python virtual environment at $venv_path"
+    else
+        echo "No Python virtual environment found at $venv_dir"
+    fi
+}
+deactivate_python_venv() {
+    deactivate
 }
 
 # Stop graphical display popup for password when git pushing
