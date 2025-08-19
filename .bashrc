@@ -113,17 +113,6 @@ unset SSH_ASKPASS
 # Check your (human-readable) permissions using "umask -S"
 umask 0002
 
-# When evince and other graphical displays don't work, it's often because the
-# DISPLAY environment variable inside tmux isn't the same as the one outside
-# tmux. To fix, run update_display in each pane where you want to open a
-# graphical display (backgrounding current process if necessary).
-# https://goosebearingbashshell.github.io/2017/12/07/reset-display-variable-in-tmux.html
-update_display() {
-    DISPLAY_OLD="$DISPLAY"
-    export DISPLAY="`tmux show-env | sed -n 's/^DISPLAY=//p'`"
-    echo "DISPLAY updated from $DISPLAY_OLD to $DISPLAY"
-}
-
 # Set default grep options:
 # -i: ignore case
 # -n: show line number
