@@ -24,13 +24,14 @@ fi
 # 1. https://www.linux.com/learn/how-make-fancy-and-useful-bash-prompt-linux
 # 2. https://coderwall.com/p/fasnya/add-git-branch-name-to-bash-prompt
 # 3. https://stackoverflow.com/questions/10406926/how-do-i-change-the-default-virtualenv-prompt
+# 4. https://stackoverflow.com/questions/2564634/convert-absolute-path-into-relative-path-given-a-current-directory-using-bash
 parse_git_branch() {
   git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1) /'
 }
 parse_python_venv() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
-        venv="$(basename $VIRTUAL_ENV)"
-        echo "($venv) "
+        rel_venv="$(perl -le 'use File::Spec; print File::Spec->abs2rel(@ARGV)' $VIRTUAL_ENV $pwd)"
+        echo "($rel_venv) "
     fi
 }
 export VIRTUAL_ENV_DISABLE_PROMPT=1
