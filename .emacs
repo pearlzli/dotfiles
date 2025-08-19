@@ -30,6 +30,7 @@
 ;; Mouse support
 (unless window-system
   (xterm-mouse-mode t)
+  (mouse-wheel-mode)
   (bind-key* [mouse-4] (lambda () (interactive) (scroll-down 1)))
   (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1))))
 
