@@ -1,7 +1,0 @@
-# Jupyter
-jupyterlab_execute_time
-
-# Plotly
-plotly
-ipywidgets
-webio_jupyter_extension
