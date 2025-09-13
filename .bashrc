@@ -62,7 +62,7 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 # OS-specific command aliases
 case $OSTYPE in
     cygwin*)
-        alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+        alias ls="ls --color=auto --group-directories-first $hide"
         ;;
     darwin*) # OS X
         alias ls="ls -G"
@@ -79,7 +79,7 @@ case $OSTYPE in
         fi
         ;;
     linux*)
-        alias ls="ls --color=auto --sort=extension --group-directories-first $hide"
+        alias ls="ls --color=auto --group-directories-first $hide"
         ;;
     *) ;;
 esac
