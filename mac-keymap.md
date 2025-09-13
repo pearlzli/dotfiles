@@ -1,6 +1,6 @@
 # Mac Keyboard Shortcuts
 
-There's unfortunately no good way to import/export Mac keyboard shortcuts, so for now I've recorded my custom ones here.
+There's unfortunately no good way to import/export Mac keyboard shortcuts, so for now I've recorded my custom ones here. Change them manually in Settings > Keyboard (toward the bottom of the left menu) > Keyboard Shortcuts.
 
 ## Mission Control
 
