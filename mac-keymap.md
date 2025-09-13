@@ -21,9 +21,6 @@ Note: in Logitech Options, need to remap the mouse side buttons to the keystroke
 | Exit Full Screen                | `Ctrl Cmd -` |                           |
 | Full Screen                     | `Ctrl Cmd =` |                           |
 | Enter Full Screen               | `Ctrl Cmd =` |                           |
-| Move to Built-in Retina Display | `Ctrl Cmd [` |                           |
-| Move to S24E510C                | `Ctrl Cmd ]` | Home monitor              |
-| Move to ASUS VS239              | `Ctrl Cmd ]` | Cube monitor              |
 | Merge All Windows               | `Ctrl Cmd 0` |                           |
 
 ## Skim
