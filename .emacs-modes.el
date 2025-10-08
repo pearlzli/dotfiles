@@ -1,3 +1,7 @@
+;; =========================================================
+;; Diffing and merging
+;; =========================================================
+
 ;; Diff mode
 (with-eval-after-load 'diff-mode
   (set-face-background 'trailing-whitespace nil)
@@ -39,32 +43,36 @@
   (set-face-foreground 'ediff-odd-diff-C "black")
   (setq ediff-split-window-function 'split-window-horizontally))
 
+;; =========================================================
 ;; LaTeX
-(with-eval-after-load 'font-latex
-  (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
-  (set-face-foreground 'font-latex-bold-face "brightred")
-  (set-face-foreground 'font-latex-italic-face "brightred")
-  (set-face-foreground 'font-latex-math-face "brightyellow"))
-(with-eval-after-load 'latex
-  (add-to-list 'LaTeX-font-list '(112 "" "" "\\paren{" "}"))  ; add font key bindings
-  (add-to-list 'LaTeX-font-list '(98 "" "" "\\bracket{" "}")) ; https://tex.stackexchange.com/a/523728/116532
-  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))  ; https://en.wikipedia.org/wiki/ASCII#Printable_characters
-(setq font-latex-match-reference-keywords '(("numinput" "[{"))) ; define custom keywords
-(setq font-latex-match-textual-keywords '(("floatnote" "{")))   ; https://www.gnu.org/software/auctex/manual/auctex/Fontification-of-macros.html
-(setq font-latex-match-warning-keywords '(("todo" "{")))        ;
+;; =========================================================
 
+; AUCTeX parsing .tex to .el
 (setq TeX-parse-self t) ; make AUCTeX run bibtex
 (setq TeX-auto-save t)  ; https://emacs.stackexchange.com/a/13870/14500
-(setq TeX-date-format "%B %-d, %Y") ; Month D, YYYY (https://emacs.stackexchange.com/a/13046/14500)
 (setq TeX-auto-private '("~/dotfiles/tex/latex/auto"))
 (setq TeX-style-private '("~/dotfiles/tex/latex/auto"))
-(setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
-(setq bibtex-align-at-equal-sign t)
 (defun my-TeX-auto-generate ()
   "Auto-generate and reapply style hooks"
   (TeX-auto-generate "~/dotfiles/tex/latex" "~/dotfiles/tex/latex/auto") ; https://tex.stackexchange.com/a/410552/116532
   'TeX-normal-mode) ; https://www.gnu.org/software/auctex/manual/auctex/Parsing-Files.html
 
+; Set font colors
+(with-eval-after-load 'font-latex
+  (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
+  (set-face-foreground 'font-latex-bold-face "brightred")
+  (set-face-foreground 'font-latex-italic-face "brightred")
+  (set-face-foreground 'font-latex-math-face "brightyellow"))
+
+; Add font key bindings
+; https://tex.stackexchange.com/a/523728/116532
+; https://en.wikipedia.org/wiki/ASCII#Printable_characters
+(with-eval-after-load 'latex
+  (add-to-list 'LaTeX-font-list '(112 "" "" "\\paren{" "}"))
+  (add-to-list 'LaTeX-font-list '(98 "" "" "\\bracket{" "}"))
+  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))
+
+; RefTeX
 (setq reftex-extra-bindings t) ; use more intuitive key bindings (must be defined before loading RefTeX)
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
@@ -81,13 +89,31 @@
      ("paragraph" . 5)
      ("subparagraph" . 6)
      ("frametitle" . -5))) ; negative level is unnumbered version of positive value
+
+; BibTeX
+(setq bibtex-align-at-equal-sign t)
+
+; Beamer
+(setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
 (defun LaTeX-beamer-replace-frametitle ()
   "Replace \\begin{frame}{My Title} with \\begin{frame}\\n\\frametitle{My Title}"
   (interactive)
   (replace-regexp "\\\\begin{frame}\\(<.*>\\)?\\(\\[.*\\]\\)?{" "\\\\begin{frame}\\1\\2
   \\\\frametitle{"))
 
+; Define custom keywords to be syntax highlighted
+; https://www.gnu.org/software/auctex/manual/auctex/Fontification-of-macros.html
+(setq font-latex-match-reference-keywords '(("numinput" "[{")))
+(setq font-latex-match-textual-keywords '(("floatnote" "{")))
+(setq font-latex-match-warning-keywords '(("todo" "{")))
+
+; Misc
+(setq TeX-date-format "%B %-d, %Y") ; Month D, YYYY (https://emacs.stackexchange.com/a/13046/14500)
+
+;; =========================================================
 ;; Markdown
+;; =========================================================
+
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 (setq markdown-list-indent-width 2)
@@ -139,7 +165,10 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
 
+;; =========================================================
 ;; Pandoc
+;; =========================================================
+
 ;; Notes on pandoc-{revert,load-default}-settings:
 ;; - In theory, load-default should look for local settings first, then global settings
 ;; - In practice, only global settings are read, so need to call revert
@@ -152,7 +181,10 @@ Group 4 matches the text inside the delimiters.")
   (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
 
+;; =========================================================
 ;; Julia
+;; =========================================================
+
 (defun julia-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
   "Show a table of contents of function definitions for the current document."
   (interactive) (occur "^function") (other-window 1))
@@ -161,7 +193,10 @@ Group 4 matches the text inside the delimiters.")
 (add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
 (add-hook 'julia-mode-hook (lambda () (setq display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
+;; =========================================================
 ;; Python
+;; =========================================================
+
 (defun python-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
   "Show a table of contents of function definitions for the current document."
   (interactive) (occur "^def") (other-window 1))
@@ -169,7 +204,10 @@ Group 4 matches the text inside the delimiters.")
 (with-eval-after-load 'python
   (define-key python-mode-map (kbd "C-c t") 'python-occur-functions))
 
+;; =========================================================
 ;; Stata
+;; =========================================================
+
 (add-to-list 'load-path "~/.emacs.d/ado-mode/lisp")
 (autoload 'ado-mode "ado-mode" "Stata mode (ado-mode)" t)
 (setq auto-mode-alist (cons '("\\.do$" . ado-mode) auto-mode-alist))
