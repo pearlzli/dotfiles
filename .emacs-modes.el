@@ -68,7 +68,7 @@
 (setq reftex-extra-bindings t) ; use more intuitive key bindings (must be defined before loading RefTeX)
 (require 'reftex)
 (add-hook 'LaTeX-mode-hook 'turn-on-reftex)
-(setq reftex-default-bibliography '("~/Drive/research/papers/library.bib")) ; set default bib file (https://tex.stackexchange.com/a/54825/116532)
+(setq reftex-default-bibliography '("~/Drive/research/papers/zotero_library.bib")) ; set default bib file (https://tex.stackexchange.com/a/54825/116532)
 (setq reftex-plug-into-AUCTeX t)
 (setq reftex-toc-split-windows-horizontally t) ; split window horizontally to show toc (https://www.reddit.com/r/emacs/comments/bdwqwy/get_reftexs_toc_to_open_to_the_left_of_the_tex/el5qfw1/)
 (setq reftex-toc-split-windows-fraction 0.5) ; set toc width
