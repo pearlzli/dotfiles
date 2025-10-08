@@ -293,81 +293,80 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(LaTeX-indent-environment-list
-   '(("verbatim" current-indentation)
-     ("verbatim*" current-indentation)
+   '(("verbatim" current-indentation) ("verbatim*" current-indentation)
      ("tabular" LaTeX-indent-tabular)
-     ("tabular*" LaTeX-indent-tabular)
-     ("align")
-     ("align*")
-     ("array" LaTeX-indent-tabular)
-     ("eqnarray" LaTeX-indent-tabular)
-     ("eqnarray*" LaTeX-indent-tabular)
-     ("displaymath")
-     ("equation")
-     ("equation*")
-     ("picture")
-     ("tabbing")))
+     ("tabular*" LaTeX-indent-tabular) ("align") ("align*")
+     ("array" LaTeX-indent-tabular) ("eqnarray" LaTeX-indent-tabular)
+     ("eqnarray*" LaTeX-indent-tabular) ("displaymath") ("equation")
+     ("equation*") ("picture") ("tabbing")))
  '(LaTeX-section-hook
    '(LaTeX-section-heading LaTeX-section-title LaTeX-section-section))
  '(TeX-command-list
-   '(("TeX" "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t" TeX-run-TeX nil
-      (plain-tex-mode texinfo-mode ams-tex-mode)
-      :help "Run plain TeX")
+   '(("TeX"
+      "%(PDF)%(tex) %(file-line-error) %(extraopts) %`%S%(PDFout)%(mode)%' %t"
+      TeX-run-TeX nil (plain-tex-mode texinfo-mode ams-tex-mode) :help
+      "Run plain TeX")
      ("LaTeX" "%`%l%(mode)%' %t" TeX-run-TeX nil
-      (latex-mode doctex-mode)
-      :help "Run LaTeX")
+      (latex-mode doctex-mode) :help "Run LaTeX")
      ("Makeinfo" "makeinfo %(extraopts) %t" TeX-run-compile nil
-      (texinfo-mode)
-      :help "Run Makeinfo with Info output")
-     ("Makeinfo HTML" "makeinfo %(extraopts) --html %t" TeX-run-compile nil
-      (texinfo-mode)
-      :help "Run Makeinfo with HTML output")
-     ("AmSTeX" "amstex %(PDFout) %(extraopts) %`%S%(mode)%' %t" TeX-run-TeX nil
-      (ams-tex-mode)
-      :help "Run AMSTeX")
-     ("ConTeXt" "%(cntxcom) --once --texutil %(extraopts) %(execopts)%t" TeX-run-TeX nil
-      (context-mode)
-      :help "Run ConTeXt once")
-     ("ConTeXt Full" "%(cntxcom) %(extraopts) %(execopts)%t" TeX-run-TeX nil
-      (context-mode)
-      :help "Run ConTeXt until completion")
-     ("BibTeX" "[ -e %s.aux ] && ~/dotfiles/mendeley-fixup.sh %s; bibtex %s" TeX-run-BibTeX nil t :help "Run BibTeX")
+      (texinfo-mode) :help "Run Makeinfo with Info output")
+     ("Makeinfo HTML" "makeinfo %(extraopts) --html %t"
+      TeX-run-compile nil (texinfo-mode) :help
+      "Run Makeinfo with HTML output")
+     ("AmSTeX" "amstex %(PDFout) %(extraopts) %`%S%(mode)%' %t"
+      TeX-run-TeX nil (ams-tex-mode) :help "Run AMSTeX")
+     ("ConTeXt"
+      "%(cntxcom) --once --texutil %(extraopts) %(execopts)%t"
+      TeX-run-TeX nil (context-mode) :help "Run ConTeXt once")
+     ("ConTeXt Full" "%(cntxcom) %(extraopts) %(execopts)%t"
+      TeX-run-TeX nil (context-mode) :help
+      "Run ConTeXt until completion")
+     ("BibTeX"
+      "[ -e %s.aux ] && ~/dotfiles/mendeley-fixup.sh %s; bibtex %s"
+      TeX-run-BibTeX nil t :help "Run BibTeX")
      ("Biber" "biber %s" TeX-run-Biber nil t :help "Run Biber")
-     ("View" "open -a Skim %s.pdf" TeX-run-discard-or-function t t :help "Run Viewer")
+     ("View" "open -a Skim %s.pdf" TeX-run-discard-or-function t t
+      :help "Run Viewer")
      ("Print" "%p" TeX-run-command t t :help "Print the file")
-     ("Queue" "%q" TeX-run-background nil t :help "View the printer queue" :visible TeX-queue-command)
-     ("File" "%(o?)dvips %d -o %f " TeX-run-dvips t t :help "Generate PostScript file")
-     ("Dvips" "%(o?)dvips %d -o %f " TeX-run-dvips nil t :help "Convert DVI file to PostScript")
-     ("Dvipdfmx" "dvipdfmx %d" TeX-run-dvipdfmx nil t :help "Convert DVI file to PDF with dvipdfmx")
-     ("Ps2pdf" "ps2pdf %f" TeX-run-ps2pdf nil t :help "Convert PostScript file to PDF")
-     ("Glossaries" "makeglossaries %s" TeX-run-command nil t :help "Run makeglossaries to create glossary file")
-     ("Index" "makeindex %s" TeX-run-index nil t :help "Run makeindex to create index file")
-     ("upMendex" "upmendex %s" TeX-run-index t t :help "Run upmendex to create index file")
-     ("Xindy" "texindy %s" TeX-run-command nil t :help "Run xindy to create index file")
-     ("Check" "lacheck %s" TeX-run-compile nil
-      (latex-mode)
-      :help "Check LaTeX file for correctness")
-     ("ChkTeX" "chktex -v6 %s" TeX-run-compile nil
-      (latex-mode)
-      :help "Check LaTeX file for common mistakes")
-     ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t :help "Spell-check the document")
-     ("Clean" "TeX-clean" TeX-run-function nil t :help "Delete generated intermediate files")
-     ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help "Delete generated intermediate and output files")
-     ("Auto Generate" "my-TeX-auto-generate" TeX-run-function nil t :help "Auto generate and reapply style hooks")
+     ("Queue" "%q" TeX-run-background nil t :help
+      "View the printer queue" :visible TeX-queue-command)
+     ("File" "%(o?)dvips %d -o %f " TeX-run-dvips t t :help
+      "Generate PostScript file")
+     ("Dvips" "%(o?)dvips %d -o %f " TeX-run-dvips nil t :help
+      "Convert DVI file to PostScript")
+     ("Dvipdfmx" "dvipdfmx %d" TeX-run-dvipdfmx nil t :help
+      "Convert DVI file to PDF with dvipdfmx")
+     ("Ps2pdf" "ps2pdf %f" TeX-run-ps2pdf nil t :help
+      "Convert PostScript file to PDF")
+     ("Glossaries" "makeglossaries %s" TeX-run-command nil t :help
+      "Run makeglossaries to create glossary file")
+     ("Index" "makeindex %s" TeX-run-index nil t :help
+      "Run makeindex to create index file")
+     ("upMendex" "upmendex %s" TeX-run-index t t :help
+      "Run upmendex to create index file")
+     ("Xindy" "texindy %s" TeX-run-command nil t :help
+      "Run xindy to create index file")
+     ("Check" "lacheck %s" TeX-run-compile nil (latex-mode) :help
+      "Check LaTeX file for correctness")
+     ("ChkTeX" "chktex -v6 %s" TeX-run-compile nil (latex-mode) :help
+      "Check LaTeX file for common mistakes")
+     ("Spell" "(TeX-ispell-document \"\")" TeX-run-function nil t
+      :help "Spell-check the document")
+     ("Clean" "TeX-clean" TeX-run-function nil t :help
+      "Delete generated intermediate files")
+     ("Clean All" "(TeX-clean t)" TeX-run-function nil t :help
+      "Delete generated intermediate and output files")
+     ("Auto Generate" "my-TeX-auto-generate" TeX-run-function nil t
+      :help "Auto generate and reapply style hooks")
      ("Other" "" TeX-run-command t t :help "Run an arbitrary command")))
  '(TeX-insert-braces-alist
-   '(("bracket" . t)
-     ("centering")
-     ("clearpage")
-     ("curly" . t)
-     ("maketitle")
-     ("noindent")
-     ("pagebreak")
-     ("paren" . t)
+   '(("bracket" . t) ("centering") ("clearpage") ("curly" . t)
+     ("maketitle") ("noindent") ("pagebreak") ("paren" . t)
      ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(beacon git-modes unfill pandoc-mode ess julia-mode bind-key markdown-mode xclip cl-lib auctex))
+   '(beacon git-modes unfill pandoc-mode ess julia-mode bind-key
+            markdown-mode xclip cl-lib auctex))
  '(reftex-label-alist
    '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)
@@ -379,14 +378,9 @@
      ("theorem" 84 "theorem:" nil nil nil -3)
      ("remark" 84 "remark:" nil nil nil -3)))
  '(reftex-ref-style-alist
-   '(("Default" t
-      (("\\ref" 13)
-       ("\\pageref" 112)
-       ("\\eqref" 101)))
+   '(("Default" t (("\\ref" 13) ("\\pageref" 112) ("\\eqref" 101)))
      ("Cleveref" "cleveref"
-      (("\\cref" 99)
-       ("\\Cref" 67)
-       ("\\cpageref" 100)
+      (("\\cref" 99) ("\\Cref" 67) ("\\cpageref" 100)
        ("\\Cpageref" 68)))))
  '(reftex-ref-style-default-list '("Default" "Cleveref"))
  '(warning-suppress-types '((auctex))))
