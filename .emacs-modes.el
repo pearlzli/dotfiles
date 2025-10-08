@@ -64,14 +64,6 @@
   (set-face-foreground 'font-latex-italic-face "brightred")
   (set-face-foreground 'font-latex-math-face "brightyellow"))
 
-; Add font key bindings
-; https://tex.stackexchange.com/a/523728/116532
-; https://en.wikipedia.org/wiki/ASCII#Printable_characters
-(with-eval-after-load 'latex
-  (add-to-list 'LaTeX-font-list '(112 "" "" "\\paren{" "}"))
-  (add-to-list 'LaTeX-font-list '(98 "" "" "\\bracket{" "}"))
-  (add-to-list 'LaTeX-font-list '(99 "" "" "\\curly{" "}")))
-
 ; RefTeX
 (setq reftex-extra-bindings t) ; use more intuitive key bindings (must be defined before loading RefTeX)
 (require 'reftex)
