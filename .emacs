@@ -365,8 +365,8 @@
      ("titlepage")))
  '(markdown-hide-urls t)
  '(package-selected-packages
-   '(beacon git-modes unfill pandoc-mode ess julia-mode bind-key
-            markdown-mode xclip cl-lib auctex))
+   '(auctex beacon bind-key cl-lib csv-mode ess git-modes julia-mode
+            markdown-mode pandoc-mode unfill xclip))
  '(reftex-label-alist
    '(("assump" 84 "assump:" nil nil nil -3)
      ("claim" 84 "claim:" nil nil nil -3)

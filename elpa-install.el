@@ -15,6 +15,7 @@
           beacon
           bind-key
           cl-lib
+          csv-mode
           ess
           git-modes
           julia-mode
