@@ -89,9 +89,6 @@
      ("subparagraph" . 6)
      ("frametitle" . -5))) ; negative level is unnumbered version of positive value
 
-; BibTeX
-(setq bibtex-align-at-equal-sign t)
-
 ; Beamer
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
 (defun LaTeX-beamer-replace-frametitle ()
