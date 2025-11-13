@@ -27,10 +27,10 @@ fi
 dotfile_dir=$1
 
 # Check if something is installed
-# Usage: not_installed <program>
+# Usage: is_installed <program>
 # https://stackoverflow.com/a/677212
-not_installed() {
-    return ! command -v $1 &> /dev/null
+is_installed() {
+    command -v "$1" >/dev/null 2>&1
 }
 
 # Make file if it doesn't already exist
@@ -141,7 +141,7 @@ function timeout_result {
 
 case $OSTYPE in
     darwin*) # MacOS
-        if not_installed brew; then
+        if ! is_installed brew; then
             # Install brew
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
@@ -216,8 +216,8 @@ case $OSTYPE in
     linux-gnu*)
         apt-get update
 
-        if not_installed bc; then
-            sudo apt-get install bc
+        if ! is_installed bc; then
+            apt-get install bc
             if [ "$?" -eq 0 ]; then
                 echo "${green}Installed bc${normal}"
             else
@@ -271,9 +271,7 @@ cd $dotfile_dir
 texfiles=$(find tex/latex -name *.cls -o -name *.sty)
 bstfiles=$(find bibtex/bst -name *.bst)
 
-if not_installed kpsewhich; then
-    echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
-else
+if is_installed kpsewhich; then
     texdir=$(kpsewhich -var-value=TEXMFHOME)
     maybe_mkdir "$texdir"
 
@@ -290,6 +288,8 @@ else
     for file in "$bstfiles"; do
         try_symlink $file
     done
+else
+    echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
 fi
 
 # Pandoc templates
@@ -319,13 +319,8 @@ $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
 
 # Tmux plugin manager
-if not_installed tmux; then
-    echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
-else
-    if not_installed bc; then
-        echo "${red}bc is not installed; needed to compare tmux versions${normal}"
-        echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
-    else
+if is_installed tmux; then
+    if is_installed bc; then
         tpmdir="$HOME/.tmux/plugins/tpm"
         if [ -d "$tpmdir" ]; then
             echo "${red}Didn't install tmux plugin manager: directory already exists${normal}"
@@ -334,5 +329,10 @@ else
         else
             $my_timeout git clone "https://github.com/tmux-plugins/tpm" "$tpmdir"
         fi
+    else
+        echo "${red}bc is not installed; needed to compare tmux versions${normal}"
+        echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
     fi
+else
+    echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
 fi
