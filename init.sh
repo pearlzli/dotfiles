@@ -37,7 +37,8 @@ not_installed() {
 # Usage: maybe_touch <path>
 maybe_touch() {
     if [ ! -f "$1" ]; then
-        touch -p "$1"
+        mkdir -p "$(dirname $1)"
+        touch "$1"
         if [ "$?" -eq 0 ]; then
             echo "${green}Created $1${normal}"
         else
@@ -246,7 +247,7 @@ done
 
 # Create local dotfiles if they don't already exist
 for file in ".bashrc-local" ".emacs-local.el" ".gitconfig-local"; do
-    try_touch "$file"
+    maybe_touch "$file"
 done
 
 # Pre-commit hook
