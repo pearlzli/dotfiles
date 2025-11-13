@@ -17,21 +17,19 @@
 
 (package-refresh-contents)
 
-(mapcar (lambda (package)
-         ; Install package if not already installed
-         (unless (package-installed-p package)
-           (package-install package)))
-
-        ; List of packages to be installed (separated by linebreaks)
-        '(auctex
-          beacon
-          bind-key
-          cl-lib
-          csv-mode
-          ess
-          git-modes
-          julia-mode
-          markdown-mode
-          pandoc-mode
-          unfill
-          xclip))
+; Install packages that aren't already installed
+; https://stackoverflow.com/a
+(setq package-selected-packages
+  '(auctex
+    beacon
+    bind-key
+    cl-lib
+    csv-mode
+    ess
+    git-modes
+    julia-mode
+    markdown-mode
+    pandoc-mode
+    unfill
+    xclip))
+(package-install-selected-packages)
