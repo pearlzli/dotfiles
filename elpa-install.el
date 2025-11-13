@@ -18,7 +18,8 @@
 (package-refresh-contents)
 
 ; Install packages that aren't already installed
-; https://stackoverflow.com/a
+; https://stackoverflow.com/a/39891192
+; TODO: Some can't be installed because of emacs version requirements and will throw errors like "Package 'emacs-28.1' is unavailable"
 (setq package-selected-packages
   '(auctex
     beacon
