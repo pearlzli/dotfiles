@@ -51,6 +51,7 @@ bind '"\C-n": history-search-forward'  2>/dev/null
 # Bash aliases
 alias cp="cp -i" # ask before overwriting
 alias e="emacs --no-window-system"
+alias ev="emacs --eval \"(add-hook 'find-file-hook (defun make-read-only () (setq buffer-read-only t)))\"" # open in read-only mode
 alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-number'
 alias less="less --mouse --raw-control-chars"
 alias la="ls --all"
