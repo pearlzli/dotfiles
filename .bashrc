@@ -50,16 +50,17 @@ bind '"\C-n": history-search-forward'  2>/dev/null
 
 # Bash aliases
 alias cp="cp -i" # ask before overwriting
-alias e="emacs -nw"
-alias la="ls -a"
-alias ld="ls -d */"
-alias ll="ls -l -h"
-alias less="less -r" # handle escape characters
+alias e="emacs --no-window-system"
+alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-number'
+alias less="less --mouse --raw-control-chars"
+alias la="ls --all"
+alias ld="ls --directory */"
+alias ll="ls -l --human-readable"
 alias mv="mv -i" # ask before overwriting
-alias mytop="top -u $USER"
+alias mytop="top -user $USER"
 
 # Hide files from ls
-hide="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
+LS_HIDE="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
 
 # Show directory names in light blue
 export LS_COLORS=$LS_COLORS'di=1;34:'
@@ -67,7 +68,7 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 # OS-specific command aliases
 case $OSTYPE in
     cygwin*)
-        alias ls="ls --color=auto --group-directories-first $hide"
+        alias ls="ls --color=auto --group-directories-first $LS_HIDE"
         ;;
     darwin*) # OS X
         alias ls="ls -G"
@@ -84,7 +85,7 @@ case $OSTYPE in
         fi
         ;;
     linux*)
-        alias ls="ls --color=auto --group-directories-first $hide"
+        alias ls="ls --color=auto --group-directories-first $LS_HIDE"
         ;;
     *) ;;
 esac
@@ -99,7 +100,7 @@ alias gd="git diff"
 alias gg="git grep"
 alias gmt="git mergetool"
 alias gpo="git push origin"
-alias gri="git rebase -i"
+alias gri="git rebase --interactive"
 alias gs="git status"
 
 function gdt {
@@ -134,13 +135,6 @@ unset SSH_ASKPASS
 # Set default file-creation mode to u=rwx, g=rwx, o=rx
 # Check your (human-readable) permissions using "umask -S"
 umask 0002
-
-# Set default grep options:
-# -i: ignore case
-# -n: show line number
-# -I: exclude binary files
-# --color=auto
-alias grep='grep -in -I --color=auto'
 
 # Source system-specific aliases
 source ~/.bashrc-local
