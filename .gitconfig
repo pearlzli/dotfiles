@@ -5,7 +5,6 @@
     user = pearlzli
 [alias]
     apply = apply --3way
-    ch = checkout
     changes = diff --name-status -r
     diffstat = diff --stat -r
     hist = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cd) %C(bold blue)<%an>%Creset' --date=short

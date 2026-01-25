@@ -94,6 +94,7 @@ esac
 alias ga="git add"
 alias gap="git add --patch"
 alias gb="git branch"
+alias gch="git checkout"
 alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gd="git diff"
@@ -102,6 +103,7 @@ alias gmt="git mergetool"
 alias gpo="git push origin"
 alias gri="git rebase --interactive"
 alias gs="git status"
+alias gu="git unstage"
 
 function gdt {
     if [ $# -eq 0 ]; then
