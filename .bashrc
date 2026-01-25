@@ -99,7 +99,6 @@ alias gca="git commit --amend"
 alias gcm="git commit -m"
 alias gd="git diff"
 alias gg="git grep"
-alias gmt="git mergetool"
 alias gpo="git push origin"
 alias gri="git rebase --interactive"
 alias gs="git status"
@@ -107,10 +106,18 @@ alias gu="git unstage"
 
 function gdt {
     if [ $# -eq 0 ]; then
-        # Do a directory diff if no arguments are passed in
-        git difftool --dir-diff
+        # If no arguments passed in, diff all modified files in sequence
+        git difftool `git ls-files --modified $DIR`
     else
         git difftool "$@"
+    fi
+}
+function gmt {
+    if [ $# -eq 0 ]; then
+        # If no arguments passed in, merge all unmerged files in sequence
+        git mergetool `git ls-files --unmerged $DIR`
+    else
+        git mergetool "$@"
     fi
 }
 
