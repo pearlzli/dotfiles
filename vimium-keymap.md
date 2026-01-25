@@ -5,9 +5,16 @@ unmapAll
 # Remap escape key
 mapkey <c-g> <c-[>
 
+# Page navigation
+map <c-x><c-v> LinkHints.activateMode
+map <c-x><c-f> LinkHints.activateModeToOpenInNewTab
+map <c-x><c-r> reload
+
 # Scrolling
 map <c-b> scrollLeft
 map <c-f> scrollRight
+map <c-a> scrollToLeft
+map <c-e> scrollToRight
 map <c-n> scrollDown
 map <c-p> scrollUp
 map <a-n> scrollPageDown
@@ -17,11 +24,10 @@ map <a-v> scrollFullPageUp
 map <a-<> scrollToTop
 map <a->> scrollToBottom
 
-# Page navigation
-map <c-x><c-r> reload
-map <c-s> LinkHints.activateMode
-map <c-x><c-v> LinkHints.activateMode
-map <c-x><c-f> LinkHints.activateModeToOpenInNewTab
+# Find mode
+map / enterFindMode
+map <c-s> performFind
+map <c-r> performBackwardsFind
 
 # Tabs
 map <c-o>c createTab
