@@ -6,6 +6,11 @@
 # Need this for emacs syntax highlighting to display properly
 export TERM="xterm-256color"
 
+# Need this starting in tmux 3.6
+# Otherwise, tmux sets to "truecolor" and emacs colors don't match Terminal colors
+# https://github.com/tmux/tmux/issues/4699#issuecomment-3585364637
+export COLORTERM=""
+
 # Set default editor for command-line programs
 export EDITOR="emacs"
 
