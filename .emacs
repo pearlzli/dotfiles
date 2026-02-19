@@ -164,7 +164,7 @@
 
 ;; Turn many spaces into just one space in a highlighted region
 (defun just-one-space-in-region (beg end)
-  "replace all whitespace in the region with single spaces"
+  "Replace all whitespace in the region with single spaces."
   (interactive "r")
   (save-excursion
     (save-restriction
@@ -195,7 +195,7 @@
 ;; Rename file and buffer
 ;; http://steve.yegge.googlepages.com/my-dot-emacs-file
 (defun rename-file-and-buffer (new-name)
-  "Renames both current buffer and file it's visiting to NEW-NAME."
+  "Rename both the current buffer and the file it's visiting to NEW-NAME."
   (interactive "sNew name: ")
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
@@ -208,7 +208,7 @@
           (rename-buffer new-name)
           (set-visited-file-name new-name)
           (set-buffer-modified-p nil))))))
-(bind-key* "C-c R"  'rename-file-and-buffer)
+(bind-key* "C-c R" 'rename-file-and-buffer)
 
 ;; Turn keymap numbers into key sequences
 ;; https://emacs.stackexchange.com/a/38518/14500
