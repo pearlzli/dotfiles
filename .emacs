@@ -210,6 +210,27 @@
           (set-buffer-modified-p nil))))))
 (bind-key* "C-c R" 'rename-file-and-buffer)
 
+;; Zoom in and out of panes like tmux zoom
+;; https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-windows-buffers.el#L481-L501
+(defvar toggle-zoom-buffer--buffer-name nil
+  "Name of the buffer on which toggle-zoom-buffer is called.")
+(defvar toggle-zoom-buffer--window-configuration nil
+  "Window configuration before toggle-zoom-buffer was called.")
+(defun toggle-zoom-buffer (&optional force-one-window)
+  "Toggle the frame state between deleting all windows other than the current window and the window state prior to that."
+  (interactive "P")
+  (if (or (null (one-window-p))
+          force-one-window)
+      (progn
+        (setq toggle-zoom-buffer--buffer-name (buffer-name))
+        (setq toggle-zoom-buffer--window-configuration (current-window-configuration))
+        (delete-other-windows))
+    (progn
+      (when toggle-zoom-buffer--buffer-name
+        (set-window-configuration toggle-zoom-buffer--window-configuration)
+        (switch-to-buffer toggle-zoom-buffer--buffer-name)))))
+(bind-key* "C-c z" 'toggle-zoom-buffer)
+
 ;; Turn keymap numbers into key sequences
 ;; https://emacs.stackexchange.com/a/38518/14500
 (defun keymap-number-to-char (number)
