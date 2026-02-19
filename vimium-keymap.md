@@ -6,7 +6,8 @@ unmapAll
 mapkey <c-g> <c-[>
 
 # Page navigation
-map <c-x><c-v> LinkHints.activateMode
+map <c-o> LinkHints.activateMode
+map <c-x><c-v> LinkHints.activateModeToOpenInNewForegroundTab
 map <c-x><c-f> LinkHints.activateModeToOpenInNewTab
 
 # Scrolling
