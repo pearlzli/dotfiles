@@ -22,7 +22,7 @@
 
 ;; Tabs
 (setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
+(indent-tabs-mode nil)
 
 ;; Don't prompt when opening a symlink
 (setq vc-follow-symlinks nil)
@@ -30,7 +30,7 @@
 ;; Mouse support
 (unless window-system
   (xterm-mouse-mode t)
-  (mouse-wheel-mode)
+  (mouse-wheel-mode t)
   (bind-key* [mouse-4] (lambda () (interactive) (scroll-down 1)))
   (bind-key* [mouse-5] (lambda () (interactive) (scroll-up 1))))
 
@@ -38,7 +38,7 @@
 ;; Requires `after-focus-change-function`, introduced in emacs 27
 ;; https://github.com/Malabarba/beacon/issues/87
 (unless (version< emacs-version "27")
-  (beacon-mode 1)
+  (beacon-mode t)
   (setq beacon-size 40)
   (bind-key* "M-o" 'beacon-blink))
 
@@ -235,18 +235,18 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;; Highlight selections
-(setq transient-mark-mode t)
+(transient-mark-mode t)
 
 ;; Show row and column numbers in bottom bar
 ;; https://stackoverflow.com/a/43902887/2756250
-(setq column-number-mode t)
+(column-number-mode t)
 (unless (version< emacs-version "26")
   (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
 ;; Set default max line width to 80 characters
-(global-display-line-numbers-mode 1)
-(setq fill-column 80)
+(global-display-line-numbers-mode t)
+(setq-default fill-column 80)
 (defun toggle-line-numbers-and-fill-column-indicator ()
   "Toggle line numbers and fill column indicator for tmux copy-paste."
   (interactive)
