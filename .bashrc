@@ -56,7 +56,7 @@ alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-
 alias less="less --mouse --raw-control-chars"
 alias la="ls --all"
 alias ld="ls --directory */"
-alias ll="ls -l --human-readable"
+alias ll="ls -l -h"
 alias mv="mv -i" # ask before overwriting
 alias mytop="top -user $USER"
 
