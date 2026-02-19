@@ -2,9 +2,6 @@
 # Start from a blank slate
 unmapAll
 
-# Remap escape key
-mapkey <c-g> <c-[>
-
 # Page navigation
 map <c-o> LinkHints.activateMode
 map <c-x><c-v> LinkHints.activateModeToOpenInNewForegroundTab
