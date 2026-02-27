@@ -64,6 +64,13 @@
   (TeX-auto-generate "~/dotfiles/tex/latex" "~/dotfiles/tex/latex/auto") ; https://tex.stackexchange.com/a/410552/116532
   'TeX-normal-mode) ; https://www.gnu.org/software/auctex/manual/auctex/Parsing-Files.html
 
+; Add custom font specifier commands
+; https://tex.stackexchange.com/a/239547
+(use-package latex
+  :ensure auctex
+  :config
+  (add-to-list 'LaTeX-font-list '(?\C-l "\\lstinline{" "}")))
+
 ; Set font colors
 (with-eval-after-load 'font-latex
   (set-face-attribute 'font-latex-sectioning-5-face nil :foreground "magenta" :weight 'bold)
