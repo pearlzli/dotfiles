@@ -153,6 +153,7 @@ case $OSTYPE in
         brew install coreutils
         brew install emacs
         brew install git
+        brew install ipython
         brew install jupyterlab
         brew install pandoc
         brew install pdfsandwich
