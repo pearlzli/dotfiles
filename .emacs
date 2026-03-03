@@ -22,7 +22,7 @@
 
 ;; Tabs
 (setq-default tab-width 4)
-(indent-tabs-mode nil)
+(setq-default indent-tabs-mode nil)
 
 ;; Don't prompt when opening a symlink
 (setq vc-follow-symlinks nil)
