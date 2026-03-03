@@ -162,7 +162,6 @@ case $OSTYPE in
         brew install wget
         brew install --cask lyx
         brew install --cask mactex
-        brew install --cask meld
         brew install --cask skim
 
         # The following are easier to build using Brew than in Julia
@@ -183,16 +182,6 @@ case $OSTYPE in
             echo "${green}Copied SF Mono font files to $HOME/Library/Fonts${normal}"
         else
             echo "${red}Could not copy SF Mono font files to $HOME/Library/Fonts${normal}"
-        fi
-
-        # Use SF Mono in Meld
-        # https://github.com/yousseb/meld/issues/38#issuecomment-547577592
-        defaults write org.gnome.meld "/org/gnome/meld/use-system-font" 0
-        defaults write org.gnome.meld "/org/gnome/meld/custom-font" "SF Mono, 14"
-        if [ "$?" -eq 0 ]; then
-            echo "${green}Set SF Mono as Meld font${normal}"
-        else
-            echo "${red}Could not set SF Mono as Meld font${normal}"
         fi
 
         # Copy Mac key bindings
