@@ -151,13 +151,18 @@
 (define-key minibuffer-local-map (kbd "C-n") 'next-history-element)
 (define-key minibuffer-local-map (kbd "C-p") 'previous-history-element)
 
-;; Add missing rules to tex input method
+;; Customize TeX input method
 ;; https://www.emacswiki.org/emacs/TeXInputMethod
 (with-temp-buffer
   (activate-input-method "TeX")
   (let ((quail-current-package (assoc "TeX" quail-package-alist)))
-   (quail-define-rules ((append . t))
-                       ("\\Phi" "Φ") ("\\bar" "̄") ("\\hi" "̅") ("\\lo" "̲"))))
+    ;; Add missing rules
+    (quail-define-rules ((append . t)) ("\\Phi" "Φ") ("\\bar" "̄") ("\\hi" "̅") ("\\lo" "̲"))
+
+    ;; Stop replacing {underscore,caret}-character combos with Unicode {sub,super}scripts
+    ;; https://emacs.stackexchange.com/a/63011
+    (dolist (binding (cdr (quail-map))) (when (= (car binding) ?_) (setcdr binding nil)))
+    (dolist (binding (cdr (quail-map))) (when (= (car binding) ?^) (setcdr binding nil)))))
 
 ;; Delete trailing whitespace upon saving
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
