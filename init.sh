@@ -251,6 +251,11 @@ cd "$HOME/.julia/config"
 try_symlink "startup.jl"
 try_symlink "startup_ijulia.jl"
 
+# Python startup
+maybe_mkdir "$HOME/.ipython/profile_default"
+cd "$HOME/.ipython/profile_default"
+try_symlink "ipython_config.py"
+
 # Stata startup
 maybe_mkdir "$HOME/Documents/Stata"
 cd "$HOME/Documents/Stata"
