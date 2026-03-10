@@ -6,13 +6,13 @@ c = get_config()  #noqa
 # InteractiveShellApp(Configurable) configuration
 #------------------------------------------------------------------------------
 ## A Mixin for applications that start InteractiveShell instances.
-#  
+#
 #  Provides configurables for loading extensions and executing files as part of
 #  configuring a Shell environment.
-#  
+#
 #  The following methods should be called by the :meth:`initialize` method of the
 #  subclass:
-#  
+#
 #    - :meth:`init_path`
 #    - :meth:`init_shell` (to be implemented by the subclass)
 #    - :meth:`init_gui_pylab`
@@ -34,16 +34,22 @@ c = get_config()  #noqa
 
 ## lines of code to run at IPython startup.
 #  Default: []
-# c.InteractiveShellApp.exec_lines = []
+c.InteractiveShellApp.exec_lines = []
+
+# Turn on autoreload
+# https://stackoverflow.com/a/13961334
+c.InteractiveShellApp.exec_lines.append('%load_ext autoreload')
+c.InteractiveShellApp.exec_lines.append('%autoreload 2')
+c.InteractiveShellApp.exec_lines.append('print("Warning: IPython extension `autoreload` enabled. Disable in ipython_config.py to improve performance.")')
 
 ## A list of dotted module names of IPython extensions to load.
 #  Default: []
 # c.InteractiveShellApp.extensions = []
 
 ## Dotted module name(s) of one or more IPython extensions to load.
-#  
+#
 #  For specifying extra extensions to load on the command-line.
-#  
+#
 #  .. versionadded:: 7.10
 #  Default: []
 # c.InteractiveShellApp.extra_extensions = []
@@ -90,7 +96,7 @@ c = get_config()  #noqa
 
 ## If true, IPython will populate the user namespace with numpy, pylab, etc.
 #          and an ``import *`` is done from numpy and pylab, when using pylab mode.
-#  
+#
 #          When False, pylab mode should not import any names into the user
 #  namespace.
 #  Default: True
@@ -119,32 +125,32 @@ c = get_config()  #noqa
 # c.Application.log_level = 30
 
 ## Configure additional log handlers.
-#  
+#
 #  The default stderr logs handler is configured by the log_level, log_datefmt
 #  and log_format settings.
-#  
+#
 #  This configuration can be used to configure additional handlers (e.g. to
 #  output the log to a file) or for finer control over the default handlers.
-#  
+#
 #  If provided this should be a logging configuration dictionary, for more
 #  information see:
 #  https://docs.python.org/3/library/logging.config.html#logging-config-
 #  dictschema
-#  
+#
 #  This dictionary is merged with the base logging configuration which defines
 #  the following:
-#  
+#
 #  * A logging formatter intended for interactive use called
 #    ``console``.
 #  * A logging handler that writes to stderr called
 #    ``console`` which uses the formatter ``console``.
 #  * A logger with the name of this application set to ``DEBUG``
 #    level.
-#  
+#
 #  This example adds a new handler that writes to a file:
-#  
+#
 #  .. code-block:: python
-#  
+#
 #     c.Application.logging_config = {
 #         "handlers": {
 #             "file": {
@@ -191,7 +197,7 @@ c = get_config()  #noqa
 # c.BaseIPythonApplication.copy_config_files = False
 
 ## Path to an extra config file to load.
-#  
+#
 #      If specified, load this config file in addition to any other IPython
 #  config.
 #  Default: ''
@@ -216,7 +222,7 @@ c = get_config()  #noqa
 #  See also: Application.log_level
 # c.BaseIPythonApplication.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.BaseIPythonApplication.logging_config = {}
 
@@ -283,7 +289,7 @@ c = get_config()  #noqa
 #  See also: BaseIPythonApplication.extra_config_file
 # c.TerminalIPythonApp.extra_config_file = ''
 
-## 
+##
 #  See also: InteractiveShellApp.extra_extensions
 # c.TerminalIPythonApp.extra_extensions = []
 
@@ -316,7 +322,7 @@ c = get_config()  #noqa
 #  Default: 'IPython.terminal.interactiveshell.TerminalInteractiveShell'
 # c.TerminalIPythonApp.interactive_shell_class = 'IPython.terminal.interactiveshell.TerminalInteractiveShell'
 
-## 
+##
 #  See also: BaseIPythonApplication.ipython_dir
 # c.TerminalIPythonApp.ipython_dir = ''
 
@@ -332,7 +338,7 @@ c = get_config()  #noqa
 #  See also: Application.log_level
 # c.TerminalIPythonApp.log_level = 30
 
-## 
+##
 #  See also: Application.logging_config
 # c.TerminalIPythonApp.logging_config = {}
 
@@ -535,11 +541,11 @@ c = get_config()  #noqa
 #------------------------------------------------------------------------------
 # TerminalInteractiveShell(InteractiveShell) configuration
 #------------------------------------------------------------------------------
-## 
+##
 #  See also: InteractiveShell.ast_node_interactivity
 # c.TerminalInteractiveShell.ast_node_interactivity = 'last_expr'
 
-## 
+##
 #  See also: InteractiveShell.ast_transformers
 # c.TerminalInteractiveShell.ast_transformers = []
 
@@ -548,11 +554,11 @@ c = get_config()  #noqa
 #  Default: False
 # c.TerminalInteractiveShell.auto_match = False
 
-## 
+##
 #  See also: InteractiveShell.autoawait
 # c.TerminalInteractiveShell.autoawait = True
 
-## 
+##
 #  See also: InteractiveShell.autocall
 # c.TerminalInteractiveShell.autocall = 0
 
@@ -560,11 +566,11 @@ c = get_config()  #noqa
 #  Default: None
 # c.TerminalInteractiveShell.autoformatter = None
 
-## 
+##
 #  See also: InteractiveShell.autoindent
 # c.TerminalInteractiveShell.autoindent = True
 
-## 
+##
 #  See also: InteractiveShell.automagic
 # c.TerminalInteractiveShell.automagic = True
 
@@ -583,7 +589,7 @@ c = get_config()  #noqa
 #  See also: InteractiveShell.banner2
 # c.TerminalInteractiveShell.banner2 = ''
 
-## 
+##
 #  See also: InteractiveShell.cache_size
 # c.TerminalInteractiveShell.cache_size = 1000
 
@@ -631,11 +637,11 @@ c = get_config()  #noqa
 #  Default: True
 # c.TerminalInteractiveShell.enable_history_search = True
 
-## 
+##
 #  See also: InteractiveShell.enable_html_pager
 # c.TerminalInteractiveShell.enable_html_pager = False
 
-## 
+##
 #  See also: InteractiveShell.enable_tip
 # c.TerminalInteractiveShell.enable_tip = True
 
@@ -655,7 +661,7 @@ c = get_config()  #noqa
 # c.TerminalInteractiveShell.highlight_matching_brackets = True
 
 ## Deprecated, and has not effect, use IPython themes
-#  
+#
 #          The name or class of a Pygments style to use for syntax
 #          highlighting. To see available styles, run `pygmentize -L styles`.
 #  Default: traitlets.Undefined
@@ -669,7 +675,7 @@ c = get_config()  #noqa
 #  See also: InteractiveShell.history_length
 # c.TerminalInteractiveShell.history_length = 10000
 
-## 
+##
 #  See also: InteractiveShell.history_load_length
 # c.TerminalInteractiveShell.history_load_length = 1000
 
@@ -681,7 +687,7 @@ c = get_config()  #noqa
 # c.TerminalInteractiveShell.ipython_dir = ''
 
 ## Extra arguments to pass to `llm_provider_class` constructor.
-#  
+#
 #  This is used to – for example – set the `model_id`
 #  Default: {}
 # c.TerminalInteractiveShell.llm_constructor_kwargs = {}
@@ -689,12 +695,12 @@ c = get_config()  #noqa
 ## Fully Qualifed name of a function that takes an IPython history manager and
 #  return a prefix to pass the llm provider in addition to the current buffer
 #  text.
-#  
+#
 #  You can use:
-#  
+#
 #   - no_prefix
 #   - input_history
-#  
+#
 #  As default value. `input_history` (default),  will use all the input history
 #  of current IPython session
 #  Default: 'input_history'
@@ -703,22 +709,22 @@ c = get_config()  #noqa
 ## Provisional:
 #      This is a provisional API in IPython 8.32, before stabilisation
 #      in 9.0, it may change without warnings.
-#  
+#
 #  class to use for the `NavigableAutoSuggestFromHistory` to request completions
 #  from a LLM, this should inherit from `jupyter_ai_magics:BaseProvider` and
 #  implement `stream_inline_completions`
 #  Default: None
 # c.TerminalInteractiveShell.llm_provider_class = None
 
-## 
+##
 #  See also: InteractiveShell.logappend
 # c.TerminalInteractiveShell.logappend = ''
 
-## 
+##
 #  See also: InteractiveShell.logfile
 # c.TerminalInteractiveShell.logfile = ''
 
-## 
+##
 #  See also: InteractiveShell.logstart
 # c.TerminalInteractiveShell.logstart = False
 
@@ -747,7 +753,7 @@ c = get_config()  #noqa
 #  See also: InteractiveShell.object_info_string_level
 # c.TerminalInteractiveShell.object_info_string_level = 0
 
-## 
+##
 #  See also: InteractiveShell.pdb
 # c.TerminalInteractiveShell.pdb = False
 
@@ -783,20 +789,20 @@ c = get_config()  #noqa
 # c.TerminalInteractiveShell.separate_out2 = ''
 
 ## Add, disable or modifying shortcuts.
-#  
+#
 #  Each entry on the list should be a dictionary with ``command`` key identifying
 #  the target function executed by the shortcut and at least one of the
 #  following:
-#  
+#
 #    - ``match_keys``: list of keys used to match an existing shortcut,
 #    - ``match_filter``: shortcut filter used to match an existing shortcut,
 #    - ``new_keys``: list of keys to set,
 #    - ``new_filter``: a new shortcut filter to set
-#  
+#
 #  The filters have to be composed of pre-defined verbs and joined by one of the
 #  following conjunctions: ``&`` (and), ``|`` (or), ``~`` (not). The pre-defined
 #  verbs are:
-#  
+#
 #    - ``always``
 #    - ``never``
 #    - ``has_line_below``
@@ -838,23 +844,23 @@ c = get_config()  #noqa
 #    - ``navigable_suggestions``
 #    - ``cursor_in_leading_ws``
 #    - ``pass_through``
-#  
+#
 #  To disable a shortcut set ``new_keys`` to an empty list. To add a shortcut add
 #  key ``create`` with value ``True``.
-#  
+#
 #  When modifying/disabling shortcuts, ``match_keys``/``match_filter`` can be
 #  omitted if the provided specification uniquely identifies a shortcut to be
 #  modified/disabled. When modifying a shortcut ``new_filter`` or ``new_keys``
 #  can be omitted which will result in reuse of the existing filter/keys.
-#  
+#
 #  Only shortcuts defined in IPython (and not default prompt-toolkit shortcuts)
 #  can be modified or disabled. The full list of shortcuts, command identifiers
 #  and filters is available under :ref:`terminal-shortcuts-list`.
-#  
+#
 #  Here is an example:
-#  
+#
 #  .. code::
-#  
+#
 #      c.TerminalInteractiveShell.shortcuts = [
 #         {
 #             "new_keys": ["c-q"],
@@ -875,13 +881,13 @@ c = get_config()  #noqa
 # c.TerminalInteractiveShell.show_rewritten_input = True
 
 ## Use `raw_input` for the REPL, without completion and prompt colors.
-#  
+#
 #              Useful when controlling IPython as a subprocess, and piping
 #              STDIN/OUT/ERR. Known usage are: IPython's own testing machinery,
 #              and emacs' inferior-python subprocess (assuming you have set
 #              `python-shell-interpreter` to "ipython") available through the
 #              built-in `M-x run-python` and third party packages such as elpy.
-#  
+#
 #              This mode default to `True` if the `IPY_TEST_SIMPLE_PROMPT`
 #              environment variable is set, or the current terminal is not a tty.
 #              Thus the Default value reported in --help-all, or config will often
@@ -896,7 +902,7 @@ c = get_config()  #noqa
 #  Default: 6
 # c.TerminalInteractiveShell.space_for_menu = 6
 
-## 
+##
 #  See also: InteractiveShell.sphinxify_docstring
 # c.TerminalInteractiveShell.sphinxify_docstring = False
 
@@ -917,7 +923,7 @@ c = get_config()  #noqa
 ## Use 24bit colors instead of 256 colors in prompt highlighting.
 #          If your terminal supports true color, the following command should
 #          print ``TRUECOLOR`` in orange::
-#  
+#
 #              printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"
 #  Default: False
 # c.TerminalInteractiveShell.true_color = False
@@ -943,19 +949,19 @@ c = get_config()  #noqa
 # HistoryAccessor(HistoryAccessorBase) configuration
 #------------------------------------------------------------------------------
 ## Access the history database without adding to it.
-#  
+#
 #  This is intended for use by standalone history tools. IPython shells use
 #  HistoryManager, below, which is a subclass of this.
 
 ## Options for configuring the SQLite connection
-#  
+#
 #          These options are passed as keyword args to sqlite3.connect
 #          when establishing database connections.
 #  Default: {}
 # c.HistoryAccessor.connection_options = {}
 
 ## enable the SQLite history
-#  
+#
 #          set enabled=False to disable the SQLite history,
 #          in which case there will be no stored history, no SQLite connection,
 #          and no background saving thread.  This may be necessary in some
@@ -964,17 +970,17 @@ c = get_config()  #noqa
 # c.HistoryAccessor.enabled = True
 
 ## Path to file to use for SQLite history database.
-#  
+#
 #          By default, IPython will put the history database in the IPython
 #          profile directory.  If you would rather share one history among
 #          profiles, you can set this value in each, so that they are consistent.
-#  
+#
 #          Due to an issue with fcntl, SQLite is known to misbehave on some NFS
 #          mounts.  If you see IPython hanging, try setting this to something on a
 #          local disk, e.g::
-#  
+#
 #              ipython --HistoryManager.hist_file=/tmp/ipython_hist.sqlite
-#  
+#
 #          you can also use the specific value `:memory:` (including the colon
 #          at both end but not the back ticks), to avoid creating an history file.
 #  Default: traitlets.Undefined
@@ -1016,24 +1022,24 @@ c = get_config()  #noqa
 # c.MagicsManager.auto_magic = True
 
 ## Mapping from magic names to modules to load.
-#  
+#
 #  This can be used in IPython/IPykernel configuration to declare lazy magics
 #  that will only be imported/registered on first use.
-#  
+#
 #  For example::
-#  
+#
 #      c.MagicsManager.lazy_magics = {
 #        "my_magic": "slow.to.import",
 #        "my_other_magic": "also.slow",
 #      }
-#  
+#
 #  On first invocation of `%my_magic`, `%%my_magic`, `%%my_other_magic` or
 #  `%%my_other_magic`, the corresponding module will be loaded as an ipython
 #  extensions as if you had previously done `%load_ext ipython`.
-#  
+#
 #  Magics names should be without percent(s) as magics can be both cell and line
 #  magics.
-#  
+#
 #  Lazy loading happen relatively late in execution process, and complex
 #  extensions that manipulate Python/IPython internal state or global state might
 #  not support lazy loading.
@@ -1044,10 +1050,10 @@ c = get_config()  #noqa
 # ProfileDir(LoggingConfigurable) configuration
 #------------------------------------------------------------------------------
 ## An object to manage the profile directory and its resources.
-#  
+#
 #  The profile directory is used by all IPython applications, to manage
 #  configuration, logging and security.
-#  
+#
 #  This object knows how to find, create and manage these directories. This
 #  should be used by any code that wants to handle profiles.
 
@@ -1060,24 +1066,24 @@ c = get_config()  #noqa
 # BaseFormatter(Configurable) configuration
 #------------------------------------------------------------------------------
 ## A base formatter class that is configurable.
-#  
+#
 #  This formatter should usually be used as the base class of all formatters. It
 #  is a traited :class:`Configurable` class and includes an extensible API for
 #  users to determine how their objects are formatted. The following logic is
 #  used to find a function to format an given object.
-#  
+#
 #  1. The object is introspected to see if it has a method with the name
 #     :attr:`print_method`. If is does, that object is passed to that method
 #     for formatting.
 #  2. If no print method is found, three internal dictionaries are consulted
 #     to find print method: :attr:`singleton_printers`, :attr:`type_printers`
 #     and :attr:`deferred_printers`.
-#  
+#
 #  Users should use these dictionaries to register functions that will be used to
 #  compute the format data for their objects (if those objects don't have the
 #  special print methods). The easiest way of using these dictionaries is through
 #  the :meth:`for_type` and :meth:`for_type_by_name` methods.
-#  
+#
 #  If no function/callable is found to compute the format data, :py:data:`None`
 #  is returned and this format type is not used.
 
@@ -1097,12 +1103,12 @@ c = get_config()  #noqa
 # PlainTextFormatter(BaseFormatter) configuration
 #------------------------------------------------------------------------------
 ## The default pretty-printer.
-#  
+#
 #  This uses :mod:`IPython.lib.pretty` to compute the format data of the object.
 #  If the object cannot be pretty printed, :func:`repr` is used. See the
 #  documentation of :mod:`IPython.lib.pretty` for details on how to write pretty
 #  printers.  Here is a simple example::
-#  
+#
 #      def dtype_pprinter(obj, p, cycle):
 #          if cycle:
 #              return p.text('dtype(...)')
@@ -1125,7 +1131,7 @@ c = get_config()  #noqa
 # c.PlainTextFormatter.float_precision = ''
 
 ## Truncate large collections (lists, dicts, tuples, sets) to this size.
-#  
+#
 #          Set to 0 to disable truncation.
 #  Default: 1000
 # c.PlainTextFormatter.max_seq_length = 1000
@@ -1152,7 +1158,7 @@ c = get_config()  #noqa
 # Completer(Configurable) configuration
 #------------------------------------------------------------------------------
 ## Enable auto-closing dictionary keys.
-#  
+#
 #  When enabled string keys will be suffixed with a final quote (matching the
 #  opening quote), tuple keys will also receive a separating comma if needed, and
 #  keys which are final will receive a closing bracket (``]``).
@@ -1161,11 +1167,11 @@ c = get_config()  #noqa
 
 ## Provisional:
 #        This is a provisional API in IPython 9.3, it may change without warnings.
-#  
+#
 #  A fully qualified path to an auto-import method for use by completer. The
 #  function should take a single string and return `ModuleType` and can raise
 #  `ImportError` exception if module is not found.
-#  
+#
 #  The default auto-import implementation does not populate the user namespace
 #  with the imported module.
 #  Default: 'importlib.import_module'
@@ -1183,15 +1189,15 @@ c = get_config()  #noqa
 # c.Completer.debug = False
 
 ## Policy for code evaluation under completion.
-#  
+#
 #          Successive options allow to enable more eager evaluation for better
 #          completion suggestions, including for nested dictionaries, nested lists,
 #          or even results of function calls.
 #          Setting ``unsafe`` or higher can lead to evaluation of arbitrary user
 #          code on :kbd:`Tab` with potentially unwanted or dangerous side effects.
-#  
+#
 #          Allowed values are:
-#  
+#
 #          - ``forbidden``: no evaluation of code is permitted,
 #          - ``minimal``: evaluation of literals and access to built-in namespace;
 #            no item/attribute evaluation, no access to locals/globals,
@@ -1203,7 +1209,7 @@ c = get_config()  #noqa
 #          - ``unsafe``: evaluation of all methods and function calls but not of
 #            syntax with side-effects like `del x`,
 #          - ``dangerous``: completely arbitrary evaluation; does not support auto-import.
-#  
+#
 #          To override specific elements of the policy, you can use
 #  ``policy_overrides`` trait.
 #  Choices: any of ['forbidden', 'minimal', 'limited', 'unsafe', 'dangerous']
@@ -1211,13 +1217,13 @@ c = get_config()  #noqa
 # c.Completer.evaluation = 'limited'
 
 ## Activate greedy completion.
-#  
+#
 #          .. deprecated:: 8.8
 #              Use :std:configtrait:`Completer.evaluation` and :std:configtrait:`Completer.auto_close_dict_keys` instead.
-#  
+#
 #          When enabled in IPython 8.8 or newer, changes configuration as
 #  follows:
-#  
+#
 #          - ``Completer.evaluation = 'unsafe'``
 #          - ``Completer.auto_close_dict_keys = True``
 #  Default: False
@@ -1230,11 +1236,11 @@ c = get_config()  #noqa
 # c.Completer.jedi_compute_type_timeout = 400
 
 ## Overrides for policy evaluation.
-#  
+#
 #          For example, to enable auto-import on completion specify:
-#  
+#
 #          .. code-block::
-#  
+#
 #              ipython --Completer.policy_overrides='{"allow_auto_import": True}'
 #  --Completer.use_jedi=False
 #  Default: {}
@@ -1250,7 +1256,7 @@ c = get_config()  #noqa
 #------------------------------------------------------------------------------
 ## Extension of the completer class with IPython-specific features
 
-## 
+##
 #  See also: Completer.auto_close_dict_keys
 # c.IPCompleter.auto_close_dict_keys = False
 
@@ -1270,7 +1276,7 @@ c = get_config()  #noqa
 # c.IPCompleter.debug = False
 
 ## List of matchers to disable.
-#  
+#
 #          The list should contain matcher identifiers (see
 #  :any:`completion_matcher`).
 #  Default: []
@@ -1290,35 +1296,35 @@ c = get_config()  #noqa
 # c.IPCompleter.jedi_compute_type_timeout = 400
 
 ## DEPRECATED as of version 5.0.
-#  
+#
 #  Instruct the completer to use __all__ for the completion
-#  
+#
 #  Specifically, when completing on ``object.<tab>``.
-#  
+#
 #  When True: only those names in obj.__all__ will be included.
-#  
+#
 #  When False [default]: the __all__ attribute is ignored
 #  Default: False
 # c.IPCompleter.limit_to__all__ = False
 
 ## Whether to merge completion results into a single list
-#  
+#
 #          If False, only the completion results from the first non-empty
 #          completer will be returned.
-#  
+#
 #          As of version 8.6.0, setting the value to ``False`` is an alias for:
 #          ``IPCompleter.suppress_competing_matchers = True.``.
 #  Default: True
 # c.IPCompleter.merge_completions = True
 
 ## Instruct the completer to omit private method names
-#  
+#
 #          Specifically, when completing on ``object.<tab>``.
-#  
+#
 #          When 2 [default]: all names that start with '_' will be excluded.
-#  
+#
 #          When 1: all 'magic' names (``__foo__``) will be excluded.
-#  
+#
 #          When 0: nothing will be excluded.
 #  Choices: any of [0, 1, 2]
 #  Default: 2
@@ -1337,19 +1343,19 @@ c = get_config()  #noqa
 # c.IPCompleter.profiler_output_dir = '.completion_profiles'
 
 ## Whether to suppress completions from other *Matchers*.
-#  
+#
 #  When set to ``None`` (default) the matchers will attempt to auto-detect
 #  whether suppression of other matchers is desirable. For example, at the
 #  beginning of a line followed by `%` we expect a magic completion to be the
 #  only applicable option, and after ``my_dict['`` we usually expect a completion
 #  with an existing dictionary key.
-#  
+#
 #  If you want to disable this heuristic and see completions from all matchers,
 #  set ``IPCompleter.suppress_competing_matchers = False``. To disable the
 #  heuristic for specific matchers provide a dictionary mapping:
 #  ``IPCompleter.suppress_competing_matchers = {'IPCompleter.dict_key_matcher':
 #  False}``.
-#  
+#
 #  Set ``IPCompleter.suppress_competing_matchers = True`` to limit completions to
 #  the set of matchers with the highest priority; this is equivalent to
 #  ``IPCompleter.merge_completions`` and can be beneficial for performance, but
@@ -1367,22 +1373,22 @@ c = get_config()  #noqa
 # ScriptMagics(Magics) configuration
 #------------------------------------------------------------------------------
 ## Magics for talking to scripts
-#  
+#
 #  This defines a base `%%script` cell magic for running a cell with a program in
 #  a subprocess, and registers a few top-level magics that call %%script with
 #  common interpreters.
 
 ## Extra script cell magics to define
-#  
+#
 #          This generates simple wrappers of `%%script foo` as `%%foo`.
-#  
+#
 #          If you want to add script magics that aren't on your path,
 #          specify them in script_paths
 #  Default: []
 # c.ScriptMagics.script_magics = []
 
 ## Dict mapping short 'ruby' names to full paths, such as '/opt/secret/bin/ruby'
-#  
+#
 #          Only necessary for items in script_magics where the default path will not
 #          find the right interpreter.
 #  Default: {}
@@ -1401,7 +1407,7 @@ c = get_config()  #noqa
 # StoreMagics(Magics) configuration
 #------------------------------------------------------------------------------
 ## Lightweight persistence for python variables.
-#  
+#
 #  Provides the %store magic.
 
 ## If True, any %store-d variables will be automatically restored
