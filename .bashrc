@@ -54,7 +54,7 @@ alias e="emacs --no-window-system"
 alias ev="emacs --eval \"(add-hook 'find-file-hook (defun make-read-only () (setq buffer-read-only t)))\"" # open in read-only mode
 alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-number'
 alias less="less --mouse --raw-control-chars"
-alias la="ls --all"
+alias la="ls -a"
 alias ld="ls --directory */"
 alias ll="ls -l -h"
 alias mv="mv -i" # ask before overwriting
