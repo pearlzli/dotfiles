@@ -157,7 +157,9 @@
   (activate-input-method "TeX")
   (let ((quail-current-package (assoc "TeX" quail-package-alist)))
     ;; Add missing rules
-    (quail-define-rules ((append . t)) ("\\Phi" "Φ") ("\\bar" "̄") ("\\hi" "̅") ("\\lo" "̲"))
+    (quail-define-rules
+     ((append . t))
+     ("\\Phi" "Φ") ("\\bar" "̄") ("\\hat" "̂") ("\\til" "̃") ("\\hi" "̅") ("\\lo" "̲"))
 
     ;; Stop replacing {underscore,caret}-character combos with Unicode {sub,super}scripts
     ;; https://emacs.stackexchange.com/a/63011
