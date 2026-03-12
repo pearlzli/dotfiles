@@ -207,6 +207,11 @@ Group 4 matches the text inside the delimiters.")
 (with-eval-after-load 'python
   (define-key python-mode-map (kbd "C-c t") 'python-occur-functions))
 
+;; Add Julia-like tab-Unicode substitution
+(with-eval-after-load 'python
+  (require 'julia-mode)
+  (add-hook 'python-mode-hook (lambda () (local-set-key (kbd "TAB") #'julia-latexsub-or-indent))))
+
 ;; =========================================================
 ;; Stata
 ;; =========================================================
