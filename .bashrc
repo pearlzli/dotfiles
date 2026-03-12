@@ -55,7 +55,7 @@ alias ev="emacs --eval \"(add-hook 'find-file-hook (defun make-read-only () (set
 alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-number'
 alias less="less --mouse --raw-control-chars"
 alias la="ls -a"
-alias ld="ls --directory */"
+alias ld="ls -d */"
 alias ll="ls -l -h"
 alias mv="mv -i" # ask before overwriting
 alias mytop="top -user $USER"
