@@ -392,9 +392,6 @@
      ("paren" . t)
      ("titlepage"))))
  '(markdown-hide-urls t)
- '(package-selected-packages
-   (quote
-    (auctex beacon bind-key cl-lib csv-mode ess git-modes julia-mode markdown-mode pandoc-mode unfill xclip)))
  '(reftex-label-alist
    (quote
     (("assump" 84 "assump:" nil nil nil -3)
