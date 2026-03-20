@@ -307,7 +307,7 @@ maybe_mkdir "$HOME/.emacs.d/backup"
 cd "$HOME/.emacs.d"
 
 # Install emacs packages from package manager
-emacs --script "$dotfile_dir/elpa-install.el"
+emacs --script "$dotfile_dir/install-emacs-packages.el"
 
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
