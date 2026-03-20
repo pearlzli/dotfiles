@@ -14,7 +14,7 @@ To set up a new machine:
 
 4. Clone this repo **using the SSH protocol** (or else you'll have to type in your password to push later).
 
-5. Run `./init.sh path/to/dotfile/repo`. (If necessary, `chmod init.sh u+x` first.)
+5. Run `./set_up_machine.sh path/to/dotfile/repo`. (If necessary, `chmod set_up_machine.sh u+x` first.)
 
 6. Add things to .bashrc-local, like aliases and environment variables.
 

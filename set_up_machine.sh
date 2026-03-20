@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# init.sh
-#   Initialize (nearly) everything for a new machine. Install Homebrew (and use
-#   it to install other things) if on OS X, link dotfiles, and install Emacs
+# set_up_machine.sh
+#   Set up (nearly) everything for a new machine. Install Homebrew (and use
+#   it to install other things) if on MacOS, link dotfiles, and install Emacs
 #   packages.
 #
 #   Usage:
-#     ./init.sh path/to/dotfile/repo
+#     ./set_up_machine.sh path/to/dotfile/repo
 
 
 ################################################################################
