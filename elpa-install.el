@@ -19,6 +19,8 @@
 
 ; Install packages that aren't already installed
 ; https://stackoverflow.com/a/39891192
+; Don't automatically add packages installed by this script to package-selected-packages
+(advice-add 'package--save-selected-packages :override #'ignore)
 (dolist (pkg '(auctex
                beacon
                bind-key
@@ -35,3 +37,4 @@
     (condition-case err
         (package-install pkg)
       (error (message "Skipping %s: %s" pkg (error-message-string err))))))
+(advice-remove 'package--save-selected-packages #'ignore)
