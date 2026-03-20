@@ -19,18 +19,19 @@
 
 ; Install packages that aren't already installed
 ; https://stackoverflow.com/a/39891192
-; TODO: Some can't be installed because of emacs version requirements and will throw errors like "Package 'emacs-28.1' is unavailable"
-(setq package-selected-packages
-  '(auctex
-    beacon
-    bind-key
-    cl-lib
-    csv-mode
-    ess
-    git-modes
-    julia-mode
-    markdown-mode
-    pandoc-mode
-    unfill
-    xclip))
-(package-install-selected-packages)
+(dolist (pkg '(auctex
+               beacon
+               bind-key
+               cl-lib
+               csv-mode
+               ess
+               git-modes
+               julia-mode
+               markdown-mode
+               pandoc-mode
+               unfill
+               xclip))
+  (unless (package-installed-p pkg)
+    (condition-case err
+        (package-install pkg)
+      (error (message "Skipping %s: %s" pkg (error-message-string err))))))
