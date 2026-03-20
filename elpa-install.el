@@ -32,6 +32,5 @@
     markdown-mode
     pandoc-mode
     unfill
-    use-package
     xclip))
 (package-install-selected-packages)

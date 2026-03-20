@@ -66,9 +66,7 @@
 
 ; Add custom font specifier commands
 ; https://tex.stackexchange.com/a/239547
-(use-package latex
-  :ensure auctex
-  :config
+(with-eval-after-load 'latex
   (add-to-list 'LaTeX-font-list '(?\C-l "\\lstinline{" "}")))
 
 ; Set font colors
