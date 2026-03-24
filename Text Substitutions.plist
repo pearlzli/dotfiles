@@ -10,6 +10,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>≈</string>
+		<key>shortcut</key>
+		<string>\approx</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>̅</string>
 		<key>shortcut</key>
 		<string>\bar</string>
@@ -52,6 +58,18 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>↓</string>
+		<key>shortcut</key>
+		<string>\downarrow</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>ℓ</string>
+		<key>shortcut</key>
+		<string>\ell</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>ϵ</string>
 		<key>shortcut</key>
 		<string>\epsilon</string>
@@ -82,6 +100,12 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>̅</string>
+		<key>shortcut</key>
+		<string>\hi</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>⟺</string>
 		<key>shortcut</key>
 		<string>\iff</string>
@@ -97,6 +121,12 @@
 		<string>∈</string>
 		<key>shortcut</key>
 		<string>\in</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∞</string>
+		<key>shortcut</key>
+		<string>\infty</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -130,15 +160,39 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>̲</string>
+		<key>shortcut</key>
+		<string>\lo</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>μ</string>
 		<key>shortcut</key>
 		<string>\mu</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>∇</string>
+		<key>shortcut</key>
+		<string>\nabla</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>¬</string>
+		<key>shortcut</key>
+		<string>\neg</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>≠</string>
 		<key>shortcut</key>
 		<string>\neq</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string≯</string>
+		<key>shortcut</key>
+		<string>\not</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -160,9 +214,15 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>̅</string>
+		<string>∂</string>
 		<key>shortcut</key>
-		<string>\over</string>
+		<string>\partial</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>⟂</string>
+		<key>shortcut</key>
+		<string>\perp</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -181,6 +241,12 @@
 		<string>∏</string>
 		<key>shortcut</key>
 		<string>\prod</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∝</string>
+		<key>shortcut</key>
+		<string>\propto</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -238,15 +304,21 @@
 	</dict>
 	<dict>
 		<key>phrase</key>
+		<string>×</string>
+		<key>shortcut</key>
+		<string>\times</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
 		<string>→</string>
 		<key>shortcut</key>
 		<string>\to</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
-		<string>̲</string>
+		<string>↑</string>
 		<key>shortcut</key>
-		<string>\under</string>
+		<string>\uparrow</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
@@ -259,6 +331,12 @@
 		<string>ε</string>
 		<key>shortcut</key>
 		<string>\varepsilon</string>
+	</dict>
+	<dict>
+		<key>phrase</key>
+		<string>∅</string>
+		<key>shortcut</key>
+		<string>\varnothing</string>
 	</dict>
 	<dict>
 		<key>phrase</key>
