@@ -60,9 +60,6 @@ alias ll="ls -l -h"
 alias mv="mv -i" # ask before overwriting
 alias mytop="top -user $USER"
 
-# Hide files from ls
-LS_HIDE="--hide='*.aux' --hide='*.bbl' --hide='*.blg' --hide='*.fls' --hide='*.log' --hide='*.nav' --hide='*.out' --hide='*.snm' --hide='*.thm' --hide='*.toc' --hide='*~'"
-
 # Show directory names in light blue
 export LS_COLORS=$LS_COLORS'di=1;34:'
 
@@ -83,7 +80,7 @@ case $OSTYPE in
         fi
         ;;
     linux*)
-        alias ls="ls --color=auto --group-directories-first $LS_HIDE"
+        alias ls="ls --color=auto --group-directories-first"
         ;;
     *) ;;
 esac
