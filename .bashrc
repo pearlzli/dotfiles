@@ -53,7 +53,6 @@ alias cp="cp -i" # ask before overwriting
 alias e="emacs --no-window-system"
 alias ev="emacs --eval \"(add-hook 'find-file-hook (defun make-read-only () (setq buffer-read-only t)))\"" # open in read-only mode
 alias grep='grep --binary-files=without-match --color=auto --ignore-case --line-number'
-alias less="less --mouse --raw-control-chars"
 alias la="ls -a"
 alias ld="ls -d */"
 alias ll="ls -l -h"
@@ -65,7 +64,10 @@ export LS_COLORS=$LS_COLORS'di=1;34:'
 
 # OS-specific command aliases
 case $OSTYPE in
-    darwin*) # OS X
+    darwin*) # MacOS
+        alias less="less --mouse --raw-control-chars"
+
+        # -G = enable colorized output, equivalent to defining COLORTERM (set to "" above) and setting --color=auto
         alias ls="ls -G"
 
         alias acrobat="open -a Adobe\ Acrobat.app"
@@ -80,6 +82,7 @@ case $OSTYPE in
         fi
         ;;
     linux*)
+        alias less="less --raw-control-chars"
         alias ls="ls --color=auto --group-directories-first"
         ;;
     *) ;;
