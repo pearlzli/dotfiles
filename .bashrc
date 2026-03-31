@@ -37,6 +37,9 @@ parse_python_venv() {
     if [[ -n "$VIRTUAL_ENV" ]]; then
         rel_venv="$(perl -le 'use File::Spec; print File::Spec->abs2rel(@ARGV)' $VIRTUAL_ENV $pwd)"
         echo "($rel_venv) "
+    elif [[ -n "$CONDA_PREFIX" ]]; then
+        rel_venv="$(perl -le 'use File::Spec; print File::Spec->abs2rel(@ARGV)' $CONDA_PREFIX $pwd)"
+        echo "($rel_venv) "
     fi
 }
 export VIRTUAL_ENV_DISABLE_PROMPT=1

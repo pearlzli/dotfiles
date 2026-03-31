@@ -1,0 +1,3 @@
+# Don't prepend activated environment to PS1
+# https://docs.conda.io/projects/conda/en/latest/user-guide/configuration/settings.html#changeps1-change-command-prompt
+changeps1: False
