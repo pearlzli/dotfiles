@@ -32,7 +32,8 @@
                markdown-mode
                pandoc-mode
                unfill
-               xclip))
+               xclip
+               yaml-mode))
   (unless (package-installed-p pkg)
     (condition-case err
         (package-install pkg)
