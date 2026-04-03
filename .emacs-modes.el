@@ -1,4 +1,11 @@
 ;; =========================================================
+;; CSV
+;; =========================================================
+
+;; Automatically go into align mode
+(add-hook 'csv-mode-hook 'csv-align-mode)
+
+;; =========================================================
 ;; Diffing and merging
 ;; =========================================================
 
@@ -44,11 +51,16 @@
   (setq ediff-split-window-function 'split-window-horizontally))
 
 ;; =========================================================
-;; CSVs
+;; Julia
 ;; =========================================================
 
-;; Automatically go into align mode
-(add-hook 'csv-mode-hook 'csv-align-mode)
+(defun julia-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
+  "Show a table of contents of function definitions for the current document."
+  (interactive) (occur "^function") (other-window 1))
+(with-eval-after-load 'julia-mode
+  (define-key julia-mode-map (kbd "C-c t") 'julia-occur-functions))
+(add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
+(add-hook 'julia-mode-hook (lambda () (setq display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
 ;; =========================================================
 ;; LaTeX
@@ -181,18 +193,6 @@ Group 4 matches the text inside the delimiters.")
 (with-eval-after-load 'pandoc-mode
   (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
   (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
-
-;; =========================================================
-;; Julia
-;; =========================================================
-
-(defun julia-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
-  "Show a table of contents of function definitions for the current document."
-  (interactive) (occur "^function") (other-window 1))
-(with-eval-after-load 'julia-mode
-  (define-key julia-mode-map (kbd "C-c t") 'julia-occur-functions))
-(add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
-(add-hook 'julia-mode-hook (lambda () (setq display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
 ;; =========================================================
 ;; Python
