@@ -266,17 +266,8 @@
   (setq column-number-indicator-zero-based nil))
 
 ;; Show line numbers
-;; Set default max line width to 80 characters
 (global-display-line-numbers-mode t)
-(setq-default fill-column 80)
-(defun toggle-line-numbers-and-fill-column-indicator ()
-  "Toggle line numbers and fill column indicator for tmux copy-paste."
-  (interactive)
-  (display-line-numbers-mode 'toggle)
-  (if (bound-and-true-p display-fill-column-indicator-in-mode)
-      (display-fill-column-indicator-mode 'toggle)
-      ()))
-(bind-key* "C-x l" 'toggle-line-numbers-and-fill-column-indicator)
+(bind-key* "C-x l" 'display-line-numbers-mode)
 
 ;; Unique buffer names, e.g. filename<dir1> and filename<dir2>
 (require 'uniquify)

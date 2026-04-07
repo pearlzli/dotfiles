@@ -65,8 +65,6 @@
   (interactive) (occur "^function") (other-window 1))
 (with-eval-after-load 'julia-mode
   (define-key julia-mode-map (kbd "C-c t") 'julia-occur-functions))
-(add-hook 'julia-mode-hook (lambda () (setq fill-column 92)))
-(add-hook 'julia-mode-hook (lambda () (setq display-fill-column-indicator-in-mode t))) ; checked by toggle-line-numbers-and-fill-column-indicator
 
 ;; =========================================================
 ;; LaTeX
