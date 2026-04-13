@@ -305,22 +305,3 @@ emacs --script "$dotfile_dir/install-emacs-packages.el"
 # Emacs Stata mode
 $my_timeout git clone "https://github.com/louabill/ado-mode.git"
 timeout_result "$?" "ado-mode"
-
-# Tmux plugin manager
-if is_installed tmux; then
-    if is_installed bc; then
-        tpmdir="$HOME/.tmux/plugins/tpm"
-        if [ -d "$tpmdir" ]; then
-            echo "${red}Didn't install tmux plugin manager: directory already exists${normal}"
-        elif [ $(echo "$TMUX_VERSION < 1.9" | bc) -eq 1 ]; then
-            echo "${red}Didn't install tmux plugin manager: need at least tmux version 1.9${normal}"
-        else
-            $my_timeout git clone "https://github.com/tmux-plugins/tpm" "$tpmdir"
-        fi
-    else
-        echo "${red}bc is not installed; needed to compare tmux versions${normal}"
-        echo "${red}Didn't install tmux plugin manager: couldn't compare tmux versions${normal}"
-    fi
-else
-    echo "${red}Didn't install tmux plugin manager: make sure tmux is installed and re-run init.sh${normal}"
-fi
