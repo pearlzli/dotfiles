@@ -155,7 +155,6 @@ case $OSTYPE in
         brew install git
         brew install ipython
         brew install jupyterlab
-        brew install pandoc
         brew install pdfsandwich
         brew install python
         brew install rename
@@ -286,12 +285,6 @@ if is_installed kpsewhich; then
 else
     echo "${red}Didn't link TeX files: make sure /Library/TeX/texbin is in PATH and re-run init.sh${normal}"
 fi
-
-# Pandoc templates
-maybe_mkdir "$HOME/.pandoc"
-maybe_mkdir "$HOME/.pandoc/templates"
-cd "$HOME/.pandoc/templates"
-try_symlink "pandoc/templates/GitHub.html5" "GitHub.html5"
 
 
 ################################################################################

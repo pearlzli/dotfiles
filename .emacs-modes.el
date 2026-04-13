@@ -134,7 +134,6 @@
 (setq markdown-asymmetric-header t)
 (setq markdown-enable-math t)
 (setq markdown-list-indent-width 2)
-(add-hook 'markdown-mode-hook 'pandoc-mode)
 (defconst markdown-regex-highlight
   "\\(?1:^\\|[^\\]\\)\\(?2:\\(?3:<mark>\\)\\(?4:[^ \n\t\\]\\|[^ \n\t]\\(?:.\\|\n[^\n]\\)*?[^\\ ]\\)\\(?5:</mark>\\)\\)"
   "Regular expression for matching highlighted (marked) text.
@@ -181,22 +180,6 @@ Group 4 matches the text inside the delimiters.")
   (define-key markdown-mode-map (kbd "C-c t") 'markdown-occur-headings)
   (define-key markdown-mode-map (kbd "C-c C-p") 'markdown-outline-previous-same-level)
   (define-key markdown-mode-map (kbd "C-c C-n") 'markdown-outline-next-same-level))
-
-;; =========================================================
-;; Pandoc
-;; =========================================================
-
-;; Notes on pandoc-{revert,load-default}-settings:
-;; - In theory, load-default should look for local settings first, then global settings
-;; - In practice, only global settings are read, so need to call revert
-;; - Must add hooks in (revert, load-default) order so that they're run in (load-default, revert) order
-(setq pandoc-data-dir "~/dotfiles/pandoc/pandoc-mode")
-(setq pandoc-pdf-viewer "skim")
-(add-hook 'pandoc-mode-hook 'pandoc-revert-settings)       ; see notes above
-(add-hook 'pandoc-mode-hook 'pandoc-load-default-settings) ;
-(with-eval-after-load 'pandoc-mode
-  (define-key pandoc-mode-map (kbd "C-c C-c") 'pandoc-run-pandoc)        ; use AUCTeX-like key bindings
-  (define-key pandoc-mode-map (kbd "C-c C-v") 'pandoc-view-output))      ;
 
 ;; =========================================================
 ;; Python
