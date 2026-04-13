@@ -142,20 +142,20 @@ function timeout_result {
 case $OSTYPE in
     darwin*) # MacOS
         if ! is_installed brew; then
-            # Install brew
+            # Install Homebrew
             /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-            # Add brew to PATH
+            # Add Homebrew to PATH
             echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> "$HOME/.profile"
             eval "$(/opt/homebrew/bin/brew shellenv)"
         fi
 
-        brew install coreutils
+        brew install coreutils # GNU file, shell, and text utilities
         brew install emacs
         brew install git
         brew install ipython
         brew install jupyterlab
-        brew install pdfsandwich
+        brew install pdfsandwich # PDF OCR
         brew install python
         brew install rename
         brew install tmux
