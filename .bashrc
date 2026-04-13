@@ -14,11 +14,8 @@ export COLORTERM=""
 # Set default editor for command-line programs
 export EDITOR="emacs"
 
-# Cache tmux and ruby versions: https://stackoverflow.com/a/40902312/2756250
-# Only if tmux/ruby commands exist: https://stackoverflow.com/a/677212
-if command -v ruby &> /dev/null; then
-    export RUBY_VERSION="$(ruby -v | sed -En "s/^ruby ([0-9]+(.[0-9]+)(.[0-9]+)).*/\1/p")"
-fi
+# Cache tmux version: https://stackoverflow.com/a/40902312/2756250
+# Only if tmux command exists: https://stackoverflow.com/a/677212
 if command -v tmux &> /dev/null; then
     export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
 fi
