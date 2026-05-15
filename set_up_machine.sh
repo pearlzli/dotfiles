@@ -244,6 +244,11 @@ chmod u+x "$dotfile_dir/pre-commit"
 cd "$dotfile_dir/.git/hooks"
 try_symlink "pre-commit"
 
+# Claude Code startup
+maybe_mkdir "$HOME/.claude"
+cd "$HOME/.claude"
+try_symlink "claude-keymap.json" "keybindings.json"
+
 # Julia startup
 maybe_mkdir "$HOME/.julia/config"
 cd "$HOME/.julia/config"
