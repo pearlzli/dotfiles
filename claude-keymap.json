@@ -6,9 +6,9 @@
       "context": "Global",
       "bindings": {
         "ctrl+t": "app:toggleTodos",
-        "ctrl+o": "app:toggleTranscript",
+        "ctrl+o": null,
+        "ctrl+shift+o": "app:toggleTranscript",
         "ctrl+shift+b": "app:toggleBrief",
-        "ctrl+shift+o": "app:toggleTeammatePreview",
         "ctrl+r": "history:search"
       }
     },
@@ -27,12 +27,13 @@
         "ctrl+j": "chat:newline",
         "up": "history:previous",
         "down": "history:next",
-        "ctrl+_": "chat:undo",
-        "ctrl+-": "chat:undo",
-        "ctrl+shift+-": "chat:undo",
-        "ctrl+shift+_": "chat:undo",
+        "ctrl+_": null,
+        "ctrl+-": null,
+        "ctrl+shift+-": null,
+        "ctrl+shift+_": null,
+        "ctrl+x u": "chat:undo",
         "ctrl+x ctrl+e": "chat:externalEditor",
-        "ctrl+g": "chat:externalEditor",
+        "ctrl+g": null,
         "ctrl+s": "chat:stash",
         "ctrl+v": "chat:imagePaste",
         "space": "voice:pushToTalk"
@@ -153,7 +154,6 @@
         "ctrl+home": "scroll:top",
         "ctrl+end": "scroll:bottom",
         "ctrl+shift+c": "selection:copy",
-        "cmd+c": "selection:copy",
         "shift+left": "selection:extendLeft",
         "shift+right": "selection:extendRight",
         "shift+up": "selection:extendUp",
