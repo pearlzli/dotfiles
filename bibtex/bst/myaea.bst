@@ -964,6 +964,7 @@ FUNCTION {techreport}
   output.list.label % write author or surrogate label
   output.year
   output.title.quoted
+  output.url % PZL 2026-05-26
   author "author" required
   title "title" required
   institution "institution" required
