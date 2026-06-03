@@ -645,7 +645,20 @@ FUNCTION {format.editors.primary}
 FUNCTION {format.editors.secondary}
 { editor empty$
     { "" }
-    { ", ed. " editor format.names.forward *}
+    % { ", ed. " editor format.names.forward *}         % PZL 2023-06-21
+    { volume empty$                                     %
+        { series empty$                                 %
+            { edition empty$                            %
+              { "Ed. " editor format.names.forward *}   %
+              { ", ed. " editor format.names.forward *} %
+              if$                                       %
+            }                                           %
+            { ", ed. " editor format.names.forward *}   %
+            if$                                         %
+        }                                               %
+      { ", ed. " editor format.names.forward *}         %
+      if$                                               %
+    }                                                   %
     if$
 }
 
