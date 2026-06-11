@@ -7,7 +7,7 @@
       "bindings": {
         "ctrl+t": "app:toggleTodos",
         "ctrl+o": null,
-        "ctrl+shift+o": "app:toggleTranscript",
+        "meta+l": "app:toggleTranscript",
         "ctrl+shift+b": "app:toggleBrief",
         "ctrl+r": "history:search"
       }
