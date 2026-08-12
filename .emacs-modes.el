@@ -110,6 +110,13 @@
      ("subparagraph" . 6)
      ("frametitle" . -5))) ; negative level is unnumbered version of positive value
 
+; BibTeX
+(defun bibtex-occur-citation-keys () ; https://stackoverflow.com/a/24994254/2756250
+  "Show a table of contents of citation keys for the current document."
+  (interactive) (occur "^@") (other-window 1))
+(with-eval-after-load 'bibtex
+  (define-key bibtex-mode-map (kbd "C-c t") 'bibtex-occur-citation-keys))
+
 ; Beamer
 (setq LaTeX-beamer-item-overlay-flag nil) ; don't ask for itemize overlay in Beamer (https://emacs.stackexchange.com/a/7573/14500)
 (defun LaTeX-beamer-replace-frametitle ()
