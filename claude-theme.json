@@ -1,0 +1,7 @@
+{
+  "name": "my-theme",
+  "base": "dark",
+  "overrides": {
+    "userMessageBackground": "rgb(55, 55, 85)"
+  }
+}

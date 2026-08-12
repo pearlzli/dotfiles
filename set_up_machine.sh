@@ -249,6 +249,9 @@ try_symlink "pre-commit"
 maybe_mkdir "$HOME/.claude"
 cd "$HOME/.claude"
 try_symlink "claude-keymap.json" "keybindings.json"
+maybe_mkdir "$HOME/.claude/themes"
+cd "$HOME/.claude/themes"
+try_symlink "claude-theme.json" "my-theme.json"
 
 # Julia startup
 maybe_mkdir "$HOME/.julia/config"
