@@ -163,6 +163,7 @@ case $OSTYPE in
         brew install wget
         brew install --cask lyx
         brew install --cask mactex
+        brew install --cask markedit # Markdown editor/previewer
         brew install --cask skim
 
         # The following are easier to build using Brew than in Julia
