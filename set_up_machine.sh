@@ -159,6 +159,7 @@ case $OSTYPE in
         brew install python
         brew install rename
         brew install tmux
+        brew install uv # Python package manager
         brew install wget
         brew install --cask lyx
         brew install --cask mactex
