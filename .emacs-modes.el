@@ -192,12 +192,12 @@ Group 4 matches the text inside the delimiters.")
 ;; Python
 ;; =========================================================
 
-(defun python-occur-functions () ; https://stackoverflow.com/a/24994254/2756250
-  "Show a table of contents of function definitions for the current document."
-  (interactive) (occur "^def") (other-window 1))
+(defun python-occur-functions-and-classes () ; https://stackoverflow.com/a/24994254/2756250
+  "Show a table of contents of function and class definitions for the current document."
+  (interactive) (occur "\\bdef\\b\\|^class\\b") (other-window 1))
 (setq python-indent-guess-indent-offset-verbose nil) ; https://stackoverflow.com/a/51966682/2756250
 (with-eval-after-load 'python
-  (define-key python-mode-map (kbd "C-c t") 'python-occur-functions))
+  (define-key python-mode-map (kbd "C-c t") 'python-occur-functions-and-classes))
 
 ;; Add Julia-like tab-Unicode substitution
 (with-eval-after-load 'python
