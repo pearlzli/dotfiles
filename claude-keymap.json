@@ -16,6 +16,7 @@
       "context": "Chat",
       "bindings": {
         "escape": "chat:cancel",
+        "ctrl+g": "chat:cancel",
         "ctrl+l": "chat:clearInput",
         "cmd+k": "chat:clearScreen",
         "ctrl+x ctrl+k": "chat:killAgents",
@@ -33,7 +34,6 @@
         "ctrl+shift+_": null,
         "ctrl+x u": "chat:undo",
         "ctrl+x ctrl+e": "chat:externalEditor",
-        "ctrl+g": null,
         "ctrl+s": "chat:stash",
         "ctrl+v": "chat:imagePaste",
         "space": "voice:pushToTalk"
@@ -44,6 +44,7 @@
       "bindings": {
         "tab": "autocomplete:accept",
         "escape": "autocomplete:dismiss",
+        "ctrl+g": "autocomplete:dismiss",
         "up": "autocomplete:previous",
         "down": "autocomplete:next"
       }
@@ -52,6 +53,7 @@
       "context": "Settings",
       "bindings": {
         "escape": "confirm:no",
+        "ctrl+g": "confirm:no",
         "up": "select:previous",
         "down": "select:next",
         "k": null,
@@ -81,6 +83,7 @@
         "n": "confirm:no",
         "enter": "confirm:yes",
         "escape": "confirm:no",
+        "ctrl+g": "confirm:no",
         "up": "confirm:previous",
         "down": "confirm:next",
         "tab": "confirm:nextField",
@@ -103,6 +106,7 @@
       "bindings": {
         "ctrl+e": "transcript:toggleShowAll",
         "escape": "transcript:exit",
+        "ctrl+g": "transcript:exit",
         "q": "transcript:exit",
         "ctrl+n": "scroll:lineDown",
         "ctrl+p": "scroll:lineUp",
@@ -160,7 +164,8 @@
     {
       "context": "Help",
       "bindings": {
-        "escape": "help:dismiss"
+        "escape": "help:dismiss",
+        "ctrl+g": "help:dismiss"
       }
     },
     {
@@ -171,7 +176,8 @@
         "backspace": "attachments:remove",
         "delete": "attachments:remove",
         "down": "attachments:exit",
-        "escape": "attachments:exit"
+        "escape": "attachments:exit",
+        "ctrl+g": "attachments:exit"
       }
     },
     {
@@ -184,7 +190,8 @@
         "right": "footer:next",
         "left": "footer:previous",
         "enter": "footer:openSelected",
-        "escape": "footer:clearSelection"
+        "escape": "footer:clearSelection",
+        "ctrl+g": "footer:clearSelection"
       }
     },
     {
@@ -211,6 +218,7 @@
       "context": "DiffDialog",
       "bindings": {
         "escape": "diff:dismiss",
+        "ctrl+g": "diff:dismiss",
         "left": "diff:previousSource",
         "right": "diff:nextSource",
         "up": "diff:previousFile",
@@ -239,7 +247,8 @@
         "home": "select:first",
         "end": "select:last",
         "enter": "select:accept",
-        "escape": "select:cancel"
+        "escape": "select:cancel",
+        "ctrl+g": "select:cancel"
       }
     },
     {
