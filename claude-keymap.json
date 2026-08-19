@@ -21,7 +21,8 @@
                 "cmd+k": "chat:clearScreen",
                 "ctrl+x ctrl+k": "chat:killAgents",
                 "shift+tab": "chat:cycleMode",
-                "meta+p": "chat:modelPicker",
+                "meta+p": null,
+                "meta+m": "chat:modelPicker",
                 "meta+o": "chat:fastMode",
                 "meta+t": "chat:thinkingToggle",
                 "enter": "chat:newline",
@@ -67,7 +68,7 @@
                 "d": "settings:periodDay",
                 "w": "settings:periodWeek",
                 "t": "settings:sortByTokens",
-                "ctrl+u": "scroll:halfPageUp"
+                "ctrl+u": null
             }
         },
         {
@@ -148,10 +149,13 @@
             "bindings": {
                 "wheelup": "scroll:lineUp",
                 "wheeldown": "scroll:lineDown",
-                "meta+v": "scroll:pageUp",
-                "ctrl+v": "scroll:pageDown",
+                "meta+p": "scroll:halfPageUp",
+                "meta+n": "scroll:halfPageDown",
+                "meta+v": "scroll:fullPageUp",
+                "ctrl+v": "scroll:fullPageDown",
                 "home": "scroll:top",
                 "end": "scroll:bottom",
+                "ctrl+g": "scroll:bottom",
                 "ctrl+shift+c": "selection:copy",
                 "shift+left": "selection:extendLeft",
                 "shift+right": "selection:extendRight",
