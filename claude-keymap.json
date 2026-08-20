@@ -15,8 +15,8 @@
         {
             "context": "Chat",
             "bindings": {
-                "escape": "chat:cancel",
-                "ctrl+g": "chat:cancel",
+                "escape": null,
+                "ctrl+c": "chat:cancel",
                 "ctrl+l": "chat:clearInput",
                 "cmd+k": "chat:clearScreen",
                 "ctrl+x ctrl+k": "chat:killAgents",
