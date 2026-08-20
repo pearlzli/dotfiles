@@ -249,6 +249,7 @@ try_symlink "pre-commit"
 # Claude Code startup
 maybe_mkdir "$HOME/.claude"
 cd "$HOME/.claude"
+try_symlink "CLAUDE.md" "CLAUDE.md"
 try_symlink "claude-keymap.json" "keybindings.json"
 maybe_mkdir "$HOME/.claude/themes"
 cd "$HOME/.claude/themes"
