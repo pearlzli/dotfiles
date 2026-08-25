@@ -30,6 +30,7 @@
                git-modes
                julia-mode
                markdown-mode
+               pandoc-mode
                unfill
                xclip
                yaml-mode))
