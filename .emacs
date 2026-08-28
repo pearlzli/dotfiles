@@ -211,6 +211,15 @@
           (set-buffer-modified-p nil))))))
 (bind-key* "C-c R" 'rename-file-and-buffer)
 
+;; Clean handwriting converted to text
+(defun clean-handwriting()
+  "Clean handwriting converted to text."
+  (interactive)
+  (let ((filename (buffer-file-name)))
+    (progn
+      (shell-command (format "~/dotfiles/clean_handwriting.sh %s" filename))
+      (revert-buffer-no-confirm))))
+
 ;; Zoom in and out of panes like tmux zoom
 ;; https://github.com/kaushalmodi/.emacs.d/blob/master/setup-files/setup-windows-buffers.el#L481-L501
 (defvar toggle-zoom-buffer--buffer-name nil
