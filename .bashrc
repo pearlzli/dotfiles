@@ -75,10 +75,15 @@ case $OSTYPE in
         alias skim="open -a Skim.app"
         alias textedit="open -a TextEdit.app"
 
-        # Stop Skim asking about auto-reloading
-        # https://tex.stackexchange.com/a/43060/116532
+        # Skim hidden preferences
         if [ -d "/Applications/Skim.app" ]; then
+            # Stop asking about auto-reloading
+            # https://tex.stackexchange.com/a/43060/116532
             defaults write -app Skim SKAutoReloadFileUpdate -boolean true
+
+            # Show top toolbar in fullscreen mode
+            # https://sourceforge.net/p/skim-app/wiki/Hidden_Preferences/#h-full-screen-behavior
+            defaults write -app Skim SKShowToolbarInFullScreen -integer 1
         fi
         ;;
     linux*)
