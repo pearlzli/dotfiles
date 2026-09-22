@@ -8,9 +8,20 @@ fi
 infile="$(realpath $1)"
 
 # Line breaks
-echo -n "$(tr -d "\n" < $infile)" > $infile # remove newlines
+ETX=$'\x03' # marks a blank line to preserve (vs. one deleted as an artifact below)
+NL=$'\x04'  # marks a newline to restore (vs. one joined into a space below)
+sed -I "" -E \
+    -e ':a' -e '$!{N;ba' -e '}' \
+    -e "s/\\n+([•◦])/\\1/g" \
+    -e "s/^\\n+/${NL}${ETX}${NL}/" \
+    -e "s/\\n{2,}/${NL}${ETX}${NL}/g" \
+    -e 's/-\n/-/g' \
+    -e 's/\n/ /g' \
+    -e "s/${NL}/\\n/g" \
+    $infile # join wrapped lines with a space (no space after a hyphenated word break); no break before bullets; preserve a blank line before un-bulleted headings
 sed -I "" -E "s/[•◦]/\n*/g" $infile # add line breaks before bullets; normalize both bullet chars to *
-sed -I "" "/^$/d" $infile # remove empty lines
+sed -I "" "/^$/d" $infile # remove empty lines (artifacts only; preserved heading blanks carry the ETX marker)
+sed -I "" -E "s/^${ETX}\$//" $infile # restore the preserved blank line
 
 # Tidy TeX
 sed -I "" -E "s/[[:space:]]*\^/\^/g" $infile # remove spaces before ^
