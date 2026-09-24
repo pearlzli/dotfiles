@@ -59,6 +59,10 @@ alias ll="ls -l -h"
 alias mv="mv -i" # ask before overwriting
 alias mytop="top -user $USER"
 
+function ed {
+    emacs --eval "(ediff-files \"$1\" \"$2\")"
+}
+
 # Show directory names in light blue
 export LS_COLORS=$LS_COLORS'di=1;34:'
 
