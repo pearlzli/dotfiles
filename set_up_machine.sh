@@ -255,6 +255,18 @@ try_symlink "claude-keymap.json" "keybindings.json"
 maybe_mkdir "$HOME/.claude/themes"
 cd "$HOME/.claude/themes"
 try_symlink "claude-theme.json" "my-theme.json"
+maybe_mkdir "$HOME/.claude/skills"
+cd "$HOME/.claude/skills"
+for skill_dir in "$dotfile_dir"/claude-skills/*/; do
+    [ -d "$skill_dir" ] || continue
+    skill=$(basename "$skill_dir")
+    # ln -s into an existing real directory would nest the link inside it
+    if [ -d "$skill" ] && [ ! -L "$skill" ]; then
+        echo "${red}Did not link $(pwd)/$skill: non-symlink directory already exists. Merge $skill into $dotfile_dir/claude-skills/$skill first and then delete $skill before retrying${normal}"
+    else
+        try_symlink "claude-skills/$skill" "$skill"
+    fi
+done
 
 # Julia startup
 maybe_mkdir "$HOME/.julia/config"
