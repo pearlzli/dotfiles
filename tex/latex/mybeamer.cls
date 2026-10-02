@@ -1,4 +1,6 @@
-%%% 1. Class options
+% ==========================================================
+% Class options
+% ==========================================================
 
 % See https://www.overleaf.com/learn/latex/Writing_your_own_class#Options
 
@@ -24,8 +26,9 @@
 % Disable automatic theorem definitions (https://tex.stackexchange.com/a/285558/116532)
 \LoadClass[aspectratio=169,notheorems,10pt]{beamer}
 
-
-%%% 2. Appearance
+% ==========================================================
+% Appearance
+% ==========================================================
 
 % Use light blue colortheme
 \usecolortheme{seahorse}
@@ -98,8 +101,9 @@
 \setbeamertemplate{section in toc}[sections numbered]
 \setbeamertemplate{subsection in toc}[subsections numbered]
 
-
-%%% 3. Miniframes
+% ==========================================================
+% Miniframes
+% ==========================================================
 
 % These are called by \AtBeginSection and \AtBeginSubsection
 % So they need to be defined outside of \if@miniframes
@@ -169,13 +173,9 @@
   \setbeamertemplate{footline}[frame number]
 \fi
 
-
-%%% 4. Environments
-
-% Box theorems and definitions
-\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
-\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
-\newcommand{\theoremcite}[1]{{\hypersetup{citecolor=white}\citealt{#1}}}
+% ==========================================================
+% Environments
+% ==========================================================
 
 % List styles
 \setbeamertemplate{itemize items}[circle] % circular bullets for all items
@@ -187,8 +187,6 @@
 \newenvironment{wideenumerate}{\enumerate\addtolength{\itemsep}{\baselineskip}}{\endenumerate}
 
 % Blocks
-% \setbeamertemplate{blocks}[default][shadow=false]
-
 \setbeamercolor{block title alerted}{bg=white,fg=black}
 \setbeamercolor{block body alerted}{bg=white}
 \AtBeginEnvironment{alertblock}{
@@ -227,8 +225,42 @@
   \begin{exampleblock}{#1}#2\end{exampleblock}
 }}
 
+% Boxes
+\usepackage[most]{tcolorbox}
+\newtcolorbox{tboxindigo}[1][]{
+  enhanced,
+  breakable,
+  colback=indigo!10,
+  colframe=indigo,
+  boxrule=1.2pt,
+  arc=6pt,
+  left=10pt, right=10pt, top=6pt, bottom=6pt,
+  #1
+}
 
-%%% 5. Other
+% Box theorems and definitions
+\setbeamercolor{block title}{use=structure,fg=white,bg=structure.fg!75!black}
+\setbeamercolor{block body}{parent=normal text,use=block title,bg=block title.bg!10!bg}
+\newcommand{\theoremcite}[1]{{\hypersetup{citecolor=white}\citealt{#1}}}
+
+% ==========================================================
+% Fonts
+% ==========================================================
+
+% Slightly-off-standard font sizes
+\newcommand{\notsolarge}[0]{\fontsize{11.5}{11.5}\selectfont}
+\newcommand{\notsoscript}[0]{\fontsize{9.5}{9.5}\selectfont}
+\newcommand{\notsotiny}[0]{\fontsize{7}{7}\selectfont}
+
+% Defines \justifying
+\usepackage{ragged2e}
+
+% Reduce block heading and body sizes
+\newcommand{\blsmall}{\small\setbeamerfont{block title}{size=\normalsize}}
+
+% ==========================================================
+% Other
+% ==========================================================
 
 % Load mystyle.sty
 \usepackage{mystyle}
@@ -255,6 +287,12 @@
 % https://tex.stackexchange.com/a/426090/116532
 \makeatletter
 \let\@@magyar@captionfix\relax
+\makeatother
+
+% Fix hyperref bug affecting natbib
+% https://tex.stackexchange.com/a/762077/116532
+\makeatletter
+\def\hyper@natlinkbreak#1#2{#1}
 \makeatother
 
 % Open PDFs in full page mode
