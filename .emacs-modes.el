@@ -48,7 +48,12 @@
   (set-face-foreground 'ediff-odd-diff-A "black")
   (set-face-foreground 'ediff-odd-diff-B "black")
   (set-face-foreground 'ediff-odd-diff-C "black")
-  (setq ediff-split-window-function 'split-window-horizontally))
+  (setq ediff-split-window-function 'split-window-horizontally)
+  ;; ediff-mode-map is rebuilt for each session, so bind keys from this hook
+  (add-hook 'ediff-keymap-setup-hook
+            (lambda ()
+              (define-key ediff-mode-map (kbd "M-r")
+                (lambda () (interactive) (ediff-revert-buffers-then-recompute-diffs t))))))
 
 ;; =========================================================
 ;; HTML
