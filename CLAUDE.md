@@ -18,6 +18,27 @@ def g():
     """
 ```
 
+In Julia docstrings, put the signature on its own line, then a blank line, then the description. The signature counts as its own paragraph, so every Julia docstring is multiline, with the triple quotes on their own lines. Never write `"""`f(x)`: does something."""`. For a single method, wrap the signature in one pair of backticks; for several methods, use a code block with one signature per line.
+
+````julia
+"""
+`merge_st(y::AxisArray)`
+
+Description.
+"""
+
+"""
+```
+f(x::Int)
+f(x::Float64, y)
+```
+
+Description.
+"""
+````
+
+Keep docstrings and comments self-contained: describe what the code itself does. Mention another function, type, setting, or variable only when it's essential to understanding the code (e.g. an argument's type, or a key the function reads or writes). No "see `foo`" pointers, no contrasts like "as opposed to `Bar`", and no notes on which other function consumes the result; such references go stale whenever names or structure change.
+
 ## Blank lines
 
 Never leave two or more blank lines in a row. One blank line is the largest gap, everywhere — between top-level definitions, before section-header comments, and inside function bodies.
@@ -61,3 +82,15 @@ items = [
 # Single line, so no trailing comma
 items = [1, 2, 3]
 ```
+
+# Julia
+
+## Packages
+
+Never install Julia packages (`Pkg.add` or otherwise) on my behalf, in a project environment or a scratch one. Write the code and the `using` line, then tell me which package to install.
+
+## Scripts outside the repo
+
+`include("x.jl")` resolves a relative path against the directory of the calling file, not the working directory, so `cd(...)` beforehand doesn't help. Scratch scripts outside the repo must include project code by absolute path, e.g. `include(joinpath(repo_dir, "source", "main.jl"))`. After launching a background run, check the log's first lines for a load error before waiting on it.
+
+With stdout redirected to a file (`julia script.jl > out.log 2>&1`), output stays buffered and the log can sit empty for the whole run. In scripts meant for long background runs, call `flush(stdout)` after each step, or print progress to stderr. Put slow, optional steps after cheap checks so the cheap results arrive first.
