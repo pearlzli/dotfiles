@@ -1,3 +1,7 @@
+;;; -*- lexical-binding: nil; -*-
+;; Keep dynamic binding (behavior before emacs 31)
+;; TODO: convert this file to lexical binding
+
 ;; =========================================================
 ;; CSV
 ;; =========================================================

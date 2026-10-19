@@ -1,3 +1,7 @@
+;;; -*- lexical-binding: nil; -*-
+;; Keep dynamic binding (behavior before emacs 31)
+;; TODO: convert this file to lexical binding
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
