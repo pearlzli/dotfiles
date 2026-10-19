@@ -120,3 +120,7 @@ Never install Julia packages (`Pkg.add` or otherwise) on my behalf, in a project
 `include("x.jl")` resolves a relative path against the directory of the calling file, not the working directory, so `cd(...)` beforehand doesn't help. Scratch scripts outside the repo must include project code by absolute path, e.g. `include(joinpath(repo_dir, "source", "main.jl"))`. After launching a background run, check the log's first lines for a load error before waiting on it.
 
 With stdout redirected to a file (`julia script.jl > out.log 2>&1`), output stays buffered and the log can sit empty for the whole run. In scripts meant for long background runs, call `flush(stdout)` after each step, or print progress to stderr. Put slow, optional steps after cheap checks so the cheap results arrive first.
+
+# Shell
+
+My `.bashrc` aliases `mv` to `mv -i` and `cp` to `cp -i`, so overwriting an existing file prompts for confirmation; in a non-interactive command the prompt gets no answer, the overwrite is silently skipped, and the command still exits 0. To overwrite deliberately, bypass the alias with `\mv -f` or `\cp -f`, and check the result before relying on it.
