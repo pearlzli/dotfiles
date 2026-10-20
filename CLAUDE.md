@@ -39,6 +39,8 @@ Description.
 
 Keep docstrings and comments self-contained: describe what the code itself does. Mention another function, type, setting, or variable only when it's essential to understanding the code (e.g. an argument's type, or a key the function reads or writes). No "see `foo`" pointers, no contrasts like "as opposed to `Bar`", and no notes on which other function consumes the result; such references go stale whenever names or structure change.
 
+Write docstrings and comments in plain, precise terms rather than idiosyncratic jargon. Don't coin shorthand labels for things ("the gate", "the fast suite") or use a vague word where a precise one exists (plain "measure" when the code means a specific type); use the precise term for the thing itself (its type, the input, the column, the command that runs). Precision means exact words, not more references: it doesn't license mentioning other code that the self-contained rule above excludes. The same goes for READMEs, commit messages and what you tell me in chat.
+
 ## Blank lines
 
 Never leave two or more blank lines in a row. One blank line is the largest gap, everywhere — between top-level definitions, before section-header comments, and inside function bodies.
