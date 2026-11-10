@@ -35,7 +35,7 @@ Transcribe faithfully:
 - Keep the user's wording, abbreviations (nbhds, w/, gov'ts, coef), and question marks, including inline `(?)`.
 - Keep tags like `[Me]` (the user's own question) and `[Someone]` exactly as written.
 - Light cleanup only: capitalize the first word of each bullet, write `vs.` with a period, use en dashes in ranges (`5–25%`, `1945–1968`), and use a real minus sign for negative numbers (`−0.9%`). Write a "+" with no spaces around it as an ampersand (`PG&E`, `Q&A`), but keep a spaced " + " as a plus sign.
-- Write math and arrows as plain Unicode, not LaTeX: → ⇒ ↑ ↓ ⊥ × ≥ ≤ Ω. A question mark written above an arrow becomes `→?`. An indicator function becomes `1(...)`.
+- Write math and arrows as plain Unicode, not LaTeX: → ⇒ ↑ ↓ ⊥ × ≥ ≤ Ω. A question mark written above an arrow becomes `→?`. An indicator function becomes `1(...)`. Write fractions with a slash (`1/2`), not Unicode fraction characters like ½.
 - Don't add, summarize, or reorganize content.
 
 ## 4. Report back
